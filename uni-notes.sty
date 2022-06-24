@@ -39,19 +39,22 @@
 \RequirePackage{mathastext}
 \RequirePackage{amsmath}
 \RequirePackage{mathtools}
+\RequirePackage{dsfont}
 
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\C}{\mathbb{C}}
+\RequirePackage{graphicx} % for rotating \obet
+
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
 
 \newcommand{\cont}{\mathfrak{c}}
 
 \newcommand{\Po}[1]{\mathcal{P}(#1)}
 \newcommand{\zbiezjed}{{\to \above 0pt \to}}
 \newcommand{\rodz}[1]{\mathcal{#1}}
-\newcommand{\obet}{\upharpoonright}
+\newcommand{\obet}{\rotatebox[origin=c]{90}{$\rightharpoondown$}}
 \newcommand{\wek}[1]{\overline{#1}}
 
 \newcommand{\parl}{\langle}
@@ -86,7 +89,7 @@
 \definecolor{text}{HTML}{e0e0e0}
 
 \definecolor{title-color}{HTML}{d9685f}
-\definecolor{def}{HTML}{FFEB99}
+\definecolor{def}{HTML}{FFDB8F}
 \definecolor{acc}{HTML}{C6E8C1}
 
 \definecolor{sep}{HTML}{497c8a}
@@ -111,7 +114,8 @@
 %==== GRAPHY I TAKIE TAM ====%
 
 \RequirePackage{tikz}
-\RequirePackage{pgfplots}[compat=1.16]
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 % skrócone polecenie do środowiska rysującego?
 \newcommand{\pgraf}{\begin{center}\begin{tikzpicture}}

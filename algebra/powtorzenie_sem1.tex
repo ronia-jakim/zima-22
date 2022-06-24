@@ -1,0 +1,380 @@
+\documentclass{article}
+
+\usepackage{../uni-notes}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+\section*{there is only one bra - ALGEBRA}
+\begin{multicols*}{2}
+
+    \subsection*{PRZEKSZTAŁCENIA}
+
+    {\color{def}Lemat Steinitza} - załóżmy, że $B$ jest bazą $V$, a $a_1, ..., a_n$ jest lnz ciągiem wektorów. Wtedy\smallskip\\
+    \indent - $|B|\geq n$\\
+    \indent - możemy wybrać parami różne element $c_1, ..., c_n\in B$ takie, że
+    $$(B\setminus\{c_1, ..., c_n\})\cup\{a_1,..., a_n\}$$
+    jest wciąż bazą V.
+    
+    \podz{sep}
+
+    Funkcję $F:V\to W$ nazywamy {\color{def}izomorfizmem}, jeżeli:\smallskip\\
+    \indent $F$ jest addytywny ($F(v+1)=F(v)+F(w)$) i jednorodny ($F(av)=aF(v)$)\\
+    \indent $F$ jest bijekcją\bigskip
+
+    Jeżeli $dim \;V=n$, to $V\cong K^n$, a więc $V\cong W\iff dim \;V= dim \;W$
+
+    \podz{sep}
+
+    {\color{def}Jądro $F$:}
+    $$ker\;F:=\{v\in V\;:\;F(v)=0\}$$
+    {\color{def}Obraz $F$:}
+    $$im\;F:=\{F(v)\;:\;v\in V\}$$
+
+    Załóżmy, że $F:V\to W$ jest liniowe, wtedy\smallskip\\
+    \indent - $F$ jest na $\iff$ $im\;F=W$\\
+    \indent - $F$ jest 1-1 $\iff$ $ker\;F=0$
+
+    {\color{def}Rząd} przekształcenia liniowego to $rk\;F:=dim\;im\;F$\bigskip
+
+    {\color{title-color}Twierdzenie o rzędzie:}
+    $$dim \;V=dim\;ker\;F+dim\;im\;F=dim\;ker\;F+rk\;F$$
+
+    \podz{sep}
+
+    Jeżeli $F:V\to W$ jest przekształceniem liniowym i $dim\;V=dim\;W<\infty$, to następujące warunki są równoważne:\smallskip\\
+    \indent - $ker\;F=0$\\
+    \indent - $F$ jest 1-1\\
+    \indent - $F$ jest na\\
+    \indent - $F$ jest izomorfizmem\bigskip
+
+    Jeżeli mamy krótki ciąg dokładny przestrzeni liniowych
+    $$V_1\rarrow{}{F_1}V_2\rarrow{}{F_2}V_3$$
+    gdzie\smallskip\\
+    \indent - $F_1$ jest 1-1\\
+    \indent - $F_2$ jest na\\
+    \indent - $im\;F_1 = ker\;F_2$\smallskip\\
+    to wtedy $dim\; V_2=dim\; V_1+dim\;V_3$.
+
+    \podz{sep}
+
+    {\color{def}Suma prosta} (lub produkt) przestrzeni liniowych $V, W$ to przestrzeń z określinymi działaniami
+    $$V\oplus W$$
+    \indent $(v_1, w_1)+(v_2, w_2)=(v_1+v_2, w_1+w_2)$\\
+    \indent $a(v, w)=(av, aw)$\columnbreak
+
+    Jeżeli mamy liniowe $F_1:V_1\to W_1$ i $F_2:V_2\to W_2$, to mamy liniowe
+    $$F_1\oplus F_2:V_1\oplus V_2\to W_1\oplus W_2$$
+    $$(F_1\oplus F_2)(v_1, v_2)=(F_1(v_1), F_2(v_2))$$
+
+    \subsection*{PRZESTRZENIE (bi)DUALNE, warstwy}
+
+    {\color{title-color}Przestrzeń dualna} do przestrzeni liniowej $V$ nad ciałem $K$ to przestrzeń liniowa spełniająca:
+    $$V^*+=\{f:V\to K\;:\;f\;jest\;liniowe\}$$
+    i elementy $V^*$ nazywamy {\color{acc}funkcjonałami \\na $V$}.
+
+    Jeżeli $dim\;V\leq\infty$, to $dim\;V=dim\;V^*$.\bigskip
+
+    {\color{def}Przkształcenie dualne} do liniowego przekształcenia $F:V\to W$ to 
+    $$F^*:W^*\to V^*$$
+    $$F^*(f)(v)=f(F(v))$$
+    i jest liniowe.\bigskip
+
+    Jeżeli $F_1:V_1\to V_2$ i $F_2:V_2\to V_3$ są liniowe, to $(F_1\circ F_2)^*=F^*_1\circ F^*_2$\bigskip
+
+    Jeżeli $F:V\to W$ jest izomorfizmem, to $F^*$ też nim jest i wtedy $V^*\cong W^*$
+
+    \podz{sep}
+
+    Jeżeli $W\leq V$ są przestrzeniiami liniowymi i $v\in V$, to {\color{def}warstwą $v$ względem $W$} nazywamy zbiór
+    $$v+W=\{v+w\;:\;w\in W\}$$
+
+    $$\color{acc}v_1+W = v_2+W\iff v_1-v_2\in W$$
+
+    Zbiór {\color{def}$V/W$ warstw $W$ w $V$} to zbiór ilorazowy $V/\sim$ gdzie
+    $$v_1\sim v_2\iff v_1-v_2\in W$$
+
+    {\color{def}Przestrzeń ilorazowa} to zbiór ilorazowy z określinymi działaniami\smallskip\\
+    \indent $0_{V/W}=0+W$\\
+    \indent $(v_1+W)+(v_2+W)=(v_1+v_2)+W$\\
+    \indent a(v+W)=(av)+W\bigskip
+
+    $$\color{acc}dim\;V=dim\;V/W + dim\;W$$
+
+    \podz{sep}
+
+    {\color{def}Twierdzenie o izomorfizmie} - jeżeli \\$F:V\to W$ jest \emph{odwzorowaniem liniowym}, to $im\;F\cong V/ker\;F$
+
+    \podz{sep}
+
+    Dla każdej liniowej przestrzeni mamy przekształcenie liniowe
+    $$\phi:V\to V^{**}$$
+    $$\phi(v)(f)=f(v)\;(f\in V^*)$$
+    gdzie przestrzeń $V^{**}$ (dualną do przestrzeni dualnej) nazywamy {\color{def}przestrzenią bidualną}.\bigskip
+
+    Jeżeli $dim\;V<\infty$, to $\phi$ zadaje izomorfizm $V\cong V^{**}$
+
+    \subsection*{MACIORKI}
+
+    Jeżeli $M$ jest dowolną macierzą, to $e_i^TMe_j$ to $ij$-ty wyraz $M$, w szczególności jeżeli $M, N\in M_{n\times m}(K)$ spełniają $v^TMw=v^TNw$ dla każdych {\color{acc}$v\in K^m$, $w\in K^n$, to $M=N$}.
+
+    \podz{sep}
+
+    {\color{def}Układy równań} - postaci i ich imiona
+
+    $$\begin{cases}a_{11}x_1+a_{12}x_2+...+a_{1n}x_n=y_1\\a_{21}x_1+a_{22}x_2+...+a_{2n}x_n=y_2\\...\\a_{m1}x_1+a_{m2}x_2+...+a_{mn}x_n=y_m\end{cases}$$
+    {\color{acc}postać wektorowa:}
+    $$x_1A_1+x_2A_2+...+x_mA_m=Y,$$
+    gdzie $A_k=\begin{pmatrix}a_{1k}\\a_{2k}\\...\\a_{mk}\end{pmatrix}$ i $Y=\begin{pmatrix}y_1\\y_2\\...\\y_m\end{pmatrix}$\bigskip
+
+    {\color{acc}postać macierzowa:}
+    $$(A_1\;A_2\;...\;A_n)X=AX=Y$$
+    wtedy $A$ to macierz główna układu równań, a macierz $(A|Y)$ to macierz rozszerzona.\bigskip
+
+    Dla {\color{def}jednorodnego układu} równań poniższe są równoważne\smallskip\\
+    \indent - układ ma rozwiązanie\\
+    \indent - $Y\in Lin(A_1, ..., A_n)$\\
+    \indent - $Lin(A_1, ..., A_n) = Lin(A_1, ..., A_n, Y)$\\
+    \indent - $dim\;Lin(A_1, ..., A_n)=dim\;Lin(A_1, ..., A_n, Y)$\bigskip
+
+    {\color{def}Twierdzenie Kroneckera-Capelliego} - układ ma rozwiązanie $\iff rk\;A=rk(A|Y)$\bigskip
+
+    Operacje kolumnowe i wierszowe nie zmieniają rzędu macierzy.\bigskip
+
+    Każdą macierz można sprowadzić operacjami kolumnowymi i wierszowymi do postaci schodkowej (lub schodkowej z wiodącymi 1).\bigskip
+
+    Przerwa od pseudo-formalizmu, {\color{def}macierz odwrotną} szukamy wlepiając po prawej naszą macierz, a po lewej identyczność i operacjami wierszowymi dochodząc do identycznosci po prawej - po lewej to co powstało to odwrócona oryginalna.\bigskip
+
+    \podz{sep}
+
+    Załóżmy, że mamy
+    $$V\rarrow{}{F} W\rarrow{}{G}Z$$
+    gdzie baza $V$ to $B$, baza $W$ to $C$, a baza $Z$ to $D$, wtedy
+    $$\color{acc}m^B_D(G\circ F)=m^C_D(G)\cdot m^B_C(F)$$
+    i mamy z tego wzorek na zmianę bazy endomorfizmu $F:V\to V$
+    $$m_c(F)=m^B_C(id)m_B(F)m^C_B(id)$$
+
+    $F:V\to W$ jest odwracalnym przekształceniem liniowym $\iff F$ jest izomorfizmem, a więc $dim\;V=dim\;W$
+
+    \subsection*{WYZNACZNIK}
+
+    {\color{def}Wyznacznik macierzy} jest funkcją\smallskip\\
+    \indent - n-liniową (czyli dla ustalonego jednego argumentu jest liniowa w drugim)\\
+    \indent - alternujący, czyli dla $X_i=X_j$ dla $i\neq j$ $det(X_1, X_2, ..., X_n)=0$\\
+    \indent - jeżeli $char\;K\neq 2\; (1+1\neq0)$ to alternujące $\iff$ antysymentryczne, czyli zmienia znak jeżeli zamienimy dowolne dwa argumenty\bigskip
+
+    $S_n$ to zbiór permutacji zioru $\{1, ..., n\}$, a pojedyńczą permutację oznaczamy $\sigma$\bigskip
+
+    Mam {\color{def}dwie postaci permutacji}:\smallskip\\
+    \indent - {\color{acc}iloczyn transpozycji} postaci $(i, i+1)$ (i tutaj ogółem patrzymy na 1, i gdzie ona się pojawi na dole, potem hop to pod czym jest 1 i pod czym to jest i to wychodzą pary $(1, a)(1, b)...$)\\
+    \indent - {\color{acc}iloczyn rozłącznych cykli}
+
+    \podz{sep}
+
+    {\color{def}Liczba inwersji} (nieporządków) permutacji to liczba jej skrzyżowań, a sama {\color{def}inwersja} (nieporządek) to para $(i, j),\;i<j\;\land\;\sigma(i)>\sigma(j)$.\bigskip
+
+    {\color{def}Znak permutacji} $\sigma$ to 
+    $$sgn(\sigma)=(-1)^{liczba \;inwersji \sigma}$$
+
+    {\color{def}Wyznacznik} macierzy $A\in M_{n\times n}(K)$ definiujemy więc jako
+    $$det(A)=\sum\limits_{\sigma\in S_n}sgn(\sigma)a_{\sigma(1)1}\cdot...\cdot a_{\sigma(n)n}$$
+
+    Ustalmy permutację $\sigma\in S_n$. Niech $\overline \sigma$ będzie permutacją powstałą przez zamianę $\sigma(j)$ i $\sigma(k)$, wtedy
+    $$sgn(\sigma)=-sgn(\overline\sigma)$$
+
+    Jeżeli $\sigma, \tau$ są permutacjami, to $sgn(\sigma\circ\tau)=sgn(\sigma)\cdot sgn(\tau)$\bigskip
+
+    Jeżeli $\sigma = (a_1, ..., a_n)$ jest cyklem, to $sgn (\sigma)=(-1^{n-1})$\bigskip
+
+    Jeżeli $\sigma^{-1}$ jest permutacją odwrotną do $\sigma$, to wtedy $sgn(\sigma^{-1})=sgn(\sigma)$
+
+    \podz{sep}
+
+    {\color{title-color}PODSTAWOWE WŁASNOŚĆI WYZNACZNIKA::::}\medskip\\
+    \indent $det(A)=\sum\limits_{\sigma\in S_n}sgn(\sigma)a_{1, \sigma(1)}\cdot...\cdot a_{n, \sigma(n)}$ (sigma gdzie indziej)\\
+    \indent - $det(A)=det(A^T)$\\
+    \indent - $det(AB)=det\;A\cdot det\;B$\\
+    \indent - rozwinięcie Laplace względem wiersza i kolumny działa \\
+    \indent - nie zmienia się, gdy dowolnego wiersza/kolumny dodajemy skalarną wielokrotnść innego wiersza/kolumny\\
+    \indent - jeżeli pomnożymy dowolny wiersz przez skalar, to wyznacznik też się przez niego pomnoży\\
+    \indent - zamiana wierszy miejscami zmienia znak wyznacznika\\
+    \indent - wyznacznik macierzy górno/dolno trójkątnej to iloczyn tego co na przekątnej\\
+    \indent - wyznacznik jest = 0 $\iff$ kolumny są lz
+
+    \podz{sep}
+
+    {\color{def}Wyznacznik Vandermonde'a}
+
+    $$\begin{vmatrix}1 && x_1 && x_1^2&&...&& x_1^{n-1}\\ 1 && x_2 && x_2^2 && ... && x_2^{n-1}\\...\\ 1 && x_n && x_n^2 && ... && x_n^{n-1}\end{vmatrix}=\prod\limits_{i<j}(x_j-x_i)$$
+
+    \podz{sep}
+
+    {\color{def}Minor macierzy A} to macierz kwadratowa powstała z $A$ przez wykreślenie pewnej liczby wiierszy lub kolumn, lub wyznacznik takiej macierzy\bigskip
+
+    Jeżeli $A$ jest dowolną macierzą, to $rk\;A$ jest max rozmiarem niezerowego minora
+
+    \subsection*{CRAMER}
+    $$(A_1, ..., A_n)\begin{pmatrix}x_1\\...\\x_n\end{pmatrix}=\begin{pmatrix}y_1\\...\\y_n\end{pmatrix}$$
+    to jeżeli $A$ jest nieosobliwa (czyli ma lnz kolumny), to
+    $$x_k={det(A_1, ..., A_{k-1}, Y, A_{k+1}, ..., A_n)\over det\; A}$$
+
+    \podz{sep}
+
+    Dla macierzy $A=(a_{ij})$ iloczyn $(-1)^{i+j}A_{ij}$, gdzie $A_{ij}$ to minor powstały przez wykreślenie $i$ tej kolumny i $j$ wiersza, nazywa się {\color{def}dopełnieniem algebraicznym} wyrazu $a_{ij}$ macierzy A.\bigskip
+
+    {\color{def}Macierz dołączona do $A$} to macierz transponowana do macierzy dopełnień algebraicznych $A$, czyli
+    \begin{align*}&adj(A)=A^\lor=\\
+        &\begin{pmatrix}+A_{11}&&-A_{21}&&...&&(-1)^{n+1}A_{n1}\\-A_{12}&&+A_{22}&&...\\
+        ...\\
+        (-1)^{n+1}A_1n&&(-1)^{n+1}A_{2n}&&...\end{pmatrix}\end{align*}
+
+
+    Jeżeli $A\in M_{n\times n}(K)$, to \smallskip\\
+    \indent - $\color{acc}A\cdot adj(A)=adj(A)\cdot A=det\;A\cdot I$\\
+    \indent - jeżeli $det\;A\neq 0$, to $A^{-1}=\frac1{det\;A}adj(A)$\bigskip
+
+    \subsection*{WIELOMIAN CHARAKTERYSTYCZNY?}
+
+    $\color{def}Hom(V, W)$ to przestrzeń odwzorowań liniowych $V\to W$\bigskip
+
+    Jeżeli $B$ jest bazą $V$, a $C$ jest bazą $W$ i obie przestrzenie są skończenie wymiarowe, to $dim\;Hom(V, W)=dim\;V\cdot dim\;W$\bigskip
+
+    Jeżeli $F\in Hom(V, V)$, to $det\;m_B^B(F)$ nie zależy od wyboru bazy\bigskip
+
+    {\color{def}Ślad $F$} to suma wyrazów na przekątnej jego macierzy i równoważnie
+    $$tr(F)=(-1)^{n-1}\cdot wspolczynnik\;przy\;x\;w\;\chi_F(x)$$
+
+    \podz{sep}
+
+    Podprzestrzenie $V_1, ..., V_k\leq V$ są liniowo niezależne, jeżeli dla $v_i\in V_i$
+    $$\sum\limits_{i=1}^k v_i=0\iff v_1=v_2=...=v_k=0$$
+
+    Niech $V_1, ..., V_k\leq V$, wtedy następujące są równoważne\bigskip\\
+    \indent - $V=v_1\oplus V_2\oplus...\oplus V_n$\\
+    \indent - $\phi:V_1\times V_2\times...\times V_n\to V$ zadana wzorem $\phi(v_1, ..., v_n) = v_1+...v_n$ jest izomorfizmem\\
+    \indent - $V_1, ..., V_n$ są lnz i $V_1+V_2+...+V_n=V$\\
+    \indent - $\infty > dim\;V=dim\;V_1+...+dim\;V_2$
+
+    \podz{sep}
+
+    Niech $W\leq V$, a $F\in End(V)$, mówimy że {\color{def}W jest F-nizmiennicza}, jeżeli $F[W]\subseteq W$\bigskip
+
+    Jeżeli $W$ jest $F$-nizmiennicza, to mamy dobrze określone odwzorowanie
+    $$\overline F:V/W\to V/W$$
+    $$\overline F(v+W)=F(v)+W$$
+
+    \podz{sep}
+
+    {\color{def}Przestrzeń własna} dla $\lambda$ to
+    $$V_\lambda=\{v\in V\;:\;F(v)=\lambda v\}$$
+
+    {\color{def}Przestrzeń pierwiastkowa} dla $\lambda$ to
+    $$V^\lambda=\{v\;in V\;:\;(\exists\;k)\;(F-\lambda)^kv=0\}=ker(F-\lambda)^{dim\;V^\lambda}$$
+
+    $dim V^\lambda$ to krotność $\lambda$ jako pierwiastka $\chi_F(x)$
+
+    {\color{def}Spektrum punktowe} (widmo) F to
+    $$\sigma(F)=Spec(F)=\{\lambda\;:\;V_\lambda\neq 0\}$$
+    bo czemu nie używać tej samej literki do kilku rzeczy! to nie tak, że alfabet ma więcej niż 5 na krzyż i możemy wybierać do woli!!!\bigskip
+
+    $F:V\to V$ ma co najwyżej $dim\;V$ wartości własnych\bigskip
+
+    Załóżmy, że $\lambda_1, ..., \lambda_n$ są parami różne, wtedy $V_{\lambda_1}, ..., V_{\lambda_n}$ są liniowo niezależne\bigskip
+
+    Przestrzenie pierwiastkowe dla różnych wartości własnych są liniowo niezależne
+
+    \podz{sep}
+
+    $F:V\to V$ jest diagonalizowalne, jeżeli $\sum\limits_{\lambda\in\sigma(F)}dim\;V_\lambda=dim\;V$\bigskip
+    
+    Następujące są równoważne\smallskip\\
+    \indent - $F$ jest diagonalizowalne\\
+    \indent - istnieje baza $B$ że $m_B(F)$ jest diagonalna\\
+    \indent - istnieje $B$ złożona z wektorów własnych $F$
+
+    \subsection*{PRZEKLĘTY JORDAN}
+
+    Wzór na $n$-tą potęgę $k$-wymiarowej klatki Jordana dla wartości własnej $\lambda$
+    $$\begin{pmatrix}\lambda^n && {n\choose 1}\lambda ^{n-1} && ... && ... && {n\choose k}\lambda^{n-k}\\
+    0 && \lambda ^ n && {n\choose 1}\lambda ^{n-1} && ... && {n\choose k-1}\lambda ^ {n-k+1}\\...\\0 && 0 && ... && ... &&\lambda ^ n\end{pmatrix}$$
+
+    {\color{def}Ilość klatek rozmiaru} $\geq k$ i wartością własną $\lambda$ to
+    $$dim\;ker(F-\lambda)^k-dim\;ker(F-\lambda)^{k-1}$$
+
+    {\color{def}Rozkład Fittinga} $V=V^0\oplus V'$, gdzie \\$V'=im\;F^{dim\; V^0}$, poza tym $F\obet V'$ jest odwracalne
+
+    \podz{sep}
+
+    Wielomian $P\in K[x]$ rozszczepia się nad $K$, jeżeli jest iloczynem jednomianów z $K[x]$. Jeżeli {\color{acc}wielomian charakterystyczny rozszczepia się nad $K$}, to $V=\bigoplus V^\lambda$.\bigskip
+
+    Endomorfizm $F\in End(V)$ jest {\color{def}nilpotentny}, jeżeli $F^d=0$ dla pewnego $d$.
+
+    {\color{def}Podprzestrzeń jest cykliczna}, gdy jest postaci $K[F]\cdot v:= Lin (v, F(v), F^2(v), ...)$\bigskip
+
+    Załóżmy, że $F$ jest nilpotentny, $d\in \N_+$ jest minimalne takie, że $F^d=0$, zaś $v_0\in V\setminus ker\;F^{d-1}$ - wtedy istnieje niezmiennicza podprzestrzeń dopełnicza do $K[F]\cdot v_0$\bigskip
+
+    Niech $F$ będzie nilpotentny, wtedy $V$ jest sumą prostą cyklicznych podprzestrzeni $F$.
+
+    \podz{sep}
+
+    {\color{def}Ciało $K$ jest algebraicznie domknięte}, jeżeli każdy niestały wielomian o współczynnikach z $K$ ma pierwiastek w $K$\bigskip
+
+    {\color{def}Kompleksyfikacja $V$} to
+    $$V_c=V\oplus iV$$
+
+    Jeżeli $A\subseteq V$, to $Lin_R(A)=V\cap Lin_C(A)$\bigskip
+
+    Niech $V$ będzie przestrzenią liniową nad $\R$, wtedy $dim_\R\; V=dim_C\;V_C$ i dla $B\subseteq $ mamy\smallskip\\
+    \indent - $B$ rozpina $V\iff B$ rozpina $V_C$\\
+    \indent - $B$ jest lnz w $V\iff B$ jest lnz w $V_C$\\
+    \indent - $B$ jest bazą $V\iff B$ jest bazą $V_C$\bigskip
+
+    Jeżeli $\lambda$ jest wartością własną $F_c$, to $\overline\lambda$ też nią jest\bigskip
+
+    Jeżeli $3+i$ jest wartością własną $F$, to jedna z klatek Jordana w formie rzeczywistej jest na przykład
+    $$\begin{pmatrix}3+i && 1\\0 && 3+1\end{pmatrix}$$
+    a coś zespolonego to będzie wtedy
+    $$\begin{pmatrix}3 && -1\\1 && 3\end{pmatrix}$$
+
+    \subsection*{FORMY DWULINIOWE I KWADRYKIIII}
+
+    {\color{def}Iloczyn skalarny na $\R^n$} jest\smallskip\\
+    \indent - dwuliniowy\\
+    \indent - symetryczny\\
+    \indent - dodatnio określony\bigskip
+
+    Forma dwuliniowa $\varphi$ jest symetryczna $\iff$ macierz $\varphi$ jest symentryczna w każdej bazie
+
+    $$m^{CC}(\varphi)=m^C_B(id)^T\cdot m^{BB}(\varphi)\cdot m^{CC}_B(id)$$
+
+    Dwie formy dwuliniowe są {\color{def}równoważne} jeżeli mają te same macierze (niekonieczne w tych samych bazach)
+
+    \podz{sep}
+
+    $P$ jest {\color{def}ortogonalna}, jeżeli $P^T=P^{-1}$\bigskip
+
+    Maciierz $A$ jest {\color{def}dodatnio określona}, jeżeli dla każdego $v\in \R^n$ mamy
+    $$v^TAv>0$$
+
+    {\color{def}Kryterium Sylvestera} - wszystkie {\color{def}wiodące minory główne} (czyli mają $k$ pierwszych kolumn i wierszy i przekątna pokrywa się z przekątną całej macierzy) mają dodatni wyznacznik
+
+    Następujące są równoważne dla $A\in M_{n\times n}(\R)$\smallskip\\
+    \indent - $A$ reprezentuj standardowy iloczyn skalarny na $\R^n$\\
+    \indent - istnieje odwracalne $P$ takie, że $A+P^TP$\\
+    \indent - $A$ jest symetryczna i dodatnio określona\bigskip
+
+    $\varphi$ jest iloczynem skalarnym $\iff$ istnieje $B$ spełniająca $m^{BB}(\varphi)=I$
+
+    \podz{sep}
+
+    {\color{def}Dopełnienie ortogonalne $A^T$} to zbiór wektorów prostopadłych do wszystkich elementów $A$
+    $$A^T=\{v\in V\;:\;(\forall\;a\in A)\;\varphi(a, v)=0\}$$
+
+    {\color{def}Twierdzenie Lagrange'a}:\smallskip\\
+    \indent - niech $\varphi$ będzie formą symetryczną na rzeczywistej prezstrzeni liniowej $V$, wtedy istnieje baza ortogonalna dla $\varphi$\\
+    \indent niech $A$ będzie rzeczywistą macierzą symetryczna, wtedy istnieje macierz odwracalna $Q$ taka, że $QAQ^T$ jest diagonalne
+
+    133
+
+\end{multicols*}
+\end{document}
