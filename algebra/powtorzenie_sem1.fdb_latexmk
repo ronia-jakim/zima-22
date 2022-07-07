@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1656102974 "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.tex" "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.pdf" "powtorzenie_sem1" 1656102978
-  "../uni-notes.sty" 1656083760 5780 12061d077eef92c15edfc741ae564a24 ""
+["pdflatex"] 1657200393 "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.tex" "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.pdf" "powtorzenie_sem1" 1657200399
+  "../uni-notes.sty" 1657200359 5780 12061d077eef92c15edfc741ae564a24 ""
   "/etc/texmf/web2c/texmf.cnf" 1646864866 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.aux" 1656102977 730 07425b1345ad1ac46e651bdf0917cd77 ""
-  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.tex" 1656102974 17397 20854f51b81eb03e5166c3e633be55c9 ""
+  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.aux" 1657200398 730 07425b1345ad1ac46e651bdf0917cd77 ""
+  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.tex" 1657200392 17398 799d87992aa155c428343ce74bdb23f2 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm" 1136768653 1292 3059476c50a24578715759f22652f3d0 ""
@@ -227,13 +227,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1646864898 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1646864924 8256371 e06ae603da900a208c803cef6cd9dc0d ""
-  "powtorzenie_sem1.aux" 1656102977 730 07425b1345ad1ac46e651bdf0917cd77 "pdflatex"
-  "powtorzenie_sem1.out" 1656102977 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "powtorzenie_sem1.tex" 1656102974 17397 20854f51b81eb03e5166c3e633be55c9 ""
+  "powtorzenie_sem1.aux" 1657200398 730 07425b1345ad1ac46e651bdf0917cd77 "pdflatex"
+  "powtorzenie_sem1.out" 1657200398 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "powtorzenie_sem1.tex" 1657200392 17398 799d87992aa155c428343ce74bdb23f2 ""
   (generated)
-  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.log"
-  "powtorzenie_sem1.log"
-  "powtorzenie_sem1.pdf"
   "powtorzenie_sem1.aux"
+  "powtorzenie_sem1.log"
   "powtorzenie_sem1.out"
   "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.pdf"
+  "/mnt/c/Users/weron/Desktop/notatki_22_23/algebra/powtorzenie_sem1.log"
+  "powtorzenie_sem1.pdf"
