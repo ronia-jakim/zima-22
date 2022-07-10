@@ -1,0 +1,39 @@
+\section{Basic concepts of graph theory}
+
+\subsection{Graphs}
+
+{\color{def}Graph} ($G=(V, E)$) - a structure made up of {\color{acc}vertices} $(V)$ that are connected in pairs with {\color{acc}edges} $(E)$.\medskip
+
+{\color{def}Multigraph} - a graph where two vertices are allowed to have more than one egde connecting them.\medskip
+
+If a vertex is allowed to be connected to itself, then the graph is called a {\color{def}graph with loops} and the edge that connects the vertex to itself is known as a {\color{def}loop}.\medskip
+
+{\color{def}Adjacency relation} - is the symmetric relation of pairings between vertices of an undirected graph. It is used to construct an {\color{acc}adjacency matrix} that is another form of representing graphs.
+\begin{multicols}{2}
+    {\color{back}hjhg}
+\pgraf
+    \node (p1) at (0, 0) {1 $\bullet$};
+    \node (p2) at (1, -0.5) {$\bullet$ 2};
+    \node (p3) at (1, 0.5) {$\bullet$ 3};
+    \draw[sep, very thick] (p1)--(p2);
+    \draw[sep, very thick] (p1)--(p3);
+\kgraf
+
+\columnbreak
+{\color{back}jhv}
+\begin{align*}
+    &\begin{matrix}\quad1 && 2 && 3\end{matrix}\\
+    &\begin{pmatrix}
+        0 && 1 && 1\\
+        1 && 0 && 0\\
+        1 && 0 && 0
+    \end{pmatrix}
+\end{align*}
+
+\end{multicols}\bigskip
+
+{\color{def}Directed graph} is a graph in which edges have orientation. Here, the set of edges contains ordered pairs of vertices. However, this definition does not allow multiple edges between two vertices. To fix this problem, we introduce another object, $\phi$, that is a mapphing of edges to ordered pairs of vartices. To avoid confusion, we call such graph a {\color{acc}directed multigraph} $(G=(V, E, \phi))$.\medskip
+
+{\color{def}Mixed graph} is a graph that allows both directed and undirected edges.\medskip
+
+{\color{def}Weigthed graph} is a graph in which each edge has a value assigned to it.
