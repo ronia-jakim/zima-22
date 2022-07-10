@@ -34,6 +34,63 @@ If a vertex is allowed to be connected to itself, then the graph is called a {\c
 
 {\color{def}Directed graph} is a graph in which edges have orientation. Here, the set of edges contains ordered pairs of vertices. However, this definition does not allow multiple edges between two vertices. To fix this problem, we introduce another object, $\phi$, that is a mapphing of edges to ordered pairs of vartices. To avoid confusion, we call such graph a {\color{acc}directed multigraph} $(G=(V, E, \phi))$.\medskip
 
-{\color{def}Mixed graph} is a graph that allows both directed and undirected edges.\medskip
+{\color{def}Mixed graph} is a graph that allows both directed and undirected edges.\smallskip
 
-{\color{def}Weigthed graph} is a graph in which each edge has a value assigned to it.
+{\color{def}Weigthed graph} is a graph in which each edge has a value assigned to it.\smallskip
+
+{\color{def}Oriented graph} is a directed graph where each edge has a set orientation, that is if an edge $\parl x, y\parr$ exists, there cannot be an edge $\parl y, x\parr$\smallskip
+
+{\color{def}Regular graph} is a graph in which each vertex has the same number of neighbours ({\color{acc}degree}).\smallskip
+
+{\color{def}Complete graph} is a graph where every pair of vertices is connected with an edge.\bigskip
+
+\begin{multicols}{2}
+    {\color{def}Tree} is a graph in which any two vertices are connected by exactly one path.\smallskip
+    
+    {\color{def}Polytree} is a graph whose underlying graph is a tree. For example on the right is a polytree in which subgraph (A, D, F, G) is a tree.
+    \pgraf
+        \node (a) at (0, 0) {A};
+        \node (b) at (1, 0) {B};
+        \node (c) at (-0.5, -1) {C};
+        \node (d) at (0.5, -1) {D};
+        \node (e) at (1.5, -1) {E};
+        \node (f) at (0, -2) {F};
+        \node (g) at (1, -2) {G};
+        \draw [thick, ->] (a)--(c);
+        \draw[thick, ->] (a)--(d);
+        \draw[thick, ->] (b)--(d);
+        \draw[thick, ->] (b)--(e);
+        \draw[thick, ->](d)--(f);
+        \draw[thick, ->](d)--(g);
+    \kgraf
+\end{multicols}
+
+\subsection{Paths}
+
+A pair of vertices $x, y$ is {\color{def}connected} if there can be found a collection of edges so that they are have connected ends and going through them leads from $x$ to $y$ and vice versa. Such a collection is called a {\color{def}path}.
+
+A graph is {\color{def}connected} if each two vertices are connected. A stronger condition, each two vertices are connected with directed edges, makes a graph {\color{def}strongly connected}.\medskip
+
+\podz{sep}\medskip
+
+{\color{def}Chromatic number} - the smallest number of colors needed to color a graph so that every two vertices of an edge have different colors. For example the following graph has chromatic number 3:
+\pgraf
+    \node (p1) at (0, 0) {$\color{red}\bullet$};
+    \node (p2) at (1, 0) {$\color{blue}\bullet$};
+    \node (p3) at (-1, 0.5) {$\color{green}\bullet$};
+    \node (p4) at (-1, -0.5) {$\color{blue}\bullet$};
+    \draw[thick] (p1)--(p2);
+    \draw[thick] (p1)--(p3);
+    \draw[thick] (p1)--(p4);
+    \draw[thick] (p3)--(p4);
+\kgraf
+
+\podz{sep}\medskip
+
+{\color{def}Bipartite graph} is a simple graph where vertex set can be partioned into two sets. Alternatively, it is a graph with chromatic number 2.\medskip
+
+{\color{def}Planar graph} is a graph that can be drawn on a plane so that no two edges intersect.
+
+\subsection{Cycles}
+
+{\color{def}Cycle graph} of order $n$ is a graph where $n$ vertices create a cycle. They are connected graphs with vertices of degree 2.\bigskip
