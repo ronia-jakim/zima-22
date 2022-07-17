@@ -93,4 +93,48 @@ A graph is {\color{def}connected} if each two vertices are connected. A stronger
 
 \subsection{Cycles}
 
-{\color{def}Cycle graph} of order $n$ is a graph where $n$ vertices create a cycle. They are connected graphs with vertices of degree 2.\bigskip
+{\color{def}Cycle} - non-empty trail in which only the first and last vertices are equal. If more than just the first and last vertices repeat in a cycle, then it is called a {\color{def}circuit}.\smallskip
+
+{\color{def}Cycle graph} of order $n$ is a graph where $n$ vertices create a cycle. They are connected graphs with vertices of degree 2. If no cycles exist in a graph, then it is called an {\color{def}acyclic graph}.\bigskip
+
+{\color{def}Chordless cycle} is a cycle in which no two vertices are connected by an edge that itself does not belong in the cycle, for example $(A, B, C, D, E, F)$ form an chordless cycle
+\pgraf
+    \node (a) at (0, 0) {A};
+    \node (b) at (1, 0.5) {B};
+    \node (c) at (1.5, -0.5) {C};
+    \node (d) at (1, -1.5) {D};
+    \node (e) at (0, -2.1) {E};
+    \node (f) at (-0.5, -1) {F};
+    \node (g) at (2.5, -0.5) {G};
+    \node (h) at (2.5, -1.5) {H};
+    \draw[title-color, thick] (a)--(b);
+    \draw[title-color, thick] (c)--(b);
+    \draw[title-color, thick] (c)--(d);
+    \draw[title-color, thick] (d)--(e);
+    \draw[title-color, thick] (e)--(f);
+    \draw[title-color, thick] (a)--(f);
+    \draw[thick] (c) -- (g);
+    \draw[thick] (c)--(h);
+\kgraf
+Whereas in the next example, $(A, B, C, D, E, F)$ do not form a chordless cycle - edge $\{A, D\}$ is a {\color{acc}chord}.
+\pgraf
+    \node (a) at (0, 0) {A};
+    \node (b) at (1, 0.5) {B};
+    \node (c) at (1.5, -0.5) {C};
+    \node (d) at (1, -1.5) {D};
+    \node (e) at (0, -2.1) {E};
+    \node (f) at (-0.5, -1) {F};
+    \node (g) at (2.5, -0.5) {G};
+    \node (h) at (2.5, -1.5) {H};
+    \draw[title-color, thick] (a)--(b);
+    \draw[title-color, thick] (c)--(b);
+    \draw[title-color, thick] (c)--(d);
+    \draw[title-color, thick] (d)--(e);
+    \draw[title-color, thick] (e)--(f);
+    \draw[title-color, thick] (a)--(f);
+    \draw[thick] (a) -- (d);
+    \draw[thick] (c) -- (g);
+    \draw[thick] (c)--(h);
+\kgraf
+
+{\color{def}Girth} of a graph is the length of its shortest chordless cycle. {\color{def}Cages} are regular graphs with as few vertices as possible for its girth.
