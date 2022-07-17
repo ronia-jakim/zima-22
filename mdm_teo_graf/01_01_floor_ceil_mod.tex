@@ -1,0 +1,91 @@
+\section{Elementy algebryi teorii liczb}
+\subsection{Podłoga i sufit}
+
+Reguły funkcji podłoga i sufit:\smallskip\\
+\indent 1. $\lfloor x\rfloor =n\iff n\leq x< n+1$\\
+\indent 2. $\lfloor x\rfloor = n\iff x-1<n\leq x$\\
+\indent 2. $\lceil x\rceil = n\iff n-1<x\leq n$\\
+\indent 3. $\lceil x\rceil = n\iff x\leq n< x+1$\bigskip
+
+Więcej hardocorowych własności:
+$$\lfloor x+n\rfloor = \lfloor x\rfloor+n$$
+ale dla mnożenia to już nie zadziała.\medskip
+
+Dla liczb całkowitych zachodzi:
+$$x<n\iff \lfloor x\rfloor < n$$
+$$n<x\iff n < \lceil x\rceil$$
+$$x\leq n\iff \lceil x\rceil$$
+$$n\leq x\iff n\leq \lfloor x\rfloor$$
+
+{\color{def}Część ułamkowa} to różnica $x-\lfloor x\rfloor$. Oznaczamy $\{x\}$, chyba że gdzieś obok pojawiają się singletony. Wtedy nie oznaczamy. Simple.
+
+\podz{sep}
+
+$$\lfloor \sqrt{\lfloor x\rfloor}\rfloor=\lfloor\sqrt{x}\rfloor$$
+
+W pierwszej kolejności chcemy pozbyć się zewnętrznych nawiasów i pierwiastka kwadratowego, potem usunąć nawiasy wewnętrzne. Na koniec dodajemy z powrotem pierwiatek i nawiasy zewnętrzne:
+$$\lfloor \sqrt{\lfloor x\rfloor}\rfloor\to \sqrt{\lfloor x\rfloor}\to\lfloor x\rfloor\to x\to \sqrt{x}\to \lfloor \sqrt{x}\rfloor$$
+
+\medskip
+
+Niech $m=\lfloor \sqrt{\lfloor x\rfloor}\rfloor$. Z wcześniej ustalonych reguł wynika, że 
+$$m\leq \sqrt{\lfloor x\rfloor} < m+1.$$
+Ponieważ wszystkie trzy wyrażenia są nieujemne, możemy podnieść je do kwadratu:
+$$m^2\leq \lfloor x\rfloor < (m+1)^2.$$
+Ponieważ zarówno $m$ jak i $m+1$ są liczbami całkowitymi, to możemy pozbyć się nawiasów kwadratowych, otrzymując
+$$m^2\leq x < (m+1)^2.$$
+Obie strony nadal są nieujemne, możemy je więc spierwiastkować, żeby otrzymać
+$$m\leq \sqrt{x}<m+1$$
+a więc
+$$m=\lfloor \sqrt{x}\rfloor$$
+i to jest to, co chceliśmy otrzymać.
+\kdowod
+
+Możemy tę równość uogólnić dla dowolnej funkcji $f$ takiej, że $f(x)\in \Z\implies x\in \Z$:
+$$\lfloor f(x)\rfloor=\lfloor f(\lfloor x\rfloor)\rfloor\;\land\; \lceil f(x)\rceil=\lceil f(\lceil x\rceil)\rceil.$$
+
+Szczególnym przypadkiem tego twierdzenia jest
+$$\Big\lfloor {x+m\over n}\Big\rfloor=\Big\lfloor {\lfloor x\rfloor+m\over n}\Big\rfloor\;\land\;\Big\lceil {x+m\over n}\Big\rceil=\Big\lceil {\lceil x\rceil+m\over n}\Big\rceil$$
+
+\bigskip
+
+\podz{sep}
+\bigskip
+
+{\color{def}Widmo liczby rzeczywistej} $\alpha$ to nieskończony zbiór liczb całkowitych z powtórzeniami:
+$$Spec(\alpha) = \{\lfloor\alpha\rfloor, \lfloor2\alpha\rfloor, \lfloor3\alpha\rfloor, ...\}.$$
+
+Ilość elementów $Spec(\alpha)$ nie większych niż $n$ wynosi:
+\begin{align*}
+    N(\alpha, n)=\sum\limits_{k>0}(\lfloor k\alpha\leq n\rfloor)=\sum\limits_{k>0}(\lfloor k\alpha<n+1\rfloor)=\sum\limits_{k>0}(k\alpha<n+1)=\lceil {(n+1)\over\alpha}-1\rceil
+\end{align*}
+
+\subsection{Operacja mod}
+
+Wzór na dzielenie liczby $n$ przez $m$:
+$$n=m\Big\lfloor{n\over m}\Big\rfloor + n\mod m,$$
+czyli
+$$n\mod m=n-m\Big\lfloor{n\over m}\Big\rfloor,\quad m\neq 0$$
+Jest to definicja która działa też dla liczb ujemnych, na przykłady
+\begin{align*}
+    5\mod 3&=5-3\Big\lfloor {5\over 3}\Big\rfloor = 2\\
+    5\mod -3&=5-(-3)\Big\lfloor {5\over -3}\Big\rfloor = -1\\
+    -5\mod-3&=-5-(-3)\Big\lfloor{-5\over-3}\Big\rfloor = -2
+\end{align*}
+
+Część ułamkową można zdefiniować jako operację modulo:
+$$\{x\}=x\mod1.$$
+
+Działania modulo:
+$$c(x\mod y)=cx\mod cy$$
+
+Jeśli rozmieściemy $n$ przedmiotów do $m$ grup tak, żeby różnica ich ilości między grupami była nie większa niż 1, a większe grupy były bliżej początku, to bez problemu możemy sprawdzić ilość przedmiotów w $k$-tej grupie:
+$$\Big\lceil{n-k+1\over m}\Big\rceil.$$
+A więc skoro mamy $n$ przedmiotów w $m$ grupach, to całość dostaniemy sumując wszystkie grupy:
+$$n=\Big\lceil{n\over m}\Big\rceil+...+\Big\lceil{n-m+1\over m}\Big\rceil.$$
+Po prostu powoli odejmujemy coraz więcej od reszty z tego dzielenia.\bigskip
+
+Podobna zależność działa też dla liczb rzeczywistych:
+$$\lfloor mx\rfloor = \lfloor x\rfloor+\Big\lfloor x+\frac1m\Big\rfloor...+\Big\lfloor x+{m-1\over m}\Big\rfloor$$
+
+{\color{cyan}WYPADAŁOBY TUTAJ WRÓCIĆ, ALE CHWILOWO MAM DOŚĆ OPERACJI NA PODŁOGACH I INNYCH SUFITACH}
