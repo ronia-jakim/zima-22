@@ -1,0 +1,22 @@
+\subsection{Hierarchia - asymptotyka}
+$$f(n)\prec g(n)\iff\lim\limits_{n\to\infty}{f(n)\over g(n)}=0$$
+Czyli $f(n)$ rośnie wolniej niż $g(n)$. Na przykład $n\prec n^2$. Podstawowa hierarchia to dla $0<\varepsilon<1\leq c$:
+$$1\prec \log\log n\prec\log n\prec n^\varepsilon\prec n^c\prec n^{\log n}\prec c^n\prec n^n\prec c^{c^n}.$$
+Wszystkie te funkcje przy $n\to\infty$ dążą do nieskończoności, kluczowe więc nie jest określenie czy to robią, a raczej {\color{acc}jak szybko do $\infty$ dążą}. Alternatywnie, możemy porównywać odwrotności funkcji i jak szybko one dążą do zera, nigdy go nie osiągając.\bigskip
+
+$$e^{f(n)}\prec e^{g(n)}\iff \lim\limits_{n\to \infty}(f(n)-g(n))=-\infty$$
+
+Dwie funkcje są do siebie {\color{def}asymptotyczne}, jeżeli mają {\color{acc}ten sam współczynnik}. Piszemy wtedy $f(n)\asymp g(n)$, czyli
+$$f(n)\asymp g(n)\iff |f(n)|\leq C\cdot |g(n)|\;\land\;|g(n)|\leq C\cdot|f(n)|,$$
+dla pewnej stałej $C$ oraz dostatecznie dużych $n$. Zachodzi to na przykład dla wielomianów tego samego stopnia.\bigskip
+
+{\color{def}Klasa funkcji logarytmiczno-wykładniczych} jest zdefiniowana rekurencyjnie jako najmniejsza rodzina $L$ (to powinno być gotyckie $L$, ale coś nie działą) spełniająca\smallskip\\
+\indent 1. dla każdego $\alpha\in \R$ funkcja $f(n)=\alpha$ należy do $L$\\
+\indent 2. funkcja tożsamościowa $f(n)=n$ należy do $L$\\
+\indent 3. jeżeli $f(n)$ i $g(n)$ należą do $L$, to również $f(n)-g(n)$ należy do $L$\\
+\indent 4. jeżeli $f(n)$ należy do $L$ oraz jest dodatnia od pewnego momentu, to również $\ln(f(n))$ należy do $L$.\medskip
+
+{\color{def}Główne twierdzenie Hardy'ego} mówi, że jeżeli $f(n), g(n)\in L$ to zachodzi jedna z możliwości:\smallskip\\
+\indent 1. $f(n)\prec g(n)$\\
+\indent 2. $g(n)\prec f(n)$\\
+\indent 3. $f(n)\asymp g(n)$.
