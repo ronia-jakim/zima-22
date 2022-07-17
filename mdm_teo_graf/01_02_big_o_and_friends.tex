@@ -23,7 +23,7 @@ dla pewnej stałej $C$ oraz dostatecznie dużych $n$. Zachodzi to na przykład d
 
 %=============================================================================%
 
-\subsection{Big O notation}
+\subsection{Big $O$ notation}
 Zapis $\color{def}f(n)=O(g(n))$ oznacza, że $\color{def}|f(n)|\leq C|g(n)|$ dla wszystkich $n$. Czyli oznacza, że $O(5)$ jest liczbą której wartość bezwzględa po pomnożeniu przez jakąś stałą jest nie większa niż $5$.\bigskip
 
 Bardzo często narzucamy na notację $O$ pewne ograniczenia, na przykład powiedzenie, że
@@ -44,6 +44,25 @@ Określa dokładny porządek przyrostu:
 $$f(n)=\Theta(g(n))\iff \begin{matrix}f(n)=O(g(n))\\f(n)=\Omega(n)\end{matrix}.$$
 Czyli $f(n)=\Theta(g(n))\iff f(n)\asymp g(n)$.
 
-\subsection{Notacja małego o}
+\subsection{Notacja małego $o$}
 Odpowiada relacji $f(n)\prec g(n)$. Dodatkowo, mamy
 $$f(n)\sim g(n)\iff f(n)=g(n)+o(g(n)).$$
+
+\subsection{Reguły notacji dużego $O$}
+Ciąg bardzo fajnych i przyjemnych wzorków które trzeba się naumieć c:
+$$n^a=O(n^b)\quad a\leq b$$
+$$O(f(n))+O(g(n))=O(|f(n)|+|g(n)|)$$
+$$f(n)=O(f(n))$$
+$$c\cdot O(f(n))=O(f(n))$$
+$$O(O(f(n)))=O(f(n))$$
+$$O(f(n))O(g(n))=O(f(n)g(n))$$
+$$O(f(n)g(n))=f(n)O(g(n))$$
+
+Jeżeli suma
+$$S(z)=\sum\limits_{n\geq0}a_nz^n$$
+jest bezwzględnie zbieżna dla pewnego $z_0\in \Z$, to
+$$S(z)=O(1)\quad (\forall\;z)\;|z|\leq|z_0|,$$
+bo
+$$S(z)=\sum\limits_{n\geq 0}a_nz^n\leq\sum\limits_{n\geq0}a_nz_0^n=C<\infty$$
+
+Przybliżenie asymptotyczne ma {\color{def}błąd bezwzględy} równy $O(g(n))$ jeżeli jest ono postaci $f(n)+O(g(n))$, gdzie $f(n)$ nie zawiera $O$. {\color{def}Błąd względny} jest równy $O(g(n))$ gdy jest ono z kolei postaci $f(n)(1+O(g(n)))$.
