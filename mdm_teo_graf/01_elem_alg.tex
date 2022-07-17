@@ -59,3 +59,28 @@ Ilość elementów $Spec(\alpha)$ nie większych niż $n$ wynosi:
 \begin{align*}
     N(\alpha, n)=\sum\limits_{k>0}(\lfloor k\alpha\leq n\rfloor)=\sum\limits_{k>0}(\lfloor k\alpha<n+1\rfloor)=\sum\limits_{k>0}(k\alpha<n+1)=\lceil {(n+1)\over\alpha}-1\rceil
 \end{align*}
+
+\subsection{Operacja mod}
+
+Wzór na dzielenie liczby $n$ przez $m$:
+$$n=m\Big\lfloor{n\over m}\Big\rfloor + n\mod m,$$
+czyli
+$$n\mod m=n-m\Big\lfloor{n\over m}\Big\rfloor,\quad m\neq 0$$
+Jest to definicja która działa też dla liczb ujemnych, na przykłady
+\begin{align*}
+    5\mod 3&=5-3\Big\lfloor {5\over 3}\Big\rfloor = 2\\
+    5\mod -3&=5-(-3)\Big\lfloor {5\over -3}\Big\rfloor = -1\\
+    -5\mod-3&=-5-(-3)\Big\lfloor{-5\over-3}\Big\rfloor = -2
+\end{align*}
+
+Część ułamkową można zdefiniować jako operację modulo:
+$$\{x\}=x\mod1.$$
+
+Działania modulo:
+$$c(x\mod y)=cx\mod cy$$
+
+Jeśli rozmieściemy $n$ przedmiotów do $m$ grup tak, żeby różnica ich ilości między grupami była nie większa niż 1, a większe grupy były bliżej początku, to bez problemu możemy sprawdzić ilość przedmiotów w $k$-tej grupie:
+$$\Big\lceil{n-k+1\over m}\Big\rceil.$$
+A więc skoro mamy $n$ przedmiotów w $m$ grupach, to całość dostaniemy sumując wszystkie grupy:
+$$n=\Big\lceil{n\over m}\Big\rceil+...+\Big\lceil{n-m+1\over m}\Big\rceil.$$
+Po prostu powoli odejmujemy coraz więcej od reszty z tego dzielenia.
