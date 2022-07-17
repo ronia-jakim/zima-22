@@ -20,3 +20,30 @@ dla pewnej stałej $C$ oraz dostatecznie dużych $n$. Zachodzi to na przykład d
 \indent 1. $f(n)\prec g(n)$\\
 \indent 2. $g(n)\prec f(n)$\\
 \indent 3. $f(n)\asymp g(n)$.
+
+%=============================================================================%
+
+\subsection{Big O notation}
+Zapis $\color{def}f(n)=O(g(n))$ oznacza, że $\color{def}|f(n)|\leq C|g(n)|$ dla wszystkich $n$. Czyli oznacza, że $O(5)$ jest liczbą której wartość bezwzględa po pomnożeniu przez jakąś stałą jest nie większa niż $5$.\bigskip
+
+Bardzo często narzucamy na notację $O$ pewne ograniczenia, na przykład powiedzenie, że
+$$f(n)=O(g(n)),\quad n\to \infty$$
+oznacza, że warunek jest spełniony dla $n$ bardzo bliskich $\infty$, a o inne $n$ nie dbamy. Czyli tak naprawdę nakładamy dwie stałe: $C$ do mnożenia i $n_0$ od którego warunek zaczyna być spełniany.\bigskip
+
+Uwaga, znak $=$ w kontekscie notacji dużego $O$ to lekkie nadużycie. Notacja $f(n)=O(g(n))$ oznacza tylko, że $f(n)$ należy do pewnego zbioru funkcji takich, że istnieje $C$ takie, że $f(n)\leq C|g(n)|$. Dlatego też piszemy $O$ po prawej stronie równania nie po lewej - znak $=$ to tak naprawdę leniwe $\subseteq$.
+
+\subsection{Notacja Duże $\Omega$}
+Używana jest do dolnych ograniczeń funkcj, tzn
+$$f(n)=\Omega(g(n))\iff |f(n)|\geq C|g(n)|$$
+dla pewnego $C>0$. Mamy więc 
+$$f(n)=\Omega(g(n))\iff g(n)=O(f(n)).$$
+Czyli na przykład algorytm sortujący w czasie $\Omega(n^2)$ jest o wiele bardziej nieefektywny niż $O(n\log n)$.
+
+\subsection{Notacja Dużego $\Theta$}
+Określa dokładny porządek przyrostu:
+$$f(n)=\Theta(g(n))\iff \begin{matrix}f(n)=O(g(n))\\f(n)=\Omega(n)\end{matrix}.$$
+Czyli $f(n)=\Theta(g(n))\iff f(n)\asymp g(n)$.
+
+\subsection{Notacja małego o}
+Odpowiada relacji $f(n)\prec g(n)$. Dodatkowo, mamy
+$$f(n)\sim g(n)\iff f(n)=g(n)+o(g(n)).$$
