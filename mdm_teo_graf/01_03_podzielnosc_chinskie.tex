@@ -1,0 +1,50 @@
+\section{Podzielność liczb}
+
+\subsection{NWD $\&$ NWW}
+
+{\color{def}NWW} - najmniejsza wspólna wielokrotność\bigskip
+
+{\color{def}NWD} - największy wspólny dzielnik\bigskip
+
+{\color{def}Algorytm Euklidesa} - do liczenia $NWD (n, m)$:
+$$NWD(0, n) = n$$
+$$NWD(m, n) = NWD(n\mod m, m)\quad m>0$$
+
+Można go rozszerzyć do stwierdzenia, które tak naprawde potwierdza poprawność algorytmu Euklidesa, które znajduje liczby całkowite $n'$ i $m'$ takie, że $\color{acc}m'm+n'n=NWD(m, n)$\bigskip
+
+Śmieszne sumowanie względem wszystkich dzielników liczby $n$:
+$$\sum\limits_{m|n}a_m=\sum\limits_{n|m}a_{n\over m}$$
+
+\subsection{Liczby pierwsze}
+
+{\color{def}Liczba pierwsza} to liczba naturalna, która ma dokładnie dwa dzielniki - siebie samą i 1. Liczby naturalne mające 3 i więce jdzielników są nazywane {\color{def}liczbami złożonymi}.\medskip
+
+Każdą liczbę naturalną większą niż 1 można jednoznacznie przedstawić jako iloczyn liczb pierwszych. Istnieje tylko jeden sposób, w jaki liczbę $n $ można zapisać jako iloczyn liczb pierwszysch w niemalejącym porządku ({\color{acc}podstawowe twierdzenie arytmetyki}).\bigskip
+
+\dowod
+Indukcją po $n$ można pokazać jednoznaczność rozkładu dowolnej liczby natrualnej $n>1$
+$$n=\prod\limits_{k=1}^mp_k\quad p_1\leq...\leq p_m$$
+
+1$^\circ$ $n=1$ wtedy jednoznaczność jest trywialna, bo iloczyn musi być pusty
+
+2$^\circ$ zakładamy, że zachodzi dla wszystkich liczb poniżej $n$.\smallskip\\
+Przypuśćmy, nie wprost, że istnieją dwa rozkłady:
+$$n=p_1...p_m=q_1...q_k,$$
+gdzie wszystkie liczby $p_r$ i $q_r$ są pierwsze.\smallskip
+
+Gdyby istniało $j$ takie, że $p_j\neq q_j$, to ponieważ obie liczby są pierwsze, to ich $NWD$ jest równe $1$. Ponadto, z algorytmu Euklidesa możemy znaleźć liczby $a, b$ takie, że
+$$ap_j+bq_j=1.$$
+W takim razie
+$$p_1...p_{j-1}p_{j+1}...p_m=p_1...p_{j-1}p_{j+1}...p_m(ap_j+bq_j)=p_1...ap_j...p_m+p_1...bq_j...p_m.$$
+Zauważmy, że liczba $q_j$ dzieli oba składniki sumy po prawej stronie. Podzielnośc drugiego jest trywialna, natomiast pierwszy jest dzielony ponieważ $p_1...p_m=n$ a $q_j|n$. W takim razie liczba
+$${p_1...p_{j-1}p_{j+1}...p_m\over q_j}$$
+jest liczbą całkowitą mniejsza od $n$, a więc ma jednoznaczy rozkład na iloczyn liczb pierwszych:
+$${p_1...p_{j-1}p_{j+1}...p_m\over q_j}=t_1...t_r$$
+w takim razie możemy napisać
+$$p_1...p_{j-1}p_{j+1}...p_m = q_jt_1...t_r$$
+i dalej
+$$q_jt_1...t_r=q_jt_1...t_r(ap_j+bq_j)$$
+$$q_j(1-b)=ap_j,$$
+ale wtedy
+$$a={q_j\over p_j}(1-b)$$
+nie jest liczbą całkowitą jeżeli $q_j$ i $p_j$ są różnymi liczbami pierwszymi. W takim razie są one równe.
