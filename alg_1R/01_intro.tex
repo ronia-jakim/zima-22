@@ -1,7 +1,7 @@
-\section{Powtorka z poprzedniego roku}
+\section{Teoria grup}
 
 \subsection{Grupy, pierscienie, ciala}
-\begin{multicols*}{2}
+\begin{multicols}{2}
 
     Dzialanie na zbiorze $X$:
     $$\Phi: X\times X\to X,$$
@@ -33,7 +33,7 @@
     \indent 3. $(\forall\;a\in G)(\exists\;b\in G)\;ab=ba=e$\\
     \indent *4. $(\forall\;a,b\in G)\;ab=ba$ w grupie \emph{abelowej}\bigskip
 
-    {\color{def}PIERSCIEN} to niepusty zbior $X$ z dwoma dzialaniami ($\cdot,\;+$, mnozenie i dodawanie), ktory spelnia:\smallskip\\
+    {\color{def}PIERSCIEN} to niepusty zbior $X$ z dwoma dzialaniami ($\cdot,\;+$, mnozenie i dodawanie) taki, ze:\smallskip\\
     \indent 1. zbior $X$ z $+$ jest grupa abelowa\smallskip\\
     \indent 2. $\cdot$ jest laczne\smallskip\\
     \indent 3. $(\forall\;x,y,z\in X)\;x\cdot(y+z)=x\cdot y+x\cdot z\;\land\;(x+y)\cdot z=x\cdot z+y\cdot z$\smallskip\\
@@ -41,23 +41,134 @@
     \indent {\color{acc}$\star$ pierscien przemienny} - jesli mnozenia jest przemienne\smallskip\\
     \indent {\color{acc}$\star$ pierscien z jednoscia} - dla mnozenia istnieje element neutralny\medskip
 
-    {\color{def}CIALO} to pierscien przemienny, ktory dla kazdego elementu $\neq 0$ ma element odwrotny\medskip
+    {\color{def}CIALO} to pierscien przemienny, ktory dla kazdego elementu $\neq 0$ ma element odwrotny
 
-    \podz{sep}\medskip
+\end{multicols}\bigskip
+
+\podz{sep2}\bigskip
+
+\subsection{Wlasnosci}
+\begin{multicols}{2}
 
     Niech $G$ bedzie grupa, a $e$ jej elementem neutralnym. Wowczas:\smallskip\\
     \point $a,b\in G\implies (ab)^{-1}=b^{-1}a^{-1}$\smallskip\\
     \point $a\in G$ i $n=1, ..., n$ $a^{-n} = (a^n)^{-1} =^* (a^{-1})^n$\smallskip\\
-    \point dla $m,n\in\Z$ oraz $a\in G$ mamy $a^{mn}=^* (a^m)^n$\smallskip\\
+    \point dla $m,n\in\Z$ i $a\in G$ mamy $a^{mn}=^* (a^m)^n$\smallskip\\
     \point dla $G$ grupy abelowej i $n\in\Z$ $(ab)^n=^*a^nb^n$\smallskip\\
     $^*$ trzeba udowodnic, ale mi sie nie chce\medskip
 
     $H\subseteq G$ jest {\color{def}podgrupa} $G$, jesli jest grupa ze wzgledu na te same dzialania, czyli wystarczy, ze 
     $$(\forall\;a,b\in H)\; ab^{-1}\in H.$$
 
+    \podz{sep}\medskip
+
     Jelsi $a\in G$ i istnieja $n\in\N$, $n\geq 1$, takie, ze $a^n=e$, to mowimy ze $n$ jest {\color{def}rzedem elementu} $a$ ($n=o(a)$). Jesli takie $n$ nie istnieja, to $a$ ma {\color{acc}rzad nieskonczony} ($o(a)=\infty$).\smallskip\\
     {\color{acc}\point} {\color{def}grupa torsyjna} - wszystkie elementy maja rzad skonczony\smallskip\\
     {\color{acc}\point} {\color{def}grupa beztorsyjna} - wszystkie elementy maja rzad nieskonczony\smallskip\\
-    \emph{Jesli $n=o(a)$ oraz $a^N=e$ to $n|N$, fajny dowodzik, ale leniem jestem}
+    \emph{Jesli $o(a) = n$ oraz $a^N=e$ to $n|N$, fajny dowodzik, ale leniem jestem}\medskip
+
+    {\color{def}Grupa cykliczna} to grupa zlozona z wszystkich poteg danego elementu $a$, natomiast $a$ jest nazywane {\color{acc}generatorem} tej grupy
+
+\end{multicols}
+\newpage
+
+\subsection{Permutacje :>}
+\begin{multicols}{2}
+    
+    {\color{def}$n$-ta grupa symetryczna} [$S_n$] - grupa wszystkich permutacji zbioru $X_n = \{1, ..., n\}$. $|S_n|=n!$\medskip
+
+    Jesli $P\in S_n$ i dla $i=1,...,n$ $P(i)=a_i$, to piszemy
+    $$
+        \begin{pmatrix}
+            1   && 2   && ... && n  \\
+            a_1 && a_2 && ... && a_n
+        \end{pmatrix}
+    $$
+
+    Mnozenie permutacji:
+    $$
+        \begin{pmatrix}
+            a_1 && a_2 && ... && a_n \\
+            b_1 && b_2 && ... && b_n
+        \end{pmatrix}
+        \begin{pmatrix}
+            c_1 && c_2 && ... && c_n \\
+            a_1 && a_2 && ... && a_n
+        \end{pmatrix} =
+    $$
+    $$=
+    \begin{pmatrix}
+        c_1 && c_2 && ... && c_n \\
+        b_1 && b_2 && ... && b_n
+    \end{pmatrix}
+    $$
+
+    {\color{def}Zbior elementow niezmienniczych} (fixpunktow) permutacji $P$ to zbior $F(P)=\{k\in X_n\;:\;P(k)=k\}$. Jego dopelnienie oznaczamy $M(P)=S_n\setminus F(P)$.\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Cykl $k$-elementowy} $C$ to permutacja taka, ze $C(a_1)=a_2$, $C(a_2)=a_3$, ..., $C(a_n)=a_1$. Cykl $2$-elementowy to {\color{acc}transpozycja}. Cykle zapisujemy
+    $$\begin{pmatrix}a_1, a_2,..., a_n\end{pmatrix}$$
+
+    Kazda permutacja jest iloczynem transpozycji.\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Permutacje parzyste} - iloczyn 
+    $$\prod _{i<j}(a_j-a_i)$$ 
+    jest dodatni (gorny row to kolejne liczby naturalne, dolny to wyrazy). Pozostale permutacje sa {\color{def}nieparzyste}.\medskip
+
+    {\color{def}Znak permutacji} jest $+1$ gdzy permutacja jest parzysta i $-1$ wpp. Alternatywnie mozna zapisac (gorny row to $b_k$, a dolny to $c_k$)
+    $$sgn\;P=\prod_{i<j}{b_j-b_i\over c_j-c_i}$$
+
+    Dla dwoch dowolnych permutacji $P_1,P_2$ mamy
+    $$sgn\;P_1P_2=sgn\;P_1\cdot sgn\;P_2$$
+    $$sgn\;P_1^{-1}=sng\;P_1.$$
+
+    {\color{def}$n$-ta grupa alternujaca} [$A_n$] - podgrupa $S_n$ zlozona ze wszystkich parzystych permutacji.
+ 
+\end{multicols}\bigskip
+
+\podz{sep2}\bigskip
+
+\subsection{Grupy ilorazowe B)}
+\begin{multicols*}{2}
+    
+    {\color{def}Prawostronna warstwa} grupy $G$ wzgledem jej podgrupy $H$ wyznaczona przez $g\in G$ to zbior
+    $$gH=\{gh\;:\;h\in H\},$$
+    natomiast {\color{acc}lewostronna} warstwa to zbior
+    $$ Hg = \{hg\;:\;h\in H\}. $$
+    Dla grup abelowych sa one rowne.\medskip
+
+    Dwa elementy $g_1,g_2\in G$ wyznaczaja te sama warstwe prawostronna wzgledem $H$, gdy $g_1^{-1}g_2\in H$, a te sama warstwe lewostronna, gdy $g_1g_2^{-1}\in H$.\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Rzad grupy} skonczonej $G$ to ilosc jej elementow.\medskip
+
+    {\color{def}Indeks} $[G : H]$ podgrupy $H$ w grupie $G$ to ilosc warstw w grupie $G$ wzgledem $H$. Dla skonczonych grup mamy:\smallskip\\
+    \point $g\in G$ $o(g) | |G|$,\smallskip\\
+    \point rzad i indeks kazdej podgrupy sa dzielnikami rzedu grupy,\smallskip\\
+    \point jesli rzad jest liczba pierwsza, to grupa jest cykliczna\medskip
+
+    {\color{def}Twierdzenie Lagrange'a} - dla skonczonych $G > H$:
+    $$|G|=[G:H]\cdot |H|.$$
+
+    \podz{sep}\medskip
+
+    Podgrupa $H$ jest {\color{def}dzielnikiem normalnym} grupy $G$ [$H\triangleleft G$] jesli $(\forall\;g\in G)\;gH=Hg$. Wystarczy, ze $(\forall\;g\in G)(\forall\;h\in H)\;ghg^{-1}\in H$.\medskip
+
+    Niech $f:G_1\to G_2$ bedzie {\color{acc}homomorfizmem}, a $e_1, e_2$ beda elementami neutralnymi grup odpowiednio $G_1,G_2$. Wtedy $f(e_1)=e_2$ oraz $f(g)^{-1}=f(g^{-1})$.\medskip
+
+    Obraz homomorfizmu $f:G_1\to G_2$ jest {\color{acc}podgrupa grupy $G_2$} [$Im\;f < G_2$], natomiast jadro $f$ jest {\color{acc}dzielnikiem normalnym $G_1$} [$Ker\;f \dzielnat G_1$].\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Grupa ilorazowa} to zbior wszyystkich warstw $H/G$, gdzie $H\dzielnat G$, z dzialaniem
+    $$(g_1H)(g_2H)=(g_1g_2)H.$$
+    Odwzorowanie 
+    $$\phi:G\to H$$
+    $$\phi(g)=gH$$
+    jest {\color{acc}epimorfizmem}.
 
 \end{multicols*}
