@@ -1,6 +1,6 @@
 \section{Powtorka z poprzedniego roku}
 
-\subsection{Dzialania}
+\subsection{Grupy, pierscienie, ciala}
 \begin{multicols*}{2}
 
     Dzialanie na zbiorze $X$:
@@ -19,23 +19,45 @@
     \indent {\color{acc}$\bullet$ epimorfizm} - $f$ jest "na"\smallskip\\
     \indent {\color{acc}$\bullet$ izomorfizm} - $f$ jest 1-1 i "na"\smallskip\\
     \indent {\color{acc}$\bullet$ endomorfizm} - kiedy $\rodz Y=\rodz X$\smallskip\\
-    \indent {\color{acc}$\bullet$ automorfizm} - enodmorfizm bedacy izomorfizmem
+    \indent {\color{acc}$\bullet$ automorfizm} - enodmorfizm bedacy izomorfizmem\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Polgrupa} to niepusty zbior z dzialaniem lacznym.\medskip
+    
+    {\color{def}GRUPA} to niepusty zbior z lacznym dzialaniem i elementem neutralnym (zwanym {\color{acc}jednoscia grupy}) oraz elementami odwrotnymi dla kazdego elementu.\smallskip\\
+    \indent {\color{acc}$\hookrightarrow$ grupa abelowa} (przemienna) - grupa z dzialaniem przemiennym\smallskip\\
+    Zbior $G$ z dzialaniem $\cdot$ jest grupa, jesli:\smallskip\\
+    \indent 1. $(\forall\;a,b,c\in G)\;(ab)c=a(bc)$\\
+    \indent 2. $(\exists\;e\in G)(\forall\;a\in G)\;ea=ae=e$\\
+    \indent 3. $(\forall\;a\in G)(\exists\;b\in G)\;ab=ba=e$\\
+    \indent *4. $(\forall\;a,b\in G)\;ab=ba$ w grupie \emph{abelowej}\bigskip
+
+    {\color{def}PIERSCIEN} to niepusty zbior $X$ z dwoma dzialaniami ($\cdot,\;+$, mnozenie i dodawanie), ktory spelnia:\smallskip\\
+    \indent 1. zbior $X$ z $+$ jest grupa abelowa\smallskip\\
+    \indent 2. $\cdot$ jest laczne\smallskip\\
+    \indent 3. $(\forall\;x,y,z\in X)\;x\cdot(y+z)=x\cdot y+x\cdot z\;\land\;(x+y)\cdot z=x\cdot z+y\cdot z$\smallskip\\
+    Kolejne dzikie nazwy $\star$:\smallskip\\
+    \indent {\color{acc}$\star$ pierscien przemienny} - jesli mnozenia jest przemienne\smallskip\\
+    \indent {\color{acc}$\star$ pierscien z jednoscia} - dla mnozenia istnieje element neutralny\medskip
+
+    {\color{def}CIALO} to pierscien przemienny, ktory dla kazdego elementu $\neq 0$ ma element odwrotny\medskip
+
+    \podz{sep}\medskip
+
+    Niech $G$ bedzie grupa, a $e$ jej elementem neutralnym. Wowczas:\smallskip\\
+    \point $a,b\in G\implies (ab)^{-1}=b^{-1}a^{-1}$\smallskip\\
+    \point $a\in G$ i $n=1, ..., n$ $a^{-n} = (a^n)^{-1} =^* (a^{-1})^n$\smallskip\\
+    \point dla $m,n\in\Z$ oraz $a\in G$ mamy $a^{mn}=^* (a^m)^n$\smallskip\\
+    \point dla $G$ grupy abelowej i $n\in\Z$ $(ab)^n=^*a^nb^n$\smallskip\\
+    $^*$ trzeba udowodnic, ale mi sie nie chce\medskip
+
+    $H\subseteq G$ jest {\color{def}podgrupa} $G$, jesli jest grupa ze wzgledu na te same dzialania, czyli wystarczy, ze 
+    $$(\forall\;a,b\in H)\; ab^{-1}\in H.$$
+
+    Jelsi $a\in G$ i istnieja $n\in\N$, $n\geq 1$, takie, ze $a^n=e$, to mowimy ze $n$ jest {\color{def}rzedem elementu} $a$ ($n=o(a)$). Jesli takie $n$ nie istnieja, to $a$ ma {\color{acc}rzad nieskonczony} ($o(a)=\infty$).\smallskip\\
+    {\color{acc}\point} {\color{def}grupa torsyjna} - wszystkie elementy maja rzad skonczony\smallskip\\
+    {\color{acc}\point} {\color{def}grupa beztorsyjna} - wszystkie elementy maja rzad nieskonczony\smallskip\\
+    \emph{Jesli $n=o(a)$ oraz $a^N=e$ to $n|N$, fajny dowodzik, ale leniem jestem}
 
 \end{multicols*}
-Dzialanie na niepustym zbiorze $X$ to przeksztalcenie postaci
-$$\phi:X\times X\to X,$$
-co zwykle zapisujemy jako
-$$x\cdot y\quad x+y\quad xy\quad x-y\quad x\star y$$
-Jesli dzialanie jest laczne, to mamy
-$$(x\cdot y)\cdot z = x\cdot(y\cdot z),$$
-a jesli jest przemienne, to 
-$$x\cdot y=y\cdot x$$
-
-Element neutralny dzialania to $e$ takie, ze dla kazdego $x\in X$ mamy $ex=xe=x$. Nie kazde dzialanie ma element neutralny, ale jesli juz jest to jest tylko jeden.\bigskip
-
-Element odwrotny do $x$ to element taki, ze $xy=yx=e$. Jesli dzialanie jest laczne, to moze miec co najwyzej jeden element odwrotny do danego elementu.
-
-Niech $\rodz X=(X, \{\cdot\})$ i $\rodz Y = (Y, \{\circ\})$ beda jednodzialaniowymi algebrami, a funkcja 
-$$f:\rodz X\to \rodz Y$$
-niech spelnia dla kazdych $a, b\in X$
-$$f(a\cdot b) = f(a)\circ f(b)$$
