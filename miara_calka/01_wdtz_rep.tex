@@ -1,0 +1,42 @@
+\section{Zbiory}
+\subsection{Rodziny}
+\begin{multicols*}{2}
+    
+    {\color{def}Pierscien zbiorow} to rodzina $\rodz R\subseteq \Po X$ taka, ze\smallskip\\
+    \point $\emptyset\in \rodz R$\smallskip\\
+    \point $A, B\in\rodz R\implies A\cup B,A\setminus B\in \rodz R$\smallskip
+    
+    {\color{def}Cialo zbiorow} to pierscien zbiorow, dla ktorego $X\in\rodz R$\smallskip
+
+    {\color{def}$\sigma$-pierscien zbiorow} to rodzina $\rodz R$ ktora jest pierscieniem zamknietym na przeliczalne sumy. Z tego wynika, ze
+    $$A_n\in\rodz R\implies \lim\limits_{n\to\infty}\sup A_n,\lim\limits_{n\to\infty}\inf A_n\in\rodz R$$
+    
+    {\color{def}$\sigma$-cialo zbiorow} to $\sigma$-pierscien do ktorego nalezy $X$\medskip
+
+    Niech $\rodz F\subseteq \Po X$ bedzie rodzina zbiorow, wowczas\smallskip\\
+    {\color{acc}\point $r(\rodz F)$} - pierscien generowany przez rodzine $\rodz F$\smallskip\\
+    {\color{acc}\point $s(\rodz F)$} - $\sigma$-pierscien generowany przez rodzine $\rodz F$\smallskip\\
+    {\color{acc}\point $a(\rodz F)$} - cialo generowane przez $\rodz F$\smallskip\\
+    {\color{acc}\point $\sigma(\rodz F)$} - $\sigma$-cialo generowane przez $\rodz F$\medskip
+
+    {\color{def}$\sigma$-cialo zbiorow borelowskich(*)} [$Bor(\R)$] - najmniejsze cialo zawierajace rodzine wszystkich otwartych podzbiorow $\R$\smallskip\\
+    \indent (*) {\color{acc}zbior borelowski} - dowolny zbior ot-\\
+    \indent warty (domkniety) uzyskany przez sume/prze-
+    \indent kroj/dopelnienie przeliczalnie wielu 
+    \indent zbiorow otwartych (domknietych)\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Funkcja zbioru} - dla ustalonej rodziny $\rodz R$ funkcja postaci $f:\rodz R\to\R$\smallskip
+
+    {\color{def}Addytywna funkcja zbioru} (miara skonczenie addytywna) - dla $\rodz R$ bedacego pierscieniem zbiorow to funkcja $\mu:\rodz R\to [0,\infty]$ spelniajaca:\smallskip\\
+    \point $\mu(\emptyset) = 0$\smallskip\\
+    \point $A,B\in\rodz R\;\land\;A\cap B=\emptyset\implies \mu(A\cup B)=\mu(A)+\mu(B)$\medskip
+
+    {\color{def}Przeliczalnie addytywna funkcja zbioru} $\mu$ - jesli dla dowolnego $R$ i $A_n$ takich, ze $(\forall\;i,j)\;A_i\cap A_j=\emptyset$ oraz $R=\bigcup\limits_n A_n$ zachodzi wzor
+    $$\mu(\bigcup\limits_n A_n)=\sum\limits_n\mu(A_n)$$
+    {\color{acc}Warunek rownowazny}: jest ciagla z dolu, czyli dla $A_n\uparrow A$ zachodzi $\lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$
+    Jesli zbiory $A_n$ nie sa rozlaczne, to 
+    $$\mu(\bigcup\limits_n A_n)\leq\sum\limits_n\mu(A_n)$$
+
+\end{multicols*}
