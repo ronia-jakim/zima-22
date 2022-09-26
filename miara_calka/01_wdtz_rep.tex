@@ -1,6 +1,6 @@
 \section{Zbiory}
 \subsection{Rodziny}
-\begin{multicols*}{2}
+\begin{multicols}{2}
     
     {\color{def}Pierscien zbiorow} to rodzina $\rodz R\subseteq \Po X$ taka, ze\smallskip\\
     \point $\emptyset\in \rodz R$\smallskip\\
@@ -13,6 +13,8 @@
     
     {\color{def}$\sigma$-cialo zbiorow} to $\sigma$-pierscien do ktorego nalezy $X$\medskip
 
+    \podz{back}\medskip
+
     Niech $\rodz F\subseteq \Po X$ bedzie rodzina zbiorow, wowczas\smallskip\\
     {\color{acc}\point $r(\rodz F)$} - pierscien generowany przez rodzine $\rodz F$\smallskip\\
     {\color{acc}\point $s(\rodz F)$} - $\sigma$-pierscien generowany przez rodzine $\rodz F$\smallskip\\
@@ -23,10 +25,15 @@
     \indent (*) {\color{acc}zbior borelowski} - dowolny zbior ot-\\
     \indent warty (domkniety) uzyskany przez sume/prze-
     \indent kroj/dopelnienie przeliczalnie wielu 
-    \indent zbiorow otwartych (domknietych)\medskip
+    \indent zbiorow otwartych (domknietych)
 
-    \podz{sep}\medskip
+\end{multicols}\bigskip
 
+\podz{sep2}\bigskip
+
+\subsection{Funkcyje}
+
+\begin{multicols}{2}
     {\color{def}Funkcja zbioru} - dla ustalonej rodziny $\rodz R$ funkcja postaci $f:\rodz R\to\R$\smallskip
 
     {\color{def}Addytywna funkcja zbioru} (miara skonczenie addytywna) - dla $\rodz R$ bedacego pierscieniem zbiorow to funkcja $\mu:\rodz R\to [0,\infty]$ spelniajaca:\smallskip\\
@@ -39,4 +46,30 @@
     Jesli zbiory $A_n$ nie sa rozlaczne, to 
     $$\mu(\bigcup\limits_n A_n)\leq\sum\limits_n\mu(A_n)$$
 
-\end{multicols*}
+    Dla {\color{def}addytywnej funkcji zbioru} $\mu:\rodz R\to \R$ ponizsze sa {\color{def}rownowazne}:\smallskip\\
+    \point $\mu$ jest przeliczalnie addytywna\smallskip\\
+    \point $\mu$ jest ciagla z dolu: \\
+    \indent\indent $A_n\downarrow A\implies \lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$\smallskip\\
+    \point $\mu$ jest ciagla z gory na zbiorze $\emptyset$:\\
+    \indent\indent $A_n\downarrow\emptyset\implies\lim\limits_{n\to\infty}\mu(A_n)=0$
+
+\end{multicols}\bigskip
+
+\podz{sep2}\bigskip
+
+\subsection{Miara Lebesgue'a}
+
+\begin{multicols}{2}
+
+    Niech $\rodz R$ bedzie peirscieniem na $\R$ generowanym przez zbiory postaci $[a, b)$, wowczas funkcje $\lambda:\rodz R\to\R$ dla zbioru $R=\bigcup\limits_{i=1}^n[a_i,b_i)$, $(\forall\;i,j)\;[a_i,b_i)\cap[a_j, b_j)=\emptyset,\;a_i<b_i$ definiujemy
+    $$\lambda(R)=\sum\limits_{i=1}^n(b_i-a_i)$$
+    
+    {\color{def}Miara Lebesgue'a} to standardowy sposob przypisywania miary podzbiorom przestrzeni $n$-wymiarowej, gdzie $\lambda$ odpowiada $n=1$ (dla $n=2$ liczymy pole, a dla $n=3$ - objetosc).\medskip
+
+    Niech $[a_n,b_n)$ bedzie dowolnym ciagiem takim, ze $(\forall\;i, j)\;[a_i,b_i)\cap[a_j,b_j)=\emptyset$, \\$[a_i,b_i)\subseteq[a,b)$, wtedy
+    $$\sum_n(b_n-a_n)\leq b-a$$
+
+    Jesli $[a_n,b_n)$ jest dowolnym ciagiem przedzialow takim, ze $[a,b)\subseteq \bigcup_n[a_n,b_n)$ to
+    $$b-a\leq \sum_n(b_n-a_n)$$
+    
+\end{multicols}
