@@ -132,7 +132,7 @@
 \podz{sep2}\bigskip
 
 \subsection{Grupy ilorazowe B)}
-\begin{multicols*}{2}
+\begin{multicols}{2}
     
     {\color{def}Prawostronna warstwa} grupy $G$ wzgledem jej podgrupy $H$ wyznaczona przez $g\in G$ to zbior
     $$gH=\{gh\;:\;h\in H\},$$
@@ -188,6 +188,44 @@
 
     {\color{def}Drugie twierdzenie o izomorfizmach} - jezeli $K\dzielnat G$ i $K<H<G$ i oznaczymy $\overline H = H/K$ oraz $\overline G=G/K$, to wtedy:\smallskip\\
     \point $\overline H<\overline G$\smallskip\\
-    \point $\overline H\dzielnat\overline G\iff H\dzielnat G$
+    \point $\overline H\dzielnat\overline G\iff H\dzielnat G$\medskip
 
+    \podz{sep}\medskip
+
+    {\color{def}Automorfizm wewnetrzny }grupy $G$ wyznaczony przez $g$: $\phi_g(x)=g^{-1}xg$.\\ 
+    Jesli $G$ to grupa abelowa, to dla kazdego $g$ $\phi_g(x)=x$, a wiec ma ona jedynie identycznosc.\\
+    Zbior wszystkich automorfizmow wewnetrznych grupy G oznaczamy $\color{acc}I(G)$ i tworzy on grupe ze skladaniem\medskip
+
+    {\color{def}Centrum grupy} $G$ [$Z(G)$] to zbior $x\in G$ takich, ze dla dowolnego $y\in G$ $xy=yx$. Dla kazdego $G$ $Z(G)\dzielnat G$\medskip
+
+    Grupa $I(G)$ jest izomorficzna z $G/Z(G)$.\medskip
+
+    Jesli $M$ to dowolny podzbior grupy $G$, to dla kazdego $g$ takiego, ze $\phi_g\in I(G)$ zbiorem {\color{def}sprzezony} do $M$ nazywamy zbior
+    $$M^g=\{\phi_g(x)\;:\;x\in M\}$$
+    Jesli $M=\{x\}$, to $M^g$ zawiera elementy sprzezone z x.\smallskip\\
+    {\color{def}Normalizator} zbioru $M$:
+    $$N_G(M)=\{g\in G\;:\;M^g=M\}$$
+    {\color{def}Centralizator} zbioru $M$:
+    $$C_G(M)=\{g\in G\;:\;mg=gm,\;m\in M\}$$
+
+    Twierdzonka:\smallskip\\
+    \point $(\forall\; M\subseteq G)\;C_G(M)<N_G(M)$ ($|M| = 1\implies C_G(M)=N_G(M)$)\smallskip\\
+    \point $Z(G)=C_G(G)$\smallskip\\
+    \point dla $M\subseteq G$ ilosc zbiorow $M^g$ jest rowna $[G\;:\;N_G(M)]$.\medskip
+
+    Aby klasa elementow sprzezonych z $x\in G$ byla jednoelementowa wystarczy, zeby $x\in Z(G)$\medskip
+    
+    Jesli $G$ jest skonczona, to ilosc elementow sprzezonych z zadanym $x$ jest dzielnikiem $|G|$.\medskip
+
+    {\color{acc}$p$-grupa} to grupa, w ktorej wszystkie elementy maja rzad $p$, gdzie $p$ jest liczba pierwsza. Jesli $|G|=p^n$ to $G$ jest $p$-grupa.\smallskip\\
+    Skonczone $p$=grupy maja {\color{acc}nietrywialne centrum}.\smallskip\\
+    Jesli $|G|=p^2$, to $G$ jest grupa abelowa.
+
+\end{multicols}\bigskip
+
+\podz{sep2}\bigskip
+
+\subsection{Produkty grup}
+\begin{multicols*}{2}
+    ziomek
 \end{multicols*}
