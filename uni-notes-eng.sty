@@ -120,6 +120,26 @@
 
 \newcommand{\podz}[1]{{\color{#1}\dotfill}} % wykropkowana linia do wydzielania sekcji w dokumencie
 
+%==== KWADRACIKOWE SZALENSTWO ====%
+
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+\definecolor{defback}{HTML}{2f2e2d}%{32302f}
+\definecolor{txt}{HTML}{fbf1c7}
+\definecolor{bor}{HTML}{636311}
+
+\mdfdefinestyle{definicja} {
+  outerlinewidth = 1,%
+  roundcorner = 10pt,%
+  leftmargin = 10,%
+  rightmargin = 15 ,%
+  innertopmargin = \topskip,%
+  splittopskip = \topskip,%
+  backgroundcolor = defback,
+  outerlinecolor  = bor,
+  fontcolor = txt
+}
+
 %==== GRAPHY I TAKIE TAM ====%
 
 \RequirePackage{tikz}
