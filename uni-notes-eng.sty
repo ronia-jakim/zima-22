@@ -97,7 +97,7 @@
 \definecolor{text}{HTML}{fbf1c7}%{e0e0e0}
 
 \definecolor{title-color}{HTML}{E86354}%{E0655A}
-\definecolor{def}{HTML}{b8bb26}%{D9B86C}
+\definecolor{def}{HTML}{c9cc23}%{D9B86C}
 \definecolor{acc}{HTML}{fabd2f}%{6FBDB0}
 
 \definecolor{sep}{HTML}{458588}%{00b0a5}
@@ -167,6 +167,7 @@
 %==== JĘZYKI PROGAMOWANIA ====%
 
 \RequirePackage{listings}
+%* \begin{lstlisting} zeby zaczac
 
 % kolory z githuba
 \definecolor{gitred}{HTML}{FA7970}
@@ -189,6 +190,18 @@
   morekeywords=[4]{if, cond},
   morecomment=[l]{;}
 }
+\lstdefinelanguage{juleczka}
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},
+      sensitive=true,
+      alsoother={$},
+      morecomment=[l]\#,
+      morecomment=[n]{\#=}{=\#},
+      morestring=[s]{"}{"},
+      morestring=[m]{'}{'},
+} [keywords,comments,strings]
 % kolorowanie składni dla racketa
 \lstdefinestyle{IIcolors} {
   keywordstyle=[1]{\color{gitred}},

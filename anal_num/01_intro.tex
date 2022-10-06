@@ -1,0 +1,45 @@
+\section{Analiza bledow}
+
+Olewamy czesci materialu <3\\
+01.12 bedzie jakis sprawdzian\\
+deklaracje w formie elektronicznej w MS Forms
+\bigskip
+
+\begin{multicols}{2}
+
+    {\color{def}Reprezentacja zmiennopozycyjna}
+    $$x:=\pm(e_n...e_1e_0.e_{-1}e_{-2}...)_B = \pm\Big( \sum\limits_{i=0}^ne_iB^i+\sum\limits_{j=1}^\infty e_{-j}B^{-j} \Big)$$
+    gdzie $B$ to baza systemu.
+    \medskip
+
+    Niech $B=10, 2$ oraz $\overline a$ bedzie przyblizeniem $a$, wtedy\smallskip\\
+        \point jesli $|a-\overline{a}|\leq \frac12\cdot B^{-p}$ to $\overline a$ ma $p$ {\color{acc}dokladnych cyfr} ulamkowych\smallskip\\
+        \point wtedy pierwsze $p$ cyfr liczby $\overline a$ od lewej sa liczbami dokladnymi, a te ktore sa niezerowe i sie zgadzaja sa {\color{acc}znaczace}
+    \bigskip
+
+    \podz{sep}\bigskip
+
+    {\color{def}Reprezentacja dwojkowa}
+    $$x=sm2^c$$
+    gdzie $m\in [1, 2)$ (\emph{mantysa}), $s=\pm 1$ (\emph{znak}) oraz $c\in\Z$ (\emph{cecha}). {\color{cyan}MOZEMY SAMI TO SOBIE UDOWODNIC ZE KAZDA LICZBE POZA 0 TAK MOZNA PRZEDSTAWIC}.
+    \medskip
+
+    {\color{def}Regula zaokraglenia} - dla liczby $x$
+    $$rd(x):=sm_t 2^{c_t},$$
+    gdzie $t$ to liczba bitow na mantyse, $m_t:=1.0$ oraz $c_t:=c$ jesli $e_{-k}=1$ dla $k=1, 2, ..., t+1$ lub
+    $$m_t:= (1.e_{-1}...e_{-t})_2+(0.\underbrace{00..0}e_{-t-1})_2$$
+    a $c_t:=c$.
+    \bigskip
+
+    Blad bezwzgledny zaokraglenia spelnia $|rd(x)-x|\leq 2^{-t-1}\cdot 2^c$, a blad wzgledny 
+    $$|\frac{rd(x)-x}x|\leq \frac122^{-t}$$
+    {\color{cyan}i to drugie chcemy udowodnic czy cos}.
+    \medskip
+
+    {\color{def}Precyzja arytmetyki} komputera to $u:=\frac122^{-t}$.
+
+    {\color{def}Liczby sunormalne} - maja bardzo male cechy, {\color{cyan}ile ich jest w standardzie standardowym}
+
+    {\color{acc}Machine epsilon} - najwieksza taka liczba $\varepsilon>0$ taka, ze $1+\varepsilon=1$.
+
+\end{multicols}
