@@ -1,0 +1,64 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\begin{document}
+    \begin{tabularx}{\textwidth}{ X X }
+        1. Find (by "drawing" pictures representing graphs) all pariwise non-isomorphic graphs of order 4. & 1. Znajdz (rysujac obrazki reprezentujace grafy) wszystkie parami nieizomorficzne grafy stopnia 4.\\
+
+         & \\
+
+        2. For a graph $G$, define a relation $\approx$ on $V(G)$ by saying $v\approx w$ if and only if there exists a path in $G$ with endpoints $v$ and $w$. Show that $\approx$ is an equivalence relation - that is, show that $(\forall\;u\in G)(u\approx ua)$, thath $(\forall\;u,v\in G)(u\approx v\implies v\approx u)$, and that $(\forall\;u,v,w\in G)([u\approx v\;\land\;v\approx w]\implies u\approx w)$. & 2. Dla grafu $G$ definiujemy relacje $\approx$ na $V(G)$ mowiac, ze $v\approx w$ wtedy i tylko wtedy, gdy istnieje sciezka w $G$ z koncami $v$ oraz $w$. Pokaz, ze $\approx$ jest relacja rownowaznosci - ze spelnia ...\\
+
+         & \\
+
+        3. Given a graph $G$, define its \emph{complement} $\overline G$ as a graph with vertices $V(\overline G)=V(G)$, such that given $v,w\in V(G)$ with $v\neq w$, we have $vw\in E(\overline G)$ if and only if $vw\notin E(G)$.
+
+        a. Show thath if $G\simeq \overline G$, then $|G|\equiv0\;or\;1\;(\mod 4)$.
+
+        b. Show thath for any graph $G$, either $G$ or $\overline G$ is connected. & 3. Majac dany graf $G$, definiujemy jego \emph{dopelnienie} $\overline G$ jako graf z wierzcholkami $V(\overline G)=V(G)$, taki, ze dla danych $v,w\in V(G)$, $w\neq v$, mamy $vw\in E(\overline G)$ wtw $vw\notin E(G)$
+
+        a. Pokaz, ze jezeli $G\simeq \overline G$, to $|G|\equiv 0\;lub\;1\;(\mod 4)$.
+
+        b. Pokaz, ze dla dowolnego grafu $G$ albo $G$ albo $\overline G$ jest spojny.\\
+
+         & \\
+
+        4. Show that any graph of order at least 2 has two vertices of the same degree. & 4. Pokaz, ze dowolny graf o stopniu co najmniej 2 ma dwa wierzcholki o tym samym stopniu.\\
+        
+         & \\
+
+        5. a. Show that every connected graph $G$ contains a vertex $v\in G$ such that $G-\{v\}$ is connected.
+
+        [\emph{Hing: pick $v$ so thath some connected component of $G-\{v\}$ is as big as possible}]
+
+        b. A connected graph with at least one vertex is called a \emph{tree} if it has no cycles. Show that every tree with $\geq2$ vertices has a vertex of degree 1 (such a vertex is called a \emph{leaf})
+
+        c. Deduce that if $T$ is a tree then $e(T)=|T|-1$
+
+        d. Let $G$ be a graph with $|G|=n$. We say that a tuple $(d_G(v_1),...,d_G(v_n))$, where $\{v_1,..., v_n\}=V(G)$, is a \emph{degree sequence} of $G$. Show that a given tuple $(d_1,...,d_n)$ of integers, where $n\geq2$, is a degree sequence of a tree iff $d_i\geq1$ for all $i$ and $\sum\limits_{i=1}^nd_i=2n-2$. & 5. a. Pokaz, ze kazdy spojny graf $G$ posiada wierzcholek $v\in G$ taki, ze $G-\{v\}$ jest spojny.
+
+        [\emph{cenzura <3}]
+
+        b. Spojny graf z co najmniej jednym wierzcholkiem jest nazywany \emph{\color{def}drzewem} jezeli nie ma cykli. Pokaz, ze kazde {\color{def}drzewo} z $\geq2$ wierzcholkami ma wierzcholek stopnia 1 (taki wierzcholek nazywa sie \emph{lisciem}).
+
+        c. Wydedukuj, ze jezeli $T$ jest drzewem, wtedy $e(T)=|T|-1$
+
+        d. Niech $G$ bedzie grafem z $|G|=n$. Mowimy, ze krotka $(d_G(v_1),...,d_G(v_n))$, gdzie $\{v_1,..., v_n\}=V(G)$, jest \emph{ze jest to sekwencja wierzcholkow ze sie ich stopnie nie zwiekszaja, sry nie znam nazwy i nie chce mi sie szukac wiecej niz na wikipedii, buzi} grafu $G$. Pokaz, ze majac krotke $(d_1,...,d_n)$ liczb calkowitych, gdzie $n\geq2$, jest \emph{ta wlasnie seria} w {\color{def}drzewie} wtw $d_i\geq1$ dla wszystkich $i$ oraz $\sum\limits_{i=1}^nd_i=2n-2$.\\
+
+         & \\
+
+        6. Let $G=(V,E)$ be a graph. Show that there exists a partition $V=A\sqcup B$ such that all vertices of $G[A]$ and of $G[B]$ have even degree. & 6. Niech $G=(V,E)$ bedzie grafem. Pokaz, ze istnieje podzialy $V=A\sqcup B$ takie, ze wszystkie wierzcholki $G[A]$ i $G[B]$ maja parzyste stopnie\\
+
+         & \\
+
+        7. Suppose $G$ is a graph that has no induced cycles of odd legth - thath is, for any $A\subseteq V(G)$, the graph $G[A]$ is not a cycle of odd length. Show that $G$ is bipartite. & 7. Zaloz, ze $G$ jest grafem nie majacych \emph{induced cycle (takze chordless cycle) to taki cykl, ze nie ma takich brudaskow ktore lacza wierzcholki w cyklu, ale do cyklu nie naleza} nieparzystej dlugosci, tzn dla dowolnego $A\subseteq V(G)$, graf $G[A]$ nie ma cykli o nieparzystej dlugosci. Pokaz, ze $G$ jest dwudzielne.
+    \end{tabularx}
+
+    \begin{tabularx}{\textwidth}{ X X }
+        8. Let $G$ be a regular bipartite graph with vertex classes $W$ and $M$. Show that $G$ contains a matching from $W$ to $M$. & 8. Niech $G$ bedzie regularnym dwudzielnym grafem z klasami wierzcholkow $W$ i $M$. Pokaz, ze $G$ zawiera laczenie z $W$ do $M$.
+    \end{tabularx}
+\end{document}
