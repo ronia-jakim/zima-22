@@ -1,0 +1,34 @@
+\section{Motivation}
+
+\begin{multicols*}{2}
+   
+    {\color{def}Graph} - collection of vertices joined by edges.
+    \medskip
+
+    {\color{acc}Seven bridges of Konigsberg} - can one walk around the city crossing each bridge only once? NO
+
+    \begin{tikzpicture}
+        \node (a) at (0, 0) {$\bullet$};
+        \node (b) at (1, 0) {$\bullet$};
+        \node (c) at (0, 1) {$\bullet$};
+        \node (d) at (0, -1) {$\bullet$};
+    \end{tikzpicture}
+
+    {\color{def}Simultaneous representation of cosets}: let $G$ be a finite group and $H\subseteq G$ be a subgroup of $G$, then there exists elements $a_1, ..., a_k\in G$ such that $G=a_1H\cup ...\cup a_kH$ and there exists $b_1, ..., b_k\in G$ such that $G=Hb_1\cup...\cup Hb_k$.\smallskip
+
+    Can we take $a_i=b_i$? YES (Hall's Marriage Theorem)
+    \bigskip
+
+    {\color{def}Map coloring problem}\\
+    Suppose we have a political map and we want to color its regions so that given any two regions sharing a border they have different colors.\\
+    How many colors do we need? 4 will alwas be enough.
+    \bigskip
+
+    Fremat's Last Theorem modulo p (where p is prime) - FLT stated that if $x^n+y^n=z^n$, $x,y,z,n\in\Z$ and $n\geq 3$ then $x=0\lor y=0\lor z=0$.\\
+    Given a prime p do there exist $x,y,z\in\Z$ such that $x^n+y^n=z^n(\mod p)$ but $x,y,z\neq 0 (\mod p)$? YEP for p large enough.
+    \medskip
+
+    PROOF\\
+    Let $G=(\Z/p\Z)^X$ and $H=\{g^n\;:\;g\in G\}\leq G$. Given $h\in H$, the polynomial $x^n-h\in (\R/p\Z)[X]$ ({\color{cyan}ring of remainder modulo p????}) has degree $n$ so it has at most $n$ roots. Therefore, ${|G|\over |H|}\leq n$, so there are at most $n$ left cosets of $H$ in $G$. Suppose there exists $a,b,c\in gH$ such that $a+b=c$. Then $g^{-1}a+g^{-1}b=g^{-1}c$ and $g^{-1}a...\in H$, which implies that $g^{-1}a=x^n...$. It is enough to show that for any integer $k$ that is large enough if the set $\{1, 2, ..., k-1\}$ is partitioned into $n$ parts, then some part contains $a,b,c$ such that $a+b=c$. This will be shown using graph theory and its such a fucking mess.
+
+\end{multicols*}
