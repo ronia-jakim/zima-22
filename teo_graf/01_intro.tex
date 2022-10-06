@@ -32,3 +32,26 @@
     Let $G=(\Z/p\Z)^X$ and $H=\{g^n\;:\;g\in G\}\leq G$. Given $h\in H$, the polynomial $x^n-h\in (\R/p\Z)[X]$ ({\color{cyan}ring of remainder modulo p????}) has degree $n$ so it has at most $n$ roots. Therefore, ${|G|\over |H|}\leq n$, so there are at most $n$ left cosets of $H$ in $G$. Suppose there exists $a,b,c\in gH$ such that $a+b=c$. Then $g^{-1}a+g^{-1}b=g^{-1}c$ and $g^{-1}a...\in H$, which implies that $g^{-1}a=x^n...$. It is enough to show that for any integer $k$ that is large enough if the set $\{1, 2, ..., k-1\}$ is partitioned into $n$ parts, then some part contains $a,b,c$ such that $a+b=c$. This will be shown using graph theory and its such a fucking mess.
 
 \end{multicols*}
+
+
+
+
+
+
+
+
+{\color{def}Graph} is an ordered pair $G=(V,E)$ where\\
+    \point $V$ is a set of vertices
+    \point $E$ is a set of edges (unordered pairs $\{v,w\}$ where $v,w\in V$ and $v\neq w$)
+\medskip
+
+We write $v\in G$ to write $v\in V(G)$ and denote $\{v,w\}\in E(G)$ as $vw$:\\
+\point $v,w$ are endpoints of $vw\in E(G)$\\
+\point $vw$ is incident to $v$
+\medskip
+
+Unless specified otherwise, graph $G$ is finite. If $|V|=\infty$ we say that $G$ is an infinite graph.
+\medskip
+
+{\color{def}Order of $G$} is $|G|:=|V(G)|$\\
+{\color{def}Size of $G$} is $e(G):=|E(G)|$
