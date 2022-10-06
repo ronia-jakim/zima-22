@@ -1,0 +1,87 @@
+Listy zadan i cw po angielsku, wyklad po polsku + terminologia ang; kolokwia po angielsku
+
+konsultacje: pon 11-13 (sala 502)
+
+kolokwia w trakcie konwersatorium
+
+\section{Wstep}
+\subsection{Dzialania}
+
+\begin{multicols}{2}
+    
+    {\color{def}Dzialanie} \ang{operation}\\
+        \point np. dodawanie, mnozenie\\
+        \point skladanie funkcji\\
+    Formalnie, dzialaniem w dowolnym zbiorze $X$ to dowolna funkcja $\star:X\times X\to X$. Dla dowolnych $a,b\in X$ zamiast pisac $\star((a,b))$, uzywamy $a\star b$.
+    \medskip
+
+    {\color{acc}Przyklady:}\\
+    \point na dowolnym z $\N,\Z, \R, \C, \Q$ mamy dodawanie ($+$) i mnozenie ($\cdot$)\\
+    \point na $\Z, \Q,\R, \N$ mamy $\leq$ ktory daje dzialania: 
+    $$a\lor b:=\min{a, b}$$
+    $$a\land b:=\max{a,b}$$
+    \point np na $\R$ mozemy zdefiniowac $a\star b:= a+b^2$\\
+    \point niech $X$ bedzie zbiorem, a $X^X$ bedzie zbiorem wszystkich funkcji $X\to X$, wtedy skladanie funckji jest dzialaniem okreslonym w $X^X$:
+    $$f\circ g\in X^X$$ 
+    {\color{cyan}MOZNA DOJEBAC GRAFIK KOMUTUJACY}\\
+    \point $X$ - zbior i niech $\Po X$ to zbior wszystkich podzbiorow $X$, wtedy na $\Po X$ mamy dzialanie sumy \ang{union} i przekroju \ang{intersection}\\
+    \point niech $a, b\in X$, wtedy mamy rzuty na osie:
+    $$aLb:=a$$
+    $$aPb:=b$$
+    \point na zbiorze $\R\cup\{\infty\}$ deifniujemy $(\forall\;a\in \R\cup\{\infty\})\;a+\infty=\infty=\infty+a$ oraz $(\forall\;a, b\in \R)\;a+b=a+_\R b$ (dodawanie w $\R$)
+    \medskip
+
+    Prosty opis dzialan - niech $\star$ bedzie dzialaniem okreslonym w $A=\{a_1,..., a_n\}$, to mozemy dojebac tabelke:
+
+    \begin{center}
+    \begin{tabular}{ c | c | c | c | c |}
+        $\star$ & $a_1$ & $a_2$ & ... & $a_n$\\
+
+        \hline
+
+        $a_1$ & $a_1\star a_1$ & $a_1\star a_2$ & .. & $a_1\star a_n$\\
+        
+        \hline
+
+        $a_2$ & $a_2\star a_1$ & $a_2\star a_2$ & .. & $a_2\star a_n$\\
+
+        \hline
+
+        ... & ... & ... & ... & ... \\
+        
+        \hline
+
+        $a_n$ & $a_n\star a_1$ & $a_n\star a_2$ & .. & $a_n\star a_n$\\
+
+        \hline
+        
+    \end{tabular}
+    \end{center}
+
+    Sensowne dzialania to dla nas:\\
+        \point dzialania {\color{acc}laczne}. Moznaby tutaj napisac literkowa definicje, ale mi sie nie chce\\
+        \point istnieje {\color{acc}element neutralny}\\
+        \point czasem istnieje {\color{acc}element odwrotny} do danego $x$
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Niech $S_X\subseteq X^X$ oznacza zbior wszystkich bijekcji $X\to X$
+    \medskip
+
+    {\color{def}Grupa przeksztalcen} \ang{transformation group} - niepusty podzbior $G\subseteq S_X$, ktory jest:\\
+        \point jest zamkniety na laczenie funkcji\\
+        \point $(\forall\;f\in G)\;f^{-1}\in G$\\
+    \emph{Pojecie to wprowadzil Galois ok 1830, gdzie $X$ byl zbiorem pierwiastkow pewnego wielomianu.}
+    \bigskip
+
+    Pare $(G, \star)$ nazywamy {\color{def}grupa} \and{group}, gdy $\star$ jest dzialaniem okreslonym w $G$ oraz zachodzi\\
+    \point $(\forall\;a,b,c\in G)\; a\star(b\star c)=(a\star b)\star c$, czyli dzialanie jest {\color{acc}laczne} \ang{associative}\\
+    \point $\star$ ma element neutralny \ang{neutral element}\\
+    \point $\star$ ma element odwrotny \ang{inverse element} dla kazdego elementu $G$
+
+\end{multicols}
+
+\subsection{Grupy}
+

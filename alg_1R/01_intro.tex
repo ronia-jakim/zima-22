@@ -3,13 +3,56 @@
 \subsection{Grupy, pierscienie, ciala}
 \begin{multicols}{2}
 
-    Dzialanie na zbiorze $X$:
+    {\color{def}Dzialanie} \ang{operation} na zbiorze $X$:
     $$\Phi: X\times X\to X,$$
     zwykle zapisywane jako $xy$, $x\cdot y$, $x+y$.\smallskip
 
-    {\color{def}Element neutralny} - takie $e$, ze dla kazdego $x\in X$ $ex=xe=x$. Dzialanie ma co najwyzej jeden element neutralny.\smallskip
+    {\color{acc}Przyklady:}\\
+    \point na dowolnym z $\N,\Z, \R, \C, \Q$ mamy dodawanie ($+$) i mnozenie ($\cdot$)\\
+    \point na $\Z, \Q,\R, \N$ mamy $\leq$ ktory daje dzialania: 
+    $$a\lor b:=\min{a, b}$$
+    $$a\land b:=\max{a,b}$$
+    \point np na $\R$ mozemy zdefiniowac $a\star b:= a+b^2$\\
+    \point niech $X$ bedzie zbiorem, a $X^X$ bedzie zbiorem wszystkich funkcji $X\to X$, wtedy skladanie funckji jest dzialaniem okreslonym w $X^X$:
+    $$f\circ g\in X^X$$ 
+    {\color{cyan}MOZNA DOJEBAC GRAFIK KOMUTUJACY}\\
+    \point $X$ - zbior i niech $\Po X$ to zbior wszystkich podzbiorow $X$, wtedy na $\Po X$ mamy dzialanie sumy \ang{union} i przekroju \ang{intersection}\\
+    \point niech $a, b\in X$, wtedy mamy rzuty na osie:
+    $$aLb:=a$$
+    $$aPb:=b$$
+    \point na zbiorze $\R\cup\{\infty\}$ deifniujemy $(\forall\;a\in \R\cup\{\infty\})\;a+\infty=\infty=\infty+a$ oraz $(\forall\;a, b\in \R)\;a+b=a+_\R b$ (dodawanie w $\R$)
+    \medskip
+
+    Prosty opis dzialan - niech $\star$ bedzie dzialaniem okreslonym w $A=\{a_1,..., a_n\}$, to mozemy dojebac tabelke:
+
+    \begin{center}
+    \begin{tabular}{ c | c | c | c | c |}
+        $\star$ & $a_1$ & $a_2$ & ... & $a_n$\\
+
+        \hline
+
+        $a_1$ & $a_1\star a_1$ & $a_1\star a_2$ & .. & $a_1\star a_n$\\
+        
+        \hline
+
+        $a_2$ & $a_2\star a_1$ & $a_2\star a_2$ & .. & $a_2\star a_n$\\
+
+        \hline
+
+        ... & ... & ... & ... & ... \\
+        
+        \hline
+
+        $a_n$ & $a_n\star a_1$ & $a_n\star a_2$ & .. & $a_n\star a_n$\\
+
+        \hline
+        
+    \end{tabular}
+    \end{center}
+
+    {\color{def}Element neutralny} \ang{neutral element} - takie $e$, ze dla kazdego $x\in X$ $ex=xe=x$. Dzialanie ma co najwyzej jeden element neutralny.\smallskip
     
-    {\color{def}Element odwrotny} do $x$ to takie $y$, ze $xy=yx=e$. Jesli dzialanie jest laczne, to ma co najwyzej jeden element odwrotny do danego $x$.\medskip
+    {\color{def}Element odwrotny} \ang{inverse element} do $x$ to takie $y$, ze $xy=yx=e$. Jesli dzialanie jest laczne \ang{associative}, to ma co najwyzej jeden element odwrotny do danego $x$.\medskip
 
     \podz{sep}\medskip
 
@@ -25,13 +68,19 @@
 
     {\color{def}Polgrupa} to niepusty zbior z dzialaniem lacznym.\medskip
     
-    {\color{def}GRUPA} to niepusty zbior z lacznym dzialaniem i elementem neutralnym (zwanym {\color{acc}jednoscia grupy}) oraz elementami odwrotnymi dla kazdego elementu.\smallskip\\
-    \indent {\color{acc}$\hookrightarrow$ grupa abelowa} (przemienna) - grupa z dzialaniem przemiennym\smallskip\\
+    {\color{def}GRUPA} \ang{group} to niepusty zbior z lacznym dzialaniem i elementem neutralnym (zwanym {\color{acc}jednoscia grupy}) oraz elementami odwrotnymi dla kazdego elementu.\smallskip\\
+    \indent {\color{acc}$\hookrightarrow$ grupa abelowa} (przemienna) \ang{commutative group} - grupa z dzialaniem przemiennym\smallskip\\
     Zbior $G$ z dzialaniem $\cdot$ jest grupa, jesli:\smallskip\\
     \indent 1. $(\forall\;a,b,c\in G)\;(ab)c=a(bc)$\\
     \indent 2. $(\exists\;e\in G)(\forall\;a\in G)\;ea=ae=e$\\
     \indent 3. $(\forall\;a\in G)(\exists\;b\in G)\;ab=ba=e$\\
-    \indent *4. $(\forall\;a,b\in G)\;ab=ba$ w grupie \emph{abelowej}\bigskip
+    \indent *4. $(\forall\;a,b\in G)\;ab=ba$ w grupie \emph{abelowej}\medskip
+
+    {\color{def}Grupa przeksztalcen} \ang{transformation group} - niepusty podzbior $G\subseteq S_X$, ktory jest:\\
+        \point jest zamkniety na laczenie funkcji\\
+        \point $(\forall\;f\in G)\;f^{-1}\in G$\\
+    \emph{Pojecie to wprowadzil Galois ok 1830, gdzie $X$ byl zbiorem pierwiastkow pewnego wielomianu.}
+    \bigskip
 
     {\color{def}PIERSCIEN} to niepusty zbior $X$ z dwoma dzialaniami ($\cdot,\;+$, mnozenie i dodawanie) taki, ze:\smallskip\\
     \indent 1. zbior $X$ z $+$ jest grupa abelowa\smallskip\\
@@ -70,7 +119,6 @@
     {\color{def}Grupa cykliczna} to grupa zlozona z wszystkich poteg danego elementu $a$, natomiast $a$ jest nazywane {\color{acc}generatorem} tej grupy
 
 \end{multicols}
-\newpage
 
 \subsection{Permutacje :>}
 \begin{multicols}{2}
