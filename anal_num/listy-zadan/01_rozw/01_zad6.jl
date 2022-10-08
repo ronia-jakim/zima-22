@@ -8,12 +8,6 @@ function to_number(str::AbstractString)
         cech = Float64(0) # 11
         man = Float64(1) # 53
 
-        znak = Float64(1)
-
-        if str[1] == '1'
-            znak = Float64(-1.0)
-        end
-
         c = Float64(1)
 
         for i = 1:11
@@ -31,7 +25,11 @@ function to_number(str::AbstractString)
 
         cech -= bias
 
-        ret = znak * man * (2 ^ cech)
+        ret = man * (2 ^ cech)
+
+        if str[1] == '1'
+            ret *= Float64(-1)
+        end
 
         return ret
     else
