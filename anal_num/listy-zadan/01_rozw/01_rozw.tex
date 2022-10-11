@@ -1,27 +1,49 @@
 \documentclass{article}[13pt]
 
-\usepackage{../../uni-notes-eng}
+\usepackage{../../../uni-notes-eng}
 \usepackage{multicol}
 \usepackage{graphicx}
 
 \begin{document}
-    \subsection*{2. Niech $B$ bedzie liczba naturalna wieksza od 1. Wykazac, ze kazda niezerowa liczba rzeczywista $x$ ma jednoznaczne przedstawienie w postaci znormalizowanej $x=smB^c$, gdzie $s$ jest znakiem liczby $x$, $c$ - liczba calkowita (cecha), a $m$ - liczba z przedzialu $[1, B)$, zwana mantysa.}
+    \subsection*{1. Niech $B$ bedzie liczba naturalna wieksza od 1. Wykazac, ze kazda niezerowa liczba rzeczywista $x$ ma jednoznaczne przedstawienie w postaci znormalizowanej $x=smB^c$, gdzie $s$ jest znakiem liczby $x$, $c$ - liczba calkowita (cecha), a $m$ - liczba z przedzialu $[1, B)$, zwana mantysa.}
 
-    Zalozmy nie wprost, ze istnieje taka liczba $x\in\R$, dla ktorej nie istniaja takie $c\in\Z$ oraz $m\in[1, B)$, ze $x=smB^c$.
-    \smallskip
+    1. istnienie:
+    \medskip
 
-    Dla ulatwienia dowodu skupimy sie na liczbach $x>0$ - wowczas $s=1$, a dla liczb $x<0$ wystarczy obrocic znaki nierownosci oraz przyjac $s=-1$.
-    Niech $c_0, c_1\in\Z$ beda takimi liczbami, ze 
-    $$B^{c_0}\leq x< B^{c_1}$$
-    oraz $|c_1-c_0|=1$. Wowczas liczba 
-    $$y=\frac{x}{B^{c_0}}$$
-    spelnia $y\in [1, B)$, gdyz $x\in [B^{c_0}, B^{c_0+1})$. W takim razie mozemy powiedziec, ze
-    $$x=y\cdot B^{c_0}.$$
-    Ale wtedy $x$ mozna zapisac wedlug zasad opisanych w tresci - sprzecznosc.
+    Niech $0\neq x\in\R$. Wtedy istnieje $c$ takie, ze $B^c\leq |x| < B^{c+1}$, czyli $c=\lfloor\log_B |x|\rfloor$. Niech $m={|x|\over B^c}$, wtedy $|x|=B^2\cdot m$. W koncu, niech $s={|x|\over x}$. Mamy $x=sB^cm$.
+    \bigskip
+
+    2. jedynosc:
+    \medskip
+
+    \indent A. jedynosc $s$ jest oczywista
+    \medskip
+
+    \indent B. jedynosc $c$: zalozmy, nie wprost, ze istnieja $c_1, c_2$ takie, ze
+    $$x=sB^{c_1}m=sB^{c_2}m'$$
+    Wtedy
+    $$B^{c_1}m=B^{c_2}m'$$
+    Jesli $m=m'$ oczywiste. W przeciwnym wypadku
+    $$c_1\log_B m=c_2\log_B m'$$
+    mozemy zalozyc, ze $c_1<c_2$ oraz $(\exists\;k\in\N)\;c_1+k=c_2$, czyli
+    $$c_1\log_B m=(c_1+k)\log_B m'$$
+    $$0 = k\log_B m'$$
+    W takim razie albo $m'=1$, wtedy $x=2^c_1$, albo $k=0$, czyli $c_1=c_2$.
+    \medskip
+
+    \indent C. jedynosc $m$: zalozmy, nie wprost, ze istnieja $m_1, m_2$ takie, ze (...), wtedy
+    $$x=sB^{c}m_1=sB^{c}m_2.$$
+    $c$ jest jedyne, gdyz $c=\lfloor \log_B|x|\rfloor$ i to dzialanie ma jednoznaczny wynik. Czyli
+    $$sB^cm_1=sB^cm_2$$
+    $$m_1=m_2$$
 
     \kdowod
 
-    \subsection{3. Czesc rozw w pliku .jl}
+    \subsection*{2. Ile jest liczb zmiennopozycyjnych w arytmetyce double w standardzie IEE754?}
+
+    Przy 64 bitach mamy $2^{64}$ mozliwosci ich zapalenia. 
+
+    \subsection*{3. Czesc rozw w pliku .jl}
 
     \begin{lstlisting}[language=juleczka]
 function frst_exp(x, s, t, r)
