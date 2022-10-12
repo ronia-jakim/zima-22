@@ -34,13 +34,13 @@ function to_number(str::AbstractString)
         return ret
     else
         print("this is not a representation of a Float64")
-        return 69
+        return NaN
     end
 end
 
 function rand_test()
 
-    print("BARDZO DOJEBANY TESCIK POPRAWNOSCI\n")
+    print("BARDZO DOBRY TESCIK POPRAWNOSCI\n")
 
     for i=1:2^30
         test = rand(Float64)
@@ -52,36 +52,8 @@ function rand_test()
         #else
             #print(test, ": ", wyn, "\n")
         elseif i == 2^30
-            print("SUKCES, BITCH!!!!\n")
+            print("SUKCES!!!!\n")
         end
-    end
-
-end
-
-
-function eps_test()
-
-    println("TESCIK PO EPSILONACH")
-
-    x = typemin(Float64) + one(Float64)
-    suc = true
-
-    while x < typemax(Float64) - one(Float64)
-        wyn = to_number(bitstring(x))
-
-        println(x, " | ", wyn)
-
-        if x != wyn
-            println("ZJEBALAS")
-            suc = false
-            break
-        end
-
-        wyn += eps(Float64)
-    end
-
-    if suc
-        println("UDALO SIE, BITCH")
     end
 
 end

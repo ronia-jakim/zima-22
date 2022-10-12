@@ -41,11 +41,13 @@
 
     \subsection*{2. Ile jest liczb zmiennopozycyjnych w arytmetyce double w standardzie IEE754?}
 
-    Przy 64 bitach mamy $2^{64}$ mozliwosci ich zapalenia. 
+    Przy 64 bitach mamy $2^{64}$ mozliwosci ich zapalenia. Liczby NaN to liczby majace wszystkie bity w mantysie zapalone, a takich jest $2^{53}$. To daje nam $2^{64}-2^{53}$ liczb, ale 0 jest reprezentowane na dwa sposoby, wiec wystarczy $2^{64}-2^{53}-1$. 
+    
+    Liczby subnormalne maja na pierwszym miejscu mantysy 0, podczas gdy cala reszta zaczyna mantyse od 1 i one juz sie wliczaja.
 
     \subsection*{3. Czesc rozw w pliku .jl}
 
-    \begin{lstlisting}[language=juleczka]
+\begin{lstlisting}[language=juleczka]
 function frst_exp(x, s, t, r)
     ret = zero(x)
     ret = (x^3) - (s*(x^2)) + t*x - r
@@ -58,16 +60,17 @@ function snd_exp(x, s, t, r)
     print("  ", typeof(x), " wynik: ", ret, "\n")
 end
 
-frst_exp(Float16(4.71), Float16(6), Float16(3), Float16(0.149)) # -14.58
-frst_exp(Float32(4.71), Float32(6), Float32(3), Float32(0.149)) # -14.6365
-frst_exp(Float64(4.71), Float64(6), Float64(3), Float64(0.149)) # -14.636489000000006
+function rel_error(val, exp, mess)
+    bez = zero(val)
+    if val > exp
+        bez = val - exp
+    else
+        bez = exp - val
+    end
 
-print("alternatywne wyrazenie:\n")
-
-snd_exp(Float16(4.71), Float16(6), Float16(3), Float16(0.149)) # -14.63
-snd_exp(Float32(4.71), Float32(6), Float32(3), Float32(0.149)) # -14.63649
-snd_exp(Float64(4.71), Float64(6), Float64(3), Float64(0.149)) # -14.636489
-    \end{lstlisting}
+    println("Blad wzgledny ", mess, " wynosi: ", bez / exp)
+end
+\end{lstlisting}
 
     -14.636489 - wartosc prawidlowa
 
@@ -75,17 +78,119 @@ snd_exp(Float64(4.71), Float64(6), Float64(3), Float64(0.149)) # -14.636489
     \begin{tabular}{| c | c | c |}
         \hline
 
-        Float16 & ${|-14.636489+14.58|\over 14.636489}=$ ${0.056489\over14.636489}=$ $0.003859463837$ & ${|-14.636489 + 14.63|\over14.636489}=$ ${0.006489\over14.636489}=$ $4.43344029\cdot 10^{-4}$ \\
+        Float16 & -0.003987568330082385 & -0.0002511872895199931 \\
 
         \hline
 
-        Float32 & ${|-14.636489 + 14.6365|\over14.636489}=$ ${0.000011\over14.636489}=7.51546358$ & ${|-14.636489 + 14.63649|\over14.636489}=$ ${0.000001\over14.636489}$ \\
+        Float32 & -7.760455081662309e-7 & -5.931504907397523e-8 \\
 
         \hline
 
-        Float64 & ${0.000000000000006\over14.636489}=$ $7.51546358\cdot10^{-7}$ & ${|-14.636489 + 14.636489|\over14.636489}=0$ \\
+        Float64 & -4.85459822885188e-16 & 0 \\
 
         \hline
     \end{tabular}}
+
+    \subsection*{Zad 4. Za dluga tresc}
+
+    $$\sum\limits_{k=t+2}^\infty \frac1{2^k} = 2\frac1{2^{t+2}} = 2^{-t-1}$$
+    \begin{align*}
+        |rd(x)-x|&=|s(1+\sum\limits_{k=1}^\infty e_{-k}2^{-k})2^c-s(1+\sum\limits_{k=1}^t e_{-k}2^{-k} + e_{-t-1}2^{-t})2^c|=\\
+        &=2^c|\sum\limits_{k=1}^\infty e_{-k}2^{-k} - \sum\limits_{k=1}^t e_{-k}2^{-k} - e_{-t-1}2^{-t}| =\\
+        &= 2^c|\sum\limits_{k=t+1}^\infty e_{-k}2^{-k} - e_{-t-1}2^{-t}| \leq\\
+        &\leq 2^c|\sum\limits_{k=t+1}^\infty2^{-k} - e_{-t-1}2^{-t}|=\\
+        &= 2^c|\sum\limits_{k=t+2}^\infty2^{-k}+e_{-t-1}2^{-t-1} - e_{-t-1}2^{-t}|=\\
+        &= 2^c|\sum\limits_{k=t+2}^\infty2^{-k}+e_{-t-1}({1\over 2^{t+1}} - {1\over 2^t})| =\\
+        &= 2^c|\frac1{2^{t+1}}-{e_{-t-1}\over 2^{t+1}}| \leq\\
+        &\leq 2^c\cdot 2^{-t-1}=2^c\cdot u
+    \end{align*}
+
+    \begin{align*}
+        {|rd(x)-x|\over |x|} = {2^c|m-\overline m|\over 2^c |m|}= {|\sum\limits_{k=t+1}^\infty e_{-k}2^{-k}-...|\over |1+\sum\limits_{k=1}^\infty e_{-k}2^{-k}|}\leq \frac u 1 = u
+    \end{align*}
+
+    \subsection*{5. nah}
+
+    $${|\overline m - m|\over |m|}\leq \frac u{1+u}$$
+    $$(1+u)|\overline m - m|\leq u|m|$$
+
+    Z poprzedniego zadania wiemy, ze $|\overline m-m|\leq u$. Wystarczy wiec, ze rozwazymy dwa przypadki:
+
+    1. $(1+u)\leq m$ - oczywiste
+
+    2. $(1+u) > m$
+
+    \begin{align*}
+        u &> m - 1\\
+        \overline mu &> m\overline m - \overline m  >  m  -  \overline m \\
+        \overline m u +  m u&> m  -  \overline m  +  m u\\
+        m u &>  m - \overline m  +  m u -  \overline m u\\
+        m u &>  m (1+u) -  \overline m (1+u)\\
+        m u&>(1+u)( m - \overline m )\\
+        {u\over 1+u} &> { m - \overline m \over  m }
+    \end{align*}
+
+    \subsection*{6. w pliiikuuuuuu}
+
+\begin{lstlisting}
+using Base
+
+function to_number(str::AbstractString)
+    if length(str) <= 64
+        bias = Float64(2^10 - 1)
+
+        ret = Float64(0)
+        cech = Float64(0) # 11
+        man = Float64(1) # 53
+
+        c = Float64(1)
+
+        for i = 1:11
+            cech += c * (Float64(str[13 - i]) - Float64(48))
+            c *= Float64(2)
+        end
+
+        c = Float64(0.5)
+
+        for i = 1:52
+            man += c * (Float64(str[i+12]) - Float64(48))
+
+            c /= Float64(2)
+        end
+
+        cech -= bias
+
+        ret = man * (2 ^ cech)
+
+        if str[1] == '1'
+            ret *= Float64(-1)
+        end
+
+        return ret
+    else
+        print("this is not a representation of a Float64")
+        return NaN
+    end
+end
+\end{lstlisting}
+
+    \subsection*{7.}
+
+    Liczba 1.000000057228997
+
+\begin{lstlisting}
+function fl()
+    x = one(Float64)
+
+    while x < 2.0
+        if x * (1/ x) != 1
+            println(x)
+            println(x * (1 / x))
+            break
+        end
+        x += eps(x)
+    end
+end
+\end{lstlisting}
 
 \end{document}
