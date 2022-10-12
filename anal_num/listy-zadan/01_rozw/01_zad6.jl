@@ -38,19 +38,52 @@ function to_number(str::AbstractString)
     end
 end
 
+function rand_test()
 
-print("BARDZO DOJEBANY TESCIK POPRAWNOSCI\n")
+    print("BARDZO DOJEBANY TESCIK POPRAWNOSCI\n")
 
-for i=1:2^30
-    test = rand(Float64)
-    wyn = to_number(bitstring(test))
-    
-    if test != wyn
-        print("ZJEBALAS\n")
-        break
-    #else
-        #print(test, ": ", wyn, "\n")
-    elseif i == 2^30
-        print("SUKCES, BITCH!!!!\n")
+    for i=1:2^30
+        test = rand(Float64)
+        wyn = to_number(bitstring(test))
+        
+        if test != wyn
+            print("ZJEBALAS\n")
+            break
+        #else
+            #print(test, ": ", wyn, "\n")
+        elseif i == 2^30
+            print("SUKCES, BITCH!!!!\n")
+        end
     end
+
 end
+
+
+function eps_test()
+
+    println("TESCIK PO EPSILONACH")
+
+    x = typemin(Float64) + one(Float64)
+    suc = true
+
+    while x < typemax(Float64) - one(Float64)
+        wyn = to_number(bitstring(x))
+
+        println(x, " | ", wyn)
+
+        if x != wyn
+            println("ZJEBALAS")
+            suc = false
+            break
+        end
+
+        wyn += eps(Float64)
+    end
+
+    if suc
+        println("UDALO SIE, BITCH")
+    end
+
+end
+
+eps_test()
