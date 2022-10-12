@@ -1,6 +1,6 @@
 \section{Przestrzenie normalne}
 
-\begin{multicols*}{2}
+\begin{multicols}{2}
     
     {\color{def}Norma} na $X$ to funkcja $x\mapsto \|x\|\in[0, \infty)$ taka, ze\smallskip\\
         \point $\|x\|=0\iff x=0$\smallskip\\
@@ -29,5 +29,43 @@
 
 
     \kdef
+    \medskip
 
-\end{multicols*}
+    Normy $\|\;\|_1$ i $\|\;\|_2$ sa {\color{def}rownowazne}, jesli istnieja $c_1, c_2>0$ takie, ze
+    $$(\forall\;x)\;c_2\|x\|_2\leq \|x\|_1\leq c_1\|x\|_2.$$
+
+    {\color{acc}\point} Jesli zbieznosc ciagow w dwoch normach jest rownowazna, to sa one rownowazne.
+
+    {\color{acc}\point} Przestrzenie $\C^n$ oraz $\R^n$ sa zupelne w dowolnej normie.
+
+    {\color{acc}\point} Przestrzen unormowana skonczona jest zawsze zupelna.
+    \medskip
+
+    {\color{def}Twierdzenie o najlepszej aproksymacji} - dla skonczonej podprzestrzeni liniowej $E$ przestrzeni unormowanej $X$ zachodzi:
+    $$(\forall\;x\in X)(\exists\;x_0\in E)\;\|x-x_o\|=\inf\limits_{y\in E}\|x-y\|.$$
+
+    \podz{sep}\bigskip
+
+    \pdef
+
+    Podzbior $A\subseteq X$ jest zbiorem {\color{def}gestym}, jezeli\\
+    $(\forall\;x\in X)(\forall\varepsilon>0)(\exists\;a\in A)\;d(x,a)<\varepsilon$
+    \medskip
+
+    Przestrzen jest {\color{def}osrodkowa}, gdy posiada przeliczalny zbior gesty.
+
+
+    \kdef
+
+    Kazda przestrzen unormowana mozna uzupelnic do przestrzeni Banacha.
+    \medskip
+
+    Niech $Y\subseteq X$ bedzie domkniety, wtedy
+    $$(\forall\;0<\theta<1)(\exists\;x\in X)\;\inf\{\|x-y\|\;:\;y\in Y\}\geq\theta$$
+
+    Niech $X$ - unormowana, skonczona przestrzen liniowa, wtedy
+    $$(\exists\;(x_n)\subseteq X)(\forall\;n\neq m)\;\|x_n\|=1\;\land\;\|x_n-x_m\|\geq \frac12$$
+
+    Baza nieskonczonej przestrzeni Banacha jest nieprzeliczalna.
+
+\end{multicols}
