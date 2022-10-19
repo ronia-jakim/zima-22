@@ -55,10 +55,11 @@
     $${(1-2nu)(1-u)\over 1-nu}\geq 1-{(n+1)u\over{1-(n+1)u}}={1-2(n+1)u\over 1-(n+1)u}$$
     $$(1-2nu)(1-u)(1-nu-u)\geq (1-nu)(1-2(n+1)u)$$
     $$(1-nu-u)(1-u-2nu+2nu^2)\geq (1-nu)(1-2nu-2u)$$
-    $$(1-nu)(1-u-2nu+2nu^2)-u(1-u-2nu+2nu^2)\geq(1-nu)(1-2nu-2u)$$
+    $$(1-nu)(1-u-2nu) + (1-nu)(2nu^2)-u(1-u-2nu+2nu^2)\geq(1-nu)(1-2nu-u) - u(1-nu)$$
+    $$2nu^2-nu2nu^2-u+u^2+2nu^2-2nu^3\geq nu^2-u$$
     
 
-    \section{ZAD 2.}
+    \section*{ZAD 2.}
 
     Znowu indukcja, czyli zakladamy, ze zachodzi dla wszystkich $n$, wtedy mamy
     \begin{align*}
@@ -94,16 +95,30 @@
     
     :v
 
+    \begin{align*}
+        {|x+y|\over|x|}&\leq{|x|+\frac12u|x|\over|x|}\\
+        |x+y|&\leq|x|+\frac12u|x|\\
+        |x+y|&\leq|x|(1+\frac12u)
+    \end{align*}
+
+    \section*{ZAD 5.}
+
+    \begin{align*}
+        f(a)&=a^2+a\quad\;wynik\;dokladny\\
+        f(a(1+\alpha))&=a^2(1+\alpha)^2+a(1+\alpha)\quad wynik\;dokladny\;przy\;LZB\\
+        f(a(1+\alpha)){1+\beta\over 1+\alpha}&=a^2(1+\alpha)(1+\beta)+a(1+\beta)\quad zaburzony \;wynik\; LZB,\;aka\;fl(f(a))
+    \end{align*}
+
     \section*{ZAD 6.}
 
-    Chce pokazac, ze to, co wypluje komputer rozni sie niewiele od tego, co powinno sie pojawic na ekranie :v
-    \medskip
+    $$w(x)=a_0+x(a_1+x(a_2+...+x(a_n)))$$
 
-    Po pierwsze, przy podawaniu danych mamy blad bo nie kazda liczba zmiennoprzecikowa jest liczba maszynowa, czyli podajemy
-    $$a_n'=a_n+{|a_n'-a_n|\over |a_n|}\leq a_n+{u\over 1-u}$$
+    $$fl(w)=a_0(1+\alpha_0)+x(1+\beta_1)(a_1(1+\alpha_1)+x(1+\beta_2)(a_2(1+\alpha_2)+...+x(1+\beta_{n-1})(a_{n-1}(1+\alpha_{n-1})+x(1+\beta_n)(a_n(1+\alpha_n)))))$$
+    $$fl(w)=\sum\limits_{i=0}^nx^ia_i\prod\limits_{j=1}^i(1+\beta_j)\prod\limits_{k=0}^i(1+\alpha_k)=\sum\limits_{i=0}^nx^i(a_i(1+E))$$
 
-    Algorytm Hornera to tak naprawde
-    $$fl(a0+x(a_1+x(a_2+...+x(a_{n-1}+x\cdot a_n))))=(a_0+fl(x\cdot(a_1+...)))(1+\epsilon_0)$$
+    \section*{ZAD 7.}
+
+    $$P_n=\frac12n\sin{2\pi\over n}$$
 
     \section*{ZAD 8.}
     a) $f(x)={1\over x^2+c}$
