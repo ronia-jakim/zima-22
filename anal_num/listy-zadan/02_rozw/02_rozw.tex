@@ -1,0 +1,51 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+    \section*{ZAD 1.}
+    \begin{align*}
+        \prod\limits_{j=0}^n(1+\alpha_j)^{p_j}\leq (1+u)^n\leq 1+{nu\over 1-nu}
+    \end{align*}
+    \begin{align*}
+        (1+u)^n\leq &1+{nu\over 1-nu}\\
+        (1-nu)(1+u)^n\leq 1-nu+nu\\
+        (1-nu)(1+u)^n&\leq 1\\
+        (1-n2^{-t-1})(1+2^{-t-1})^n&\leq 1\\
+        {2^{t+1}-n\over 2^{t+1}}\Big({2^{t+1}+1\over 2^{t+1}}\Big)^n\leq 1\\
+        (2^{t+1}-n)(2^{t+1}+1)^n&\leq 2^{(t+1)(n+1)}\\
+        2^{t+1}(2^{t+1}+1)^n-2^{(t+1)(n+1)}&\leq n(2^{t+1}+1)^n\\
+        2^{t+1}((2^{t+1}+1)^n-2^{(t+1)n})&\leq n(2^{t+1}+1)^n\\
+        a((a+1)^n-a^n)&\leq n(a+1)^n\\
+        a(\sum\limits_{i=0}^n{n\choose i}a^i-a^n)&\leq n\sum\limits_{i=0}^n{n\choose i}a^i\\
+        a\sum\limits_{i=0}^{n-1}{n\choose i}a^i&\leq n\sum\limits_{i=0}^n{n\choose i}a^i\\
+        0&\leq n(\sum\limits_{i=0}^{n-1}{n\choose i}a^i+a^n)-a\sum\limits_{i=0}^{n-1}{n\choose i}a^i=na^n+(\sum\limits_{i=0}^{n-1}{n\choose i}a^i)(n-a)
+    \end{align*}
+
+
+    \section*{ZAD 3. x, y - liczby maszynowe takie, ze $|y|\leq \frac12 u|x|$, pokazac, ze $fl(x+y)=x$}
+
+    Zakladam sobie, ze $x>0$, bo tak mi latwiej bedzie w zyciu.
+
+    $$fl(x+y)=(x+y)(1+\epsilon)$$
+
+    \begin{align*}
+        (x+y)(1+\epsilon)\leq (x+y)(1+u)\leq &(x+\frac12ux)(1+u)=\\
+        &=x(1+\frac12u)(1+u)=\\
+        &=x(1+u+\frac12u+\frac12 u^2)=\\
+        &=x+\underbrace{xu(1+\frac12u+\frac12u^2)}
+    \end{align*}
+    zaznaczony fragment jest w okolicach bedu bezwzglednego pomiaru, wiec mozemy go pominac
+
+    \begin{align*}
+        (x+y)(1+\epsilon)\geq (x+y)(1-u)\geq &(x-\frac12ux)(1-u)=\\
+        &x(1-\frac12u)(1-u)=\\
+        &=x(1-u-\frac12u+\frac12u^2)=\\
+        &=x-xu(1-\frac12u+\frac12u^2)
+    \end{align*}
+    i takiie samo wytlumaczenie jak poprzednio. Czyli mamy wyrazenie ograniczone od gory i od dolu przez x, czyli jest rowne x 
+    
+    :v
+\end{document}
