@@ -73,6 +73,29 @@
 
     \section*{ZAD 3. x, y - liczby maszynowe takie, ze $|y|\leq \frac12 u|x|$, pokazac, ze $fl(x+y)=x$}
 
+    WERSJA PODPIERDOLONA
+    \medskip
+
+    Zapiszmy te liczby w postaci
+    $$|x|=m_x2^{c_x}$$
+    $$|y|=m_y2^{c_y}$$
+
+    Wiemy tez, ze
+    $$|y|=m_y2^{c_y}\leq m_x2^{c_x}\cdot 2^{-t-2}$$
+
+    a przez to, ze $\frac12<{m_x}\over m_y<2$, bedziemy musieli wszystko dostosowywac korzystajac z cechy, a mantysa nic nam nie naprawi. W takim razie
+    $$c_x-c_y\geq t+2.$$
+    
+    Zeby dodawac liczby, musimy wyrownac cechy, czyli przesunac w prawo mantyse $y$ o $t+2$ bitow w prawo. W takim raize mamy
+    $$x+y=m_x2^{c_x}+m_y2^{c_x}2^{-t-2}=2^{c_x}(m_x+m_y2^{-t-2})$$
+
+    Super, ale u nas mantysa ma $t$ bitow, to jak przesuniemy $y$ w prawo o $t+2$, to nam nic nie zostanie do dodawania, wiec zachowa sie tylko mantysa $x$ razy $2^{c_x}$.
+
+    \bigskip
+
+    \podz{sep}
+    \bigskip
+
     Zakladam sobie, ze $x>0$, bo tak mi latwiej bedzie w zyciu.
 
     $$fl(x+y)=(x+y)(1+\epsilon)$$
@@ -120,13 +143,40 @@
 
     $$P_n=\frac12n\sin{2\pi\over n}$$
 
+    a) uzasadniamy przez indukcje
+    \medskip
+
+    \begin{align*}
+        \sqrt{\frac12(1+\cos A)}&=\cos\frac A2\\
+        \frac12(1+\cos A)&=\cos^2\frac A2\\
+        1+\cos A&=2\cos^2\frac A2\\
+        \cos A&=\cos^2\frac A2+(\cos^2\frac A2-1)\\
+        \cos A&=\cos^2\frac A2-\sin^2\frac A2
+    \end{align*}
+
+    \begin{align*}
+        \sqrt{\frac12(1-\cos A)}&=\sin \frac A2\\
+        \frac12(1-\cos A)&=\sin^2\frac A2\\
+        1-\cos A&=2\sin^2\frac A2\\
+        1-\cos A&=1-\cos^2\frac A2+\sin^2\frac A2\\
+        \cos^2\frac A2-\sin^2\frac A2&=\cos A
+    \end{align*}
+
+    Dla $n=2$:
+    $$P_{2^2}=\frac12 2^2\sin\frac{2\pi}2=2^{2-1}\sqrt{\frac12(1-\cos\frac{2\pi}2)}=2^{2-1}\sqrt{\frac12(1+1}=2^{2-1}\sqrt{1}=2$$
+
+    Dalej zakladamy, ze jest prawda dla wszystkich $n$, wtedy
+    \begin{align*}
+        P_{2^{n+1}}=\frac122^{n+1}\sin\frac{2\pi}{2^{n+1}}=2^n\sin{\frac{2\pi}{2^n}\over 2}=2^n\sqrt{\frac12(1-\cos\frac{2\pi}{2^n})}=ALG
+    \end{align*}
+
     \section*{ZAD 8.}
     a) $f(x)={1\over x^2+c}$
 
     Jezeli $c>=0$ to smiga, ale jesli $c<0$, to w okolicy $x=\sqrt{-c}$ caly przyklad sie jebie.
 
     $${d\over dx}{1\over x^2+c}=-{2x\over (c+x^2)^2}$$
-    $$C_f(x)={2x\over (c+x^2)^2}\cdot{x^2+c\over 1}={2x\over c+x^2}={2\over \frac{c}{x}+x}$$
+    $$C_f(x)={2x^2\over (c+x^2)^2}\cdot{x^2+c\over 1}={2x^2\over c+x^2}={2\over \frac{c}{x^2}+1}$$
     \medskip
 
     b) $f(x)={1-\cos x\over x^2}$

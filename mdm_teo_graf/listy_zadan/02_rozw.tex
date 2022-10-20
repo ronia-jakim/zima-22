@@ -1,0 +1,26 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../uni-notes-eng}
+\usepackage{multicol}
+
+\begin{document}
+
+    \section*{ZAD 1.}
+    $$\lfloor an\rfloor+\lfloor(1-a)n\rfloor=n-1$$
+
+    Niech $\Z\ni m=\lfloor an\rfloor$, wtedy
+    \begin{align*}
+        m\leq an &<m+1\\
+        m-n\leq an-n&<m-n+1\\
+        n-m\geq n-an&> n-m-1
+    \end{align*}
+
+    Poniewaz $n\notin \Q$, to $n-an\notin \Z$, wiec
+    $$\lfloor n-an\rfloor=n-\lfloor an\rfloor -1$$
+    a z tego
+    $$\lfloor an\rfloor+\lfloor n(1-a)\rfloor = n-1$$
+
+    
+    $$\lceil an\rceil + \lceil n-an\rceil=n+1$$
+
+\end{document}
