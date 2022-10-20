@@ -91,38 +91,9 @@
 
     Super, ale u nas mantysa ma $t$ bitow, to jak przesuniemy $y$ w prawo o $t+2$, to nam nic nie zostanie do dodawania, wiec zachowa sie tylko mantysa $x$ razy $2^{c_x}$.
 
-    \bigskip
+    \section*{ZAD 4.}
 
-    \podz{sep}
-    \bigskip
 
-    Zakladam sobie, ze $x>0$, bo tak mi latwiej bedzie w zyciu.
-
-    $$fl(x+y)=(x+y)(1+\epsilon)$$
-
-    \begin{align*}
-        (x+y)(1+\epsilon)\leq (x+y)(1+u)\leq &(x+\frac12ux)(1+u)=\\
-        &=x(1+\frac12u)(1+u)=\\
-        &=x(1+u+\frac12u+\frac12 u^2)=\\
-        &=x+\underbrace{xu(1+\frac12u+\frac12u^2)}
-    \end{align*}
-    zaznaczony fragment jest w okolicach bedu bezwzglednego pomiaru, wiec mozemy go pominac
-
-    \begin{align*}
-        (x+y)(1+\epsilon)\geq (x+y)(1-u)\geq &(x-\frac12ux)(1-u)=\\
-        &x(1-\frac12u)(1-u)=\\
-        &=x(1-u-\frac12u+\frac12u^2)=\\
-        &=x-xu(1-\frac12u+\frac12u^2)
-    \end{align*}
-    i takiie samo wytlumaczenie jak poprzednio. Czyli mamy wyrazenie ograniczone od gory i od dolu przez x, czyli jest rowne x 
-    
-    :v
-
-    \begin{align*}
-        {|x+y|\over|x|}&\leq{|x|+\frac12u|x|\over|x|}\\
-        |x+y|&\leq|x|+\frac12u|x|\\
-        |x+y|&\leq|x|(1+\frac12u)
-    \end{align*}
 
     \section*{ZAD 5.}
 
