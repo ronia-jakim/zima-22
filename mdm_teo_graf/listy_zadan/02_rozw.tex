@@ -23,4 +23,42 @@
     
     $$\lceil an\rceil + \lceil n-an\rceil=n+1$$
 
+    \section*{ZAD 2.}
+    $$\lfloor {x\over m}\rfloor + \lfloor {x+1\over m}\rfloor+...+\lfloor {x+m-1\over m}\rfloor=\sum\limits_{i=0}^{m-1}\lfloor {x+i\over m}\rfloor\quad(\nietoperz)$$
+
+    Po pierwsze pokazemy, ze dla dowolnych $n,m\in\Z$ oraz $x\in\R$ zachodzi
+    $$\Big\lfloor {x+n\over m}\Big\rfloor=\Big\lfloor{\lfloor x\rfloor+n\over m}\Big\rfloor\quad (\kawa)$$
+    
+    Niech $p=\Big\lfloor{\lfloor x\rfloor+n\over m}\Big\rfloor$, wtedy
+    \begin{align*}
+        p&\leq {\lfloor x\rfloor+n\over m} < p+1\\
+        p&\leq {\lfloor x\rfloor+n\over m}<p+1\\
+        \Z\ni m\cdot p-n&\leq \lfloor x\rfloor<m\cdot(p+1)-n\in\Z\\
+        m\cdot p-n&\leq x<m\cdot(p+1)-n\\
+        p&\leq {x-n\over m}<p+1\\
+        p&\leq \Big\lfloor {x+n\over m}\Big\rfloor<p+1\\
+        p&=\Big\lfloor {x+n\over m}\Big\rfloor
+    \end{align*}
+    Czyli pokazalismy $(\kawa)$.
+    \bigskip
+
+    Po drugie, zauwazmy, ze dla dowolnego $n$ i dla kazdego $m\in\Z$, $n\geq m>1$ zachodzi\par
+    $$n=\sum\limits_{i=0}^{m-1}\Big\lfloor{n+i\over m}\Big\rfloor$$
+    
+    Zauwazmy, ze jest to ilosc elementow w kazdej grupie przy podziale $n$ elementow na $m$ grup. We wszystkich kolumnach umiescimy co najmniej $\Big\lfloor \frac nm\Big\rfloor$ obiektow, ale w ostatnich $n\mod m$ kolumnach bedzie ich o 1 wiecej, co jest uzyskiwane przez zwiekszanie o 1 licznika po kazdej kolumnie.
+    \medskip
+
+    Wracajac do $(\nietoperz)$, mozemy powiedziec, ze
+    $$\sum\limits_{i=0}^{m-1}\Big\lfloor{x+i\over m}\Big\rfloor=\sum\limits_{i=0}^{m-1}\Big\lfloor{\lfloor x\rfloor+i\over m}\Big\rfloor=\lfloor x\rfloor$$
+
+    \section*{ZAD 3.}
+
+    a) potrzebujemy $a_0$, $a_1$, natomiast $a_2$ mozemy juz obliczyc za pomoca $a_0$
+    \medskip
+
+    b) potrzebne jest $a_0$, $a_1$ oraz $a_2$, bo wyraz $a_3$ to juz suma wyrazow poprzednich
+    \medskip
+
+    c) potrzebny jest tylko wyraz $a_0$ - jest on potrzebny dla $a_1$, dla $a_2$ potrzebne jest $a_1$ i tak dalej - zawsze przy odpowiedniej ilosci podzielen na 2 otrzymujemy $a_0$
+
 \end{document}

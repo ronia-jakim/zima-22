@@ -4,37 +4,42 @@
 %==== BITWA Z CZCIONKĄ ====%
 
 \RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
+%\RequirePackage[utf8]{inputenc}
+\RequirePackage{amssymb}
 %\RequirePackage[polish]{babel}
-%\RequirePackage{microtype} % dodaje sylabowanie słów na końcach wierszy
+\RequirePackage{microtype} % dodaje sylabowanie słów na końcach wierszy
 
 %\RequirePackage{courier} % bo lubię tę czcionkę w sumie
 
 \RequirePackage[ttdefault=true]{AnonymousPro} % będzie jak VS Code :v
 
-\RequirePackage{letltxmacro}
-\LetLtxMacro\origttfamily\ttfamily
-\DeclareRobustCommand*{\ttfamily}{
-  \origttfamily
-  \hyphenchar\font=`\-\relax
-  \fontdimen3\font=.25em\relax
-  \fontdimen4\font=.167em\relax
-  \fontdimen7\font=.167em\relax
-}
+\sloppy
 
-\makeatletter
-\DeclareRobustCommand\vttfamily{
-  \not@math@alphabet\vttfamily\relax
-  \fontfamily{cmvtt}
-  \selectfont
-}
-\DeclareTextFontCommand{\textvtt}{\vttfamily}
-\makeatother
+\parindent=0pt
+
+%\RequirePackage{letltxmacro}
+%\LetLtxMacro\origttfamily\ttfamily
+%\DeclareRobustCommand*{\ttfamily}{
+%  \origttfamily
+%  \hyphenchar\font=`\-\relax
+%  \fontdimen1\font=.25em\relax %.25 originally || 3
+%  \fontdimen2\font=.167em\relax %.167 || 4
+%  \fontdimen3\font=.167em\relax %.167 || 7
+%}
+
+%\makeatletter
+%\DeclareRobustCommand\vttfamily{
+%  \not@math@alphabet\vttfamily\relax
+%  \fontfamily{cmvtt}
+%  \selectfont
+%}
+%\DeclareTextFontCommand{\textvtt}{\vttfamily}
+%\makeatother
 
 \renewcommand*\familydefault{\ttdefault} % ustawia czcionkę maszynową jako domyślną
 
 \RequirePackage{ragged2e}
-\justifying % justuje tekst
+%\justifying % justuje tekst
 
 %!=== SKRÓTY MATEMATYCZNE ===!%
 
@@ -79,6 +84,8 @@
 %==== MARGINESY ====%
 
 \RequirePackage{geometry}
+% [showframe]
+% to show borders
 
 \geometry {
     a4paper,
@@ -91,7 +98,7 @@
 \newlength\tindent
 \setlength{\tindent}{\parindent}
 \setlength{\parindent}{0pt}
-\renewcommand{\indent}{\hspace*{\tindent}}
+\renewcommand{\indent}{$\quad$}
 
 %==== KOLORY I OZDOBNIKI ====%
 
@@ -237,10 +244,14 @@
 \RequirePackage{phaistos} % paczuszka pozwalająca pisać hieroglify
 
 \newcommand{\kawa}{\text{\color{def}\large\Coffeecup}}
-\newcommand{\nietoperz}{\text{\color{emp}\large\Bat}}
+\newcommand{\nietoperz}{\text{\color{acc}\large\Bat}}
 
 \newcommand{\kotek}{\text{\PHcat}}
 \newcommand{\baranek}{\text{\PHram}}
 \newcommand{\kwiatuszek}{\text{\PHrosette}}
+
+
+
+\justifying
 
 \endinput
