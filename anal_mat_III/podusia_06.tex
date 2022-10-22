@@ -1,0 +1,24 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+
+    \section*{ZAD. 1.}
+
+    $f:\R^n\to\R^m$ jest zbiezne, jesli $(\forall\;x_n\subseteq\R^n)\;x_n\to x\implies f(x_n)\to f(x)$.
+    \medskip
+
+    $f$ - ciagle, $D\subseteq\R^m$ - domkniety, to $f^{-1}[D]$ tez jest domkniety.
+    
+    Funkcja jest ciagla w punkcie $y$, jesli
+    $$(\forall\;\varepsilon>0)(\exists\;\delta)(\forall\;x_n\in D)\;d(x_n, y)<\delta\implies d(f(x_n), f(y))<\varepsilon$$
+
+    Zalozmy nie wprost, ze $f^{-1}[D]$ nie jest domkniety, to znaczy istnieje ciag $x_n\subseteq\R^n$ taki, ze $x_n\to y\notin f^{-1}[D]$. Ale poniewaz $f$ jest ciagle, to takze $f(x_n)\to f(y)\notin D$, a wiec $D$ nie jest domkniety. 
+    
+    Obierzmy dowolny $\varepsilon>0$, wtedy
+    $$(\exists\;N)(\forall\;n>N)\;d(x_n, y)<\varepsilon$$
+
+\end{document}
