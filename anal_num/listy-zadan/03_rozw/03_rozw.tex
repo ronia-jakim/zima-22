@@ -1,0 +1,36 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+    \section*{ZAD 1.}
+    
+    Niech $f(x)=\frac 1x-c$. Zauwazajac, ze $f(\frac1c)=0$, mozemy przyblizyc $\frac1c$ uzywajac metody Newtona dla funkcji $f$.
+    \medskip
+
+    Rozwazmy wiec punkt $x_1$, ktory przyblizamy za pomoca:
+    $$x_1=x_0-{f(x_0)\over f'(x_0)}=x_0+{\frac1{x_0}-c\over \frac1{x_0^2}}=x_0+{x^2_0-cx_0^3\over x_0}=x_0+x_0-cx_0^2=2x_0-cx_0^2$$
+    Czyli w punkcie $x_0$ rysujemy styczna do funkcji $f$ i szukamy jej punktu przeciecia z osia OX.
+    \bigskip
+
+    \begin{align*}
+        x_2&=x_1(2-cx_1)=\\
+        &=(x_0(2-cx_0))(2-c(x_0(2-cx_0)))=\\
+        &=(2x_0-cx_0^2)(2-2cx_0+c^2x_0^2)=\\
+        &=4x_0-4cx_0^2+2c^2x_0^3-2cx_0^2+2c^2x_0^3-c^3x_0^4=\\
+        &=4x_0-6cx_0^2+4c^2x_0^3-c^3x_0^4
+    \end{align*}
+
+    Czyli dla coraz to wiekszego $n$ mamy coraz to wieksze potegi $x_0$, czyli generalnie to nie bedziemy chcieli brac zbyd duzego $x_0$, najlepiej cos ponizej $1$. W dodatku przy wyzszych potegach $x_0$ mamy wyzsza potege $c$, przy czym potega przy $x_0$ jest zwykle o jeden wieksza. Mozemy przewidziec, ze tak bedzie dalej. Najlepiej wiec, zeby $x_0^2\cdot c<1$, a im mniejsze tym lepiej.
+
+
+    \section*{ZAD 2.}
+
+    Ciag przyblizen za pomoca metody newtona jest zbiezny liniowo do pierwiastka funkcji $f$.
+    
+    $$x_{x+1}=x_n-{f(x_n)\over f'(x_0)}$$
+    Chce, zeby bylo liniowe
+
+\end{document}
