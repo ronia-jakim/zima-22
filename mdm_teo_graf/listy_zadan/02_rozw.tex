@@ -81,9 +81,55 @@
     $$l_5=32=2^5$$
     $$l_6=256=2^8$$
 
-    $l_n$ wyraz to $2^k$, gdzie $k$ to $n$-ty wyraz ciagu fibonacciego. Takze zostaje mi nic innego jak znalezc jawny wzor na ciag fibonacciego :)
+    $l_n$ wyraz to $2^k$, gdzie $k$ to $n$-ty wyraz ciagu fibonacciego. Takze zostaje mi nic innego jak znalezc jawny wzor na ciag fibonacciego, $f_n$ :)
     \medskip
 
-    
+    Lecimy funkcja tworzaca, cuz why not. Niech
+    $$F(x)=\sum\limits_{i=1}^nf_nx^n$$
+    wtedy
+    \begin{align*}
+        F(x)&=\sum\limits_{i=0}f_ix^i\\
+        F(x)&=x+\sum\limits_{i=2}(f_{i-1}+f_{i-2})x^i\\
+        F(x)&=x+x\sum\limits_{i=2}f_{i-1}x^{i-1}+x^2\sum\limits_{i=2}f_{i-2}x^{i-2}\\
+        F(x)&=x+x\sum\limits_{i=1}f_ix^i+x^2\sum\limits_{i=0}f_ix^i
+    \end{align*}
+    Zauwazmy, ze poniewaz $f_0=0$, to $\sum\limits_{i=0}f_ix^i=\sum\limits_{i=1}f_ix^i$
+
+    \begin{align*}
+        F(x)&=x+(x+x^2)\sum\limits_{i=0}f_ix^i\\
+        F(x)&=x+(x+x^2)F(x)\\
+        F(x)(1-x-x^2)&=x\\
+        F(x)&={x\over 1-x-x^2}
+    \end{align*}
+    Zauwazamy, ze 
+    $$1-x-x^2=0\iff x={-1\pm\sqrt{1+4}\over 2}$$
+    Czyli mamy
+    $$F(x)={x\over (x+{1+\sqrt5\over 2})(x+{1-\sqrt5\over 2})}$$
+
+    Rozbicie tego na dwa dodawane ulamki zostawiam czytelnikowi oraz wikipedii. Tak samo jak dokonczenie tego rozwiazania.
+    \medskip
+
+    Zalozmy, ze czytelnik byl mniej leniwy niz autorka i wyliczyl jawny wzor na $n$-ty wyraz ciagu fibonaciego, ktory wg wikipedii wyglada mniej wiecej tak:
+    $$f_n=\frac1{\sqrt5}{(1+\sqrt5)^n-(1-\sqrt5)^n\over 2^n}$$
+
+    Otrzymujemy wiec:
+    $$l_n=2^{f_n}=2^{f_{n-1}}\cdot 2^{f_{n-2}}$$
+
+
+    \section*{ZAD 5.}
+
+    a) $a_n=\frac 2{a_{n-1}}$ dla $a_0=1$
+
+    \begin{align*}
+        a_0=1\\
+        a_1=2\\
+        a_2=1\\
+        a_3=2\\
+        a_4=1\\
+        a_5=2\\
+        ...
+    \end{align*}
+
+    Kurwa no nie bede robic indukcji. Dla parzystych indeksow jest 1, dla nieparzystych - 2.
 
 \end{document}
