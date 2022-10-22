@@ -31,46 +31,7 @@ int main () {
             
         }
         else {
-            for (int i = 0; i < n; i += 2) {
-                if (dziewczynki[i] % 2 == 0) {
-                    if (dziewczynki[i] > dziewczynki[i+1]) {
-                        int pom = dziewczynki[i];
-                        dziewczynki[i] = dziewczynki[i+1];
-                        dziewczynki[i+1] = pom;
-                    }
-                    else {
-                        if (i == 0) {
-                            int pom = dziewczynki[i];
-                            dziewczynki[i] = dziewczynki[n];
-                            dziewczynki[n] = pom;
-                        }
-                        else {
-                            int pom = dziewczynki[i];
-                            dziewczynki[i] = dziewczynki[i-1];
-                            dziewczynki[i-1] = pom;
-                        }
-                    }
-                }
-                else {
-                    if (dziewczynki[i] < dziewczynki[i+1]) {
-                        int pom = dziewczynki[i];
-                        dziewczynki[i] = dziewczynki[i+1];
-                        dziewczynki[i+1] = pom;
-                    }
-                    else {
-                        if (i == 0) {
-                            int pom = dziewczynki[i];
-                            dziewczynki[i] = dziewczynki[n];
-                            dziewczynki[n] = pom;
-                        }
-                        else {
-                            int pom = dziewczynki[i];
-                            dziewczynki[i] = dziewczynki[i-1];
-                            dziewczynki[i-1] = pom;
-                        }
-                    }
-                }
-            }
+            if (dziewczynki[0] % 2 == 0) 
         }
     }
 
@@ -79,4 +40,3 @@ int main () {
 
     return 0;
 }
-
