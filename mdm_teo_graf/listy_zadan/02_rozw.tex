@@ -120,17 +120,18 @@
 
     a) $a_n=\frac 2{a_{n-1}}$ dla $a_0=1$
 
-    \begin{align*}
-        a_0=1\\
-        a_1=2\\
-        a_2=1\\
-        a_3=2\\
-        a_4=1\\
-        a_5=2\\
-        ...
-    \end{align*}
+    $$a_n=\begin{cases}
+        1\quad n|2\\
+        2
+    \end{cases}$$
 
-    Kurwa no nie bede robic indukcji. Dla parzystych indeksow jest 1, dla nieparzystych - 2.
+    Dla $n=0, 1$ - dziala. Zalozmy, ze dziala tez dla wszystkich wyrazow mniejszych niz $n$. Rozwazamy dwa przypadki:\smallskip\\
+    \indent $2|n$, wtedy $2\nmid n-1$ i mamy $a_{n-1}=2$
+    $$a_n=\frac22=1$$
+    czyli tak jak jest we wzorze.\smallskip\\
+    \indent $2\nmid n$, wtedy $a_{n-1}=1$ i
+    $$a_n=\frac21=2.$$
+
     \medskip
 
     b) $b_n={1\over 1+b_{n-1}}$ $b_0=0$
@@ -146,5 +147,54 @@
     \end{align*}
 
     $b_n$-ty wyraz to ${f_n\over f_{n+1}}$ gdzie $f_n$ to $n$-ta liczba fibonacciego.
+    \medskip
+
+    c) $c_n=\sum\limits_{i=0}^{n-1}c_i$ $c_0=1$
+    \begin{align*}
+        c_0=1\\
+        c_1=1\\
+        c_2=2\\
+        c_3=4\\
+        c_4=8\\
+        c_5=16\\
+        c_6=32\\
+        c_7=64
+    \end{align*}
+    czyli $c_n=2^{n-1}$
+    \medskip
+
+    d) $d_n={d_{n-1}^2\over d_{n-2}}$ $d_0=1$ $d_1=2$
+
+    \begin{align*}
+        d_0=1\\
+        d_1=2\\
+        d_2=4\\
+        d_3=8\\
+        d_4=16
+    \end{align*}
+    $$d_n=2^n$$
+
+
+    \section*{ZAD 6.}
+
+    a) $y_0=y_1=1$, $y_n={y_{n-1}^2+y_{n-2}\over y_{n-1}+y_{n-2}}$
+    \medskip
+
+    \begin{align*}
+        y_0=1\\
+        y_1=1\\
+        y_2=1
+    \end{align*}
+
+    b) $z_0=1$, $z_1=2$, $z_n={z_{n-1}^2-1\over z_{n-2}}$
+
+    \begin{align*}
+        z_0=1\\
+        z_1=2\\
+        z_2=3\\
+        z_3=4\\
+        z_4=5
+    \end{align*}
+    KURWA kolejne liczby`ZA'
 
 \end{document}
