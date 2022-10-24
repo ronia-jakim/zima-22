@@ -135,44 +135,41 @@
     \medskip
 
     b) $b_n={1\over 1+b_{n-1}}$ $b_0=0$
+    \medskip
 
+    Oznaczmy jako $f_n$ $n$-ty wyraz ciagu fibbonacciego, czyli $f_n=f_{n-1}+f_{n-2}$, gdzie $f_0=0,\;f_1=1$. Wtedy 
+    $$b_n={f_n\over f_{n+1}}.$$
+
+    Dla $n=0, 1$ mamy $b_0={0\over1}=0$ oraz $b_1={1\over1}=1$. Zalozmy, ze dla wszystkich wyrazow do $b_n$ wzor dziala. Wtedy
     \begin{align*}
-        b_0=0\\
-        b_1=1\\
-        b_2=\frac12\\
-        b_3=\frac23\\
-        b_4=\frac35\\
-        b_5=\frac58\\
-        b_6=\frac8{13}
+        b_{n+1}&={1\over 1+b_{n}}={1\over 1+{f_{n}\over f_{n+1}}}=\\
+        &={1\over {f_n+f_{n+1}\over f_{n+1}}}{f_{n+1}\over f_n+f_{n+1}}={f_{n+1}\over f_{n+2}}
     \end{align*}
 
-    $b_n$-ty wyraz to ${f_n\over f_{n+1}}$ gdzie $f_n$ to $n$-ta liczba fibonacciego.
     \medskip
 
     c) $c_n=\sum\limits_{i=0}^{n-1}c_i$ $c_0=1$
+
+    Dla $n\neq 0$ zachodzi
+    $$c_n=2^{n-1}$$
+    natomiast dla $n=0$ mamy $c_0=1$.
+    \medskip
+
+    Dla $n=1,2$ jest $c_1=2^0=1,\;c_2=2^2=2$. Zalozmy, ze dla kazdego $n$ wzor jest prawdziwy, wtedy
     \begin{align*}
-        c_0=1\\
-        c_1=1\\
-        c_2=2\\
-        c_3=4\\
-        c_4=8\\
-        c_5=16\\
-        c_6=32\\
-        c_7=64
+        c_{n+1}&=\sum\limits_{i=0}^nc_i=\sum\limits_{i=0}^{n-1}c_i+c_n=\\
+        &=c_n+c_n=2\cdot 2^{n-1}=2^n
     \end{align*}
-    czyli $c_n=2^{n-1}$
+
     \medskip
 
     d) $d_n={d_{n-1}^2\over d_{n-2}}$ $d_0=1$ $d_1=2$
+    \medskip
 
+    Dla $n=0,1$ mamy $d_0=2^0=1,\;d_1=2^1=2$. Zalozmy, ze dla wszystkich $n$ wzor jest prawdziwy, wowczas
     \begin{align*}
-        d_0=1\\
-        d_1=2\\
-        d_2=4\\
-        d_3=8\\
-        d_4=16
+        d_{n+1}={d_n^2\over d_{n-1}}={(2^n)^2\over 2^{n-1}}=2^{2n-(n-1)}=2^{n+1}
     \end{align*}
-    $$d_n=2^n$$
 
 
     \section*{ZAD 6.}
@@ -196,5 +193,17 @@
         z_4=5
     \end{align*}
     KURWA kolejne liczby`ZA'
+
+    c) $t_0=0$, $t_1=1$, $t_n={(t_{n-1}-t_{n-2}+3)^2\over 4}$
+
+    \begin{align*}
+        t_0=0\\
+        t_1=1\\
+        t_2=4\\
+        t_3=9\\
+        t_4=16\\
+        t_5=25
+    \end{align*}
+    $$a_n=n^2$$
 
 \end{document}
