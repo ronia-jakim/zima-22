@@ -1,0 +1,109 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+
+    \section{ZAD 12.}
+
+    Zauwazmy, ze jesli $f(x)\in P_2$, to $f$ mozemy zapisac jako
+    $$f(x)=ax^2+bx+c$$
+    dla $a,b,c\in\R$ takich, ze $a+b+c=1$. W takim razie funkcja $\phi(f)$ sprowadza sie do postaci:
+    $$\phi(f)=\int\limits_0^1f(x)^2dx=\int\limits_0^1(ax^2+bx+c)^2dx,$$
+    co na mocy wolfram alpha jest rowne:
+    $$\phi(f)={a^2\over5}+{2ac+b^2\over3}+{ab\over2}+bc+c^2.$$
+
+    Cale zadanie sprowadza sie do znalezienia minimum funkcji trzech zmiennych
+    $$F(a,b,c)={a^2\over5}+{2ac+b^2\over3}+{ab\over2}+bc+c^2$$
+    przy warunku, ze funkcja
+    $$g(a,b,c)=a+b+c=1.$$
+
+    Uzywajac mnoznikow Lagrange'a dostajemy uklad rownan postaci
+    \begin{align*}
+        &\begin{cases}
+            \frac25a+\frac23c+\frac b2-\lambda=0\\
+            \frac23b+\frac a2+c-\lambda=0\\
+            \frac23a+b+2c-\lambda=0\\
+            a+b+c=1
+        \end{cases}\\
+        &\begin{cases}
+            12a+20c+15b-30\lambda=0\\
+            4b+3a+6c-6\lambda=0\\
+            2a+3b+6c-6\lambda=0\\
+            a+b+c=1
+        \end{cases}
+    \end{align*}
+
+    Jesli zapiszemy je w postaci macierzy, dostajemy:
+    
+    $$
+        \begin{pmatrix}
+            12 &15& 20& -30& 0\\
+            3 & 4& 6& -6& 0\\
+            2 &3& 6& -6& 0\\
+            1& 1& 1& 0& 1
+        \end{pmatrix}
+    $$
+
+    Korzystajac z metody eliminacji Gaussa (i strony matrixcalc.org), dostajemy macierz
+
+    $$
+        \begin{pmatrix}
+            12&	 15	& 20	&-30&	0\\
+            0	&1/4	& 1&	3/2&	0\\
+            0	&  0	&2/3	& -4	&0\\
+            0&	  0	&  0	&  6 &	1
+        \end{pmatrix}
+    $$
+
+    Ktora daje nam ponizsze rownania:
+    $$
+        \begin{cases}
+            \lambda=\frac16\\
+            \frac23 c-4\lambda=0\\
+            \frac14b+c+\frac32\lambda=0\\
+            12a+15b+20c-30\lambda=0
+        \end{cases}
+    $$
+
+    $$
+        \begin{cases}
+            \lambda=\frac16\\
+            c=1\\
+            b=-5\\
+            a=5
+        \end{cases}
+    $$
+
+    Zauwazmy, ze zbior $P_2$ jest niezwarty. Musimy wiec sprawdzic, co sie dzieje kiedy
+    $$\|(a,b,c)\|\to\infty$$
+
+    {\color{cyan}TUTAJ MUSISZ DOKONCZYC DZBANIE}
+
+    Wartosc funkcji $F$ w punkcie ktory zostal otrzymany w powyzszych obliczeniach wynosi
+    $$F(5,-5,1)=\frac16$$
+    sprawdzmy, czy istnieja punkty ktore spelniaja $g(x,y,z)=1$ takie, ze $F(x,y,z)\leq\frac16$.
+    \begin{align*}
+        {x^2\over5}+{2xz+y^2\over3}+{xy\over2}+yz+z^2&\leq\frac16\\
+        12x^2+40xz+20y^2+30xy+60yz+60z^2&\leq10\\
+        9x^2+2\cdot3\cdot5xy+25y^2  +4x^2+2\cdot2\cdot10xz+100z^2  -5y^2-40z^2+60yz&\leq10\\
+        (3x+5y)^2+(2x+10z)^2-(25y^2-2\cdot5\cdot6yz+36z^2 + 4z^2-20y^2)&\leq10\\
+        (3x+5y)^2+(2x+10z)^2-(5y-6z)^2-4z^2+20y^2&\leq10
+    \end{align*}
+
+    $$x=1-y-z$$
+    
+    \begin{align*}
+        {x^2\over5}+{2xz+y^2\over3}+{xy\over2}+yz+z^2&\leq\frac16\\
+        12x^2+40xz+20y^2+30xy+60yz+60z^2&\leq10\\
+        12(1-y-z)^2+40(1-y-z)z+20y^2+30(1-y-z)y+60yz+60z^2&\leq10\\
+        y^2+7yz+3y+(16z^2+8z+1)+5&\leq5\\
+        y^2+3y+\frac94+7yz+(4z+1)^2+5&\leq5+\frac94\\
+        (y+\frac32)^2+{y^2\over4}+7yz+49z^2+(4z+1)^2&\leq\frac94+{y^2\over4}+49z^2\\
+        (y+\frac32)^2-{y^2\over4}+(4z+1)^2-49z^2+(\frac y2+7z)^2&\leq\frac94\\
+        (y+\frac32+\frac y2)(y+\frac32-\frac y2)+(4z+1+7z)(4z+1-7z)&\leq \frac94
+    \end{align*}
+
+\end{document}
