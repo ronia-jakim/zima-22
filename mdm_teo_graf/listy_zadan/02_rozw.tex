@@ -2,8 +2,24 @@
 
 \usepackage{../../uni-notes-eng}
 \usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 2}
+\date{}
+
+\pagecolor{back2}
+\color{text2}
 
 \begin{document}
+
+    {\color{title-color}ZAD: 1, 2, 3, 4, 5, 6, 8, 9}\smallskip\\
+
+    zadanie 7 - brak podpunktu d
+    \medskip
+
+    Z gory przepraszam za brak polskich znakow - nie udalo mi sie polaczyc polskiego i niestandardowych czcionek w latexu.
 
     \section*{ZAD 1.}
     $$\lfloor an\rfloor+\lfloor(1-a)n\rfloor=n-1$$
@@ -45,7 +61,12 @@
     Po drugie, zauwazmy, ze dla dowolnego $n$ i dla kazdego $m\in\Z$, $n\geq m>1$ zachodzi\par
     $$n=\sum\limits_{i=0}^{m-1}\Big\lfloor{n+i\over m}\Big\rfloor$$
     
-    Zauwazmy, ze jest to ilosc elementow w kazdej grupie przy podziale $n$ elementow na $m$ grup. We wszystkich kolumnach umiescimy co najmniej $\Big\lfloor \frac nm\Big\rfloor$ obiektow, ale w ostatnich $n\mod m$ kolumnach bedzie ich o 1 wiecej, co jest uzyskiwane przez zwiekszanie o 1 licznika po kazdej kolumnie.
+    Zauwazmy, ze jest to ilosc elementow w kazdej grupie przy podziale $n$ elementow na $m$ grup. Jesli $n$ jest podzielne przez $m$, to problem jest trywialny. Niech wiec istnieja takie $k,r\in\Z$, $r\in(0,m)$ takie, ze
+    $$n=km+r.$$
+    W takim razie istnieje $p\in\Z\cap(0,m)$ takie, ze
+    $$km+r+p<(k+1)+m$$
+    $$km+r+p+1=(k+1)+m.$$
+    To znaczy, ze przez pierwsze $p$ kolumn ukladamy $\lfloor{n\over m}\rfloor$ elementow, a przez pozostale $m-p$ kolumn rozkladamy o jeden element wiecej. Przez to, ze bierzemy podloge, calosc sumuje sie do $n$ elementow.
     \medskip
 
     Wracajac do $(\nietoperz)$, mozemy powiedziec, ze
@@ -67,53 +88,48 @@
     a) $f_n=f_{n-1}+3^n$ dla $n>1$ i $f_1=3$.
     \medskip
 
-    To jest suma geometric sequence:
+    To jest suma szeregu geometrycznego:
     $$f_n=\sum\limits_{i=1}^n3^i=3\cdot{3^n-1\over 3-1}={3^{n+1}-3\over 2}$$
+
+    Pokazemy to za pomoca indukcji.\smallskip\\
+    \indent$1^o$ $n=2$, wtedy 
+    $$f_2=3+3^2=12={3^3-3\over 2}={24\over2}=12=f_2.$$
+    \indent$2^o$ zakladamy, ze dla pierwszych $n$ wyrazow wzor jest prawdziwy, wowczas
+    \begin{align*}
+        f_{n+1}=f_n+3^{n+1}={3^{n+1}-3\over2}+3^{n+1}={3^{n+1}(1+2)-3\over 2}={3^{n+2}-3\over 2}
+    \end{align*}
 
     b) $h_n=h_{n-1}+(-1)^{n+1}n$ dla $n>1$ i $h_1=1$
 
     $$h_n=-\lfloor\frac n2\rfloor+(n-2\lfloor\frac n2\rfloor)n$$
 
+    \indent $1^o$ $n=2$
+    $$h_2=h_1-n=-1$$
+    \indent $2^o$ zalozmy, ze jest to prawda dla pierwszych $n$ wyrazow. Rozwazmy dwa przypadki:\smallskip\\
+    A. $2|n+1$, czyli $n+1=2k+2$, natomiast $n=2k+1$
+    \begin{align*}
+        h_{n+1}&=h_n-(n+1)=-\lfloor\frac n2\rfloor+(n-2\lfloor\frac n2\rfloor)n-n-1=-k+(n-2k)n-n-1=-k-1=\\
+        &=-(k+1)=-\lfloor{n+1\over 2}\rfloor = -\lfloor{n+1\over2}\rfloor+\underbrace{(n+1-2\lfloor\frac{n+1}2\rfloor)}(n+1)
+    \end{align*}
+    zaznaczony fragment wylicza sie do 0.
+
+    B. $2\nmid n+1$, czyli $n+1=2k+1$, natmoiast $n=2k$
+    \begin{align*}
+        h_{n+1}&=h_n+(n+1)=-\lfloor\frac n2\rfloor+(n-2\lfloor\frac n2\rfloor)n(n+1)=\\
+        &=-k+(n-2k)n-n-1=-k+(n+1)=-\lfloor {n+1\over 2}\rfloor +\underbrace{(n+1-2\lfloor\frac{n+1}2\rfloor)}(n+1)
+    \end{align*}
+    zaznaczony fragment wylicza sie do 1
+    \medskip
+
     c) $l_n=l_{n-1}l_{n-2}$ dla $n>2$ i $l_1=l_2=2$
 
-    $$l_3=4=2^2$$
-    $$l_4=8=2^3$$
-    $$l_5=32=2^5$$
-    $$l_6=256=2^8$$
+    Oznaczmy przez $f_n$ $n$-ty wyraz ciagu fibbonacciego, wtedy
+    $$l_n=2^{f_n}$$
 
-    $l_n$ wyraz to $2^k$, gdzie $k$ to $n$-ty wyraz ciagu fibonacciego. Takze zostaje mi nic innego jak znalezc jawny wzor na ciag fibonacciego, $f_n$ :)
-    \medskip
-
-    Lecimy funkcja tworzaca, cuz why not. Niech
-    $$F(x)=\sum\limits_{i=1}^nf_nx^n$$
-    wtedy
-    \begin{align*}
-        F(x)&=\sum\limits_{i=0}f_ix^i\\
-        F(x)&=x+\sum\limits_{i=2}(f_{i-1}+f_{i-2})x^i\\
-        F(x)&=x+x\sum\limits_{i=2}f_{i-1}x^{i-1}+x^2\sum\limits_{i=2}f_{i-2}x^{i-2}\\
-        F(x)&=x+x\sum\limits_{i=1}f_ix^i+x^2\sum\limits_{i=0}f_ix^i
-    \end{align*}
-    Zauwazmy, ze poniewaz $f_0=0$, to $\sum\limits_{i=0}f_ix^i=\sum\limits_{i=1}f_ix^i$
-
-    \begin{align*}
-        F(x)&=x+(x+x^2)\sum\limits_{i=0}f_ix^i\\
-        F(x)&=x+(x+x^2)F(x)\\
-        F(x)(1-x-x^2)&=x\\
-        F(x)&={x\over 1-x-x^2}
-    \end{align*}
-    Zauwazamy, ze 
-    $$1-x-x^2=0\iff x={-1\pm\sqrt{1+4}\over 2}$$
-    Czyli mamy
-    $$F(x)={x\over (x+{1+\sqrt5\over 2})(x+{1-\sqrt5\over 2})}$$
-
-    Rozbicie tego na dwa dodawane ulamki zostawiam czytelnikowi oraz wikipedii. Tak samo jak dokonczenie tego rozwiazania.
-    \medskip
-
-    Zalozmy, ze czytelnik byl mniej leniwy niz autorka i wyliczyl jawny wzor na $n$-ty wyraz ciagu fibonaciego, ktory wg wikipedii wyglada mniej wiecej tak:
-    $$f_n=\frac1{\sqrt5}{(1+\sqrt5)^n-(1-\sqrt5)^n\over 2^n}$$
-
-    Otrzymujemy wiec:
-    $$l_n=2^{f_n}=2^{f_{n-1}}\cdot 2^{f_{n-2}}$$
+    \indent $1^o$ $n=3$
+    $$l_3=2\cdot 2=2^2=2^{f_3}.$$
+    \indent $2^o$ zakladamy, ze wzor jest poprawny dla pierwszych $n$ wyrazow, wowczas
+    $$l_{n+1}=l_nl_{n-1}=2^{f_n}2^{f_{n-1}}=2^{f_n+f_{n-1}}=2^{f_{n+1}}$$
 
 
     \section*{ZAD 5.}
@@ -298,5 +314,57 @@
     \medskip
 
     b) $g(0)=0$, $g(n)=g(\lfloor\frac n2\rfloor)+\lfloor\log_2n\rfloor$
+
+    $$g(n)=\sum\limits_{i=0}^{\lfloor \log_2n\rfloor}i=\frac12(\lfloor\log_2n\rfloor)(\lfloor\log_2n\rfloor+1)$$
+
+    \indent $1^o$ dla $n=1$ mamy
+    $$g(1)=g(0)+0=0=\frac12\cdot0\cdot 1$$
+    \indent $2^o$ zalozmy, ze wzor jest poprawny dla pierwszych $n$ wyrazow, rozwazmy dwie mozliwosci:\smallskip\\
+    A. $n+1=2^k$, $k\in\Z$
+    \begin{align*}
+        g(n+1)&=g(2^k)=g(2^{k-1})+\lfloor\log_22^k\rfloor=\frac12(\lfloor\log_22^{k-1}\rfloor)(\lfloor\log_22^{k-1}\rfloor+1)+k=\\
+        &=\frac12(k-1)k+k={(k-1)k+2k\over 2}={k(k-1+2)\over2}={k(k+1)\over2}=\\
+        &=\frac12\lfloor\log_2(n+1)\rfloor(\lfloor\log_2(n+1)\rfloor+1)
+    \end{align*}
+    B. $n+1=2^k+r$, $k,r\in\Z$ i $0<r<2^k$
+    \begin{align*}
+        g(n+1)&=g(2^k+r)=g(2^{k-1}+\lfloor{\frac r2}\rfloor)+\lfloor\log_2(2^k+\lfloor{\frac r2}\rfloor)\rfloor=\\
+        &=\frac12\lfloor\log_2(2^{k-1}+\lfloor{\frac r2}\rfloor)\rfloor(\lfloor\log_2(2^{k-1}+\lfloor{\frac r2}\rfloor)\rfloor+1)+k=\\
+        &=\frac12k(k-1)+k={k(k-1)+2k\over2}={k(k-1+2)\over2}={k(k+1)\over 2}=\\
+        &=\frac12\lfloor\log_2(n+1)\rfloor(\lfloor\log_2(n+1)\rfloor+1)
+    \end{align*}
+
+    \newpage
+
+
+    \section*{ZAD 15.}
+
+    Lecimy funkcja tworzaca, cuz why not. Niech
+    $$F(x)=\sum\limits_{i=1}^nf_nx^n$$
+    wtedy
+    \begin{align*}
+        F(x)&=\sum\limits_{i=0}f_ix^i\\
+        F(x)&=x+\sum\limits_{i=2}(f_{i-1}+f_{i-2})x^i\\
+        F(x)&=x+x\sum\limits_{i=2}f_{i-1}x^{i-1}+x^2\sum\limits_{i=2}f_{i-2}x^{i-2}\\
+        F(x)&=x+x\sum\limits_{i=1}f_ix^i+x^2\sum\limits_{i=0}f_ix^i
+    \end{align*}
+    Zauwazmy, ze poniewaz $f_0=0$, to $\sum\limits_{i=0}f_ix^i=\sum\limits_{i=1}f_ix^i$
+
+    \begin{align*}
+        F(x)&=x+(x+x^2)\sum\limits_{i=0}f_ix^i\\
+        F(x)&=x+(x+x^2)F(x)\\
+        F(x)(1-x-x^2)&=x\\
+        F(x)&={x\over 1-x-x^2}
+    \end{align*}
+    Zauwazamy, ze 
+    $$1-x-x^2=0\iff x={-1\pm\sqrt{1+4}\over 2}$$
+    Czyli mamy
+    $$F(x)={x\over (x+{1+\sqrt5\over 2})(x+{1-\sqrt5\over 2})}$$
+
+    Rozbicie tego na dwa dodawane ulamki zostawiam czytelnikowi oraz wikipedii. Tak samo jak dokonczenie tego rozwiazania.
+    \medskip
+
+    Zalozmy, ze czytelnik byl mniej leniwy niz autorka i wyliczyl jawny wzor na $n$-ty wyraz ciagu fibonaciego, ktory wg wikipedii wyglada mniej wiecej tak:
+    $$f_n=\frac1{\sqrt5}{(1+\sqrt5)^n-(1-\sqrt5)^n\over 2^n}$$
 
 \end{document}
