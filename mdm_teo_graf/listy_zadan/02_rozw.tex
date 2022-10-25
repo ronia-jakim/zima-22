@@ -204,4 +204,55 @@
         &=\Big({2n+2\over 2}\Big)^2=(n+1)^2
     \end{align*}
 
+    \section*{ZAD 7.}
+    
+    a) $a_{n+1}=(n+1)a_n+1$ dla $a_0=1$
+
+    \begin{align*}
+        a_n=n!+\sum\limits_{i=1}^n{n!\over i!}=\sum\limits_{i=0}^n{n!\over i!}
+    \end{align*}
+    
+    Dla $n=1,2$ dziala. Zalozmy, ze dziala tez dla wszystkich $n$, wtedy
+    \begin{align*}
+        a_{n+1}=(n+1)a_n+1=(n+1)\sum\limits_{i=0}^n{n!\over i!}+{(n+1)!\over(n+1)!}=\sum\limits_{i=0}^n{(n+1)!\over i!}+{(n+1)!\over(n+1)!}=\sum\limits_{i=0}^{n+1}{(n+1)!\over i!}
+    \end{align*}
+
+    \medskip
+    
+    b) $b_0=\frac12$, $nb_n=(n-2)b_{n-1}+1$ czyli dla $n>0$ mamy $b_n={(n-2)b_{n-1}+1\over n}$
+
+    $$b_n=\frac12$$
+
+    Dla $n=1,2$ dziala, zalozmy ze dziala tez dla wszystkich $n$, wtedy
+    \begin{align*}
+        b_{n+1}={(n-1)b_{n}+1\over n+1}={\frac12(n-1)+1\over n+1}={n-1+2\over 2(n+1)}={n+1\over 2(n+1)}=\frac12
+    \end{align*}
+
+    \medskip
+
+    c) $c_0=0$, $nc_n=(n+2)c_{n-1}+n+2$, dla $n>0$ $c_n={(n+2)c_{n-1}+n+2\over n}$
+
+    $$c_n=\sum\limits_{i=1}^n(2i+1)=\sum\limits_{i=1}^n2i+n=2\sum\limits_{i=1}^ni+n=n(n+1)+n$$
+
+    Dla $n=1,2$ dziala, zalozmy, ze jest zgodny dla wszystkich $n$, wtedy
+
+    \begin{align*}
+        c_{n+1}&={(n+3)c_n+n+3\over n+1}={(n+3)(n(n+1)+n)+n+3\over n+1}=\\=
+        &={(n+3)(n(n+1)+n+1)\over n+1}={(n+3)(n+1)(n+1)\over n+1}=\\
+        &=(n+3)(n+1)=(n+1)(n+2)+(n+1)
+    \end{align*}
+
+    \medskip
+
+    d) $d_0=1$, $d_1=2$, $nd_n=(n-2)!d_{n-1}d_{n-2}$, czyli d;a $n>0$ $d_n={(n-2)!d_{n-1}d_{n-2}\over n}$
+
+    \begin{align*}
+        d_0=1\\
+        d_1=2\\
+        d_2=1\\
+        d_3=\frac23\\
+        d_4=\frac13\\
+        d_5=\frac4{15}
+    \end{align*}
+
 \end{document}

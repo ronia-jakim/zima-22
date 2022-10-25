@@ -1,33 +1,15 @@
-from os import preadv
+fuck = [1]
 
+def count(n, prev, prevprev):
+    now = fuck[n-2]
+    now *= prev * prevprev
+    now /= n
 
-a = 1
-b = 1
+    pom = fuck[n-2]*(n-1)
+    fuck.append(pom)
 
+    print(now, " | ", n)
+    if n+1 < 10:
+        count(n+1, now, prev)    
 
-for i in range(1, 40):
-    now = a**2 + b
-    now /= a + b
-    temp = a
-    a = now
-    b = temp
-
-    if a != 1:
-        print("KURWAA")
-        break
-
-a = 1
-b = 2
-
-for i in range(3, 20):
-    now = b**2-1
-    now /= a
-
-    temp = b
-    b = now
-    a = temp
-
-    if i != now:
-        print("KURWAAAAAAAA2")
-        break
-
+count(2, 2, 1)
