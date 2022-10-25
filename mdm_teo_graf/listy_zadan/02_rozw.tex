@@ -263,17 +263,40 @@
         a_0&=\alpha\\
         a_1&=\beta\\
         a_2&={1+a_1\over a_0}={1+\beta\over\alpha}\\
-        a_3&={1+a_2\over a_1}={\alpha\beta+1\over \alpha\beta}\\
-        a_4&={1+a_3\over a_2}={\alpha\beta+\alpha+\beta+1\over\beta+\beta^2}\\
-        a_5&={1+a_4\over a_5}={\alpha\beta\over\alpha+\beta+1}{\beta^2+2\beta+\alpha\beta+\alpha+1\over\beta+1}=\alpha\\
-        a_6&={1+a_5\over a_4}=(\alpha+1){\beta+\beta^2\over\alpha\beta+\alpha+1+\beta}={\beta(\beta+1)\over\beta+1}=\beta
+        a_3&={1+a_2\over a_1}={\alpha+\beta+1\over \alpha\beta}\\
+        a_4&={1+a_3\over a_2}={\alpha\beta+\alpha+\beta+1\over\beta+\beta^2}={\alpha+1\over\beta}\\
+        a_5&={1+a_4\over a_3}={\beta+\alpha+1\over\beta}{\alpha\beta\over\alpha+\beta+1}=\alpha\\
+        a_6&={1+a_5\over a_4}=(1+\alpha){\beta\over1+\alpha}=\beta
     \end{align*}
-    Z powyzszych wyliczen wynika, ze ciag ma tylko 4 rozne wartosci, ktore powtarzaja sie cyklicznie. W takim razie wystarczy, zeby mianownik kazdego z tych wyrazen byl rozny od 0. Ze wzoru na wyrazy $a_2, a_3$ jasno wynika, ze $\alpha,\beta\neq0$, a poniewaz w $a_4$ wyraz $a_2$ jest w mianowniku, to jego licznik musi spelniac $1+\beta\neq0$, czyli $\beta\neq -1$.
+    Z powyzszych wyliczen wynika, ze ciag ma tylko 4 rozne wartosci, ktore powtarzaja sie cyklicznie. W takim razie wystarczy, zeby kazdy z tych wyrazow byl rozny od 0. 
+    \medskip
+    
+    W takim razie $\alpha,\beta\neq0$. Z wyrazu $a_4$ musi zachodzic $\alpha+1\neq0$, co daje $\alpha\neq -1$, a z wyrazu $a_2$ mamy $\beta+1\neq0$, $\beta\neq-1$
     \medskip
 
     Z licznika $a_3$ mamy nierownosc
     $$\alpha+\beta+1\neq0,$$
     czyli
     $$\alpha\neq-1-\beta.$$
+
+    \section*{ZAD 9.}
+
+    a) $f(1)=1$, $f(n)=f(\lfloor\frac n2\rfloor)+f(\lfloor\frac n2\rfloor)+1$
+
+    $$f(n)=2n-1$$
+
+    Dla $n=1,2$ smiga, zalozmy, ze smiga tez dla pierwszych $n$ wyrazow. Rozwazmy dwa przypadki:
+    
+    \indent $1^o$ $2|n$, mozemy wiec zapisac $n=2k$, $k\in\Z$
+    \begin{align*}
+        f(n)=f(2k)=f(k)+f(k)+1=2k-1+2k-1+1=4k-1=2n-1
+    \end{align*}
+    \indent $2^o$ $2\nmid n$, wtedy $n=2k+1$
+    \begin{align*}
+        f(n)=f(k)+f(k+1)+1=2k-1+2k+1+1=4k+2-1=2n-1
+    \end{align*}
+    \medskip
+
+    b) $g(0)=0$, $g(n)=g(\lfloor\frac n2\rfloor)+\lfloor\log_2n\rfloor$
 
 \end{document}
