@@ -255,4 +255,25 @@
         d_5=\frac4{15}
     \end{align*}
 
+    \section*{ZAD 8.}
+    $$a_n={1+a_{n-1}\over a_{n-2}}$$
+    
+    Rozpiszmy pierwsze 6 wyrazow badanego ciagu:
+    \begin{align*}
+        a_0&=\alpha\\
+        a_1&=\beta\\
+        a_2&={1+a_1\over a_0}={1+\beta\over\alpha}\\
+        a_3&={1+a_2\over a_1}={\alpha\beta+1\over \alpha\beta}\\
+        a_4&={1+a_3\over a_2}={\alpha\beta+\alpha+\beta+1\over\beta+\beta^2}\\
+        a_5&={1+a_4\over a_5}={\alpha\beta\over\alpha+\beta+1}{\beta^2+2\beta+\alpha\beta+\alpha+1\over\beta+1}=\alpha\\
+        a_6&={1+a_5\over a_4}=(\alpha+1){\beta+\beta^2\over\alpha\beta+\alpha+1+\beta}={\beta(\beta+1)\over\beta+1}=\beta
+    \end{align*}
+    Z powyzszych wyliczen wynika, ze ciag ma tylko 4 rozne wartosci, ktore powtarzaja sie cyklicznie. W takim razie wystarczy, zeby mianownik kazdego z tych wyrazen byl rozny od 0. Ze wzoru na wyrazy $a_2, a_3$ jasno wynika, ze $\alpha,\beta\neq0$, a poniewaz w $a_4$ wyraz $a_2$ jest w mianowniku, to jego licznik musi spelniac $1+\beta\neq0$, czyli $\beta\neq -1$.
+    \medskip
+
+    Z licznika $a_3$ mamy nierownosc
+    $$\alpha+\beta+1\neq0,$$
+    czyli
+    $$\alpha\neq-1-\beta.$$
+
 \end{document}
