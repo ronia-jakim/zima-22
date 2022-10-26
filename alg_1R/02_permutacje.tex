@@ -1,0 +1,60 @@
+\section{Permutacje :>}
+\begin{multicols}{2}
+    
+    {\color{def}$n$-ta grupa symetryczna} [$S_n$] - grupa wszystkich permutacji zbioru $X_n = \{1, ..., n\}$. $|S_n|=n!$\medskip
+
+    Jesli $P\in S_n$ i dla $i=1,...,n$ $P(i)=a_i$, to piszemy
+    $$
+        \begin{pmatrix}
+            1   && 2   && ... && n  \\
+            a_1 && a_2 && ... && a_n
+        \end{pmatrix}
+    $$
+
+    Mnozenie permutacji:
+    $$
+        \begin{pmatrix}
+            a_1 && a_2 && ... && a_n \\
+            b_1 && b_2 && ... && b_n
+        \end{pmatrix}
+        \begin{pmatrix}
+            c_1 && c_2 && ... && c_n \\
+            a_1 && a_2 && ... && a_n
+        \end{pmatrix} =
+    $$
+    $$=
+    \begin{pmatrix}
+        c_1 && c_2 && ... && c_n \\
+        b_1 && b_2 && ... && b_n
+    \end{pmatrix}
+    $$
+
+    {\color{def}Zbior elementow niezmienniczych} (fixpunktow) permutacji $P$ to zbior $F(P)=\{k\in X_n\;:\;P(k)=k\}$. Jego dopelnienie oznaczamy $M(P)=S_n\setminus F(P)$.\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Cykl $k$-elementowy} $C$ to permutacja taka, ze $C(a_1)=a_2$, $C(a_2)=a_3$, ..., $C(a_n)=a_1$. Cykl $2$-elementowy to {\color{acc}transpozycja}. Cykle zapisujemy
+    $$\begin{pmatrix}a_1, a_2,..., a_n\end{pmatrix}$$
+
+    Kazda permutacja jest iloczynem transpozycji.\medskip
+
+    \podz{sep}\medskip
+
+    {\color{def}Permutacje parzyste} - iloczyn 
+    $$\prod _{i<j}(a_j-a_i)$$ 
+    jest dodatni (gorny row to kolejne liczby naturalne, dolny to wyrazy). Pozostale permutacje sa {\color{def}nieparzyste}.\medskip
+
+    {\color{def}Znak permutacji} jest $+1$ gdzy permutacja jest parzysta i $-1$ wpp. Alternatywnie mozna zapisac (gorny row to $b_k$, a dolny to $c_k$)
+    $$sgn\;P=\prod_{i<j}{b_j-b_i\over c_j-c_i}$$
+
+    Dla dwoch dowolnych permutacji $P_1,P_2$ mamy
+    $$sgn\;P_1P_2=sgn\;P_1\cdot sgn\;P_2$$
+    $$sgn\;P_1^{-1}=sng\;P_1.$$
+
+    {\color{def}$n$-ta grupa alternujaca} [$A_n$] - podgrupa $S_n$ zlozona ze wszystkich parzystych permutacji.
+
+    \medskip
+
+    Permutacja jest parzysta iff $\sigma$ jest transpozycja parzyscie wielu transpozycji (czyli ma nieparzyscie wiele elementow).
+
+\end{multicols}\bigskip

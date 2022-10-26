@@ -33,4 +33,70 @@
     $$x_{x+1}=x_n-{f(x_n)\over f'(x_0)}$$
     Chce, zeby bylo liniowe
 
+    \section*{ZAD 4.}
+
+    Aby ciag byl zbiezny kwadratowo, musi zachodzic dla $\alpha=0$
+    $${x_{n+1}-\alpha\over (x_n-\alpha)^2}\to K\in(0,\infty).$$
+
+    \podz{sep}
+
+    $${1\over n^2}$$
+    $${\frac1{n^2}\over (\frac1{n^2})^2}={n^4\over n^2}\to\infty$$
+    Czyli ten ciag nie jest zbiezny kwadratowo.\medskip
+
+    \podz{sep}\medskip
+
+    $${1\over2^{2^n}}$$
+    $${2^{2^n}\over2^{2^{n+1}}}=2^{2^n-2^{n+1}}=2^{2^n(1-2)}=2^{-2^n}\to 0$$
+
+    Czyli ciag jest zbiezny kwadratowo\medskip
+
+    \podz{sep}\medskip
+
+    $$\frac1{\sqrt{n}}$$
+    $${\frac1{\sqrt{n}}\over \frac1n}={n\over\sqrt{n}}\to\infty$$
+
+    Czyli ciag nie jest zbiezny kwadratowo\medskip
+
+    \podz{sep}\medskip
+
+    $${1\over e^n}$$
+    $${{1\over e^n}\over {1\over 3^{2n}}}={e^{2n}\over e^n}=e^n\to\infty$$
+
+    Czyli znowu nie zbiezny kwadratowo\medskip
+
+    \podz{sep}\medskip
+    
+    $$\frac1{n^n}$$
+    $${\frac1{n^n}\over \frac1{n^{2n}}}={n^{2n}\over n^n}=n^n\to\infty$$
+
+    \section*{ZAD 6.}
+
+    $$x_{n+1}=x_n-rf(x_n)$$
+
+    Ciag jest zbiezny liniowo, gdy 
+    $${x_{n+1}-\alpha\over x_n-\alpha}\to K\quad 0<K<1$$
+
+    Szukamy $\alpha$ takiego, ze $f(\alpha)=0$. Rozpatrzmy funkcje $\phi$ taka, ze
+    $$\phi(\alpha)=\alpha$$
+    czyli miejsce zerowe $f$ to jej punkt staly.
+    Dalej, niech
+    $$\phi(x_n)=x_{n+1},$$
+    $$\phi(x_n)=x_n+rf(x_n).$$
+
+    Zauwazmy, ze istnieje $\xi\in[\alpha,x_n]$ takie, ze
+    $$x_{n+1}=\phi(\alpha)+\phi'(\xi)(x_n-\alpha)+...+{\phi^{(p)}(\xi)\over p!}(x_n-\alpha)^p$$
+    natomiast dla zbieznosci liniowej potrzebne nam jest $p=1$, wiec
+    $$\phi(x_n)=\alpha+\phi'(\xi)(x_n-\alpha)$$
+    $$\phi(x_n)-\alpha=\phi'(\xi)(x_n-\alpha)$$
+
+    Sprawdzmy kiedy funkcja $\phi(x_n)$ zbiega do $\alpha$, czyli kiedy
+    $$|\phi'(x)|=|1-rf'(x)|<1$$
+    bo w przeciwnym wypadku mamy ciag ktory nie jest zbiezny liniowo. 
+    \begin{align*}
+        -1<&1-rf'(x)<1\\
+        0<&rf'(x)<2
+    \end{align*}
+    
+
 \end{document}
