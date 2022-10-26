@@ -4,26 +4,38 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 
+
 \begin{document}
+    ZAZNACZYLAM WSZYSTKO POZA 1 I 7!!!
+
     \section*{ZAD 1.}
     
     Niech $f(x)=\frac 1x-c$. Zauwazajac, ze $f(\frac1c)=0$, mozemy przyblizyc $\frac1c$ uzywajac metody Newtona dla funkcji $f$.
     \medskip
 
-    Rozwazmy wiec punkt $x_1$, ktory przyblizamy za pomoca:
-    $$x_1=x_0-{f(x_0)\over f'(x_0)}=x_0+{\frac1{x_0}-c\over \frac1{x_0^2}}=x_0+{x^2_0-cx_0^3\over x_0}=x_0+x_0-cx_0^2=2x_0-cx_0^2$$
-    Czyli w punkcie $x_0$ rysujemy styczna do funkcji $f$ i szukamy jej punktu przeciecia z osia OX.
-    \bigskip
+    Rozpatrzmy ciag okreslony:
+    $$x_{n+1}=x_n-{f(x_n)\over f'(x_n)}=x_n-{\frac 1{x_n}-c\over -\frac 1{x_n^2}}=x_n+{(1-cx_n)x_n^2\over x_n}=x_n+x_n-cx_n^2=x_n(2-cx_n)$$
+
+    Niech $\phi$ bedzie funkcja taka, ze $\phi(\frac 1c)=\frac 1c$ oraz
+    $$\phi(x_n)=x_{n+1}$$
+    $$\phi(x)=x(2-cx)$$
+
+    Aby rozpatrywany przez nas ciag byl zbiezny, funkcje $\phi$ musi byc funkcja zwiezajaca [kontrakcja], czyli szukamy zbioru $D$ takiego, ze dla $x_{n},\frac1c\in D$ oraz liczby $K$ dla ktorej zachodzi
+    $$|x_{n+1}-\phi(\frac1c)|=|\phi(x_n)-\frac1c|<K|x_n-\frac1c|$$
+    i dalej
+    $$|x_{n}-\frac1c|<K^2|x_{n-1}-\frac1c|<K^3|x_{n-1}-\frac1c|<...<K^n|x_1-\frac1c|$$
 
     \begin{align*}
-        x_2&=x_1(2-cx_1)=\\
-        &=(x_0(2-cx_0))(2-c(x_0(2-cx_0)))=\\
-        &=(2x_0-cx_0^2)(2-2cx_0+c^2x_0^2)=\\
-        &=4x_0-4cx_0^2+2c^2x_0^3-2cx_0^2+2c^2x_0^3-c^3x_0^4=\\
-        &=4x_0-6cx_0^2+4c^2x_0^3-c^3x_0^4
+        |\phi(x_{n+1})-\frac1c|&<K|x_n-\frac1c|\\
+        \Big |{\phi(x_{n+1})-\frac1c\over x_n-\frac1c}\Big |&<K\\
+        \Big |{x_n(2-cx_n)-\frac1c\over x_n-\frac1c}\Big |&<K
     \end{align*}
 
-    Czyli dla coraz to wiekszego $n$ mamy coraz to wieksze potegi $x_0$, czyli generalnie to nie bedziemy chcieli brac zbyd duzego $x_0$, najlepiej cos ponizej $1$. W dodatku przy wyzszych potegach $x_0$ mamy wyzsza potege $c$, przy czym potega przy $x_0$ jest zwykle o jeden wieksza. Mozemy przewidziec, ze tak bedzie dalej. Najlepiej wiec, zeby $x_0^2\cdot c<1$, a im mniejsze tym lepiej.
+
+    Uzyjmy szeregu Taylora do przyblizenia funkcji $\phi$ w okolicy $\alpha=\frac1c$:
+    \begin{align*}
+        x_{n+1}=\phi(x_n)=\phi(\alpha)+\phi'(\alpha)(x_n-\alpha)+{\phi''(\alpha)\over 2!}(x_n-\alpha)^2+...+{\phi^{(p1)(\alpha)}\over (p-1)!}(x_n-\alpha)^{p-1}+{\phi^{(p)}(\xi_n)\over p!}(x_n\alpha)^p
+    \end{align*}
 
 
     \section*{ZAD 2.}
@@ -31,7 +43,57 @@
     Ciag przyblizen za pomoca metody newtona jest zbiezny liniowo do pierwiastka funkcji $f$.
     
     $$x_{x+1}=x_n-{f(x_n)\over f'(x_0)}$$
-    Chce, zeby bylo liniowe
+    Chce, zeby bylo liniowe.
+    \medskip
+
+    Rozpatrzmy funkcje dla $\alpha$ takiego, ze $f(\alpha)=0$:
+    \begin{align*}
+        \phi(\alpha)&=\alpha\\
+        \phi(x_n)&=x_{n+1}\\
+        \phi(x)&=x-{f(x)\over f'(x)}
+    \end{align*}
+    czyli w szczegolnosci $f(\alpha)=\alpha-{f(\alpha)\over f'(\alpha)}$.
+    $$\phi'(x)=1-{f'(x)^2-f(x)f''(x)\over f'(x)^2}={f(x)f''(x)\over f'(x)^2}$$
+    $$\phi'(\alpha)={f(\alpha)f''(\alpha)\over f'(\alpha)^2}.$$
+    
+    Ciag jest zbiezny liniowo, gdy
+    $$\Big |{x_{n+1}-\alpha\over x_n-\alpha}\Big |\to K < 1\quad K>0$$
+
+    $$\lim\limits_{n\to\infty}{E_{n+1}\over E_n}=\lim\limits_{n\to\infty}{x_{n+1}-\alpha\over x_n-\alpha}=\phi'(\alpha)\in (0,1)$$
+
+    Czyli zauwazmy, ze aby to bylo prawdziwe, to $f'(\alpha)\neq 0$, czyli $\alpha$ jest pojedynczym pierwiastkiem funkcji ktora ma co najmniej 2 niezerowe pochodne, np $x^2$ dla $\alpha=0$.
+    \medskip
+
+    Wtedy
+    $$\phi(x)=x-{x^2\over 2x}=x-\frac x2=\frac x2$$
+    $$x_{n+1}=\frac{x_n}2-\alpha=\frac{x_n}2$$
+    czyli $E_{n+1}=\frac12E_n$, a wiec
+    $${E_{n+1}\over E_n}\to \frac12$$
+    co spelnia wymagania.
+
+    \section*{ZAD 3.}
+
+    Zalozmy, ze mamy funckje rosnaca, wtedy regula falsi daje nam ciag
+    $$x_1={af(b)-bf(a)\over f(b)-f(a)}$$
+    $$x_{n+1}={x_n f(b)-bf(x_n)\over f(b)-f(x_n)}$$
+    Dla wygody oznaczmy $B=f(b)$
+    $$x_{n+1}=x_n{B\over B-f(x_n)}-b{f(x_n)\over B-f(x_n)}$$
+    rozpatrzmy funkcje $\phi$ taka, ze
+    \begin{align*}
+        f(\alpha)&=0\\
+        \phi(\alpha)&=\alpha\\
+        \phi(x)&=x{B\over B-f(x)}-b{f(x)\over B-f(x)}\\
+        \phi(x_n)&=x_{n+1}
+    \end{align*}
+
+    Aby metoda byla zbiezna liniowo, to 
+    $$\lim\limits_{n\to\infty}{E_{n+1}\over E_n}=\lim\limits_{n\to\infty}\Big |{x_{n+1}-\alpha\over x_n-\alpha}\Big |=\phi'(\alpha)= K\in (0,1)$$
+
+    $$\phi'(x)={Bf'(x)\over B-f(x)}$$
+    $$\phi'(\alpha)={Bf'(\alpha)\over B}=f'(\alpha)$$
+    co jest prawda na przyklad dla funkcji
+    $$f(x)=x^3-1$$
+    
 
     \section*{ZAD 4.}
 
@@ -70,6 +132,34 @@
     $$\frac1{n^n}$$
     $${\frac1{n^n}\over \frac1{n^{2n}}}={n^{2n}\over n^n}=n^n\to\infty$$
 
+
+    \section*{ZAD 5.}
+
+    Jest to jedyny pierwiastek, gdyz w przeciwnym wypadku w pewnym punkcie funkcja $f$ musialaby sie przegiac, wiec miec zerowa pierwsza pochodna.
+    \medskip
+
+    Poniewaz $f''(x)>0$, to funkcja $f$ jest wypukla. W dodatku, $f'(x)>0$, wiec funkcja ta jest rosnaca. Oznaczmy blad metody Newtona przez
+    $$e_n=x_n-\alpha.$$
+    W zalozeniu mamy, ze $f''$ jest ciagla i pokazalismy, ze $\alpha$ jest jedynym pierwiastkiem tej funkcji. Z definicji wyrazu w metodzie Newtona mamy
+    \begin{align*}
+        e_{n+1}=x_{n+1}-\alpha=x_n-{f(x_n)\over f'(x_n)}-\alpha=e_n-{f(x_n)\over f'(x_n)}
+    \end{align*}
+    a na mocy wzoru Taylora:
+    \begin{align*}
+        0=f(\alpha)=f(x_n-e_n)=f(x_n)-e_nf'(x_n)+\frac12e_n^2f''(\xi_n)\quad(1)
+    \end{align*}
+    dla pewnego $\xi_n\in[x_n,r]$. To daje
+    $$e_nf'(x_n)-f(x_n)=\frac12f''(\xi_n)e^2n$$
+    $$e_{n+1}=\frac12{f''(\xi_n)\over f'(x_n)}e_n^2\approx\frac12{f''(\alpha)\over f'(\alpha)}e_n^2=Ce^2_n\quad(2)$$
+    czyli ta metoda jest zbiezna kwadratowo.
+    \medskip
+
+    Wobec wzoru $(2)$ mamy
+    $$e_{n+1}>0,$$ czyli $x_n>r$ dla $n\geq 1$. Z tej wlasnosci wynika tez, ze $f(x_n)>f(\alpha)=0$ Dlatego, na mocy $(1)$ $e_{n+1}<e_n$. W takim razie ciag bledow jest malejacy i ograniczny z dolu. Dzieki temu, granice
+    $$e=\lim\limits_{n\to\infty}e_n$$
+    $$x=\lim\limits_{n\to\infty}x_n$$
+    istnieja. Z $(1)$ wynika tez, ze $e=e-{f(x)\over f'(x)}$, czyli $f(x)=0$ i $x=\alpha$.
+
     \section*{ZAD 6.}
 
     $$x_{n+1}=x_n-rf(x_n)$$
@@ -98,5 +188,32 @@
         0<&rf'(x)<2
     \end{align*}
     
+
+    \section*{ZAD 8.}
+
+    Rozwazmy funkcje
+    $$f(x)=x^2-R$$
+    jej miejscem zerowym jest $\sqrt R$. Dalej, niech
+    $$g(x)={f(x)\over f'(x)}={x^2-R\over\sqrt{2x}}$$
+    Miejscem zerowym funkcji $g$ jest nadal liczba $\sqrt R$. Jesli rozwazymy metode Newtona dla $g$, to otrzymamy
+    \begin{align*}
+        x_{n+1}=x_n-{(x^2-R)2x_n\over4x^4_n-(x^2-R)}=x_n-{2x_n^3-2Rx_n\over3x_n^2+R}={4x_n^3+Rx_n-2x_n^3+2Rx_n\over3x_n^2+R}=x_n{x_n^2+3R\over3x_n^2+R}
+    \end{align*}
+    Czyli chcemy sprawdzic, czy metoda Newtona dla funkcji $g$ jest zbiezna szesciennie. Tak jak poprzednio, potrzebujemy funkcji 
+    $$\phi(x)=x-{2x^3-2Rx\over 3x^2+R}$$
+    i zeby byla to zbieznosc szescienna, to
+    $$\frac16\phi^{(3)}(\sqrt{R})<\infty$$
+    \begin{align*}
+        \phi^{(3)}(\sqrt{R})&=-(12\sqrt{R}+48\sqrt{R}^3-24\sqrt{R}R)(3R+R)^{-2}+2(3R+R)^{-3}(6R-2R+12R^2-12R^2)6\sqrt{R}=\\
+        &=2{3\sqrt{R}\cdot R\over 16R^3}-{\sqrt{R}(12+24R)\over16R^2}={6R^{\frac32}-12R^{\frac32}-24R^{\frac52}\over16R^3}={-6R^{\frac32}-24R^{\frac52}\over16R^3}={-6R^{-1}-24\over16R^{\frac12}}<\infty
+    \end{align*}
+
+    \section*{ZAD 9.}
+
+    Metoda Newtona dla funkcji
+    $$g={f\over \sqrt{f'}}$$
+    $$g'={2(f')^2-f''f\over 2(f')^{\frac32}}$$
+    wyglada nastepujaco:
+    $$x_{n+1}=x_n-{g\over g'}=x_n-{f\over \sqrt{f'}}{2(f')^{\frac32}\over2(f')^2-f''f}=x_n-{f'f\over(f')^2-{f''f\over2}}$$
 
 \end{document}
