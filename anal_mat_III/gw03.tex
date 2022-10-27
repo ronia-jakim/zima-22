@@ -24,6 +24,10 @@
 
 \usepackage{geometry}
 
+\usepackage{tikz}
+
+\usepackage{xcolor}
+
 \author{Weronika Jakimowicz}
 \title{Zadania z $\star\star$ LISTA 3}
 \date{32 października 2022}
@@ -38,6 +42,133 @@
 
 \begin{document}
     \maketitle
+
+    \section*{ZAD 10.}
+
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[thick](0,0)--(0,1.73);
+        \draw[thick](0,1.73)--(1.5, 0.86);
+        \draw[gray, very thin](0,1.73)--(1,0);
+
+        \draw[thick] (1.5,0.86)--(2,1.73);
+        \draw[thick](-1,0)--(0,0);
+        \draw[thick] (0,3.46)--(1,3.46);
+        \draw[thick](-1,3.46)--(0,3.46);
+        \draw[thick](-1,0)--(-2,1.73);
+        \draw[thick](-2,1.73)--(-1,3.46);
+        \draw[thick](2,1.73)--(1,3.46);
+        \draw[thick](0, 1.73) circle (1.73);
+
+        \draw[red, ultra  thick] (0,0)--(1,0);
+        \draw[cyan, ultra thick](1,0)--(1.5,0.86);
+
+        \node at (0.5, -0.3) {\color{red}$a_1$};
+        \node at (1.6, 0.35) {\color{cyan}$a_2$};
+    \end{tikzpicture}
+    \end{center}
+
+    Rozważmy dwa trójkąty prostokątne z bokami $a_1,a_2$ zaznaczonymi na obrazku wyżej. Mają wspólną przeciwprostokątna, oraz dwie przyprostokątne będące promieniem okręgu na którym opisany jest sześciokąt. W takim razie, z twierdzenia Pitagorasa, mamy
+    \begin{align*}
+        a_1^2+1^2&=a_2^2+1\\
+        a_1^2&=a^2_2
+    \end{align*}
+    a ponieważ rozważamy długości boków sześciokąta, to obie wartości są dodatnie, więc
+    $$a_1=a_2.$$
+
+    Zauważamy więc, że fragmenty boków od punktu wspólnego z okręgiem do wierzchołka będą parami równe. W dodatku, ponieważ mamy okrąg jednostkowy, jeśli oznaczymy przez $\alpha_1$ kąt naprzeciwko wierzchołka sześciokąta w każdym z takich kwadratów, to jego tangens jest równy długości $a_1$.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick](0,0)--(0,1.73);
+            \draw[thick](0,1.73)--(1.5, 0.86);
+            \draw[gray, very thin](0,1.73)--(1,0);
+    
+            \draw[thick] (1.5,0.86)--(2,1.73);
+            \draw[thick](-1,0)--(0,0);
+            \draw[thick] (0,3.46)--(1,3.46);
+            \draw[thick](-1,3.46)--(0,3.46);
+            \draw[thick](-1,0)--(-2,1.73);
+            \draw[thick](-2,1.73)--(-1,3.46);
+            \draw[thick](2,1.73)--(1,3.46);
+            \draw[thick](0, 1.73) circle (1.73);
+    
+            \draw[red, ultra  thick] (0,0)--(1,0);
+            \draw[cyan, ultra thick](1,0)--(1.5,0.86);
+
+            \node at (0.4, 0.6) {$\alpha_1$};
+            \draw[thin] (0, 0.89) arc (60:150:-0.3);
+    
+            \node at (0.5, -0.3) {\color{red}$a_1$};
+            \node at (1.6, 0.35) {\color{cyan}$a_1$};
+        \end{tikzpicture}
+        \end{center}
+        $$\tan\alpha_1={a_1\over 1}=a_1\quad (1)$$
+
+        Podzielmy więc sześciokąt na 6 par przystających trójkątów prostokątnych tak jak wyżej, gdzie para o numerze $k$ będzie miała bok na zewnątrz okręgu o długości $a_k$ oraz kąt w wierzchołku będącym środkiem okregu $\alpha_k$, analogicznie jak dwa obrazka wyżej. Pole całego sześciokąta to wtedy suma pól tych 12 trójkątów, a ponieważ wysokość każdego z nich jest równa $1$, możemy napisać
+        $$P=2(\sum\limits_{i=1}^6 a_n)$$
+        natomiast podstawiając z obserwacji $(1)$ dostaniemy
+        $$P=2(\sum\limits_{i=1}^6\tan\alpha_k).$$
+        Zauważmy, że suma oznaczanych przez nas kątów jest równa $2\pi$, ponieważ musi sumuwać się do pełnego kąta, a ponieważ każdy kąt powtarza się dwa razy, to mamy warunek:
+        $$\sum\limits_{i=1}^6\alpha_i=\pi.$$
+
+        Rozważamy więc funkcję 
+        $$f(\alpha_1,...,\alpha_6)=2(\sum\limits_{i=1}^6\tan\alpha_k)$$
+        przy warunku
+        $$g(\alpha_1,...,\alpha_6)=\sum\limits_{i=1}^6\alpha_i=\pi.$$
+
+        Korzystając z metody mnożników Lagrange'a otrzymamy następujący układ równań:
+        \begin{align*}
+            \begin{cases}
+                \frac2{\cos^2 \alpha_1}=\lambda\\
+                ...\\
+                \frac2{\cos^2\alpha_6}=\lambda\\
+                \sum\limits_{i=1}^6\alpha_i=\pi
+            \end{cases}
+        \end{align*}
+        Ponieważ po lewej stronie każdego z równań mamy wartość która nie może być równa $0$ (dzielimy $1$ przez pewna wartość), to $\lambda\neq 0$.\smallskip\\
+
+        Niech $i\neq j$, mamy
+        \begin{align*}
+            &\begin{cases}
+                \frac2{\cos^2 \alpha_i}=\lambda\\
+                \frac2{\cos^2 \alpha_j}=\lambda
+            \end{cases}\\
+            &\frac2{\cos^2 \alpha_i}=\frac2{\cos^2 \alpha_j}\\
+            &\cos^2 \alpha_j=\cos^2 \alpha_i
+        \end{align*}
+        Są dwie możliwości:
+
+        $$1.\;\cos\alpha_j=-\cos\alpha_i$$
+        co znaczy, że część kątów jest ujemna, co nie może się zdarzyć.
+
+        $$1.\;\cos\alpha_j=\cos\alpha_i$$
+        i wtedy $\alpha_j=\alpha_i$ lub $\alpha_j=2\pi-\alpha_i$. Przyjżyjmy się napierw drugiej możliwości. Każdy $\alpha_i$ możemy wrazić za pomocą $\alpha_1$, co da nam
+        $$\sum\limits_{i=1}^6\alpha_i=\alpha_1+5(2\pi-\alpha_1)=10\pi-4\alpha_1$$
+        żeby to było zgodne z ograniczeniem, dostaniemy
+        \begin{align*}
+            10\pi-4\alpha_1&=\pi\\
+            \frac94\pi&=\alpha_1
+        \end{align*}
+        ale wtedy
+        $$\alpha_k=2\pi-\frac94\pi=-\frac14\pi$$
+        wszystkie kąty poza pierwszym sa ujemne, co być nie może. Pozostaje nam więc 
+        $$\alpha_i=\alpha_j,$$
+        co spełnia warunek dla $\alpha_i=\frac\pi6$, a więc o najmniejsze pole podejrzewamy sześciokąt foremny.
+        $$P=2\sum\limits_{i=1}^6\tan{\pi\over6}={12\over\sqrt{3}}\approx 6.928$$
+        
+        Sprawdźmy pole innego sześciokąta, np takiego, dla którego $\alpha_1={\pi\over4}$, a dla pozostałych $i$ $\alpha_i={3\over 20}\pi$
+        $$P_2=2(\tan{\pi\over4}+5\tan{3\pi\over 20})\approx7.095>P$$
+        wiemy więc, że znaleziona wartość na pewno nie jest maksimum pola. Aby istniała wartość mniejsza, musielibyśmy jeden kąt zmniejszony o $\epsilon$, a pozostałe wydłużone o jakąś część tego skrócenia. Ale zauważmy, że
+        $$\tan(x+y)={\tan x+\tan y\over 1-\tan x\tan y}$$
+        $$\tan(x-y)={\tan x - \tan y\over 1+\tan x\tan y}$$
+        \begin{align*}
+            P_3&=\tan(\frac\pi6-\epsilon)+\tan(\frac\pi6+\xi_2)+...+\tan(\frac\pi6+\xi_6)=\\
+            &={\tan\frac\pi6-\tan\epsilon\over 1+\tan\frac\i6\tan\epsilon}+\sum\limits_{i=2}^6{\tan\frac\pi6+\tan\xi_i\over1-\tan\frac\pi6\tan\xi_i}
+        \end{align*}
+        i zauważmy, że to co dodamy jest większe niż to, co odejmiemy, więc dostajemy coś większego niż oryginalne $\frac\pi6$.
+        
+
 
     \section*{ZAD 12.}
 
@@ -136,14 +267,21 @@
 
     Zauważmy, że zbiór $P_2$, oraz zbior wektorów z $\R^3$ o kolejnych współrzędnych będących współczynnikami wielomianów z $P_2$, jest niezwarty i nieograniczony. Musimy więc sprawdzić, co się dzieje kiedy
     $$\|(a,b,c)\|\to\infty$$
-    Wtedy $a^2+b^2+c^2\to\infty$, a wiec 
+    Wtedy $a^2+b^2+c^2\to\infty$, a ponieważ $a=1-b-c$, to można powiedzieć, że
+    $$(1-b-c)^2+b^2+c^2=2b^2+2bc-2b+2c^2-2c+1=(b+c)^2+(b-1)^2+(c-1)^2-1\to\infty$$
+    \begin{align*}
+        &\frac1{30}(6a^2+20ac+20b^2+15ab+30bc+30c^2)=\\
+        &=\frac1{30}(6(b^2+2bc-2b+c^2-2c+1)+20c(1-b-c)+20b^2+15b(1-b-c)+30bc+30c^2)=\\
+        &=\frac1{30}(11b^2+7bc+16c^2-12c+6+20c+15b)
+    \end{align*}
+    
+    a więc
     $$F(a,b,c)\xrightarrow{}{\|(a,b,c)\|\to\infty}\infty$$
-
     czyli wiemy, że dla nieskończenie długich wektorów wartość funkcji jest nieskończenie wysoka.
     \medskip
 
     Wartość funkcji $F$ w punkcie który został otrzymany w powyższych obliczeniach wynosi
-    $$F({10\over3},\frac83,\frac13)=\frac19$$
+    $$F({10\over3},-\frac83,\frac13)=\frac19$$
     czyli jest niższa niż dla przypadku $\lambda=0$.
     \medskip
     
