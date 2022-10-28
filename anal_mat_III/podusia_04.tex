@@ -1,0 +1,101 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+
+    \section*{ZAD. 4.}
+
+    \begin{align*}
+        x^2+y^2+4y&=xy+2x\\
+        2xdx+2ydy+4dy&=xdy+ydx+2dx\\
+        2x+2y{dy\over dx}+4{dy\over dx}&=x{dy\over dx}+y+2\\
+        {dy\over dx}(2y+4-x)&=y+2-2x\\
+        {dy\over dx}={y+2-2x\over 2y+4-x}
+    \end{align*}
+    Pochodna zeruje sie tylko wtedy, gdy licznik jest rowny zero, wiec
+    $$y+2-2x=0$$
+    $$y=2x-2$$
+    potencjalne extrema znajduja sie na prostej. Wstawiajac $y$ do oryginalnego wzoru dostaniemy
+    \begin{align*}
+        x^2+(2x-2)^2+4(2x-2)&=x(2x-2)+2x\\
+        x^2+4x^2-8x+4+8x-8&=2x^2-2x+2x\\
+        3x^2-4&=0\\
+        x^2&=\frac43
+    \end{align*}
+    czyli sa dwa rozwiazania dla $y$:
+    \begin{align*}
+        &\begin{cases}
+            x=\frac2{\sqrt3}\\
+            y=\frac4{\sqrt3}-2
+        \end{cases}
+        &\begin{cases}
+            x=-\frac2{\sqrt3}\\
+            y=-\frac4{\sqrt3}-2
+        \end{cases}
+    \end{align*}
+
+    Dalej chcemy sprawdzic, czy one nie sa przypadkiem punktem przegiecia, wiec lecimy szukac drugiej pochodnej :v
+
+    Zauwazylam, ze sa w sumie to 3 metody:\medskip
+
+    Wyliczamy sobie te oryginalna ${dy\over dx}$ i rozniczkujemy obie strony normalnie, z tym, ze tam gdzie rozniczkujemy po $y$ to przeciez tak jakby mamy funkcje zalezna od $x$, wiec pochodna $x$ to pochodna tej funkcji, czyli ${dy\over dx}$:
+    \begin{align*}
+        {d^2y\over dx^2}&={y+2-2x\over 2y+4-x}\\
+        {d^2y\over dx^2}&={({dy\over dx}-2)(2y+4-x)-(y+2-2x)(2{dy\over dx}-1)\over(2y+4-x)^2}\\
+        {d^2y\over dx^2}&={{dy\over dx}x-3y-6\over (2y+4-x)^2}
+    \end{align*}
+
+    Drugi sposob, to bez wyliczania sobie od razu, po prostu stosujemy product rule do tego co zostalo wczesniej wyliczone. Tutaj trzeba uwazac, bo jak na razie rozniczkujemy wszystko po wszystkim, z tym, ze $dx$ nam sie do tego nie wlicza, a pochodna $dy$ to $d^2y$, czyli podwojnie zrozniczkowany $y$ c:
+    \begin{align*}
+        2x+2y{dy\over dx}+4{dy\over dx}&=x{dy\over dx}+y+2\\
+        2dx+2{d^2y\over dx}+2y{d^2y\over dx}+4{d^2y\over dx}&=dy+x{d^2y\over dx}+dy\\
+        2+2{d^2y\over dx^2}+2y{d^2y\over dx^2}+4{d^2y\over dx^2}&={dy\over dx}+x{d^2y\over dx^2}+{dy\over dx}
+    \end{align*}
+
+    Ostatnia jest podobna do tego co wyzej, tylko nie dzielilismy przez $dx$ tak jak postac z poprzedniego kroku:
+    \begin{align*}
+        2xdx+2ydy+4dy&=xdy+ydx+2dx\\
+        2dx^2+2d^2y+2yd^2y+4d^2y&=dydx+xd^2y+dydx\\
+        2+{d^2y\over dx^2}+2{d^2y\over dx^2}+4{d^2y\over dx^2}&={dy\over dx}+x{d^2y\over dx^2}+{dy\over dx}
+    \end{align*}
+
+    Wracajac do sprawdzania czy nie znalezlismy przypadkiem tylko punktu przegiecia, podstawiamy sobie wartosci jaki obliczylismy. Na szescie szukalismy ich tak, zeby pochodna pierwszego stopnia byla zerowa, wiec tam gdzie sie pojawia ${dy\over dx}$ nam sie wyzeruje. Podstawie do tego, co znalazlam jako pierwsze
+
+    $${d^2y\over dx^2}(\frac2{\sqrt3},\frac4{\sqrt3}-2)={-3(\frac4{\sqrt3} - 2)-6\over (2(\frac4{\sqrt3} - 2) + 4 - \frac2{\sqrt3})^2}$$
+    
+    Mnie tylko interesuje, czy to sie zeruje czy nie, wiec wylicze tylko mianownik:
+    $$-3(\frac4{\sqrt3} - 2)-6=-3\frac4{\sqrt3}+6-6\neq 0$$
+    wiec to jest maksimum.
+
+    $${d^2y\over dx^2}(-\frac2{\sqrt3},-\frac4{\sqrt3}-2)={-3(-\frac4{\sqrt3} - 2)-6\over (2(-\frac4{\sqrt3} - 2) + 4 -+\frac2{\sqrt3})^2}$$
+
+    Znowu czy mianownik sie zeruje:
+    $$-3(-\frac4{\sqrt3} - 2)-6=3\frac4{\sqrt3} + 6-6\neq 0$$
+    i mamy minimum.
+
+    \section*{ZAD 5.}
+
+    $$x^2+2y^2+3z^2+xy-z-9=0$$
+    $$z(x,y)$$
+
+    Lecimy. Najpierw pierwsza pochodna dla $x$:
+    \begin{align*}
+        2xdx+6zdz+ydx-dx&=0\\
+        2x+6z{dz\over dx}+y-1&=0
+    \end{align*}
+    $${dz\over dx}(1,-2)=\frac16(1+2-2)=\frac16$$
+
+    Druga pochodna dla $x$:
+    \begin{align*}
+        2xdx+6zdz+ydx-dx&=0\\
+        2dx^2+6d^z+6zd^2z&=0\\
+        1+{d^2z\over dx^2}(6+6z)&=0
+    \end{align*}
+    $${d^2z\over dx}(1, -2)={1\over 12}$$
+
+    No i w sumie analogicznie dla $y$, wiec mi sie nie chce tego liczyc.
+
+\end{document}
