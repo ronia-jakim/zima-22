@@ -43,8 +43,6 @@
 \begin{document}
     \maketitle
 
-    {\color{blue}GRANICE WIELU ZMIENNYCH W ZADANIU 12}
-
     \section*{ZAD 10.}
 
     \begin{center}
@@ -215,7 +213,7 @@
             20c=3a\\
             c=1
         \end{cases}\\
-        \begin{cases}
+        &\begin{cases}
             a=\frac{20}3\\
             b=-\frac{20}3\\
             c=1
@@ -269,8 +267,12 @@
 
     Zauważmy, że zbiór $P_2$, oraz zbior wektorów z $\R^3$ o kolejnych współrzędnych będących współczynnikami wielomianów z $P_2$, jest niezwarty i nieograniczony. Musimy więc sprawdzić, co się dzieje kiedy
     $$\|(a,b,c)\|\to\infty$$
-        {\color{blue}TO SA GRANICE CZASTKOWE!!!}
-    \medskip
+    $$b=1-a-c$$
+    \begin{align*}
+        F(a,b,c)&=\frac1{30}(6a^2+20ac+10b^2+15ab+30bc+30c^2)=\\
+                &=\frac1{30}(\frac14(2a-5c-5)^2+\frac52c^2+\frac54(c-1)^2+\frac52)\to\infty
+    \end{align*}
+    Czyli dla wektorów o długości dążącej do nieskończoności mamy wartość $F$ dodatnią i dążącą do nieskończoności, więc nie istnieje wartość maksymalna.
 
     Wartość funkcji $F$ w punkcie który został otrzymany w powyższych obliczeniach wynosi
     $$F({10\over3},-\frac83,\frac13)=\frac19$$
