@@ -44,23 +44,88 @@
 \maketitle
 
 \section*{ZAD 1.}
-Klasa $C^1$ - użyć złożenia dwóch funkcji ciągłych.
+
+{\color{red}$\quad\;\;1$. RÓŻNICZKOWALNOŚĆ:}
 \medskip
+
+Aby funkcja wieloarguemntowa o wartościach wektorowych była różniczkowalna w punkcie $(x_0,y_0)$, granica
+$$\lim\limits_{(x,y)\to(x_0,y_0)}{\|F(x,y)-F(x_0,y_0)-T(x-x_0,y-y_0)\|\over\|(x-x_0,y-y_0)\|}$$
+musi zmieżać do 0. To znaczy, że funkcję $F$ możemy bardzo dobrze przybliżyć za pomocą przekształcenia liniowego $T$ w okolicy punktu $(x_0,y_0)$. Ponieważ operujemy na przekształceniu $\R^2\to\R^2$, to $T$ będzie miało macierz 2x2
+$$\begin{pmatrix}a & b\\ c & d\end{pmatrix}$$
+i po wymnożeniu z dowolnym $(x,y)$ będzie dawało wynik
+$$\begin{pmatrix}
+    a & b\\
+    c & d
+\end{pmatrix}
+\begin{pmatrix}
+    x\\y
+\end{pmatrix}=\begin{pmatrix}
+    ax+by\\
+    cx+dy
+\end{pmatrix}
+$$
+Aby taka operacja dawała wynik zbliżający się do $(x_0,y_0)$ dla punktów w jego pobliżu, to $a$ musi być małą zmianą w pierwszej współrzędem względem $x$, a $b$ małą zmianą w pierwszej współrzędnej względem $y$, analogicznie dla $c$ i $d$. Czyli $T$ jest Jakobianem. W takim razie, żeby sprawdzić czy badana przez nas funkcja jest zbieżna, wystarczy sprawdzić, czy dla dowolnego punktu poniższa granica jest równa 0:
+\begin{align*}
+    &{\|F(x,y)-F(x_0,y_0)-T(x-x_0,y-y_0)\|\over\|(x-x_0,y-y_0)\|}=\\
+    &={\|
+        \begin{pmatrix}x+f(y)\\y+f(x)\end{pmatrix}
+        -\begin{pmatrix}x_0+f(y_0)\\y_0+f(x_0)\end{pmatrix}-
+        \begin{pmatrix}
+            x-x_0+(y-y_0)f'(y_0)\\
+            (x-x_0)f'(x_0)+y-y_0
+        \end{pmatrix}
+    \|\over\|(x-x_0,y-y_0)\|}=\\
+    &={\|
+        \begin{pmatrix}
+            f(y)-f(y_0)-(y-y_0)f'(y_0)\\
+            f(x)-f(x_0)-(x-x_0)f'(x_0)
+        \end{pmatrix}
+        \|\over
+        \|(x-x_0,y-y_0)\|
+    }=\\
+    &=\Big[{{(f(y)-f(y_0)-(y-y_0)f'(y_0))^2+(f(x)-f(x_0)-(x-x_0)f'(x_0))^2\over(x-x_0)^2+(y-y_0)^2}}\Big]^\frac12=\\
+    \Big[{(f(y)-f(y_0))^2\over}\Big]
+\end{align*}
+
+\medskip
+
 
 {\color{red}2. RÓŻNOWARTOŚCIOWOŚĆ:}
 \medskip
 
-Zauważmy, że złożenie dwóch funkcji różnowartościowych jest różnowartościowe. Niech 
-$$g(x,y)=x+y$$
-$$f(x,y)=g(F(x,y))=x+f(y)+y+f(z).$$
-Badamy teraz różnorodność $f$. Załóżmy, że nie jest ono różnowartościowe. Czyli w pewnym momencie funkcja zawraca na $x$ i na $y$, a więc obie pochodne cząstkowe się zerują.
-$${d\over dx}F(x,y)=1$$
-$${d\over dy}F(x,y)=1$$
-Widzimy, że obie pochodne są funkcjami stałymi, więc nigdy się nie wyzerują, a więc $F$ jest 1-1.
+Żeby funkcja była różnowartościowa, musi być odwracalna w każdym punkcie swojej dziedziny. To znaczy, że pierwsza pochodna nie może nigdy się zerowa. Przyjżyjmy się Jakobianowi funkcji $F$
+\begin{align*}
+    \begin{bmatrix}
+        1 & f'(y)\\
+        f'(x) & 1
+    \end{bmatrix}
+\end{align*}
+Jego wyznacznik to 
+$$1-f'(x)f'(y)$$
+a ponieważ 
+$$(\forall\;a\in\R)\;|f'(a)|<1,$$
+to również
+$$|f'(x)f'(y)|<1,$$
+co daje nam 
+$$1-f'(x)f'(y)>0,$$
+a więc badana funkcja jest odwracalna w każdym punkcie dziedziny. To znaczy, że jest różnowartościowa.
+\medskip
 
 {\color{red}3. NA:}
 \medskip
 
+Jeśli funkcja jest "na", to nie może być ściśle wklęsła ani ściśle wypukła. Czyli wyznacznik jej Hesjana musi być 0.
+\begin{align*}
+    \begin{bmatrix}
+        {d\over dx}1 & {d\over dy} f'(x)\\
+        {d\over dx}f'(y) & {d\over dy}1
+    \end{bmatrix}=
+    \begin{bmatrix}
+        0 & 0\\
+        0 & 0
+    \end{bmatrix}
+\end{align*}
+wyznacznik jest stale równy zero, więc mamy funkcje która nie jest ani wypukła ani wklęsła, więc przechodzi całą przeciwdziedzinę.
 
 
 \end{document}

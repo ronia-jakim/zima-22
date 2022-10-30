@@ -1,31 +1,97 @@
 \section{Structural properties}
 
-\subsection{The basics}
+\subsection{Basic definitions}
 
 \pdef
 
     {\color{def}Graph} - an ordered pair $G=(V,E)$:\smallskip\\
-    \point {\color{acc}vertices} $:=V$ [singular \emph{vertex}]\\
+    \point {\color{acc}vertices} $:=V$ [singular: \emph{vertex}]\\
     \point {\color{acc}edges} $:=E$, $\{v,w\}:=vw$
 
 \kdef 
 
-\begin{tabularx}{\textwidth}{ X X }
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
 
     For an edge $vw$, $v\neq w$ we say that $v,w$ are its {\color{acc}endpoints} and that it is {\color{acc}incident} to $v$ (or $w$). 
     \medskip
-    
-    \podz{sep}
+
     &
-    Dla krawedzi $vw$, $v\neq w$ mowimy, ze $v,w$ sa jej {\color{acc}koncami} i ze jest krawedzia {\color{acc}padajaca} na $v$ (lub $w$).\\
+    Dla krawedzi $vw$, $v\neq w$ mowimy, ze $v,w$ sa jej {\color{acc}koncami} i ze jest krawedzia {\color{acc}padajaca} na $v$ (lub $w$).
+    \medskip
+
+    \\
+
+    \hline
 
     & \\
 
-    Graphs $G$ and $H$ are {\color{def}isomorfic} ($G\simeq H$) if there exists $f:V(G)\xrightarrow[1-1]{on} V(H)$ such that\\
-    $(\forall\;v,w\in V(G))\;vw\in E(G)\iff f(v)f(w)\in E(H)$\smallskip
+    Graphs $G$ and $H$ are {\color{def}isomorfic} ($G\simeq H$) if there exists $f:V(G)\xrightarrow[1-1]{on} V(H)$ such that
+    
+    $(\forall\;v,w\in V(G))\;vw\in E(G)\iff f(v)f(w)\in E(H)$
+    \smallskip
 
-    $G$ is a {\color{def}subgraph} of $H$ [$G\leq H$] if $V(G)\subseteq V(H)$ and $E(G)\subseteq E(H)$.\smallskip
+    \emph{\color{dyg}Meaning that edges are like an operation on a group of vertices}
+    \medskip
+
+    $G$ is a {\color{def}subgraph} of $H$ [$G\leq H$] if $V(G)\subseteq V(H)$ and $E(G)\subseteq E(H)$.
+    \medskip
 
     If $G$ is {\color{def}$H$-free} if it is has no subgraphs isomorfphic to $H$.
+    \medskip
+
+    &
+    Grafy $G$ i $G$ sa {\color{def}izomorficzne}, jezeli istnieje $f:V(G)\rarrow[1-1]{na}V(H)$ takie, ze
+
+    $(\forall\;v,w\in V(G))\;vw\in E(G)\iff f(v)f(w)\in E(H)$
+    \medskip
+
+    $G$ jest {\color{def}podgrafem} $H$ [$G\leq H$] jezeli $V(G)\subseteq V(H)$ oraz $E(G)\subseteq E(H)$.
+    \medskip
+
+    $G$ jest {\color{acc}H-free} (wolny od $H$?), jezeli nie ma podgrafow izomorficznych z $H$.
+    \medskip
+
+    \\
+
+    \hline
+
+    & \\
+
+    A {\color{def}cycle} of length $n\geq3$ [$C_n$] is a graph with vertices
+    $$V(C_n)=[n]$$ 
+    and edges:
+    $$E(C_n)=\{i(i+1)\;:\;i\leq i\leq n-1\}\cup\{1n\}.$$
+
+    A {\color{def}path} of length $n-1$ [$P_{n-1}$] is a graph with vertices
+    $$V(P_{n-1})=[n]$$
+    and edges
+    $$E(P_{n-1})=\{i(i+1)\;:\;1\leq i\leq n-1\}.$$
+
+    &
+    {\color{def}Cykl} dlugosci $n\geq3$ [$C_n$] to graf z wierzcholkami
+    $$V(C_n)=[n]$$
+    i krawiedziami:
+    $$E(C_n)=\{i(i+1)\;:\;i\leq i\leq n-1\}\cup\{1n\}.$$
+
+    {\color{def}Sciezka} dlugosci $n-1$ [$P_{n-1}$] to graf z wierzcholkami
+    $$V(P_{n-1})=[n]$$
+    i krawedziami
+    $$E(P_{n-1})=\{i(i+1)\;:\;1\leq i\leq n-1\}.$$
+
+    \\
+    
+    \hline
+
+    & \\
+
+    An {\color{def}induced} by $A\subseteq V(G)$ subgraph of $G$ is \\
+    $G[A]=(A, E_A)$
+    \medskip
+
+    A {\color{acc}connected component} of $G$ is a subgraph $G[W]\leq G$ where $W\subseteq V$ is an equivalence class under $\approx$ given by
+    $$v\approx w\iff \text{exists a path } v...w\text{ in }G$$
+
+    A graph is {\color{def}connected} if $v\approx w$ for every $v,w\in V$ ($G$ has at most one connected component).
+
 
 \end{tabularx}
