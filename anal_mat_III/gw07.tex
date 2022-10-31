@@ -64,9 +64,9 @@ $$\begin{pmatrix}
     cx+dy
 \end{pmatrix}
 $$
-Aby taka operacja dawała wynik zbliżający się do $(x_0,y_0)$ dla punktów w jego pobliżu, to $a$ musi być małą zmianą w pierwszej współrzędem względem $x$, a $b$ małą zmianą w pierwszej współrzędnej względem $y$, analogicznie dla $c$ i $d$. Czyli $T$ jest Jakobianem. W takim razie, żeby sprawdzić czy badana przez nas funkcja jest zbieżna, wystarczy sprawdzić, czy dla dowolnego punktu poniższa granica jest równa 0:
+Aby taka operacja dawała wynik zbliżający się do $(x_0,y_0)$ dla punktów w jego pobliżu, to $a$ musi być małą zmianą w pierwszej współrzędem względem $x$, a $b$ małą zmianą w pierwszej współrzędnej względem $y$, analogicznie dla $c$ i $d$. Czyli $T$ jest Jakobianem. W takim razie, żeby sprawdzić czy badana przez nas funkcja jest zbieżna, wystarczy sprawdzić, czy dla dowolnego punktu $(x_0,y_0)$ poniższa funkcja zmieża do 0 dla $(x,y)\to(x_0,y_0)$:
 \begin{align*}
-    &{\|F(x,y)-F(x_0,y_0)-T(x-x_0,y-y_0)\|\over\|(x-x_0,y-y_0)\|}=\\
+    G(x,y)&={\|F(x,y)-F(x_0,y_0)-T(x-x_0,y-y_0)\|\over\|(x-x_0,y-y_0)\|}=\\
     &={\|
         \begin{pmatrix}x+f(y)\\y+f(x)\end{pmatrix}
         -\begin{pmatrix}x_0+f(y_0)\\y_0+f(x_0)\end{pmatrix}-
@@ -83,9 +83,15 @@ Aby taka operacja dawała wynik zbliżający się do $(x_0,y_0)$ dla punktów w 
         \|\over
         \|(x-x_0,y-y_0)\|
     }=\\
-    &=\Big[{{(f(y)-f(y_0)-(y-y_0)f'(y_0))^2+(f(x)-f(x_0)-(x-x_0)f'(x_0))^2\over(x-x_0)^2+(y-y_0)^2}}\Big]^\frac12=\\
-    \Big[{(f(y)-f(y_0))^2\over}\Big]
+    &=\Big[{{(f(y)-f(y_0)-(y-y_0)f'(y_0))^2+(f(x)-f(x_0)-(x-x_0)f'(x_0))^2\over(x-x_0)^2+(y-y_0)^2}}\Big]^\frac12.
 \end{align*}
+
+Po pierwsze zauważmy, że podana funkcja ma wartości nieujemne, więc jeśli jest ciągła, to musi zmieżać do wartości nieujemnej. Po drugie, zauważy, że
+\begin{align*}
+    G(x,y)&\leq\Big[{(f(y)-f(y_0)-(y-y_0)f'(y_0))^2\over(y-y_0)^2}+{(f(x)-f(x_0)-(x-x_0)f'(x_0))^2\over(x-x_0)^2}\Big]^\frac12\leq\\
+    &\leq \Big|{f(y)-f(y_0)-(y-y_0)f'(y_0)\over(y-y_0)}\Big|+\Big|{f(x)-f(x_0)-(x-x_0)f'(x_0)\over(x-x_0)}\Big|
+\end{align*}
+Widzimy, że funkcja o nieujemnych wartościach jest ograniczona od góry przez funkcję o wartościach nieujemnych dążącą do 0 (ponieważ $f$ jest klasy $C1$), więc i funkcja $G(x,y)\xrightarrow{(x,y)\to(x_0,y_0)}0$.
 
 \medskip
 

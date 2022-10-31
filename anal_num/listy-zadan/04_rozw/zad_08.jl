@@ -1,27 +1,34 @@
 using Base
 
-function steffensen_method(cn, fun, n, n_max)
-    if n >= n_max
-        return cn
+#setprecision(BigFloat, 512)
+
+function g(f, x)
+    pom = x + f(x)
+    return (f(pom) - f(x)) / f(x)
+end
+
+function stefenson_method(star, f, M)
+    x = star
+    i = 1
+    while i < M
+        fx = f(x)
+        gx = g(f, x)
+
+        if isnan(gx)
+            break
+        end
+
+        x = x - fx / gx
+        i += 1
     end
 
-    val = getfield(Main, Symbol(fun))(cn)
-    div = getfield(Main, Symbol(fun))(cn+val) - val
-
-    now = cn - (val * val) / div
-
-    return steffensen_method(now, fun, n+1, n_max)
+    return x
 end
 
-function f(x)
-    return exp(-x)-sin(x)
+function fun(x)
+    return exp(-x) - sin(x)
 end
 
-function t(x)
-    return cos(x)
-end
+ret = stefenson_method(BigFloat(0.7), fun, 10)
 
-start = 0.58
-
-res = steffensen_method(start, f, 0, 10)
-println(res)
+println(ret)

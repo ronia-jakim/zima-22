@@ -7,6 +7,18 @@
 
 \begin{document}
 \large
+
+    \begin{center}\begin{tabular}{| c | c | c | c | c | c | c | c |}
+        \hline
+        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+
+        \hline
+        
+        X & X & - & X & X & X & - & -\\
+
+        \hline
+    \end{tabular}\end{center}
+
     \section*{ZAD 1.}
     
     Mamy zadany wielomian
@@ -101,6 +113,26 @@
         y_{k+1}&=y_k+{v_k(u')_k-u_k(v')_k\over (u')_k^2-(v')_k^2}
     \end{align*}
 
+    \section*{ZAD 3.}
+
+    Klasyczna definicja $\phi(x)$
+    \begin{align*}
+        \phi(\alpha)&=\alpha\\
+        \phi(x_k)&=x_{k+1}\\
+        \phi(x)&=x-{f(x)\over f'(x)}\\
+        \phi'(x)&=1-{f'(x)^2-f(x)f''(x)\over f'(x)^2}={f(x)f''(x)\over f'(x)^2}
+    \end{align*}
+    Jesli jest to metoda liniowa, to:
+    \begin{align*}
+        x_{k+1}=\phi(x_k)&=\phi(\alpha)+(x_k-\alpha)\phi'(\xi_k)
+    \end{align*}
+
+    \begin{align*}
+        \lim\limits_{x\to\alpha}\phi'(x)&=\lim\limits_{x\to\alpha}{f(x)f''(x)\over f'(x)^2}=\lim\limits_{x\to\alpha}{f(x)f'''(x)+f'(x)f''(x)\over 2f'(x)f''(x)}=\\
+        &=\lim\limits_{x\to\alpha}{f'(x)f'''(x)+f(x)f^{(4)}(x)+f''(x)^2+f'(x)f'''(x)\over 2f''(x)^2+2f'(x)f'''(x)}=\\
+        &={f''(\alpha)^2\over 2f''(\alpha)^2}=\frac12
+    \end{align*}
+
 
     \section*{ZAD 4.}
 
@@ -131,12 +163,65 @@
     
     \section*{ZAD 5.}
 
+    Twierdzenie 3.5.15 z Kincaid Cheney
+    \medskip
+
+    Niech $z_1,z_2$ beda pierwiastkami pojedynczymi danego wielomianu.
+    \medskip
+
+    W kazdym kroku procesu wyliczamy
+    $$p(z)=(z^2-uz-v)q(z)+b_1(z-u)+b_0.$$
     
+    Pochodne czastkowe po $u$ i po $v$ to:
+    \begin{align*}
+        0&=-zq(z)+(z^2-uz-v){dq\over du}-b_1+{db_1\over du}(z-u)+{db_0\over du}\\
+        0&=-q(z)+(z^2-uz-v){dq\over dv}+{b_1\over dv}(z-u)+{db_0\over dv}
+    \end{align*}
+
+    Teraz jesli podstawimy pod $z$ jeden z pierwiastkow, to dostaniemy
+    \begin{align*}
+        &\begin{cases}
+            0=-z_kq(z_k)+{db_1\over du}(z_k-u)+{db_0\over du}\\
+            0=-q(z_k)+{b_1\over dv}(z_k-u)+{db_0\over dv}
+        \end{cases}\\
+        &\begin{cases}
+            z_kq(z_k)={db_1\over du}(z_k-u)+{db_0\over du}\\
+            q(z_k)={b_1\over dv}(z_k-u)+{db_0\over dv}
+        \end{cases}
+    \end{align*}
+    co zapisane w postaci macierzowej daje
+    \begin{align*}
+        \begin{bmatrix}
+            {db_0\over du} & {db_1\over du}\\
+            {db_0\over dv} & {db_1\over dv}
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 & 1\\
+            z_1-u & z_2 - u
+        \end{bmatrix}=
+        \begin{bmatrix}
+            z_1q(z_1) & z_2q(z_2)\\
+            q(z_1) & q(z_2)
+        \end{bmatrix}
+    \end{align*}
+
+    Z algebry wiemy, ze
+    $$\det(AB)=\det(A)\det(B),$$
+    wiec wystarczy pokazac, ze macierz z prawej strony rownania ma niezerowy wyznacznik.
+    \begin{align*}
+        \det\begin{bmatrix}
+            z_1q(z_1) & z_2q(z_2)\\
+            q(z_1) & q(z_2)
+        \end{bmatrix}&=z_1q(z_1)q(z_2)-z_2q(z_1)q(z_2)=\\
+        &q(z_1)q(z_2)(z_1-z_2)
+    \end{align*}
+
+    Poniewaz $z_1,z_2$ to pojedyncze pierwiastki $p(z)$, nie moga byc pierwiastkami wielomianu $q$, wiec $q(z_1)\neq0\neq q(z_2)$. Z kolei przez to, ze sa to rozne pierwiastki, to $z_1-z_2\neq0$.
 
 
     \section*{ZAD 6.}
 
-    Jejku chce umrzyc.
+    Rozwiazanie w pliku.
 
 
 \end{document}
