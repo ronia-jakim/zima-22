@@ -1,4 +1,4 @@
-\documentclass{article}[13pt]
+\documentclass{article}[16pt]
 
 \usepackage{../../../uni-notes-eng}
 \usepackage{multicol}
@@ -6,49 +6,137 @@
 
 
 \begin{document}
+\large
     \section*{ZAD 1.}
+    
+    Mamy zadany wielomian
+    $$p(z)=a_0+z(a_1+z(a_1+...+z(a_{n-1}+za_n)))$$
+    który możemy zapisać jako
+    $$p(z)=(z-z_0)q(z)+p(z_o),\quad (\kawa)$$
+    gdzie $p(z_0)$ to reszta z dzielenia przez $(z-z_0)$, a $q(z)$ to iloraz:
+    $$q(z)=b_0+zb_1+z^2b_2+...+z^{n-1}b_{n-1}.$$
+    Mamy wiec rownosc
     \begin{align*}
-        p(x)&=a_0+a_1x+a_2x^2+...+a_nx^n=\\
-            &=\sum\limits{i=1}^na_ix^i\\
-            &=a_0+x(a_1+x(a_2+...+x(a_{n-1}+xa_n)))\\
-        p'(x)&=a_1+2a_2x+...+na_nx^{n-1}=\\
-            &=\sum\limits_{i=0}^nia_ix^{i-1}=\\
-            &=a_1+x(2a_2+x(3a_3+...+x((n-1)a_{n-1}+xna_n))\\
-        p''(x)&=2a_2+3\cdot2a_3x+...+n(n-1)a_n^{n-2}\\
-            &=\sum\limits_{i=1}^ni(i-1)a_ix^{i-2}=\\
-            &=2a_2+x(3\cdot2a_3+...+x((n-1)(n-2)a_{n-1}+xn(n-1)a_n))
+        a_0+za_1+z^2a_3+...+z^na_n&=(z-z_0)(b_0+zb_1+...+z^{n-1}b_{n-1})+p(z_0)
+    \end{align*}
+    i wspolczynniki przy zmiennych musza byc sobie rowne, wiec
+    \begin{align*}
+        a_n&=b_{n-1}\\
+        a_{n-1}&=b_{n-2}-z_0b_{n-1}\\
+        a_{k+1}&=b_k-z_0b_{k+1}\quad\text{dla }k=0,...,n-2\\
+        a_0&=-z_0b_0+p(z_0)
+    \end{align*}
+    W takim razie
+    $$p(z_0)=a_0+z_0b_0.$$
+
+    Schemat Hornera do znalezienia $p(z_0)$ wyglada wtedy nastepujaco:
+    \begin{align*}
+        b_{n-1}&:=a_{n}\\
+        b_{k}&:=a_{k+1}+z_0b_{k+1}\quad\text{dla }k=n-2,...,-1
+    \end{align*}
+    i szukana wartosc to $b_{-1}$.\podz{sep}
+    \bigskip
+
+    Analogicznie, dla pochodnej $p(z)$ mamy
+    \begin{align*}
+        a_1+2a_2z+...+na_nz^{n-1}=&(z-z_0)q'(z)+q(z)\\
+        a_1+2a_2z+...+na_nz^{n-1}=&(z-z_0)(b_1+2zb_2+3z^2b_3+...+(n-1)z^{n-2}b_{n-1})+\\
+        &+(b_0+zb_1+...+z^{n-1}b_{n-1})
+    \end{align*}
+    i aby wyrazy po obu stronach sie zgadzaly:
+    \begin{align*}
+        na_n&=b_{n-1}+(n-1)b_{n-1}\\
+        (n-1)a_{n-1}&=(n-2)b_{n-2}+b_{n-2}-z_0b_{n-1}\\
+        a_{k+1}&=b_k-z_0b_{k+1}\\
+        a_1&=b_0-z_0b_1
+    \end{align*}
+    W trakcie rozniczkowania $p(z_0)$ sie uproscilo, ale mozemy zapisac, ze
+    $$p'(z_0)=b_0=a_1+z_0b_1.$$
+    Schemat Hornera dla znalezienia $p'(z_0)$ to w takim razie
+    \begin{align*}
+        b_{n-1}&:=a_n\\
+        b_k&:=a_{k+1}+z_0b_{k+1}\quad\text{dla}k=n-2,...,0
     \end{align*}
 
-    Zeby obliczyc $p(z_0)$ postepujemy tak samo jak w zwyklym schemacie Hornera, czyli
-\begin{lstlisting}
-i = n
-x = a_i
+    i wyraz $b_0$ to szukane $p'(z_0)$.\podz{sep}
+    \medskip
 
-dopoki i >= 0
-    x = a_i + x * z_0
-    i = i - 1
+    To teraz dla $p''(z_0)$
+    \begin{align*}
+        2a_2+6za_3+...+n(n-1)a_nz^{n-2}=&(z-z_0)q''(z)+2q'(z)\\
+        2a_2+6za_3+...+n(n-1)a_nz^{n-2}=&(z-z_0)(2b_2+6zb_3+...+(n-1)(n-2)z^{n-3}b_{n-1})+\\
+        &+2(b_1+2zb_2+3z^2b_3+...+(n-1)z^{n-2}b_{n-1})
+    \end{align*}
 
-zwroc x
-\end{lstlisting}
+    \begin{align*}
+        n(n-1)a_n&=(n-1)(n-2)b_{n-1}+2(n-1)b_{n-1}\\
+        a_{n-1}&=b_{n-2}-z_0b_{n-1}\\
+        a_{k+1}&=b_{k}-z_0b_{k+1}\\
+        2a_2&=2b_1-2z_0b_2
+    \end{align*}
 
-    Dla $p'(z_0)$ trzeba tylko przemnozyc kazdy wyraz przez odpowiedni indeks:
+    Schemat Hornera dla $p''(z_0)$:
+    \begin{align*}
+        b_{n-1}&:=a_n\\
+        b_k&:={k+1\over2}(a_{k+1}+z_0b_{k+1})\quad\text{dla }k=n-2,...,1
+    \end{align*}
 
-\begin{lstlisting}
-i = n
-x = i * a_i
-
-dopoki i >= 0
-    x = i * a_i + x * z_0
-    i = i - 1
-
-zwroc x
-\end{lstlisting}
-
-    Analogicznie dla $p''$ i $p'''$.
 
     \section*{ZAD 2.}
 
+    Mamy dana funkcje
+    $$f(z)=f(x+iy)=u(x,y)+iv(x,y).$$
+
+    \begin{align*}
+        z_1&=x_0+iy_0+{u(x_0,y_0)+iv(x_0,y_0)\over u'(x_0,y_0)+iv'(x_0,y_0)}\\
+        &=x_0+iy_0+{(u(x_0,y_0)+iv(x_0,y_0))(u'(x_0,y_0)-iv'(x_0,y_0))\over u'(x_0,y_k)^2-v'(x_0,y_0)^2}
+    \end{align*}
     
+    Niech $u_k=u(x_k,y_k)$, $v_k=v(x_k,y_k)$.
+
+    \begin{align*}
+        x_{1}&=x_0+{u_0(u')_0-v_0(v')_0\over (u')_0^2-(v')_0^2}\\
+        y_{1}&=y_0+{v_0(u')_0-u_0(v')_0\over (u')_0^2-(v')_0^2}\\
+        x_{k+1}&=x_k+{u_k(u')_k-v_k(v')_k\over (u')_k^2-(v')_k^2}\\
+        y_{k+1}&=y_k+{v_k(u')_k-u_k(v')_k\over (u')_k^2-(v')_k^2}
+    \end{align*}
+
+
+    \section*{ZAD 4.}
+
+    Metoda $\phi$ oblicza pierwiastek jakiejs funkcji $f$, ktory wypada w $\alpha$. Blad dla $n$-tego kroku wynosi
+    $$E_n=x_n-\alpha$$
+    a jezeli metoda jest rzedu $p+1$, to
+    \begin{align*}
+        \Big |{E_{n+1}\over (E_n)^{p+1}}\Big |< \infty
+    \end{align*}
+
+    \begin{align*}
+        x_{k+1}&=\phi(x_k)=\\
+        &=\phi(\alpha)+(x_k-\alpha)\phi'(\alpha)+(x_k-\alpha)^2{\phi''(\alpha)\over 2!}+...+(x_k-\alpha)^p{\phi^{(p)}(\alpha)\over p!}+(x_k-\alpha)^{p+1}{\phi^{(p+1)}(\xi_k)\over (p+1)!}
+    \end{align*}
+    dla pewnego $\xi_k\in[x_k,\alpha]$.
+    \medskip
+
+    Ale wszystko poza ostatnim wyrazem sie zeruje, wiec mamy
+    $$x_{k+1}=\phi(x_k)=\alpha+(x_k-\alpha)^{p+1}{\phi^{(p+1)}(\xi_k)\over(p+1)!}$$
+    i to do $\alpha$ bedzie zbiegac w potedze $p+1$.
+
+    \begin{align*}
+        {x_{k+1}-\alpha\over (x_k-\alpha)^{p+1}}&={\phi(x_k)-\alpha\over (x_k-\alpha)^{p+1}}=\\
+        &={(x_k-\alpha)^{p+1}{\phi^{(p+1)}(\xi_k)\over(p+1)!}\over (x_k-\alpha)^{p+1}}=\\
+        &={\phi^{(p+1)}(\xi_k)\over(p+1)!}\rarrow{}{k\to\infty}{\phi^{(p+1)}(\alpha)\over(p+1)!}
+    \end{align*}
+
+    
+    \section*{ZAD 5.}
+
+    
+
+
+    \section*{ZAD 6.}
+
+    Jejku chce umrzyc.
 
 
 \end{document}
