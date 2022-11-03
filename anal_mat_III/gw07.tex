@@ -123,8 +123,8 @@ a więc badana funkcja jest odwracalna w każdym punkcie dziedziny. To znaczy, �
 Jeśli funkcja jest "na", to nie może być ściśle wklęsła ani ściśle wypukła. Czyli wyznacznik jej Hesjana musi być 0.
 \begin{align*}
     \begin{bmatrix}
-        {d\over dx}1 & {d\over dy} f'(x)\\
-        {d\over dx}f'(y) & {d\over dy}1
+        {d\over dx}1 & {d\over dx} f'(y)\\
+        {d\over dy}f'(x) & {d\over dy}1
     \end{bmatrix}=
     \begin{bmatrix}
         0 & 0\\
@@ -132,6 +132,33 @@ Jeśli funkcja jest "na", to nie może być ściśle wklęsła ani ściśle wypu
     \end{bmatrix}
 \end{align*}
 wyznacznik jest stale równy zero, więc mamy funkcje która nie jest ani wypukła ani wklęsła, więc przechodzi całą przeciwdziedzinę.
+
+
+\section*{ZAD 2.}
+
+$$f:\R^n\to\R^m$$
+$$m<n$$
+
+Jakobian w tym wypadku to macierz o $m$ wierszach i $n$ kolumnach. Z kursu algebry liniowej wiemy, że rząd takiej macierzy to co najwyżej $m$. Jest tak, bo układ $n$ wektorów (kolumny) z przestrzeni $m$ wymiarowej, gdzie $m<n$ może mieć co najwyżej $m$ wektorów niezależnych liniowo.
+\medskip
+
+Załóżmy, nie wprost, że $f$ jest przekształceniem jednoznacznym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijecką.
+\medskip
+
+Rozważmy wszystkie takie podprzestrznie $W$, które są rozpinane między innymi przez pewien wektor bazowy $e$. Dobieramy do niego $m-1$ wektorów na
+$${n\choose m-1}\geq{m+1\choose m-1}={(m+1)m\over m}$$
+sposobów, co dla $m\geq2$ jest równe co najmniej $m+1$. 
+\medskip
+
+Teraz, jeżeli dla punktu odpowiadającemu wektorowi $e$ policzymy Jakobian dla każdej z tych $M\geq m+1$ macierzy, to zauważmy, że ponieważ jesteśmy w przekształceniu między przestrzeniami o wymiarze $m$, to mamy tylko $m$ wektorów liniowo niezależnych. Czyli w pewnej macierzy Jakobiego wartości pochodnych w tym punkcie będą odpowiadały wektorom liniowo zależnym, czyli wyznacznik będzie zerowy. W takim razie, dla tej podprzestrzeni w której to się dzieje, obcięcie $f$ nie jest 1-1, czyli również całe przekształcenie nie może być różnowartościowe. W takim razie nie jest bijeckją i dochodzimy do sprzeczności.
+
+\newpage
+
+Załóżmy, że $f$ jest przekształceniem jednoznaczym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijekcją. Wybrać wektory, na których rozpięta będzie popdrzestrzeń $W$ możemy na
+$${n\choose m}\geq {m+1\choose m}=m+1.$$
+Dalej zauważmy, że każde takie obcięcie jest przekształceniem między przestrzeniami o stopniu $m$, czyli macierz Jakobiego będzie kwadratowa (możemy obliczyć wyznacznik). Mamy co najmniej $m+1$ takich macierzy i dla każdego punktu co najwyżej $m$ liniowo niezależnych wektorów odpowiadających wartościom pochodnych cząstkowych w tym punkcie, które możemy wpisać w te macierze. Czyli w jednej z tych macierzy na pewno będziemy mieli wektory liniowo zależne. To znaczy, że wyznacznik się zeruje, a więc takie obcięcie $f$ do $W\leq\R^n$ nie jest 1-1. W takim razie również całe przekształcenie nie mozę być 1-1, a więc w szczególności nie jest bijekcją.
+
+$${(m+1)!\over(m-1)!2!}={(m+1)m\over 2}$$
 
 
 \end{document}
