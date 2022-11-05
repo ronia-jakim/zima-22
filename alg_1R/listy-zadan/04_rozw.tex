@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\begin{document}
+
+\section*{ZAD 1. $(\forall\;g\in G)\;g^2=e\implies G$ is commutative}
+
+\section*{ZAD 3.}
+
+First of all, we showed during lecture that every permutation of $n$ elements can be written as a finite product of cycles of form $(1a)$. To recap this, we just need to be able to achieve any transposition $(kl)$, cus then we can do anything
+$$(kl)=(1k)(1l)(1k).$$
+
+Then we want to show that any permutation can be written as a finite product of $(k\; k+1)$. For that we can use previous observation to show that $(1\;k)$ can be written using $(k\;k+1)$. Using induction:
+$$(1\;k+1)=(1k)(k\;k+1)(1k).$$
+
+Finally, we claim that every $(k\;k+1)$ can be written using $(12)$ and $(12...n)$:
+$$(k\;k+1)=(12...n)(k-1\;k)(12...n)^{-1}$$
+which actually boils down to
+$$(k\;k+1)=(12...n)^{k-1}(12)(12...n)^{-k+1}.$$
+
+\end{document}

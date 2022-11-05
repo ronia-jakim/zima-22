@@ -2,19 +2,77 @@
 
 \usepackage{../../uni-notes-eng}
 \usepackage{multicol}
-\definecolor{back2}{HTML}{ffffff}
-\definecolor{text2}{HTML}{000000}
+%\definecolor{back2}{HTML}{ffffff}
+%\definecolor{text2}{HTML}{000000}
 
 \author{Weronika Jakimowicz}
 \title{MDM Lista 3}
 \date{}
 
-\pagecolor{back2}
-\color{text2}
+%\pagecolor{back2}
+%\color{text2}
 
 \begin{document}
     \maketitle
 
     \section*{ZAD 1.}
+
+    {\color{acc}JEDYNOSC O CO CHODZI}
+    \bigskip
     
+    Poprawność wzoru
+    $$f(n)=n-1+f(\lceil{n\over 2}\rceil)+f(\lfloor{n\over2}\rfloor)$$
+    pokażę przez indukcję.
+    \medskip
+
+    Dla $n=2$
+    $$f(2)=\sum\limits_{k=1}^2\lceil\log_2k\rceil=1$$
+    $$2-1+f(1)+f(1)=1+0+0=1=f(2)$$
+    czyli się zgadza.
+    \medskip
+
+    Załóżmy teraz, że wzór zachodzi dla pierwszych $n$ wyrazów. Pokażemy, że wówczas zachodzi również dla wyrazu $n+1$. Rozważmy dwa przypadki:
+    \smallskip
+
+    I. $2|n+1$, wtedy możemy zapisać $n+1=2k+2$ oraz $n=2k+1$ dla pewnego $k\in\N$.
+    \begin{align*}
+        f(n+1)&=\sum\limits_{k=1}^{n+1}\lceil\log_2k\rceil=f(n)+\lceil\log_2n+1\rceil\overset{ind}{=}\\
+        &\overset{ind}{=}n-1+f(\lceil{n\over2}\rceil)+f(\lfloor{n\over2}\rfloor)+\lceil\log_2n+1\rceil=\\
+        &=n-1+f(k+1)+f(k)+\lceil\log_22(k+1)\rceil=\\
+        &=n-1+\sum\limits_{i=1}^{k+1}\lceil\log_2i\rceil+\sum\limits_{i=1}^k\lceil\log_2i\rceil+\lceil1+\log_2k+1\rceil=\\
+        &=n-1+\sum\limits_{i=1}^{k+1}\lceil\log_2i\rceil+\sum\limits_{i=1}^k\lceil\log_2i\rceil+1+\lceil\log_2k+1\rceil=\\
+        &=(n+1)-1+\sum\limits_{i=1}^{k+1}\lceil\log_2i\rceil+\sum\limits_{i=1}^{k+1}\lceil\log_2i\rceil=\\
+        &=(n+1)-1+f(\lceil{n+1\over2}\rceil)+f(\lfloor{n+1\over2}\rfloor)
+    \end{align*}
+
+    II. $2\nmid n+1$, czyli, dla pewnego $k\in\N$, mamy $n+1=2k+1$ i $n=2k$. Zauważmy, że wtedy $\lceil\log_2n+1\rceil=\lceil\log_2n+2\rceil$.
+
+    \begin{align*}
+        f(n+1)&=\sum\limits_{k=1}^{n+1}\lceil\log_2k\rceil=f(n)+\lceil\log_2n+1\rceil\overset{ind}{=}\\
+        &\overset{ind}{=}n-1+f(\lceil{n\over2}\rceil)+f(\lfloor{n\over2}\rfloor)+\lceil\log_2n+1\rceil=\\
+        &=n-1+f(k)+f(k)+\lceil\log_22k+1\rceil=\\
+        &=n-1+\sum\limits_{i=1}^{k}\lceil\log_2i\rceil+\sum\limits_{i=1}^k\lceil\log_2i\rceil+\lceil\log_22(k+1)\rceil=\\
+        &=n-1+\sum\limits_{i=1}^{k}\lceil\log_2i\rceil+\sum\limits_{i=1}^k\lceil\log_2i\rceil+\lceil1+\log_2k+1\rceil=\\
+        &=n-1+\sum\limits_{i=1}^{k}\lceil\log_2i\rceil+\sum\limits_{i=1}^k\lceil\log_2i\rceil+1+\lceil\log_2k+1\rceil=
+    \end{align*}
+    \begin{align*}
+        &=(n+1)-1+\sum\limits_{i=1}^{k}\lceil\log_2i\rceil+\sum\limits_{i=1}^{k+1}\lceil\log_2i\rceil=\\
+        &=(n+1)-1+f(\lfloor{n+1\over2}\rfloor)+f(\lceil{n+1\over2}\rceil)
+    \end{align*}
+
+
+    \section*{ZAD 2.}
+
+
+    \section*{ZAD 3.}
+
+    I. istnienie takiego zapisu:
+    \medskip
+
+    Dla $n=1$ mamy
+    $$1=1\cdot 1=1\cdot F_2.$$
+    Załóżmy, że jest to prawdą również dla wszystkich liczb naturalnych do $n$ włącznie. Niech wtedy $k$ będzie największą liczbą naturalną taką, że
+    $$F_k\leq n.$$
+    Jeżeli $n=F_k$, to zapis jest oczywisty. W przeciwnym wypadku, liczba $m=n-F_k$ jest liczbą naturalną mniejszą niż $n$, a więc z założenia indukcyjnego możemy ją zapisać tak jak w poleceniu. 
+
 \end{document}

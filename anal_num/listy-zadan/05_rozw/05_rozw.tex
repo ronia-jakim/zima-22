@@ -1,0 +1,53 @@
+\documentclass{article}[16pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\section*{ZAD 1.}
+
+moze potem
+
+\section*{ZAD 2.}
+
+\begin{align*}
+    f[x_0,x_1,...,x_k]={f[x_1,x_2,...,x_k]-f[x_0,x_1,...,x_{k-1}]\over x_k-x_0}
+\end{align*}
+
+DIVIDED DIFFERENCE
+
+\section*{ZAD 4.}
+
+\begin{center}\begin{tabular}{ | c | c | c | c | c | c | c |}
+    \hline
+
+    x & -2 & -1 & 0 & 1 & 2 & 3\\
+
+    \hline
+
+    p(x) & 31 & 5 & 1 & 1 & 11 & 61\\
+
+    \hline
+\end{tabular}\end{center}
+
+Bedziemy uzywac wzoru interpolacyjnego Newtona, czyli potrzebujemy roznicy dzielonej $y$:
+\begin{align*}
+    \begin{matrix}
+        31\\
+        & & -26\\
+        5 & & & -{11\over 15}\\
+        & & -4\\
+        1\\
+        & & 0\\
+        1\\
+        & & 10\\
+        11\\
+        & & 50\\
+        61
+    \end{matrix}
+\end{align*}
+
+\end{document}
