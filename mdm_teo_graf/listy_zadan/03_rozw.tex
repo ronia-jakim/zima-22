@@ -66,13 +66,42 @@
 
     \section*{ZAD 3.}
 
-    I. istnienie takiego zapisu:
+    I. istnienie takiego zapisu: {\color{acc} nie powiedziałam nic o tym że nie ma dwóch pod rząd}
     \medskip
 
     Dla $n=1$ mamy
     $$1=1\cdot 1=1\cdot F_2.$$
     Załóżmy, że jest to prawdą również dla wszystkich liczb naturalnych do $n$ włącznie. Niech wtedy $k$ będzie największą liczbą naturalną taką, że
     $$F_k\leq n.$$
-    Jeżeli $n=F_k$, to zapis jest oczywisty. W przeciwnym wypadku, liczba $m=n-F_k$ jest liczbą naturalną mniejszą niż $n$, a więc z założenia indukcyjnego możemy ją zapisać tak jak w poleceniu. 
+    Jeżeli $n=F_k$, to zapis jest oczywisty. W przeciwnym wypadku, liczba $m=n-F_k$ jest liczbą naturalną mniejszą niż $n$, a więc z założenia indukcyjnego możemy ją zapisać tak jak w poleceniu. Dalej zauważmy, że dla takiego $n$ mamy:
+    $$F_k< n<F_{k+1}$$
+    $$0< n-F_k< F_{k+1}$$
+    czyli dla $m$ zauważamy, że zachodzi:
+    $$m=n-F_k<F_{k+1}-F_k=F_{k-1}$$
+    a więc zapis
+    $$n=m+F_k$$
+    nie zawiera $F_{k-1}$ czyli jest zgodny z treścią zadania.
+    \bigskip
+
+    II. jedyność:
+    \medskip
+
+    Po pierwsze, zauważmy że jeśli dany jest nam zbiór $S_j$ różnych, nienastępujących po sobie liczb Fibonacciego, to jeśli $F_j$, dla $j\geq 2$, jest największą spośród nich, ich suma jest ostro mniejsza niż $F_{j+1}$. Łatwo to udowodnić przez indukcję.
+    \smallskip
+    
+    Dla $j=2$ mamy zbiór jednoelementowy: $S_2=\{F_2\}$ i jego suma wynosi $1<F_3=2$. Zakładamy, że dla wszystkich $j\leq n$ jest to prawdą. Wtedy dla $j=n+1$ Możemy rozdzielić taki zbiór $S_{n+1}$ na dwie części:
+    $$S_{n+1}=(S_{n+1}\cap\{F_k\;:\;2\leq k\leq n-1\})\cup\{F_{n+1}\}$$
+    Zauważmy, że pierwsza część tej sumy pozwala nam użyć założenia indukcyjnego, gdyż zawiera różne, nienastępujące po sobie liczby Fibonacciego nie większe niż $F_{n-1}$ (nie może być $F_n$ bo dalej mamy $F_{n+1}$ a wykluczamy występowanie dwóch kolejnych liczb Fibonacciego). Czyli ich suma jest ostro mniejsza niż $F_{n}$. Czyli mamy:
+    \begin{align*}
+        \sum\limits_{f\in S_{n+1}}f<F_n+F_{n+1}=F_{n+2}.
+    \end{align*}
+
+    Załóżmy, że dla pewnej liczby $n$ mamy dwa zbiory liczb Fibonacciego $U$ i $W$, spełniające założenia, takie, że
+    $$\sum\limits_{f\in U}f=\sum\limits_{f\in W}f.$$
+    Usuńmy teraz części wspólne tych zapisów, czyli niech $U'=U-W$ oraz $W'=W-U$. Ponieważ $U\neq U$ to te zbiory nie mogą być puste i 
+    $$\sum\limits_{f\in U'}f=\sum\limits_{f\in W'}f.$$
+    Weźmy teraz $u$ największe takie, że $F_u\in U$ oraz $w$ największe takie, że $F_w\in W$. Ponieważ usunęliśmy część wspólną, mamy $F_w\neq F_u$ i bez straty ogólności możemy założyć, że $F_u<F_w$. Ale wtedy mamy, zgodnie ze spostrzeżeniem na początku, że
+    $$\sum\limits_{f\in U}f<F_{u+1}\leq F_w$$
+    co daje nam sprzeczność z faktem, że sumy zbiorów $U$ i $W'$ są równe. Czyli któryś z nich musi być pusty. Ale wtedy jego suma jest równa 0 i musi być równa sumie drugiego zbioru, czyli oba są puste. Czyli zostaje nam, że $U=W$, bo niezerową sumę dają tylko liczby wspólne, które usunęliśmy w pierwszym kroku.
 
 \end{document}
