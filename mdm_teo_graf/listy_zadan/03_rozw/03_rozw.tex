@@ -1,6 +1,6 @@
 \documentclass{article}[13pt]
 
-\usepackage{../../uni-notes-eng}
+\usepackage{../../../uni-notes-eng}
 \usepackage{multicol}
 %\definecolor{back2}{HTML}{ffffff}
 %\definecolor{text2}{HTML}{000000}
@@ -103,5 +103,28 @@
     Weźmy teraz $u$ największe takie, że $F_u\in U$ oraz $w$ największe takie, że $F_w\in W$. Ponieważ usunęliśmy część wspólną, mamy $F_w\neq F_u$ i bez straty ogólności możemy założyć, że $F_u<F_w$. Ale wtedy mamy, zgodnie ze spostrzeżeniem na początku, że
     $$\sum\limits_{f\in U}f<F_{u+1}\leq F_w$$
     co daje nam sprzeczność z faktem, że sumy zbiorów $U$ i $W'$ są równe. Czyli któryś z nich musi być pusty. Ale wtedy jego suma jest równa 0 i musi być równa sumie drugiego zbioru, czyli oba są puste. Czyli zostaje nam, że $U=W$, bo niezerową sumę dają tylko liczby wspólne, które usunęliśmy w pierwszym kroku.
+
+    
+    \section*{ZAD 4.}
+
+    Zauważmy, że jeżeli
+    \begin{align*}
+        A\mod n&=a\\
+        B\mod n&=b
+    \end{align*}
+    to wtedy
+    $$AB\mod n=(ab\mod n)$$
+
+\begin{lstlisting}[language=juleczka]
+function modulo (x, k, n)
+    if k == 1
+        return x % n
+    else if k % 2 == 1
+        return ((x % n) * modulo(x, (k-1)/2, n) * modulo(x, (k-1)/2, n)) % n
+    else
+        return (modulo(x, k/2, n) * modulo(x, k/2, n)) % n
+\end{lstlisting}
+
+{\color{acc}ILOŚĆ MNOŻEŃ}
 
 \end{document}
