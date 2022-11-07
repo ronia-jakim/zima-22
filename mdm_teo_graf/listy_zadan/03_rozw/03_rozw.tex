@@ -63,10 +63,53 @@
 
     \section*{ZAD 2.}
 
+    Zauważmy, że dla każdego $k$ i pewnego $m\in\N$ zachodzi:
+    $$2^{m-1}< k \leq 2^m$$
+    i wtedy $\lceil\log_2 k\rceil = m$. W jednym takim przedziale mamy $2^{m-1}(2-1)$ liczb całkowitych, których powały z logarytmów sumują się do $m2^{m-1}(2-1)=m2^{m-1}$. Niech dla pewnego $N$ zachodzi $N=\lceil\log_2n\rceil$, a więc
+    $$2^{N-1}<n\leq 2^N$$
+    i dalej
+    \begin{align*}
+        \sum\limits_{k=1}^n\lceil\log_2k\rceil&=\lceil\log_2n\rceil+...+\lceil\log_22^{N-1}+1\rceil+\lceil\log_22^{N-1}\rceil+...=\\
+        &=N(n-2^{N-1})+\sum\limits_{k=1}^{N-1}k2^{k-1}=\\
+        N(n-2^{N-1})+\frac12\sum\limits_{k=1}^{N-1}k2^k
+    \end{align*}
+
+    Oznaczmy
+    $$S_n=\sum\limits_{k=1}^nk2^k,$$
+    wtedy suma w drugiej części sumy wynosi:
+    \begin{align*}
+        S_n&=1\cdot2+2\cdot 2^2+...+ n\cdot2^n=\\
+            &=2+2^2+...+2^n+(2^2+...+(n-1)2^n)=\\
+            &=\sum\limits_{k=1}^n2^k+2S_{n-1}
+    \end{align*}
+
+    Wzrór na pierwszą część sumy jest łatwy do osiągnięcia:
+    $$\sum\limits_{k=1}^n2^n=2^{n+1}-2$$
+
+    Zauważamy też, że z definicji $S_n$ można wyprowadzić:
+    $$S_n=\sum\limits_{k=1}^{n-1}k2^k+2^n=n2^n+S_{n-1}$$
+
+    czyli mamy równość:
+    \begin{align*}
+        2^{n+1}-2+2S_{n-1}&=n2^n+S_{n-1}\\
+        S_{n-1}&=2^n(n-2)+2\\
+        S_n&=2^{n+1}(n-1)+2
+    \end{align*}
+
+    Wracając do sumy z zadania:
+    \begin{align*}
+        \sum\limits_{k=1}^n\lceil\log_2k\rceil&=N(n-2^{N-1})+\frac12S_{N-1}=\\
+        &=N(n-2^{N-1})+2^{N-1}(N-2)+1=\\
+        &=nN-N2^{N-1}+N2^{N-1}-2^N+1\\
+        &=nN-2^N+1
+    \end{align*}
+
+    Czyli wzór jawny na szukaną funkcję to:
+    $$f(n)=n\lceil\log_2n\rceil-2^{\lceil\log_2n\rceil}+1$$
 
     \section*{ZAD 3.}
 
-    I. istnienie takiego zapisu: {\color{acc} nie powiedziałam nic o tym że nie ma dwóch pod rząd}
+    I. istnienie takiego zapisu: 
     \medskip
 
     Dla $n=1$ mamy
@@ -126,5 +169,10 @@ function modulo (x, k, n)
 \end{lstlisting}
 
 {\color{acc}ILOŚĆ MNOŻEŃ}
+
+\section*{ZAD 5.}
+
+\begin{lstlisting}[language=juleczka]
+\end{lstlisting}
 
 \end{document}
