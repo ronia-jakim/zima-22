@@ -170,9 +170,85 @@ function modulo (x, k, n)
 
 {\color{acc}ILOŚĆ MNOŻEŃ}
 
-\section*{ZAD 5.}
+
+    \section*{ZAD 5.}
+    $$
+    \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^n=
+    \begin{pmatrix}
+        F_{n+1} & F_n\\
+        F_n & F_{n-1}
+    \end{pmatrix}
+    $$
+    Dla $n=1$ mamy
+    $$\begin{pmatrix}
+        1&1\\1&0
+    \end{pmatrix}^1=\begin{pmatrix}
+        F_2&F_1\\F_1&F_0
+    \end{pmatrix}$$
+    Załóżmy, że zależność jest prawdziwa dla wszystkich liczb naturalnych $\leq n$. Wtedy dla $n+1$:
+    \begin{align*}
+        \begin{pmatrix}
+            1 & 1\\
+            1 & 0
+        \end{pmatrix}^{n+1}&=
+        \begin{pmatrix}
+            1 & 1\\
+            1 & 0
+        \end{pmatrix}^n
+        \begin{pmatrix}
+            1 & 1\\
+            1 & 0
+        \end{pmatrix}=\\
+        &=\begin{pmatrix}
+            F_{n+1} & F_n\\
+            F_n & F_{n-1}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 1\\
+            1 & 0
+        \end{pmatrix}=\\
+        &=\begin{pmatrix}
+            F_{n+1}+F_n & F_{n+1}\\
+            F_n+F_{n-1} & F_n
+        \end{pmatrix}=\\
+        &=\begin{pmatrix}
+            F_{n+2} & F_{n+1}\\
+            F_{n+1} & F_n
+        \end{pmatrix}
+    \end{align*}
 
 \begin{lstlisting}[language=juleczka]
+function tm(R, M)
+    R = [
+            R[0]*M[0]+R[1]*M[2], 
+            R[0]*M[1]+R[1]*M[3], 
+            R[2]*M[0]+R[3]*M[2], 
+            R[2]*M[1]+R[3]*M[3]
+        ]
+    return R
+
+
+function fibb_matrix(n)
+    if n == 0 || n == 1
+        return n
+    
+    M = [1, 1, 1, 0]
+    R = [1, 0, 0, 1]
+
+    while n > 0
+        if n % 2 == 0
+            n /= 2
+            M = tm(M, M)
+        else
+            R = tm(R, M)
+            n -= 1
+            n /= 2
+            M = tm(M, M)
+    
+    return R[1]
 \end{lstlisting}
 
 \end{document}
