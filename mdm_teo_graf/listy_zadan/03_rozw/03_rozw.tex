@@ -274,7 +274,13 @@ function fibb_matrix(n)
     return R[1]
 \end{lstlisting}
 
-{\color{acc}NIE ROZUMIEM ZLOZONOSCI}
+Zauważmy, że przy liczeniu złożoności obchodzi nas tylko największa liczba, którą mnożymy. W przypadku liczenia $n$-tej liczby Fibonacciego będzie to $F_{n+1}$. Liczby Fibonacciego można ograniczyć od góry i od dołu przez dwie funkcje wykładnicze, czyli możemy powiedzieć, że:
+$$F_{n+1}=O(2^{n+1}).$$
+Zauważmy, że istnieje $C$ takie, że
+$$C2^{n+1}\geq 2^{n+1}+2^{n+2}=3\cdot2^{n+1}>2^{n+1}$$
+
+W takim razie w jednym mnożeniu badanej macierzy wykonuje się $O(2^{n+1})$ mnożeń, a ponieważ złożoność została określona, to mamy $O(M(2^{n+1}))$ operacji przy mnożeniu macierzy. Dalej zauważmy, że takie mnożenie wykona się $\log_2 n+1$ razy, czyli mamy złożoność \\
+$O(\log_2M(2^{n+1}))=O(M(n+1))$.
 
 \section*{ZAD 6.}
 
@@ -336,5 +342,98 @@ function fibb_matrix(n)
         F_{1+n}
     \end{pmatrix}
 \end{align*}
+
+Zauważmy, że algorytm wyliczający
+$$a_n=\sum\limits_{i=1}^kp_ia_{n-i}$$
+można zapisać jako
+$$
+\begin{pmatrix}
+    0 & 1 & 0 & 0 & ... & 0\\
+    0 & 0 & 1 & 0 & ... & 0\\
+    0 & 0 & 0 & 1 & ... & 0\\
+    & & ... \\
+    p_1 & p_2 & p_3 & p_4 & ... & p_k
+\end{pmatrix}^{n-k}
+\begin{pmatrix}
+    a_1\\
+    a_2\\
+    a_3\\
+    ...\\
+    a_k
+\end{pmatrix}=
+\begin{pmatrix}
+    a_{n-(k-1)}\\
+    a_{n-(k-2)}\\
+    a_{n-(k-3)}\\
+    ...\\
+    a_{n}
+\end{pmatrix}
+$$
+
+Czyli wystarczy, że skonstruujemy algorytm szybkiego potęgowania macierzy rozmiaru $k\times k$ i przemnożymy ostatni wiersz wyniku przez wektor $[a_1,a_2,...,a_k]$
+\bigskip
+
+Kod napisany w Pythonie:
+
+\begin{lstlisting}[language=Python]
+def tm(k, M, N):
+    RET = []
+    for i in range (0, k):
+        r = []
+        for j in range (0, k):
+            s = 0
+            for n in range(0, k):
+                s += M[i][n] * N[n][j]
+            r.append(s)
+        RET.append(r)
+
+    return RET
+
+def calc(n, k, P, A):
+    n = n-k
+    M = []
+    R = []
+    for i in range(0, k-1):
+        r = []
+        p = []
+        for j in range(0, k):
+            if i == j:
+                p.append(1)
+                r.append(0)
+            elif i + 1 == j:
+                r.append(1)
+                p.append(0)
+            else:
+                r.append(0)
+                p.append(0)
+        M.append(r)
+        R.append(p)
+
+    p = []
+
+    for i in range(0, k-1):
+        p.append(0)
+    p.append(1)
+
+    R.append(p)
+    M.append(P)
+
+    while n > 0:
+        if n % 2 == 0:
+            n /= 2
+            M = tm(k, M, M)
+        else:
+            R = tm(k, M, R)
+            n -= 1
+            n /= 2
+            M = tm(k, M, M)
+    
+    ret = 0
+    for i in range(0, k):
+        ret += A[i] * R[k-1][i]
+
+    return ret
+\end{lstlisting}
+
 
 \end{document}
