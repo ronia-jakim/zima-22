@@ -17,10 +17,7 @@
 
     \section*{ZAD 1.}
 
-    {\color{acc}JEDYNOSC O CO CHODZI}
-    \bigskip
-    
-    Poprawność wzoru
+    {\color{acc}Poprawność wzoru}
     $$f(n)=n-1+f(\lceil{n\over 2}\rceil)+f(\lfloor{n\over2}\rfloor)$$
     pokażę przez indukcję.
     \medskip
@@ -31,7 +28,10 @@
     czyli się zgadza.
     \medskip
 
-    Załóżmy teraz, że wzór zachodzi dla pierwszych $n$ wyrazów. Pokażemy, że wówczas zachodzi również dla wyrazu $n+1$. Rozważmy dwa przypadki:
+    Załóżmy teraz, że wzór zachodzi dla pierwszych $n$ wyrazów. Pokażemy, że wówczas zachodzi również dla wyrazu $n+1$. 
+    \medskip
+    
+    Rozważmy dwa przypadki:
     \smallskip
 
     I. $2|n+1$, wtedy możemy zapisać $n+1=2k+2$ oraz $n=2k+1$ dla pewnego $k\in\N$.
@@ -45,7 +45,7 @@
         &=(n+1)-1+f(\lceil{n+1\over2}\rceil)+f(\lfloor{n+1\over2}\rfloor)
     \end{align*}
 
-    II. $2\nmid n+1$, czyli, dla pewnego $k\in\N$, mamy $n+1=2k+1$ i $n=2k$. Zauważmy, że wtedy $\lceil\log_2n+1\rceil=\lceil\log_2n+2\rceil$.
+    II. $2\nmid n+1$, czyli, dla pewnego $k\in\N$, mamy $n+1=2k+1$ i $n=2k$. Zauważmy, że wtedy $\lceil\log_2n+1\rceil=\lceil\log_2n+2\rceil$, bo logarytm dwójkowy liczby nieparzystej nigdy nie będzie liczbą całkowitą.
 
     \begin{align*}
         f(n+1)&=\sum\limits_{k=1}^{n+1}\lceil\log_2k\rceil=f(n)+\lceil\log_2n+1\rceil\overset{ind}{=}\\
@@ -60,6 +60,29 @@
         &=(n+1)-1+f(\lfloor{n+1\over2}\rfloor)+f(\lceil{n+1\over2}\rceil)
     \end{align*}
 
+    {\color{acc}Jedynośc $f(n)$ jako rozwiązania podanej relacji}
+    \medskip
+
+    Jeżeli istnieją dwie funkcje $f,g$ spełniające tę zależność i
+    $$f(1)=0=g(1)$$
+    oraz niech $m$ oraz $d\in[0, 2^m)$ będą najmniejsze takie, że
+    $$f(2^m+d)\neq g(2^m+d),$$
+    czyli są pierwszym punktem w którym te funkcje są różne.
+
+    \begin{align*}
+        f(2^m+d)&=2^m+d-1+f(\lfloor 2^{m-1}+\frac d2\rfloor)+f(\lceil2^{m-1}+\frac d2\rceil)=\\
+        &=(2^m+d)-1+2f(2^{m-1})+f(\lfloor \frac d2\rfloor)+f(\lceil\frac d2\rceil)
+    \end{align*}
+    \begin{align*}
+        g(2^m+d)&=2^m+d-1+g(\lfloor 2^{m-1}+\frac d2\rfloor)+g(\lceil2^{m-1}+\frac d2\rceil)=\\
+        &=(2^m+d)-1+2g(2^{m-1})+g(\lfloor \frac d2\rfloor)+g(\lceil\frac d2\rceil)
+    \end{align*}
+    Skoro te funkcje są po raz pierwszy różne, to $(\forall\;x<2^m+d)f(x)=g(x)$, a różnica $f(2^m+d)-g(2^m+d)\neq0$
+    \begin{align*}
+        f(2^m+d)-g(2^m+d)&=(2^m+d)-1+2f(2^{m-1})+f(\lfloor \frac d2\rfloor)+f(\lceil\frac d2\rceil)-((2^m+d)-1+2g(2^{m-1})+g(\lfloor \frac d2\rfloor)+g(\lceil\frac d2\rceil))=\\
+        &=2f(2^{m-1})+f(\lfloor \frac d2\rfloor)+f(\lceil\frac d2\rceil)-2g(2^{m-1})-g(\lfloor \frac d2\rfloor)-g(\lceil\frac d2\rceil))
+    \end{align*}
+    ale ponieważ punkt który wybrałam to pierwszy punkt w którym te funkcje się różnią, wówczas $f(2^{m-1})=g(2^{m-1})$ oraz $f(\lfloor \frac d2\rfloor)=g(\lfloor \frac d2\rfloor)$ i $f(\lceil\frac d2\rceil))=g(\lceil\frac d2\rceil))$, czyli ta suma jest równa zero. W takim razie te funkcje są sobie równe.
 
     \section*{ZAD 2.}
 
@@ -168,7 +191,7 @@ function modulo (x, k, n)
         return (modulo(x, k/2, n) * modulo(x, k/2, n)) % n
 \end{lstlisting}
 
-{\color{acc}ILOŚĆ MNOŻEŃ}
+    Algorytm wykonuje $O(\log_2k)$ mnożeń.
 
 
     \section*{ZAD 5.}
@@ -250,5 +273,68 @@ function fibb_matrix(n)
     
     return R[1]
 \end{lstlisting}
+
+{\color{acc}NIE ROZUMIEM ZLOZONOSCI}
+
+\section*{ZAD 6.}
+
+\begin{align*}
+    \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^n
+    \begin{pmatrix}
+        F_2\\
+        F_1
+    \end{pmatrix}&=
+    \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^{n-1}
+    \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        F_2\\
+        F_1
+    \end{pmatrix}=\\
+    &=
+    \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^{n-1}
+    \begin{pmatrix}
+        F_2+F_1\\
+        F_2
+    \end{pmatrix}=\\
+    &=\begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^{n-1}
+    \begin{pmatrix}
+        F_3\\
+        F_2
+    \end{pmatrix}=\\
+    &=\begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^{n-k}
+    \begin{pmatrix}
+        F_{2+k}\\
+        F_{1+k}
+    \end{pmatrix}=\\
+    &=\begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^{n-n}
+    \begin{pmatrix}
+        F_{2+n}\\
+        F_{1+n}
+    \end{pmatrix}=\begin{pmatrix}
+        F_{2+n}\\
+        F_{1+n}
+    \end{pmatrix}
+\end{align*}
 
 \end{document}
