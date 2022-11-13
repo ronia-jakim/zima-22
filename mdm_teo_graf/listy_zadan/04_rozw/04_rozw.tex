@@ -15,6 +15,20 @@
 \begin{document}
 \maketitle
 
+\begin{center}
+    \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+        \hline
+
+        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\
+
+        \hline
+
+        X & X & - & X & - & - & X & X & - & -  & -  & -  & -  & -  & - \\
+        
+        \hline
+    \end{tabular}
+\end{center}
+
 \section*{ZAD 1.}
 
 Na początku warto zauważyć, że
@@ -210,6 +224,40 @@ więc $xm\equiv ym\mod m$. Z poprzedniego podpunktu mamy
 $$x\equiv y\mod {{m\over gcd(m,m)}}=x\equiv y\mod 1$$
 czyli $y$ = 0, więc $mz|x$ i $m|x$ i mamy $x\equiv 0\mod m$.
 
+\section*{ZAD 8.}
+
+{\color{def}a) $2^n-1$ - liczba pierwsza $\implies$ $n$ jest liczbą pierwszą}
+\smallskip
+
+Załóżmy nie wprost, że istnieje $n$ takie, że $n$ nie jest liczbą pierwszą, ale $2^n-1$ jest liczbą pierwszą. Ponieważ $n$ nie jest pierwsze, to istnieją $k,m\in\Z$ większe od 1 takie, że $n=km$. Wtedy
+\begin{align*}
+    2^n-1&=2^km-1=(2^k)^m-1=(2^k-1)(2^{k(m-1)}+2^{k(m-2)}+...+2^1+2^0)
+\end{align*}
+Ponieważ $2^k>2^1=2$, to mnożymy liczbę całkowitą ($2^{k(m-1)}+2^{k(m-2)}+...+2^1+2^0$) przez liczbę całkowitą różną od $1$ ($2^k-1$). W takim razie $2^n-1$ nie jest liczbą pierwszą i mamy sprzeczność.
+\medskip
+
+{\color{def}b) $a^n-1$ jest liczbą pierwszą, to $a=2$}
+\smallskip
+
+Wiemy, że $a^n-1$ jest liczbą pierwszą, czyli nie ma dzielników całkowitych. Podobnie jak w poprzednim podpunkcie, rozpiszmy wyrażenie jako iloczyn sum:
+\begin{align*}
+    a^n-1=(a-1)(a^{n-1}+a^{n-2}+...+a^1+a^0).
+\end{align*}
+W takim razie $a-1$ musi być równe $1$, wtedy $a=2$, lub
+$$a^{n-1}+a^{n-2}+...+a+1=1,$$
+a więc
+$$a^{n-1}+a^{n-2}+...+a=0$$
+co dawałoby $a=0$, co nie jest poprawne, bo $0^n-1=-1$ nie jest liczbą pierwszą.
+\medskip
+
+{\color{def}c) $2^n+1$ - liczba pierwsza $\implies$ $(\exists\;k)\;2^k=n$}
+\medskip
+
+Załóżmy nie wprost, że $n$ nie jest potęgą liczby $2$. W takim razie $n=km$ gdzie $k,m\in\N$ i $m$ jest liczbą nieparzystą.
+$$2^n+1=2^{km}+1=(2^k)^m+1$$
+niech $a=2^k$, wtedy
+$$a^x+1=a^x-(-1)^x=(a+1)(a^{x-1}+a^{x-2}+...+a+1)$$
+Czyli $2^n+1$ jest iloczynem $(a+1)=2^y+1$ gdzie $y>1$, więc $2^n+1$ jest iloczynem dwóch liczb całkowitych i nie może być liczbą pierwszą.
 
 
 \end{document}
