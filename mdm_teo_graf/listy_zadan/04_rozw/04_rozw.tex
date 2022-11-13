@@ -83,6 +83,132 @@ def gcd(k, M):
         return gcd(2, [gcd(k//2, L), gcd(k-k//2, R)])
 \end{lstlisting}
 
+\section*{ZAD 3.}
+
+Zacznijmy od $k=2$. Szukamy $x_1, x_2$ takich, że
+$$x_1m_1+x_2m_2=gcd(m_1,m_2).$$
+Problem ten rozwiązuje rozszerzony algorytm Euklidesa.
+
+
+\section*{ZAD 4.}
+
+Jeśli $a,b$ są parzyste, to obie są podzielne przez $2$, więc $2$ wystąpi co najmniej raz w rozkładzie $gcd(a,b)$ na czynniki pierwsze. Możemy więc zapisać, że istnieją $a',b'\in\N$ takie, że $a=2a',b=2b'$ oraz
+$$gcd(a,b)=2gcd(a',b').$$
+
+\begin{lstlisting}[language=Python]
+def binary_gcd(a, b):
+    if a == 0:
+        return b
+
+    # XOR sprawdza, czy tylko jedna liczba jest parzysta
+    bol = (a % 2 == 0) ^ (b % 2 == 0)
+
+    if bol:
+        if a % 2 == 1: return binary_gcd(b, a)
+        return binary_gcd(a//2, b)
+
+    # jezeli obie sa nieparzyste
+    elif (a+b) % 2 == 0:
+        if a > b: return binary_gcd(a-b, b)
+        return binary_gcd(b-a, a)
+    
+    # jezeli obie sa parzyste, to na pewno obie dzieli 2, wiec mozna zwrocic 2 * gcd(a/2, b/2)
+    else:
+        return 2 * binary_gcd(a//2, b//2)
+\end{lstlisting}
+
+Zauważmy, że jeśli chociaż jedna z liczb $a,b$ jest parzysta, to zmniejszamy je 2 razy. Jeżeli obie są nieparzyste, to $a-b$ jest parzyste i wtedy co drugi krok zmniejszamy liczby o polowe. Czyli co najwyżej co dwa obroty zmniejszamy liczby dwukrotnie, więc wykona się $2\log_2\max(a,b)$ operacji, co daje nam złożoność $O(\log_2\max(a,b))$.
+
+
+\section*{ZAD 5.}
+
+\section*{ZAD 6.}
+
+Niech $q_1,...,q_k$ będą kolejnymi liczbami pierwszymi takimi, że $q_k=p$. Wtedy
+$$m=(m_1,m_2,...,m_k)_p=\sum\limits_{i=1}^km_iq_i$$
+
+
+\section*{ZAD 7.}
+
+{\color{def}a) $xz\equiv yz\mod mz\iff x\equiv y\mod m$ dla $z\neq 0$}
+\medskip
+
+$\color{acc}\impliedby$
+
+Skoro $x\equiv y\mod m$, to znaczy, że istnieje $k\in\Z$ takie, że
+$$x=km+y.$$
+Jeżeli teraz pomnożymy obie strony przez $z$, to dostaniemy
+$$xz=kmz+yz.$$
+To oznacza, że $xz$ jest podzielne przez $mz$ reszta $yz$, czyli
+$$xz\equiv yz\mod mz.$$
+
+$\color{acc}\implies$
+
+Jeżeli $xz\equiv yz\mod mz$, to dla pewnego $k\in\Z$ zachodzi
+$$xz=kmz+yz$$
+skoro $z\neq0$, to możemy obustronnie podzielić przez $z$
+$$x=km+y.$$
+Z tego z kolei wynika, że
+$$x\equiv y\mod m$$
+
+{\color{def}b) $xz\equiv yz\mod m\iff x\equiv y\mod {{m\over gcd(z, m)}}$ dla $x,y,z,m\in\Z$}
+\medskip
+
+$\color{acc}\impliedby$
+
+Z założenia, że $x\equiv y\mod {{m\over gcd(z,m)}}$, to istnieje $k\in\Z$ takie, że
+$$x=k{m\over gcd(z,m)}+y.$$
+Jeżeli pomnożymy obie strony przez $z$, to dostaniemy
+$$xz=km{z\over gcd(z,m)}+yz$$
+I zauważmy, że ${z\over gcd(z,m)}\in\Z$, czyli istnieje $p\in\Z$ takie, że
+$$xz=pm+yz$$
+a więc
+$$xz\equiv yz\mod m$$
+
+$\color{acc}\implies$
+
+Zakładamy, że $xz\equiv yz\mod m$, czyli istnieje $k\in\Z$ takie, że
+$$xz=km+yz$$
+Podzielmy teraz obustronnie przez $gcd(z,m)$, dostajemy:
+$$x{z\over gcd(z,m)}={k\over gcd(z,m)}m+y{z\over gcd(z,m)}.$$
+Zauważmy, że istnieje pewno $p\in\Z$ takie, że
+$$z=p\cdot gcd(z,m)$$
+oraz $gcd(p, m)=1$. Dalej mamy
+\begin{align*}
+    xp&=k{m\over gcd(z,m)}+yp\quad(\kawa)\\
+    p(x-y)&=k{m\over gcd(z,m)}
+\end{align*}
+Ponieważ prawa strona równania jest liczbą całkowitą podzielną przez $p$, to również lewa strona musi być podzielna przez $p$. Zauważmy, że $p\nmid m$, a więc również $p\nmid {m\over gcd(z,m)}$. W takim razie $p\mid k$ i wtedy $\frac kp\in\Z$. Czyli jeśli podzielimy obie strony równania $(\kawa)$ przez $p$, dostajemy
+$$x=\frac kp {m\over gcd(z,m)}+y$$
+i z tego wynika, że
+$$x\equiv y\mod {{m\over gcd(z,m)}}$$
+
+{\color{def}c) $x\equiv y\mod mz\implies x\equiv y\mod m$}
+\medskip
+
+Ponieważ zwykle operacja modulo $n$ jest zdefiniowana dla $n$ całkowitych, założę, że jednocześnie $mz$ jak i $m$ są liczbami całkowitymi. Dodatkowo, $m$ jest liczbą pierwszą, bo w przeciwnym przypadku mamy kontrprzykład dla $m=18$, $z=\frac13$ i $x=10$:
+$$10\equiv 4\mod 6$$
+$$10\equiv 10\mod 18$$
+\smallskip
+
+Jeżeli $z\in\Z$, to istnieje $k\in\Z$ takie, że $gcd(a,b)=1$ oraz
+$$x=kmz+y$$
+i wtedy również $kz\in\Z$, czyli $x\equiv y\mod m$.
+\smallskip
+
+W przeciwnym wypadku $z\in\Q$, a więc istnieje $a\in\Z$ oraz $b\in\N$ takie, że
+$$z={a\over b}.$$
+I ponieważ $m$ jest liczbą pierwszą, to $gcd(m,b)=m$. Istnieje $p\in\Z$ takie, że $pm=b$ i jeżeli $p\neq 1$, to mamy
+$$mz=m{a\over b}=m{a\over pm}={a\over p}\in\Z$$
+co daje sprzeczność z $gcd(a,b)=1$, więc $p=1$ i $b=m$.
+\begin{align*}
+    x&=kmz+y\\
+    x&=km{a\over m}+y\\
+    xm&=kam+ym
+\end{align*}
+więc $xm\equiv ym\mod m$. Z poprzedniego podpunktu mamy
+$$x\equiv y\mod {{m\over gcd(m,m)}}=x\equiv y\mod 1$$
+czyli $y$ = 0, więc $mz|x$ i $m|x$ i mamy $x\equiv 0\mod m$.
 
 
 
