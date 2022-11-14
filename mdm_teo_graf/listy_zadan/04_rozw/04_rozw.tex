@@ -15,19 +15,19 @@
 \begin{document}
 \maketitle
 
-\begin{center}
-    \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
-        \hline
+%\begin{center}
+%    \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+%        \hline
 
-        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\
+%        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\
 
-        \hline
+%        \hline
 
-        X & X & - & X & - & - & X & X & - & -  & -  & -  & -  & -  & - \\
+%        X & X & - & X & - & - & X & X & - & -  & -  & -  & -  & -  & - \\
         
-        \hline
-    \end{tabular}
-\end{center}
+%        \hline
+%    \end{tabular}
+%\end{center}
 
 \section*{ZAD 1.}
 
@@ -99,9 +99,97 @@ def gcd(k, M):
 
 \section*{ZAD 3.}
 
-Zacznijmy od $k=2$. Szukamy $x_1, x_2$ takich, że
-$$x_1m_1+x_2m_2=gcd(m_1,m_2).$$
-Problem ten rozwiązuje rozszerzony algorytm Euklidesa.
+Zacznijmy od pomysłu nie w pełni wydajnego. Chcemy znaleźć wyznaczniki takie, że
+$$x_1m_1+x_2m_2+...+x_km_k=gcd(m_1,m_2,...,m_k).$$
+Możemy zająć się najpierw problemem pośrednim i znaleźć
+$$x_1m_1+y_1(m_2+m_3+...+m_k)=gcd(m_1, gcd(m_2,...,m_k))=gcd(m_1,...,m_2).$$
+Po odpowiedniej liczbie takich modyfikacji powinniśmy otrzymać
+$$x_1m_1+y_1(m_2+y_2(m_3+...+y_{k-2}(m_{k-1}+y_{k-1}m_k)))=gcd(m_1,gcd(m_2,gcd(...gcd(m_k)))).$$
+Rozwiązanie tego problemu od najbardziej zagnieżdżonych do najmniej zagnieżdżonych nawiasów korzysta z rozszerzonego algorytmu Euklidesa. W jego oryginalnej wersji szukamy $a,b$ takich, że
+$$ax+by=gcd(x,y).$$
+Czyli za każdym razem chcemy doprowadzić do sytuacji, gdzie mamy dwie liczby $x,y$. Pierwszy pomysł po zaimplementowaniu będzie przechodził przez $k$ liczb, co nie jest bardzo efektowne. Zastanówmy się, czy możemy to przyśpieszyć.
+
+Rozważmy przypadek dla $k=5$.
+$$x_1m_1+x_2m_2+x_3m_3+x_4m_4+x_5m_5=gcd(m_1,...,m_5)$$
+$$z_1(m_1+m_2+m_3)+y_1(m_4+m_5)=gcd(gcd(m_1,m_2,m_3),gcd(m_4,m_5))$$
+$$z_1(z_2(m_1+m_2)+m_3)+y_1(m_4+m_5)=gcd(gcd(gcd(m_1,m_2),m_3), gcd(m_4, m_5))$$
+
+Zauważmy, że możemy nadal dzielić listę na połowe i wywoływać rozszerzony algorytm Euklidesa kiedy już dojdziemy do $2$ elementów. W przypadku jednoelementowego odcinka możemy zwracać ten jedyny element.
+
+
+\begin{lstlisting}[language=Python]
+def ext_gcd(a, b):
+    R = [a, b]
+    S = [1, 0]
+    T = [0, 1]
+
+    while R[1] != 0:
+        q = R[0] // R[1]
+        R = [R[1], R[0] - q * R[1]]
+        S = [S[1], S[0] - q * S[1]]
+        T = [T[1], T[0] - q * T[1]]
+
+    ret = [S[0], T[0]]
+
+    return ret
+
+def zad(k, M):
+    if k == 1: return [M[0]]
+    if k == 2:
+        return ext_gcd(M[0], M[1])
+
+    else:
+        L = []
+        R = []
+
+        i = 0
+        
+        # dziele liste na dwie podlisty
+        while i < k//2:
+            L.append(M[i])
+            i += 1
+        while i < k:
+            R.append(M[i])
+            i += 1
+
+        # wykonuje na nich rekurencyjnie to samo dzialanie
+        coef_L = zad(k//2, L)
+        coef_R = zad(k-k//2, R)
+
+        new_L = []
+        new_R = []
+
+        # mnoze wczesniej otrzymane wspolczynniki przez aktualnie otrzymane, a potem sumuje
+        i = 0
+        while i < len(L): 
+            new_L.append(coef_L[i] * L[i])
+            i += 1
+
+        i = 0
+        while i < len(R): 
+            new_R.append(coef_R[i] * R[i])
+            i += 1
+
+        sum_L = sum(new_L)
+        sum_R = sum(new_R)
+
+        # wspolczynniki przy sumie podlist
+        vec = ext_gcd(sum_L, sum_R)
+
+        i = 0
+        while i < len(L):
+            coef_L[i] *= vec[0]
+            i += 1
+        i = 0
+        while i < len(R):
+            coef_R[i] *= vec[1]
+            i += 1
+
+        # zwroc wspolczynniki lewej podlisty zlaczone ze wspolczynnikami prawej podlisty
+        ret = coef_L + coef_R
+
+        return ret
+\end{lstlisting}
 
 
 \section*{ZAD 4.}
@@ -138,8 +226,66 @@ Zauważmy, że jeśli chociaż jedna z liczb $a,b$ jest parzysta, to zmniejszamy
 
 \section*{ZAD 6.}
 
-Niech $q_1,...,q_k$ będą kolejnymi liczbami pierwszymi takimi, że $q_k=p$. Wtedy
-$$m=(m_1,m_2,...,m_k)_p=\sum\limits_{i=1}^km_iq_i$$
+Zapis liczby $m$ w układzie kolejnych liczb pierwszych to zapis postaci
+$$m=\prod\limits_{i=1}^\infty q_i^{m_i}$$
+gdzie $q_i$ to kolejne liczby pierwsze. Oczywiście, dla skończonych liczb naturalnych $m$ od pewnego momentu $k$ dla każdego $i>k$ będzie $m_i=0$.
+\medskip
+
+{\color{def}a) $k=gcd(m,n)\iff k_i=\min(m_i,n_i)$ dla każdego $i=1,2...$}
+\smallskip
+
+$\color{acc}\implies$
+
+Skoro $k=gcd(m,n)$, to $k$ jest największe takim, że $k|m$ oraz $k|n$.Podzielność obu liczb jest oczywista. Weźmy dowolną liczbę pierwszą $q_i$. Wtedy, ponieważ $q_i$ jest pierwsze, to musi zachodzić
+$$q_i^{k_i}|m\;\land\;q_i^{k_i}|n.$$
+Znowu, dla $m$ i $n$ sprowadza się to do podzielnośći $q^{m_i}$ oraz $q^{n_i}$ przez $q^{k_i}$. W takim razie $k_i$ jest największym takim, że 
+$$k_i\leq m_i\;\land\;k_i\leq n_i,$$
+więc $k_i=\min(m_i,n_i)$.
+\smallskip
+
+$\color{acc}\impliedby$
+
+Wiemy, że dla każdego $i\in\N$ zachodzi $k_i=\min(m_i,n_i)$. Chcemy pokazać, że wtedy $k$ dzieli jednocześnie $n$ i $m$ oraz, że jest to największy taki dzielnik. 
+
+To, że dzieli jest proste:
+$${q^{m_i}\over q^{k_i}}=q^{m_i-k_i}\geq 1$$
+$${q^{n_i}\over q^{k_i}}=q^{n_i-k_i}\geq 1$$
+i obie te liczby są naturalne, bo jeśli $m_i\geq n_i$, to $q^{n_i-k_i}=1$, natomaist 
+$$(\exists\;a\in\N)\;m_i-k_i=a$$ 
+co daje $q^{m_i-k_i}=q^a\in\N$.
+
+Załóżmy teraz, że istnieje liczba $p>k$ taka, że $p|m$ i $p|n$. Wtedy istnieje chociaż jedno $i$ takie, że $p_i>k_i$. Niech więc $p_i=k_i+d$, gdzie $d\in\N$, $d\geq 1$. Znowu załóżmy, że $m_i\geq n_i$.
+\begin{align*}
+    {q_i^{n_i}\over q_i^{p_i}}&={q^{n_i}\over q_i^{k_i+d}}={q^{n_i}\over q_i^{n_i+d}}=q^{n_i-n_i-d}=q^d
+\end{align*}
+ale wtedy $q^{p_i}\nmid q^{n_i}$, czyli $p\nmid n$ i mamy sprzeczność. W takim razie $k$ jest największą liczbą dzielącą jednocześnie $n$ i $m$.
+\medskip
+
+{\color{def}b) $k=lcm(m,n)\iff k_i=\max(m_i,n_i)$ dla każdego $i=1,2...$}
+\medskip
+
+$\color{acc}\implies$
+
+Skoro $k=lcm(m,n)$ to $k$ jest najmniejsze takie, że $m|k$ i $n|k$. Weźmy dowolną liczbę pierwszą $q_i$. Tak samo jak w poprzednim podpunkcie, wystarczy, żeby potęgi liczby pierwszej były przez siebie podzielne:
+$$q_i^{m_i}|q_i^{k_i}\;\land\;q_i^{n_i}|q_i^{k_i},$$
+czyli $k_i\geq m_i$ oraz $k_i\geq n_i$. Poniewawż $k$ ma być najmniejszą wspólną wielokrotnością, to szukamy najmniejszego takiego $k_i$, czyli
+$$k_i=\max(m_i,n_i).$$
+
+$\color{acc}\impliedby$
+
+Po pierwsze, chcemy pokazać że $m|k$ oraz $n|k$. Wystarczy, że pokażemy dla dowolnej liczby pierwszej $q_i$, że $q_i^{m_i}|q_i^{k_i}$ i $q_i^{n_i}|q_i^{k_i}$.
+\begin{align*}
+    {q^{k_i}\over q^{m_i}}&=q^{k_i-m_i}\geq 1\\
+    {q^{k_i}\over q^{n_i}}&=q^{k_i-n_i}\geq 1
+\end{align*}
+Teraz, jeżeli BSO $m_i\geq n_i$, to $m_i=k_i$ i
+$$q^{k_i-m_i}=1\in\N$$
+$$q^{k_i-n_i}=q^{m_i-n_i}\in\N$$
+a więc $k|m$ i $k|n$.
+
+Załóżmy, nie wprost, że istnieje liczba $p$ mniejsza niż $k$, która jest wielokrotnościa $m$ i $n$. Wtedy na chociaż jednym miejscu, niech będzie to $i$, mamy $p_i<k_i$, a więc istnieje $d\in\N$ takie, że $p_i=k_i-d$. Mamy wtedy
+$${q^{p_i}\over q^{m_i}}={q^{k_i-d}\over q^{m_i}}={q^{m_i-d}\over q^{m_i}}=q^{m_i-d-m_i}=q_i^{-d}$$
+co nie jest liczbą naturalną, a więc $m\nmid p$ i mamy sprzeczność. W takim razie $k=lcm(m,n)$.
 
 
 \section*{ZAD 7.}
@@ -200,29 +346,30 @@ $$x\equiv y\mod {{m\over gcd(z,m)}}$$
 {\color{def}c) $x\equiv y\mod mz\implies x\equiv y\mod m$}
 \medskip
 
-Ponieważ zwykle operacja modulo $n$ jest zdefiniowana dla $n$ całkowitych, założę, że jednocześnie $mz$ jak i $m$ są liczbami całkowitymi. Dodatkowo, $m$ jest liczbą pierwszą, bo w przeciwnym przypadku mamy kontrprzykład dla $m=18$, $z=\frac13$ i $x=10$:
+Ponieważ zwykle operacja modulo $n$ jest zdefiniowana dla $n$ całkowitych, założę, że jednocześnie $mz$ jak i $m$ są liczbami całkowitymi. Dodatkowo, $z\in\Z$, bo jeśli $m=18$, $z=\frac13$ i $x=10$:
 $$10\equiv 4\mod 6$$
 $$10\equiv 10\mod 18$$
+to mamy sprzeczność.
 \smallskip
 
-Jeżeli $z\in\Z$, to istnieje $k\in\Z$ takie, że $gcd(a,b)=1$ oraz
+Istnieje $k\in\Z$ takie, że $gcd(a,b)=1$ oraz
 $$x=kmz+y$$
 i wtedy również $kz\in\Z$, czyli $x\equiv y\mod m$.
 \smallskip
 
-W przeciwnym wypadku $z\in\Q$, a więc istnieje $a\in\Z$ oraz $b\in\N$ takie, że
-$$z={a\over b}.$$
-I ponieważ $m$ jest liczbą pierwszą, to $gcd(m,b)=m$. Istnieje $p\in\Z$ takie, że $pm=b$ i jeżeli $p\neq 1$, to mamy
-$$mz=m{a\over b}=m{a\over pm}={a\over p}\in\Z$$
-co daje sprzeczność z $gcd(a,b)=1$, więc $p=1$ i $b=m$.
-\begin{align*}
-    x&=kmz+y\\
-    x&=km{a\over m}+y\\
-    xm&=kam+ym
-\end{align*}
-więc $xm\equiv ym\mod m$. Z poprzedniego podpunktu mamy
-$$x\equiv y\mod {{m\over gcd(m,m)}}=x\equiv y\mod 1$$
-czyli $y$ = 0, więc $mz|x$ i $m|x$ i mamy $x\equiv 0\mod m$.
+% W przeciwnym wypadku $z\in\Q$, a więc istnieje $a\in\Z$ oraz $b\in\N$ takie, że
+% $$z={a\over b}.$$
+% I ponieważ $m$ jest liczbą pierwszą, to $gcd(m,b)=m$. Istnieje $p\in\Z$ takie, że $pm=b$ i jeżeli $p\neq 1$, to mamy
+% $$mz=m{a\over b}=m{a\over pm}={a\over p}\in\Z$$
+% co daje sprzeczność z $gcd(a,b)=1$, więc $p=1$ i $b=m$.
+% \begin{align*}
+%     x&=kmz+y\\
+%     x&=km{a\over m}+y\\
+%     xm&=kam+ym
+% \end{align*}
+% więc $xm\equiv ym\mod m$. Z poprzedniego podpunktu mamy
+% $$x\equiv y\mod {{m\over gcd(m,m)}}=x\equiv y\mod 1$$
+% czyli $y$ = 0, więc $mz|x$ i $m|x$ i mamy $x\equiv 0\mod m$.
 
 \section*{ZAD 8.}
 
