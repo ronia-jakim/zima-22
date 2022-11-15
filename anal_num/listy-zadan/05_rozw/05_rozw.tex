@@ -9,7 +9,31 @@
 
 \section*{ZAD 1.}
 
-moze potem
+a.
+$$\sum\limits_{k=0}^n\lambda_k(x)\equiv 1$$
+
+Zauważmy, że
+$$\sum\limits_{k=0}^n\lambda_k(x)=\sum\limits_{k=0}^n1\cdot\lambda_k(x)$$
+Czyli $\sum\limits_{k=0}^n$ interpoluje funkcję w węzłach
+$$(x_0, 1),(x_1,1),(x_2,1),...,(x_k,1).$$
+Bez trudu można zauważyć, że jedynym wielomianem który to robi jest wielomian $q(x)=1$, więc
+$$\sum\limits_{k=0}^n\lambda_k(x)=q(x)=1.$$
+\medskip
+
+b.
+$$\sum\limits_{k=0}^n\lambda_k(0)x_k^j=\begin{cases}1\quad j=0\\0\quad wpp\end{cases}$$
+
+Jeżeli $j=0$, to mamy
+$$\sum\limits_{k=0}^n\lambda_k(0)x_k^j=\sum\limits_{x=0}^n\lambda_k(0)$$
+co z poprzedniego podpunktu jest zawsze równe 1.
+\smallskip
+
+Jeżeli $j\neq 0$, to interpolujemy funkcję $f$ w węzłach
+$$(x_0,x_0^j),(x_1,x_1^j),...,(x_k,x_k^j).$$
+W tym celu możemy użyc $q(x)=x^j$, czyli
+$$\sum\limits_{k=0}^n\lambda_k(x)x_k^j=q(x)=x^j$$
+co po wstawieniu $x=0$ daje
+$$\sum\limits_{k=0}^n\lambda_k(0)x_k^j=q(0)=0^j=0.$$
 
 \section*{ZAD 2.}
 
@@ -17,7 +41,47 @@ moze potem
     f[x_0,x_1,...,x_k]={f[x_1,x_2,...,x_k]-f[x_0,x_1,...,x_{k-1}]\over x_k-x_0}
 \end{align*}
 
-DIVIDED DIFFERENCE
+Twierdzenie 6.2.1. z "Analiza numeryczna" ~ Kincaid.
+
+Po pierwsze, jeżeli interpolujemy funkcję $f$ przez wielomain $p_k$ stopnia $k+1$-tego w węzłach $(x_0,y_0), (x_1,y_1),...,(x_k, y_k)$, to jest ten wielomian wyrażony jednoznacznie (Twierdzenie 6.1.1. - Kicnaid). Niech więc $p_k,p_{k-1}$ interpolują funkcję $f$ w odpowiednio węzłach $(x_0,y_0),...,(x_k,y_k)$ i $(x_0,y_0),...,(x_{k-1},y_{k-1})$. Dalej, niech $q$ będzie wielomianek interpolującym $f$ w węzłach $(x_1,y_1),...,(x_k,y_k)$.
+\medskip
+
+Dla ułatwienia dowodu, wprowadźmy lemat że 
+$$q(x)+{x-x_k\over x_k-x_0}[q(x)-p_{k-1}(x)]$$
+interpoluje funkcję w węzłach $(x_0,y_0),(x_1,y_1),...,(x_k,y_k)$.
+
+Wielomian $q(x)-p_{k-1}(x)$ ma miejsca zerowe dla 
+$$x_1,...,x_{k-1},$$ 
+więc nie wpływa na węzły $(x_1,y_1),...,(x_{k-1},y_{k-1})$. Co więcej, przechodzi on przez $(x_k,y_k)$ i $(x_0, -y_0)$. W takim razie, wielomian 
+$$(x_k-x)(q(x)-p_{k-1}(x))$$ 
+ma miejsce zerowe dodatkowo dla $x_k$ i przechodzi przez $(x_0,-y_0)$. Ponieważ $x_k>x_0$, to $x_0-x_k<0$, więc
+$${x_k-x\over x_0-x_k}[q(x)-p_{k-1}(x)]={x-x_k\over x_k-x_0}[q(x)-p_{k-1}(x)]$$
+przechodzi tylko przez $(x_0,y_0)$, a w pozostałych węzłach ma miejsca zerowe. Czyli
+$$q(x)+{x-x_k\over x_k-x_0}[q(x)-p_{k-1}(x)]$$
+jest przechodzące przez wszystkie $k+1$ węzłów.
+\medskip
+
+Skoro istnieje tylko jeden wielomian $k$-tego stopnia przechodzący przez ustalone węzły $(x_0,y_0),...,(x_k,y_k)$, to zachodzi
+\begin{align*}
+    p_k(x)&=q(x)+{x-x_k\over x_k-x_0}[q(x)-p_{k-1}(x)].
+\end{align*}
+Współczynnik przy $x^k$ po lewej stronie to
+$$f[x_0,...,x_k],$$
+natomiast współczynnik przy $x^k$ po prawej stronie to
+$${f[x_1,...,x_k]-f[x_0,...,x_{k-1}]\over x_k-x_0}$$
+co daje nam dowodzoną zależność:
+$$f[x_0,...,x_k]={f[x_1,...,x_k]-f[x_0,...,x_{k-1}]\over x_k-x_0}.$$
+
+\section*{ZAD 3.}
+
+    Dla $k=1$
+    $$p[x, x_1]={p[x_1]-p[x]\over x_1-x}={p(x_1)-p(x)\over x_1-x}$$
+    co jest wielomianem stopnia $n-1$, bo dzielimy wielomian stopnia $n$ przez wielomian stopnia $1$.
+    \smallskip
+
+    Załóżmy, że jest teza jest prawdziwa dla wszystkich $\leq k$, wtedy
+    $$p[x, x_1,...,x_{k+1}]={p[x_1, ..., x_{k+1}]-p[x, x_1,...,x_k]\over x_{k+1}-x}.$$
+    Z założenia indukcyjnego wiemy, że $p[x, x_1, ..., x_k]$ jest wielomianem stopnia $n-k$. Pierwsza część róznicy w liczniku jest wartością niezależną od $x$. W takim razie do stopnia szukanego wielomianu przyczynia się tylko wielomian stopnia $n-k$ dzielony przez wielomian stopnia $1$. Daje nam to wielomian stopnia $n-k-1$, czyli $n-(k+1)$ co kończy dowód.
 
 \section*{ZAD 4.}
 
@@ -34,20 +98,50 @@ DIVIDED DIFFERENCE
 \end{tabular}\end{center}
 
 Bedziemy uzywac wzoru interpolacyjnego Newtona, czyli potrzebujemy roznicy dzielonej $y$:
+\begin{center}
+\begin{tabular} {c c c c c c c c c c c c c c c c c c}
+    $x_0$ & & $x_1$ & & $x_2$ & & $x_3$ & & $x_4$ & & $x_5$\\
+    & \\
+    31 & & 5 & & 1 & & 1 & & 11 & & 61\\
+    & -26 & & -4 && 0 & & 10 & & 50\\
+    & & 11 & & 2 & & 5 & & 20\\
+    & & & -3 & & 1 & & 5\\
+    & & & & 1 & & 1\\
+    & & & & & 0
+\end{tabular}
+\end{center}
+
+Wzór interpolacyjny Newtona:
+$$p(x)=\sum\limits_{k=0}^5[y_0,...,y_k]\prod\limits_{j=0}^{i-1}(x-x_j)$$
+
 \begin{align*}
-    \begin{matrix}
-        31\\
-        & & -26\\
-        5 & & & -{11\over 15}\\
-        & & -4\\
-        1\\
-        & & 0\\
-        1\\
-        & & 10\\
-        11\\
-        & & 50\\
-        61
-    \end{matrix}
+    p(x)&=\sum\limits_{k=0}^5[y_0,...,y_k]\prod\limits_{j=0}^{i-1}(x-x_j)=\\
+    &=31 -26(x+2)+11(x+2)(x+1)-3(x+2)(x+1)x+(x+2)(x+1)x(x-1)
 \end{align*}
+
+Dla drugiego wielomianu zmienia się jedynie wartość na szczycie, czyli $[x_0,x_1,...,x_5]$. Wynosi ono wtedy $-{31\over120}$ zamiast $0$ i mamy
+\begin{align*}
+    q(x)&=p(x)-{31\over120}(x+2)(x+1)x+(x+2)(x+1)x(x-1)(x-2)
+\end{align*}
+
+
+\section*{ZAD 5.}
+
+$$\prod\limits_{i=0}^n|x-x_i|\leq\frac14n!h^{n+1}$$
+$$\frac14n!h^{n+1}=\frac14n!\Big({b-a\over n}\Big)^{n+1}$$
+
+\begin{align*}
+    \prod\limits_{i=0}^n|x-(a+ih)|&=\prod\limits_{i=0}^n|x-a-i{b-a\over n}|
+\end{align*}
+$$|x-x_0|=|x-a|\leq \frac12 |b-a|$$
+$$|x-x_1|=|x-a-{b-a\over n}|\leq|x-a|+|{a-b\over n}|\leq \frac 12|b-a|+h$$
+$$|x-x_2|=|x-a-2{b-a\over n}|\leq |x-a|+2|{a-b\over n}|\leq\frac12|b-a|+2h$$
+$$|x-x_i|=|x-a-i{b-a\over n}|\leq|x-a|+i|{a-b\over n}|\leq\frac12|b-a|+ih$$
+
+
+\section*{ZAD 6.}
+
+Skoro funkcja $f^{(n+1)}$ ma stały znak w przedziale $[x_0,x_{n+1}]$ to ma tam co najwyżej jedno miejsce zerowe, więc mamy co najwyżej $n+1$ miejsc zerowych funkcji $f$ w tym przedziale.
+
 
 \end{document}
