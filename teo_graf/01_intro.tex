@@ -281,7 +281,7 @@ W takim raize, mozemy miec tylko $n=m+1$ i wtedy dokladnie jedno z $n,m$ moze by
 \end{tabularx}
 \medskip
 
-\hyperref[halls-condition-GB]{[ \worldflag[length=10px, width=5px]{GB}]} \hyperref[halls-condition-GB]{[ \worldflag[length=10px, width=5px]{PL}]}
+\hyperref[halls-condition-GB]{[ \worldflag[length=10px, width=5px]{GB}]} \hyperref[halls-condition-PL]{[ \worldflag[length=10px, width=5px]{PL}]}
 \phantomsection
 \label{halls-condition-LAN}
 
@@ -302,7 +302,7 @@ $\color{acc}\impliedby$
 Using induction on $|W|$. For $|W|=0,1$ it is trivial.
 \smallskip
 
-We gonna break it into parts.
+We gonna break it into parts:  $|N(A)|>|A|$ and $|N(A)|=|A|$
 \smallskip
 
 Suppose that $|N(A)|>|A|$ for every non-empty subset $A\subsetneq W$. Take any $w\in W$ and $v\in N(w)$ and construct a new graph
@@ -312,3 +312,58 @@ $$N_{G_0}(B)=N_G(B)-\{v\}$$
 and therefore
 $$|N_{G_0}(B)|\geq |N_G(B)|-1\geq |B|$$
 and so $(G_0,W-\{w\})$ satisfies Hall's condition. From induction we have a matching $P$ in $G_0$ from $W-\{w\}$ to $M-\{v\}$ and so $P\cup \{wv\}$ is a matching from $W$ to $M$.
+\smallskip
+
+Now, suppose that $|N(A)=|A|$ for some non-empty subset $A\subsetneq W$. Let 
+$$G_1=G[A\cup N(A)]$$ 
+and 
+$$g_2=G[(W-A)\cup(M-N(A))].$$
+We will show that both those graphs satisfy Hall's condition.
+
+Let us take any $B\subseteq A$ in $G_1$. We have 
+$$N_G(B)\subseteq N_G(A)\subseteq V(G_1)$$
+$$|N_{G_1}(B)|=|N_G(B)|\geq|B|$$
+and so graph $G_1$ satisfies Hall's condition.
+
+Now, let us take any $B\subseteq W-A$ in $G_2$. We know that $N_{G_2}(B)\subseteq M-N(A)$ so 
+$$N_{G_2}(B)= N_G(B)-N_G(A)=N_G(A\cup B)-N_G(A)$$
+$$|N_{G_2}(B)|=|N_G(A\cup B)-N_G(A)|\geq |N_G(A\cup B)|-|N_G(A)|\geq |A\cup B|-|A|=|A|+|B|-|A|=|B|$$
+Therefore, graph $G_2$ also satisfies Hall's condition.
+
+Using inductive hypothesis, we have that there exists a matching $P_1$ in $G_1$ and a matching $P_2$ in $G_2$. The first one is from $A$ to $N_G(A)$ while the second is from $W-A$ to $M-N_G(A)$, so they are disjoint. Therefore, $P_1\cup P_2$ is a matching in $G$ from $W$ to $M$.
+\bigskip
+
+\hyperref[halls-condition-LAN]{[ \worldflag[length=10px, width=5px]{PL}]}
+\phantomsection
+\label{halls-condition-PL}
+\medskip
+
+$\color{acc}\implies$
+\smallskip
+
+Trywialne.
+\medskip
+
+$\color{acc}\impliedby$
+\smallskip
+
+Uzyjemy indukcji na $|W|$. Dla $|W|=0,1$ jest trywialne.
+\smallskip
+
+Podzielimy dowod na dwie czesci:  $|N(A)|>|A|$ oraz $|N(A)|=|A|$.
+\smallskip
+
+Zalozmy, że $|N(A)|>|A|$ dla kazdego niepustego podzbioru $A\subsetneq W$. Wezmy dowolne $w\in W$ oraz $v\in N(w)$ i skonstruujmy nowy graf
+$$G_0=G-\{w,v\}.$$
+Dla kazdego niepustego $B\subseteq W-\{w\}$ mamy
+$$N_{G_0}(B)=N_{G}(B)-\{v\}$$
+i w takim razie
+$$|N_{G_0}(B)|\geq |N_G(B)|-1\geq |B|,$$
+czyli $(G_0, W-\{w\})$ spelnia warunek Halla. Z zalozenia indukcyjnego istnieje kojarzenie $P$ w $G_0$ z $W-\{w\}$ do $M-\{v\}$, w takim razie $P\cup\{wv\}$ jest kojarzeniem z $W$ do $M$.
+\smallskip
+
+Zalozmy teraz, ze $|N(A)=A|$ dla pewnego niepustego podzbioru $A\subsetneq W$. Niech
+$$G_1=G[A\cup N(A)]$$ 
+oraz 
+$$g_2=G[(W-A)\cup(M-N(A))].$$
+Pokazemy, ze oba te grafy zaspokajaja warunek Halla.
