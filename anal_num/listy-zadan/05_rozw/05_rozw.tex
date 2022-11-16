@@ -4,8 +4,12 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 
+\title{Lista 5\\\large Analiza Numeryczna M}
+\author{Weronika Jakimowicz}
+\date{16.11.2022}
 
 \begin{document}
+\maketitle
 
 \section*{ZAD 1.}
 
@@ -127,11 +131,56 @@ Dla drugiego wielomianu zmienia się jedynie wartość na szczycie, czyli $[x_0,
 
 \section*{ZAD 5.}
 
-To nie śmiga dla $a=3, b=4,x=3,n=5$.
+Dla dowolnego $x\in[a,b]$ istnieje $k$ takie, że $x\in[x_k,x_{k+1}]$. Wtedy iloczyn $(x-x_k)(x-x_{k+1})$ jest największy gdy $x={x_k+x_{k+1}\over2}$, czyli jest równo pomiędzy tymi dwoma punktami. Wtedy
+\begin{align*}
+    (x-x_k)(x-x_{k+1})&={x_k+x_{k+1}-2x_k\over2}{x_k+x_{k+1}-2x_{k+1}\over2}=\\
+    &=-{x_{k+1}-x_k\over 2}{x_{k+1}-x_k\over 2}=-\frac14h^2
+\end{align*}
 
-\section*{ZAD 6.}
+Największą odległość jaką może mieć $x$ względem $x_{k-1}$ jest $2h$:
+$$(x_{k+1}-x_{k-1})=a+(k+1)h-a-(k-1)h=2h.$$
+Analogicznie, największa odległość od $x_{k-2}$ to $3h$ etc. Dla $x_{k+2}$ również największa odległość to $2h$:
+$$(x_k-x_{k+2})=a+kh-a-(k+2)h=-2h$$
+i tak samo dla $x_{k+3}$ to $3h$. Odległość $x_0$ to $kh$, a $x_n$ to $(n-k)h$. Daje to nam poniższą nierówność:
+\begin{align*}
+    \prod\limits_{i=0}^n|x-x_i|&\leq kh\cdot (k-1)h\cdot...\cdot 2h\cdot \frac14h^2\cdot 2h\cdot...\cdot (n-k-1)h\cdot (n-k)\cdot h=\\
+    &=\frac14 k!\cdot {n!\over k!} h^{k-1}h^2h^{n-k-1}=\frac14n!h^n
+\end{align*}
 
-Skoro funkcja $f^{(n+1)}$ ma stały znak w przedziale $[x_0,x_{n+1}]$ to ma tam co najwyżej jedno miejsce zerowe, więc mamy co najwyżej $n+1$ miejsc zerowych funkcji $f$ w tym przedziale.
+
+\section*{ZAD 7.}
+
+Twierdzenie ze slajdów:
+
+Jeżeli funkcja $f$ ma w przedziale $[a,b]$ ciągłą $(n+1)$-sza pochodną, a wielomian $L_n\in\Pi_n$ interpoluję tę funkcją w parami różnych punktach $x_0,x_1,...,x_n\in[a,b]$ to dla każdego $x\in[a,b]$ zachodzi równość
+$$f(x)-L_n(x)={1\over (n+1)!}f^{(n+1)}(\xi_x)p_{n+1}(x)$$
+gdzie $p_{n+1}(x)=\prod\limits_{k=0}^n(x-x_k)$.
+
+Czyli
+$$f(x)-L_1(x)=\frac1{2!}f^{(n+1)}(\xi_x)(x-x_0)(x-x_1)$$
+i dla wartości bezwzględnej:
+\begin{align*}
+    |f(x)-L_1(x)|&= \frac12|f^{(n+1)}(\xi_x)|x-x_0||x-x_1|\leq\\
+    &\leq \frac12\max(|f''(x)|)|{x_0+x_1\over2}-x_0||{x_0+x_1\over2}-x_1|=\\
+    &=\frac12M_2|{x_1-x_0\over2}||{x_0-x_1\over2}|=\\
+    &=\frac12M_2(x_1-x_0)^2\frac14=\frac18M_2(x_1-x_0)^2
+\end{align*}
+
+\section*{ZAD 8.}
+
+Twierdzenia 6.1.7. z Kincaid-Cheney:
+
+Jeżeli węzły $x_i$ są zerami wilomianu Czebyszewa $T_{n+1}$, to dla $|x|\leq 1$ jest
+$$|f(x)-L_n(x)|\leq{1\over 2^n(n+1)!}\|f^{(n+1)}\|_{[-1,1]}$$
+
+Rozważana przez nas norma $\|f\|_{[a,b]}$ to norma maksimum, więc
+$$\|f^{(n+1)}\|_{[-1,1]}=\|e^x\|_{[-1,1]}=e^1=e.$$
+
+Chcemy więc znaleźć najmniejsze takie $n$, że
+$$10^{-5}\leq {e\over 2^n(n+1)!}$$
+dla $n=6$
+$$2^67!=322560\approx 3\cdot 10^5$$
+$${e\over 2^67!}\approx {3\over 3\cdot 10^5}=10^{-5}$$
 
 
 \end{document}
