@@ -367,3 +367,39 @@ $$G_1=G[A\cup N(A)]$$
 oraz 
 $$g_2=G[(W-A)\cup(M-N(A))].$$
 Pokazemy, ze oba te grafy zaspokajaja warunek Halla.
+
+Wezmy dowolny $B\subseteq A$ w $G_1$. Mamy
+$$N_G(B)\subseteq N_G(A)\subseteq V(G_1)$$
+$$|N_{G_1}(B)|=|N_G(B)|\geq|B|$$
+a wiec graf $G_1$ zaspokaja warunek Halla.
+
+Teraz, wezmy dowolny $B\subseteq W-A$ w $G_2$. Wiemy, ze $N_{G_2}(B)\subseteq M-N(A)$, a wiec
+$$N_{G_2}(B)= N_G(B)-N_G(A)=N_G(A\cup B)-N_G(A)$$
+$$|N_{G_2}(B)|=|N_G(A\cup B)-N_G(A)|\geq |N_G(A\cup B)|-|N_G(A)|\geq |A\cup B|-|A|=|A|+|B|-|A|=|B|$$
+W takim razie $G_2$ spelnia warunek Halla.
+\smallskip
+
+Z zalozenia indukcyjnego wiemy, ze istnieje kojarzenie $P_1$ w $G_1$ oraz $P_2$ w $G_2$. Pierwsze jest z $A$ do $N_G(A)$, natomiast drugie jest z $W-A$ do $M-N_G(A)$, czyli sa rozlaczne. W takim razie $P_1\cup P_2$ jest kojarzeniem w $G$ z $W$ do $M$.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    Let $G$ be a finite group and let $H\leq G$ be a subgroup with ${|G|\over|H|}=k$, then
+
+    $g_1H\cup ...\cup g_kH=G=Hg_1\cup...\cup Hg_k$
+
+    for some $g_1,...,g_k\in G$.
+
+    &
+
+    Niech $G$ bedzie skonczona grupa i niech $H\leq G$ bedzie podgrupa z ${|G|\over|H|}=k$, wtedy
+
+
+    $g_1H\cup ...\cup g_kH=G=Hg_1\cup...\cup Hg_k$
+    
+    fdla pewnych $g_1,...,g_k\in G$.
+
+\end{tabularx}
