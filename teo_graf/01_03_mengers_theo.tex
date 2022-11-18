@@ -96,8 +96,16 @@ Zalozmy, ze $e(G)\geq 1$, wybiezmy krawedz $e\in E(G)$ i niech $H=G-\{e\}$.
 Jesli dla kazde $(A,B)$-ciecie w $H$ ma stopien co najmniej $k$, to przez hipoteze indukcyjna sa one $k$ wierzcholkowo rozlacznymi $(A,B)$-sciezkami w $H$ i w takim razie w $G$, wiec koniec.
 \smallskip
 
-Zalozmy teraz, ze w $H$ istnieje co najmniej jedno $(A,B)$-ciecie $C$ takie, ze $|C|<k$. W takim razie $C$ nie jest $(A, B)$-cieciem w $G$, wiec $G-C$ zawiera co najmniej jedna $(A, B)$-sciezke postaci
+Zalozmy teraz, bez starty ogolnosci, ze w $H$ istnieje co najmniej jedno $(A,B)$-ciecie $C$ takie, ze $|C|<k$. W takim razie $C$ nie jest $(A, B)$-cieciem w $G$, wiec $G-C$ zawiera co najmniej jedna $(A, B)$-sciezke postaci
 $$a...vw...b$$
 dla pewnych $a\in A$, $b\in B$, gdzie $v,w\in G$ sa koncami $e$. Co wiecej, kazda $(A, B)$-sciezka w $G-C$ zawiera wierzcholek $v$, co implikuje ze
 $$C'=C\cup\{v\}$$
-jest $(A, B)$-cieciem w $G$. Co wiecej, $|C'|=|C|+1\geq k$. 
+jest $(A, B)$-cieciem w $G$. Co wiecej, $|C'|=|C|+1\geq k$. {\color{dyg}Poniewaz $a...vw...b$ bylo jedyna sciezka ktora blokowala $C$ przed zostaniem $(A,B)$-cieciem w $G$, ale juz $|C'|$ nim jest}, to $|C|=k-1$ i mozemy przyjac, ze
+$$C=\{c_1,...,c_{k-1}.$$
+Teraz, poniewaz $v\in C'$, to kazde $(A, C')$-ciecie $D$ w $H$ jest takze $(A, C')$-cieciem w $G$. Poniewaz kazda $(A, B)$-sciezka w $G$ zawiera wierzcholek $C'$, to $D$ jest takze $(A, B)$-cieciem w $G$ i dlatego $|D|\geq k$. Korzystajac wiec z hipotezy indukcyjnej, wiemy, ze istnieja rozlaczne wierzcholkami $(A, C')$-sciezki 
+$$P^{(1)},...,P^{(k-1)},P^{(k)}$$ 
+w $H$ konczace sie odpowiednio w $c_1,..., c_{k-1}, v$. Niech $C''=C\cup\{w\}$. Wtedy analogicznie, mamy takie $(C'', B)$-sciezki 
+$$Q^{(1)},...,Q^{{(k-1)}},Q^{(k)}$$
+w $H$ zaczynajace sie od odpowiednio wierzcholkow $c_1,..., c_{k-1}, v$. Co wiecej, poniewaz $C'$ jest $(A, B)$-cieciem w $G$, to $P^{(i)}$ oraz $Q^{(j)}$ nie moga miec wspolnego wierzcholka $u$ poza przypadkiem $i=j\leq k-1$ i $u=c_i$. To sugeruje, ze 
+$$P^{(1)}Q^{(1)},...,P^{(k-1)}Q^{(k-1)},P^{(k)}eQ^{(k)}$$
+sa $k$ rozlacznymi wzgledem wierzcholkow $(A, B)$-sciezkami w $G$. Koniec.
