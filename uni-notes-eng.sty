@@ -195,6 +195,16 @@
 \definecolor{git75gray}{HTML}{21262D}
 \definecolor{git90gray}{HTML}{161B22}
 
+\newcommand{\prooflang}[2]{
+\hyperref[#1-LAN]{[ \worldflag[length=10px, width=5px]{#2}]}
+\phantomsection
+\label{#1-#2}}
+\newcommand{\prooflink}[1]{
+  \hyperref[#1-GB]{[ \worldflag[length=10px, width=5px]{GB}]} \hyperref[#1-PL]{[ \worldflag[length=10px, width=5px]{PL}]}
+\phantomsection
+\label{#1-LAN}
+}
+
 
 %* zasady dodawania nowych języków w latexu to strona 44 dokumentacji listings
 % podstawowe zasady racketa

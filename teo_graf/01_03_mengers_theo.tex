@@ -52,7 +52,7 @@
 
     Let $G$ be a graph, $A,B\subseteq V(G)$ and $k\geq0$. Suppose that for every $(A,B)$-cut $C$ in $G$ we have $|C|\geq k$. 
 
-    Then $G$ contains a collection of $k$ vertex-disjoint $(A,B)$-paths.
+    Then $G$ contains a {\color{acc}collection of $k$ vertex-disjoint} $(A,B)$-paths.
 
     &
 
@@ -61,26 +61,19 @@
 
     Niech $G$ bedzie grafem, $A,B\subseteq V(G)$ i $k\geq0$. Zalozmy, ze dla kazdego $(A,B)$-ciecia $C$ w $G$ jest $|C|\geq k$.
 
-    Wtedy $G$ zawiera zbior $k$ rozlacznych wierzcholkami $(A,B)$-sciezek.
+    Wtedy $G$ zawiera {\color{acc}zbior $k$ rozlacznych wierzcholkami} $(A,B)$-sciezek.
 
 \end{tabularx}
 
-\hyperref[vertex-disjoined-lemma-GB]{[ \worldflag[length=10px, width=5px]{GB}]} \hyperref[vertex-disjoined-lemma-PL]{[ \worldflag[length=10px, width=5px]{PL}]}
-\phantomsection
-\label{vertex-disjoined-lemma-LAN}
-
+\prooflink{vertex-disjoined-lemma}
 \medskip
 
-\hyperref[vertex-disjoined-lemma-LAN]{[ \worldflag[length=10px, width=5px]{GB}]}
-\phantomsection
-\label{vertex-disjoined-lemma-GB}
+\prooflang{vertex-disjoined-lemma}{GB}
 \medskip
 
 {\color{cyan}I WILL GET TO IT SOMEDAY}
 
-\hyperref[vertex-disjoined-lemma-LAN]{[ \worldflag[length=10px, width=5px]{PL}]}
-\phantomsection
-\label{vertex-disjoined-lemma-PL}
+\prooflang{vertex-disjoined-lemma}{PL}
 \medskip
 
 
@@ -109,3 +102,103 @@ $$Q^{(1)},...,Q^{{(k-1)}},Q^{(k)}$$
 w $H$ zaczynajace sie od odpowiednio wierzcholkow $c_1,..., c_{k-1}, v$. Co wiecej, poniewaz $C'$ jest $(A, B)$-cieciem w $G$, to $P^{(i)}$ oraz $Q^{(j)}$ nie moga miec wspolnego wierzcholka $u$ poza przypadkiem $i=j\leq k-1$ i $u=c_i$. To sugeruje, ze 
 $$P^{(1)}Q^{(1)},...,P^{(k-1)}Q^{(k-1)},P^{(k)}eQ^{(k)}$$
 sa $k$ rozlacznymi wzgledem wierzcholkow $(A, B)$-sciezkami w $G$. Koniec.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    Hall's Marriage Theorem may be deduced from this lemma:
+
+    Let $G$ be a bipartite graph with vertex classes $W$ and $M$ and suppose that $(G, W)$ satisfies Hall's condition. Let $C$ be a $(W, M)$-cut in $G$. Then 
+    $$N(W-C)\subseteq M\cap C$$
+
+    &
+
+    Twierdzenie Halla o malzenstwach moze byc wyprowadzone z tego lematu:
+
+    Niech $G$ bedzie grafem dwudzielnym z klasami wierzcholkow $W$ i $M$ i zalozmy, ze $(G, W)$ zadowala warunek Halla. Niech $C$ bedzie $(W, M)$-cieciem w $G$. Wtedy
+    $$N(W-C)\subseteq M\cap C$$
+
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+    
+    and therefore
+    $$
+    \begin{aligned}
+        |C|=|W\cap c|+|M\cap C|\geq \\
+        |W\cap C|+|N(W-C)|\geq\\
+        |W\cap C|+|W-C|=|W|
+    \end{aligned}
+    $$    
+    thus $|W|$ contains vertex-disjoint $(W, M)$-paths, each of length $1$ implying that such a collection of paths is a matching.
+
+    &
+    
+    i z tego
+    $$
+    \begin{aligned}
+        |C|=|W\cap c|+|M\cap C|\geq \\
+        |W\cap C|+|N(W-C)|\geq\\
+        |W\cap C|+|W-C|=|W|
+    \end{aligned}
+    $$
+    a wiec $|W|$ zawiera rozlaczne wzgledem wierzcholkow $(W, M)$-sciezki, kazda o dlugosci $1$, implikujac ze taki zbior sciezek jest kojarzeniem.\\
+
+    & \\
+
+    \hline
+
+    & \\
+
+    {\color{def}Menger's Theorem}
+    \smallskip
+
+    Let $G$ be an incomplete graph and let $k\geq0$. Then $G$ is $k$-connected iff for every $a,b\in G$ with $a\neq b$, there exists a collection of $k$ independent $(a,b)$-paths in $G$.
+
+    &
+
+    {\color{def}Twierdzenie Mengera}
+    \smallskip
+
+    Niech $G$ bedze niepelnym grafem i niech $k\geq0$. Wtedy $G$ jest $k$-spojne iff dla kazdego $a,b\in G$ z $a\neq b$ istnieje zbior $k$ niezaleznych $(a,b)$-sciezek w $G$.
+
+\end{tabularx}
+
+\prooflink{menger-theorem}
+\medskip
+
+\prooflang{menger-theorem}{GB}
+\medskip
+
+{\color{cyan}I WILL GET TO IT SOMEDAY}
+
+\prooflang{menger-theorem}{PL}
+\medskip
+
+$\color{acc}\implies$
+
+Niech $C\subseteq V(G)$ i zalozmy, ze $G-C$ jest niespojny. Wybierzmy dowolne $a,b\in G-C$ nalezace do roznych skladowych spojnosci $G-C$. Na mocy tego zalozenia, $G$ zawiera $k$ niezaleznych $(a,b)$-sciezek. Kazda z tych sciezek musi miec wierzcholek w $C$, ale zadne dwie sciezki nie maja wspolnego wierzcholka poza $a$ i $b$. Z tego wynika, ze $|C|\geq k$, tak jak wymagamy.
+\smallskip
+
+$\color{acc}\impliedby$
+
+Bedziemy robic indukcje po $k$.\smallskip 
+
+Przypadek bazowy dla $k=0$ jest trywialny. 
+
+Niech wiec $k\geq 1$ i niech $a,b\in G$ beda rozne.
+
+Zalozmy najpierw, ze $a\not\sim b$. Niech $A=N(a)$ oraz $B=N(b)$. Grafy $G-A$ i $G-B$ sa niespojne, bo nie maja ani jednej sciezki $a....b$. Daje to $|A|\geq k$ oraz $|B|\geq k$. Jezeli $C$ jest $(A, B)$-cieciem w $G$, to $G-C$ rowniez nie ma sciezem miedzy elementami $A-C$ oraz $B-C$. Dlatego, albo $A\subseteq C$ albo $B\subseteq C$, albo $G-C$ jest niespojne. W kazdym razie, mamy $|C|\geq k$ wiec z lematu wyzej, $G$ ma $k$ rozlacznych wzgledem wierzcholkow $(A, B)$-sciezek:
+$$a_1...b_1,\;...,\;a_k...b_k.$$
+Wtedy, 
+$$aa_1...b_1b,\;...,\;aa_k...b_kb$$
+sa $k$ niezaleznymi sciezkami $(a,b)$ tak jak wymagamy.
+
+Zalozmy teraz, ze $a\sim b$ i niech $H=G-\{ab\}$. Pokazemy najpiew, ze $H$ jest $(k-1)$-spojne.
+
+Zalozmy, ze tak nie jest. Niech $C\subseteq V(H)$ bedzie takim podzbiorem, ze $|C|<k-1$ i niech $H-C$ bedzie niespojne. Poniewaz $G$ jest $k$-spojne, to $G-C$ jest spojne i nie ma wierzcholkow tnacych ({\color{dyg}cut vertices}), co implikuje ze $H-C$ dokladnie dwie skladowe spojne, kazda zawierajaca jeden z wierzcholkow $a$ lub $b$. Ale wtedy $|G|=|H|=2+|C|\leq k$, wiec $G$ jest grafem $k$-spojnym z $|G|\leq k$, co daje sprzecznosc z tym, ze $G$ nie jest pelne.
+
+W takim raize, $H$ musi byc $(k-1)$-spojne. Z hipotezy indukcyjnej zawiera wiec $k-1$ niezaleznych $(a,b)$-sciezem. Razem z krawedzie $ab$ te sciezki tworza zbior $k$ niezaleznych $(a,b)$ sciezek w $G$, co konczy dowod.
