@@ -1,0 +1,65 @@
+\subsection{Menger's Theorem (so edgy)}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    Graph $G$ is {\color{def}$k$-edge-connected} for $k\geq 0$ if for every $F\subseteq E(G)$, $|F|<k$, $G-F$ is connected.
+    \medskip
+
+    {\color{def}Line graph} of graph $G$ $[L_G]$ is a graph with $V(L_G)=E(G)$ and for $e,f\in L_G$ with $e\neq f$ we have 
+    $$e\sim f\;in\;L_G\iff e,f\;common\;endpoint\;in\;G$$
+    \bigskip
+
+    {\color{def}Menger's Theorem \color{acc}edge version}
+
+    Let $G$ be a graph and let $k\geq0$.
+
+    Then $G$ is $k$-edge-connected iff for every $a,b\in G$ with $a\neq b$, there exists a collection of $k$ edge-disjoint $(a,b)$-paths in $G$.
+
+    &
+
+    Graf $G$ jest {\color{def}$k$-spojny krawedziowo} dla $k\geq0$ jesli dla kazdego $F\subseteq E(G)$, $|F|<k$, $G-F$ jest spojny.
+    \medskip
+
+    {\color{def}Graf krawedziowy} grafu $G$ $[L_G]$ jest grafem z $V(L_G)=E(G)$ i dla $e,f\in L_G$ z $e\neq f$ mamy
+    $$e\sim f\;w\;L_G\iff e,f\;wspolny\;koniec\;w\;G$$
+    \bigskip
+
+    {\color{def}Twierdzenie Megera \color{acc}wersja krawedzie}
+
+    Niech $G$ bedzie grafem i niech $k\geq0$.
+
+    Wtedy $G$ jest $k$-spojny krawedziowo z $a\neq b$, wtedy istnieje zbior $k$ rozlacznych krawedziami $(a,b)$-krawedzi w $G$.
+
+\end{tabularx}
+
+\prooflink{mengers-edges}
+\medskip
+
+\prooflang{mengers-edges}{GB}
+\medskip
+
+{\color{cyan}SOMEBONY ONCE TOLD ME THE WORLD IS GONNA ROLL ME}
+\bigskip
+
+\prooflang{mengers-edges}{PL}
+\medskip
+
+$\color{acc}\implies$
+
+Niech $L_G$ bedzie {\color{acc}grafem liniowym} grafu $G$. Wezmy $a,b\in G$ takie, ze $a\neq b$. Niech 
+$$A=\{av\in E(G)\;:\;v\in N_G(a)\}$$
+i niech
+$$B=\{bv\in E(G)\;:\;v\in N_G(b)\}.$$
+Oznaczmy przez $C$ $(A, B)$-ciecie w $L_G$, wiec 
+$$C\subseteq E(G).$$
+Wtedy nie istnieje $(a,b)$-sciezka w $G-C$, co implikuje, ze $|C|\geq k$. W takim razie, na mocy lematu z poprzedniego podrozdzialu, istnieje $k$ rozlaczna wzgledem wierzcholkow $(A,B)$-sciezka w $L_G$ i z tego powodu jest $k$ rozlaczna wzgledem krawedzi $(a,b)$-sciezka w $G$.
+\smallskip
+
+\emph{
+    Mozemy wyprowadzic te implikacje z twierdzenia "max-flow min-cut" przez zamienianie kazdej krawedzi $vw$ przez pare skierowanych krawedzi $v\to w$ i $w\to v$. Ale my nie znamy tego twierdzenia, wiec nie chce mi sie pisac dalej :v
+}
+\medskip
+
+$\color{acc}\impliedby$
+
+Niech $f\subseteq E(G)$ i zalozmy, ze $G-F$ jest niespojny. Wybierzmy $a,b\in G-F$ nalezacy do roznych skladowych spojnosci $G-F$. Zgodnie z zalozeniem, $G$ zawiera $k$ rozlaczne wzgledem krawedzi $(a,b)$-sciezki i kazda z tych sciezek musi miec krawedzie w $F$. Z tego tez powodu $|F|\geq k$ tak jak chcielismy.
