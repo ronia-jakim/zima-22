@@ -1,0 +1,103 @@
+\subsection{Menger's Theorem}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    {\color{acc}Cut vertex} $v$ is a vertex in a connected graph $G$ such that $G-\{v\}$ is not connected.
+    \smallskip
+
+    Graph $G$ is a {\color{def}$k$-connected graph} if for any $A\subseteq V(G)$, $|A|<k$, $G-A$ is connected.
+    \medskip
+
+    {\color{def}Complete graph} has all vertices connected by an edge, that is for all $v,w\in G$ $v\neq w$ we have $vw\in G$.
+
+    &
+
+    {\color{acc}Tnacy wierzcholek} $v$ jest wierzcholkiem w spojnym grafie $G$ takim, ze $G-\{v\}$ jest niespojny.
+    \smallskip
+
+    Graf $G$ jest {\color{def}$k$-spojnym grafem}, jezeli dla kazdego $A\subseteq V(G)$, $|A|<k$, $G-A$ jest spojny.
+    \medskip
+
+    {\color{def}Graf pelny} ma wszystkie wierzcholki polaczone krawedzia, to znaczy dla kazdego $v,w\in G$, $v\neq w$ mamy $vw\in G$. 
+    \\
+
+    \hline
+
+    {\color{def}$(A,B)$-path} is a path in $G$ for some $A,B\subseteq V$ of the form $a...b$ for some $a\in A$ and $b\in B$.
+
+    {\color{def}$(A,B)$-cut} in $G$ is $C\subseteq V$ such that $G-C$ contains no $(A-C,B-C)$-paths.
+    \smallskip
+
+    If we take vertices $a,v\in V$ we call an $(\{a\},\{b\})$-path an $(a,b)$-path. Given a collection of $(a,b)$-paths
+    $$P^{(1)},...,P^{(k)}$$
+    we say such a collection is {\color{def}independent} if $P^{(i)}-\{a,b\}$ and $P^{(j)}-\{a,b\}$ have no common vertices for $i\neq j$.
+
+    &
+
+    {\color{def}$(A,B)$-sciezka} to sciezka w $G$ dla pewnych $A,B\subseteq V$ postaci $a...b$ dla jakis $a\in A$ i $b\in B$.
+
+    {\color{def}$(A,B)$-ciecie} w $G$ to $C\subseteq V$ takie, ze $G-C$ nie zawiera zadnych $(A-C, B-C)$-sciezek.
+    \smallskip
+
+    Jesli wezmiemy wierzcholki $a,v\in V$, to $(\{a\},\{b\})$-sciezke nazywamy $(a,b)$-sciezka. Jesli dana jest kolekcja $(a,b)$-sciezek
+    $$P^{(1)},...,P^{(k)}$$
+    mowimy, ze ta kolekcja jest {\color{def}niezalezna}, jezeli $P^{(i)}-\{a,b\}$ i $P^{(j)}-\{a,b\}$ nie maja wspolnych wierzcholkow dla $i\neq j$.
+
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    Given $A,B,C\subseteq V(G)$ and if $A\subseteq C$ or $B\subseteq C$, then $C$ is an $(A,B)$-cut and if $C$ is an $(A,B)$-cut then $A\cap B\subseteq C$.
+    \bigskip
+
+    Let $G$ be a graph, $A,B\subseteq V(G)$ and $k\geq0$. Suppose that for every $(A,B)$-cut $C$ in $G$ we have $|C|\geq k$. 
+
+    Then $G$ contains a collection of $k$ vertex-disjoint $(A,B)$-paths.
+
+    &
+
+    Dla danych $A,B,C\subseteq V(G)$, jezeli $A\subseteq C$ albo $B\subseteq C$, to $C$ jest $(A,B)$-cieciem i jesli $C$ jest $(A,B)$-cieciem, to $A\cap B\subseteq C$.
+    \bigskip
+
+    Niech $G$ bedzie grafem, $A,B\subseteq V(G)$ i $k\geq0$. Zalozmy, ze dla kazdego $(A,B)$-ciecia $C$ w $G$ jest $|C|\geq k$.
+
+    Wtedy $G$ zawiera zbior $k$ rozlacznych wierzcholkami $(A,B)$-sciezek.
+
+\end{tabularx}
+
+\hyperref[vertex-disjoined-lemma-GB]{[ \worldflag[length=10px, width=5px]{GB}]} \hyperref[vertex-disjoined-lemma-PL]{[ \worldflag[length=10px, width=5px]{PL}]}
+\phantomsection
+\label{vertex-disjoined-lemma-LAN}
+
+\medskip
+
+\hyperref[vertex-disjoined-lemma-LAN]{[ \worldflag[length=10px, width=5px]{GB}]}
+\phantomsection
+\label{vertex-disjoined-lemma-GB}
+\medskip
+
+{\color{cyan}I WILL GET TO IT SOMEDAY}
+
+\hyperref[vertex-disjoined-lemma-LAN]{[ \worldflag[length=10px, width=5px]{PL}]}
+\phantomsection
+\label{vertex-disjoined-lemma-PL}
+\medskip
+
+
+Uzyjemy indukcji na $e(G)$ \hyperref[handshaking-lemma]{[definicja dla debila]}.
+\smallskip
+
+Jako przypadek bazowy mamy $e(G)=0$, wtedy $A\cap B$ jest $(A,B)$-cieciem i w takim razie $k\leq |A\cap B|$, ale kazdy wierzcholek $A\cap B$ jest $(A,B)$-sciezka dlugosci 0 i wszystkie z nich sa rozlaczne, tak jak wymagamy.
+\medskip
+
+Zalozmy, ze $e(G)\geq 1$, wybiezmy krawedz $e\in E(G)$ i niech $H=G-\{e\}$. 
+\smallskip
+
+Jesli dla kazde $(A,B)$-ciecie w $H$ ma stopien co najmniej $k$, to przez hipoteze indukcyjna sa one $k$ wierzcholkowo rozlacznymi $(A,B)$-sciezkami w $H$ i w takim razie w $G$, wiec koniec.
+\smallskip
+
+Zalozmy teraz, ze w $H$ istnieje co najmniej jedno $(A,B)$-ciecie $C$ takie, ze $|C|<k$. W takim razie $C$ nie jest $(A, B)$-cieciem w $G$, wiec $G-C$ zawiera co najmniej jedna $(A, B)$-sciezke postaci
+$$a...vw...b$$
+dla pewnych $a\in A$, $b\in B$, gdzie $v,w\in G$ sa koncami $e$. Co wiecej, kazda $(A, B)$-sciezka w $G-C$ zawiera wierzcholek $v$, co implikuje ze
+$$C'=C\cup\{v\}$$
+jest $(A, B)$-cieciem w $G$. Co wiecej, $|C'|=|C|+1\geq k$. 
