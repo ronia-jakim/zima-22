@@ -1,0 +1,215 @@
+\section{External problems}
+
+\pdef
+
+    \emph{How large can we make some parameter of $G$ before it is forced to have a certain property?}
+
+\kdef
+
+\subsection{Complete subgraphs}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+{\color{def}Complete graph of order $r$} [$K_r$] is a graph with $V(K_r)=[r]$ and $E(K_r)=\{ij\;:\;1\leq i<j\leq r\}$.
+
+$K_3$ is called a {\color{acc}triangle}.
+\medskip
+
+{\color{def}$r$-partite} graph $G$ with vertex classes $V_1,...,V_r$ has every edge of form $vw$ where $v\in V_i$ and $w\in V_j$ and $i\neq j$. Such a graph is called {\color{acc}complete $r$-partite} if for every $i,j,\;i\neq j$ we have $v\in V_i,\;w\in V_j\implies vw\in E(G)$.
+\medskip
+
+A {\color{def}complete bipartite graph} with vertex classes of orders $|V_1|=m$ and $|V_2|=n$ is denoted $K_{m,n}$
+
+&
+
+{\color{def}Graf pelny stopnia $r$} [$K_r$] to graf z $V(K_r)=[r]$ i $E(K_r)=\{ij\;:\;1\leq i<j\leq r\}$.
+
+$K_3$ jest nazywany {\color{dyg}trojkatem}?
+\medskip
+
+{\color{def}$r$-dzielny} graf $G$ z klasami wierzcholkow $V_1,...,V_r$ ma kazdy wierzcholek postaci $vw$, gdzie $v\in V_i$ i $w\in V_j$ dla $i\neq j$. Taki graf jest dodatkowo nazywany {\color{acc}pelnym grafem $r$-dzielnym}, jezeli dla kazdego $i,j,\;i\neq j$ jest $v\in V_i,\;w\in V_j\implies vw\in E(G)$.
+\medskip
+
+{\color{def}Pelny graf dwudzielny} z klasami wierzchoklow o mocy $|V_1|=m$ i $|V_2|=n$ jest oznaczany jako $K_{m,n}$.
+\\
+
+& \\
+
+\hline
+
+& \\
+
+We now want to check how big must \hyperref[handshaking-lemma]{$e(G)$} be in order to force $K_r$ to be $G$ subgraph.
+\medskip
+
+{\color{acc}\point }
+given $r\geq 2$ we can see that for $G$ to be $K_r$-free we need $G$ to be $(r-1)$-partite
+\smallskip
+
+{\color{acc}\point }
+given $n\geq r-1$ out of all $(r-1)$-partite graphs with $n$ vertices the one with most edges is a complete $(r-1)$-partite graph
+\smallskip
+
+{\color{acc}\point }
+if $G$ is a complete $(r-1)$-partite graph with vertex classes 
+
+$V_1,..., V_{r-4}$, 
+
+if $|V_i|\geq |V_j|+2$ for some $i\neq j$, then we may choose $v\in V_j$ and consider a new graph obtained by removing edges $vv_i$ for $v_i\in V_i$ and adding $vv_j$ for every $v_j\in V_j-\{v\}$. This new graph is $(r-1)$-partite and $|G'|=|G|$ and 
+$$e(G')=e(G)-|V_i|+|V_j|-1>e(G)$$
+
+{\color{acc}\point} so the $(r-1)$ partite graph with $n$ vertices and the most edges will have vertes classes "as equal in size as possible"
+
+&
+
+Teraz chcemy sprawdzic jak duze musi byc \hyperref[handshaking-lemma]{$e(G)$}, zeby zmusic $K_r$ do bycia podgrafem $G$
+\medskip
+
+{\color{acc}\point} majac dane $r\geq2$ mozemy zauwazyc, ze aby $G$ bylo $K_r$-wolne, musi byc $(r-1)$-dzielne
+\smallskip
+
+{\color{acc}\point} majac dane $n\geq r-1$ i wszystkie $(r-1)$-dzielne grafy z $n$ wierzcholkammi ten, ktory ma najwiecej krawedzi jest pelnym $(r-1)$-dzielnym grafem
+\smallskip
+
+{\color{acc}\point} jesli $G$ jest grafem pelnym $(r-1)$-dzielnym z klasami wierzcholkow 
+
+$V_1,...,V_{r-1}$,
+
+to jesli $|V_i|\geq |V_j|+2$ dla pewnych $i\neq j$, wtedy mozemy wybrac $v\in V_j$ i rozwazyc nowy graf otrzymany poprzez usuniecie krawedzi $vv_i$ dla $v_i\in V_i$ oraz dodanie $vv_j$ dla kazdego $v_j\in V_j-\{v\}$. Taki nowy graf jest $(r-1)$-dzielny i $|G'|=|G|$ oraz
+$$e(G')=e(G)-|V_i|+|V_j|-1>e(G)$$
+
+{\color{acc}\point}wiec $(r-1)$-dzielny graf z $n$ wierzchoklami i najwieksza liczba krawedzi bedzie mial klasy wierzcholkow tak bliskie rozmiarem jak mozliwe
+\\
+
+& \\
+
+\hline
+
+& \\
+
+{\color{def}Tur\'an graph} $T_r(n)$ for $n\geq r\geq 1$ is a complete $r$-partite graph of order $n$ with all vertex classes of size $\lfloor{n\over r}\rfloor$ or $\lceil{n\over r}\rceil$. We denote $\color{acc}e(T_r(n))$ as $t_r(n)$.
+
+&
+
+{\color{def}Graf Tur\'ana} $T_r(n)$ dla $n\geq r\geq 1$ to pelny $r$-dzielny graf stopnia $n$ ze wszystkimi klasami wierzcholkow roozmiaru $\lfloor{n\over r}\rfloor$ lub $\lceil{n\over r}\rceil$. Oznaczamy $\color{acc}e(T_r(n))$ jako $t_r(n)$.
+
+\end{tabularx}
+\bigskip
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+Some observations:
+\medskip
+
+{\color{acc}\point} If $T_r(n)\simeq G-\{e\}$ for some $e\in E(G)$, then $G$ is {\color{acc}not $K_{r+1}$-free}.
+\medskip
+
+{\color{acc}\point} If {\color{acc}$r$ divides $n$}, then we have
+$$\delta(T_r(n))=d(T_r(n))=\Delta(T_r(n))=n-\frac nr,$$
+
+otherwise vertices in large classes have {\color{acc}minimal degree}, $\delta(T_r(n))=n-\lceil\frac nr\rceil$, and vertices in small classes have {\color{acc}maximal degree}, $\Delta(T_r(n))=n-\lfloor\frac nr\rfloor$. This implies that always
+$$\delta(T_r(n))=\lfloor d(T_r(n))\rfloor$$
+$$\Delta(T_r(n))=\lceil d(T_r(n))\rceil$$
+
+{\color{acc}\point} $T_r(n-1)\simeq T_r(n)-\{v\}$ where $v\in T_r(n)$ is a vertex of minimal degree (any if $r|n$ or one of the vertices in large classes).
+\medskip
+
+{\color{acc}\point} $t_r(n-1)=t_r(n)-\delta(T_r(n))$
+\medskip
+
+{\color{acc}\point} Let us say that we want to create a {\color{def}$K_{r+1}$-free graph $G$ by adding a vertex $v$} to $T_r(n-1)$ and $m$ edges with $m$ being as large as posiible. We know that $v$ cannot be adjavent to a vertex in every class so we have
+$$m=d_G(v)\leq n-1-\lfloor{n-1\over r}\rfloor=n-\lceil{n\over r}\rceil,$$
+with {\color{acc}equality} iff $G$ is complete $r$-partite (obtained by adding $v$ anywhere if $r|(n-1)$ or to one of the small classes.)
+
+&
+
+Kilka obserwacji:
+\medskip
+
+\phantomsection
+\label{turan-observ1-PL}
+{\color{acc}\point} Jesli $T_r(n)\simeq G-\{e\}$ dla pewnego $e]in E(G)$, wtedy $G$ {\color{acc}nie jest $K_{r+1}$-free}{\color{dyg}????}.
+\medskip
+
+\phantomsection
+\label{turan-observ-PL}
+{\color{acc}\point} Jesli {\color{acc}$r$ dzieli $n$}, to wtedy
+$$\delta(T_r(n))=d(T_r(n))=\Delta(T_r(n))=n-\frac nr,$$
+
+w przeciwnym wypadku wierzcholki w duzych klasach maja {\color{acc}najmniejszy stopien}, $\delta(T_r(n))=n-\lceil\frac nr\rceil$, i wierzcholki w malych klasach maja {\color{acc}najwiekszy stopien}, $\Delta(T_r(n))=n-\lfloor\frac nr\rfloor$. To implikuje, ze zawsze
+$$\delta(T_r(n))=\lfloor d(T_r(n))\rfloor$$
+$$\Delta(T_r(n))=\lceil d(T_r(n))\rceil$$
+
+\phantomsection
+\label{turan-observ2-PL}
+{\color{acc}\point} $T_r(n-1)\simeq T_r(n)-\{v\}$ gdzie $v\in T_r(n)$ jest wierzcholkiem najmniejszego stopnia (kazdy jesli $r|n$, wpp jeden z wierzcholkow w duzych klasach).
+\medskip
+
+{\color{acc}\point} $t_r(n-1)=t_r(n)-\delta(T_r(n))$
+\medskip
+
+\phantomsection
+\label{turan-observ3-PL}
+{\color{acc}\point} Powiedzmy, ze chcemy stworzyc {\color{def}$K_{r+1}$-free graf $G$ poprzez dodanie wierzcholka $v$} do $T_r(n-1)$ i $m$ krawedzi, gdzie $m$ jest najwieksze mozliwe. Wiemy, ze $v$ nie moze byc obok wierzcholkow w kazdej klasie, wiec
+$$m=d_G(v)\leq n-1-\lfloor{n-1\over r}\rfloor=n-\lceil{n\over r}\rceil,$$
+z {\color{acc}rownoscia} iff $G$ jest pelnym grafem $r$-dzielnym (otrzymanym przez dodanie $v$ gdziekolwiek jesli $r|(n-1)$ lub do jednej z malych klas).
+\\
+
+& \\
+
+\hline
+
+& \\
+
+{\color{def}Tur\'an's Theorem}
+
+Let $n\geq r\geq 1$ and let $G$ be a $K_{r+1}$-free graph with $|G|=n$ and $e(G)\geq t_r(n)$. Then $\color{acc}G\simeq T_r(n)$.
+
+&
+
+{\color{def}Twierdzenie Tur\'ana}
+
+Niech $n\geq r\geq 1$ i niech $G$ bedzie $K_{r+1}$-wolnym grafem z $|G|=n$ i $e(G)\geq t_r(n)$. Wtedy $\color{acc} G\simeq T_r(n)$.
+
+\end{tabularx}
+
+\prooflink{turan-theo}
+\medskip
+
+\prooflang{turan-theo}{GB}
+\medskip
+
+{\color{cyan}Maybe later, dunno}
+\medskip
+
+\prooflang{turan-theo}{PL}
+\medskip
+
+Uzyjemy indukcji na $n$.
+\smallskip
+
+Jesli $n=r$, to $T_r(n)\simeq K_r$ i mamy
+$${n\choose 2}=t_r(n)\leq e(G)\leq {n\choose 2}$$
+i z tego $T_r(n)\simeq G$.
+\smallskip
+
+Niech teraz $n>r$. Wybierzmy podzbior $E'\subseteq E(G)$ taki, ze $|E'|=e(G)-t_r(n)$ i niech $H=G-E'$, czyli $e(H)=t_r(n)$. Wtedy mamy
+$$d(H)={2e(H)\over n}={2t_r(n)\over n}=d(T_r(n)).$$
+Wtedy 
+$$\delta(H)\leq \lfloor d(H)\rfloor=\lfloor d(T_r(n))\rfloor=\delta(T_r(n))$$
+gdzie ostatnia rownosc wynika z \hyperref[turan-observ-PL]{\color{dyg}obserwacji}.
+
+Wybierzmy teraz $v\in H$ taki, ze $d(v)=\delta(H)$ i niech 
+$$K=H-\{v\}.$$
+Wtedy $K$ jest $K_{r+1}$-wolne. $|K|=n-1$ i
+$$e(K)=e(H)-d_H(v)=t_r(n)-\delta(H)\geq t_r(n)-\delta(T_r(n))=t_r(n-1),$$
+gdzie ostatnia rownosc wynika z \hyperref[turan-observ2-PL]{\color{dyg}obserwacji}. W takim razie, poprzez hipoteze indukcyjna, wiemy, ze
+$$K\simeq T_r(n-1).$$
+W szczegolnosci, z tego wynika, ze
+$$e(K)=t_r(n-1)$$
+i w takim razie
+$$d_H(v)=\delta(T_r(n))$$
+wiec z kolejnej \hyperref[turan-observ3-PL]{\color{dyg}obserwacji} mamy, ze $H\simeq T_r(n)$.
+
+W koncu, poniewaz $V(H)=V(G)$ oraz $E(H)=E(G)-E'\subseteq E(G)$ i $G$ jest $K_{r+1}$-wolne, to z \hyperref[turan-observ1-PL]{\color{dyg}obserwacji} mamy $|E'|=0$ i
+$$G\simeq H\simeq T_r(n).$$
