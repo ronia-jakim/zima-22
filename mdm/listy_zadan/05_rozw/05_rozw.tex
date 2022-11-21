@@ -1,0 +1,129 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 5}
+\date{}
+
+%\pagecolor{back2}
+%\color{text2}
+
+\begin{document}
+\maketitle
+
+\section*{ZAD. 1}
+
+Funkcja Eulera $\phi(n)$ zwraca ilość liczb względnie pierwszych z $n$. W zadaniu spotykamy się tylko z potęgami liczby pierwszej, a wiemy, że dla dowolnej liczby $k$
+$$k\perp p_i^{n_i}\iff p_i\nmid k.$$
+Wielokrotności liczby $p_i$ w ciągu $\{0,1,...,p_i^{n_i}-1\}$ jest
+$$|\{0,p_i,2p_i,...,p_i^{n_i}-p_i\}|=p^{n_i-1}$$
+a więc $\phi(p_i^{n_i})$ daje ilość wszystkich liczb w tym ciągu z pominięciu wielokrotności $p_i$, więc
+$$\phi(p_i^{n_i})=p_i^{n_i}-p_i^{k_i-1}.$$
+
+
+\begin{align*}
+    \psi(n)&=lcm(\phi(p_1^{n_1}),\phi(p_2^{n_2}),...,\phi(p_s^{n_s}))=\\
+    &=lcm(p_1^{n_1-1}(p_1-1),p_2^{n_2-1}(p_2-1),...,p_s^{n_s-1}(p_s-1))=\\
+    &=lcm(p_1-1,...,p_s-1)\prod\limits_{i=1}^sp_i^{n_i-1}
+\end{align*}
+
+Zauważmy, że dla $i\neq j$ $p_i^{n_i-1}\perp p_j^{n_j-1}$.
+\medskip
+
+Udowodnijmy pomocniczo, że jeśli $n=n_1n_2$ dla $n_1\perp n_2$, to
+$$\phi(n)=\phi(n_1)\phi(n_2).$$
+Weźmy dowolne $m$ takie, że $m\perp n$ i $m<n$. Zauważmy, że zachodzi wtedy $m$ jest jednocześnie względnie pierwsze z $n_1$ i $n_2$. Kombinatorycznie, $m$ które to spełniają jest $\phi(n_1)\cdot\phi(n_2)$ i to daje nam wszystkie możliwości na $m$.
+\medskip
+
+Teraz, jeśli weźmiemy $n_1=p_1^{n_1}$ oraz $n_2=\prod\limits_{i=2}^sp_i^{n_i}$, to mamy $n_1\perp n_2$ i 
+$$\phi(n)=\phi(p_1^{n_1})\phi(\prod\limits_{i=2}^sp_i^{n_i}).$$
+Możemy tę samą operację powtórzyć dla drugiego czynnika, co da nam
+$$\phi(n)=\prod\limits_{i=1}^s\phi(p_i^{n_i})=\prod\limits_{i=1}^sp_i^{n_i-1}(p_i-1).$$
+Zauważmy teraz, że istnieje $A\in\N$ takie, że
+$$\phi(n)=\prod\limits_{i=1}^sp_i^{n_i-1}(p_i-1)=A\cdot lcm(p_1-1,...,p_s-1)\prod\limits_{i=1}^sp_i^{n_i-1}=A\cdot \psi(n).$$
+
+Wracając do treści zadania, chcemy pokazać, że dla $a\perp n$ zachodzi
+$$a^{\psi(n)}\equiv 1\mod n.$$
+
+$$a^ {\phi(n)}=a^{A\psi(n)}.$$
+
+\section*{ZAD. 3}
+
+Niech $n$ będzie najwięszką z tych liczb. Chcemy pokazać, że
+$$k!|n(n-1)(n-2)...(n-k+1).$$
+Zauważmy, że
+\begin{align*}
+    n(n-1)(n-2)...(n-k+1)&={n!\over(n-k)!}=k!{n!\over(n-k)!k!}=k!{n\choose k}
+\end{align*}
+a dwumian Newtona dla $n,k\in\N$ jest zawsze liczbą naturalną, więc otrzymaliśmy, że dla $m={n\choose k}$
+$$n(n-1)(n-2)...(n-k+1)=k!m$$
+
+\section*{ZAD. 4}
+
+{\color{acc}a)} Niech $n$ będzie liczbą drużyn. Każda z nich zagra dokładnie $n-1$ meczy. Czyli możemy podpisać szufladki ilością rozegranych do tej pory meczy, będzie ich $n$ sztuk. 
+\smallskip
+
+Jeżeli tylko jedna drużyna do tej pory z nikim nie grała, to nie może też się zdażyć, że któraś drużyna rozegrała wszystkie swoje mecze. Odpada więc jedna drużyna i szufladki podpisane 0 i $n-1$, co zostawia nas z $n-1$ drużynami pakowanymi do $n-2$ szufladek, więc dwie wpadną do jednej szufladki i będą miały taką samą ilość meczów.
+\smallskip
+
+Jeżeli każda drużyna rozegrała co najmniej jeden mecz, to odpada nam szufladka podpisana 0. Mamy więc $n-1$ szufladek i $n$ drużyn, z czego wynika że dwie mają tę samą ilość rozegranych meczy.
+\medskip
+
+{\color{acc}b)} Podzielmy trójkąt równoboczny na 4 trójkąty tak, jak na ilustracji obok.
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \begin{tikzpicture}
+        \coordinate (A) at (-1, 0);
+        \coordinate (B) at (1, 0);
+        \coordinate (C) at (0, 1.73);
+
+        \coordinate (D) at (-0.5, 0.86);
+        \coordinate (E) at (0.5, 0.86);
+        \coordinate (F) at (0, 0);
+    
+        \draw[thick] (A)--(B)--(C)--cycle;
+        \draw[thick] (D)--(E);
+
+        \draw[thick] (E)--(F)--(D);
+
+        \node at (-0.9, 0.55) {$\frac12$};
+    \end{tikzpicture}
+\end{wrapfigure}
+Dostajemy 4 trójkątów równobocznych o boku $\frac12$. Odległość dwóch dowolnych punktów znajdujących się w obrębie jednego z tych małych trójkątów jest co najwyżej $\frac12$. Wybierając 5 losowych punków w dużym trójkącie mamy pewność, że co najmniej dwa będą usytuowane w obrębach jednego małego trójkąta, a więc odległość między nimi nie przekroczy $\frac12$.
+\medskip
+
+{\color{acc}c)} Niech $n$ będzie ilością ścian w wielościanie wypukłym. Każda ściana ma między $3$ (czworościan) a $n-1$ sąsiadów. Ilość sąsiadów ściany to również ilość jej krawędzi. Mamy $n-3$ szufladki i $n$ ścian do rozłożenia między nie, więc na pewno stanie się, że dwie wylądują w jednej szufladce i będą miały równą ilość krawędzi.
+
+\section*{ZAD. 5}
+
+Jeżeli jedna z liczb jest podzielna przez $n$, to zadanie jest trywialne. Rozważmy więc sytuację, kiedy żadna z liczb $a_1,..., a_n$ nie jest podzielna przez $n$. Zauważmy, że wtedy reszta z dzielenia każdej z tych liczb przez $n$ jest co najmniej 1 i co najwyżej $n-1$.
+\smallskip
+
+Oznaczmy przez $S_k$ sumy częściowe tych liczb:
+$$S_k=\sum\limits_{i=1}^k a_i.$$
+Reszta z dzielenia $S_k$ przez $n$ wpada pomiędzy $0$ a $n-1$. Znowu, jeśli trafi nam się suma częściowa podzielna przez $0$, to kończymy. W przeciwnym wypadku dostajemy szufladki podpisane resztami od $1$ do $n-1$, co daje $n-1$ szufladek na $n$ sum. W takim razie dwie różne sumy mają tę samą resztę z dzielenia przez $n$, niech to będą $S_j$ i $S_k$, $j>k$. Ich różnica $S_j-S_k$ jest podzielna przez $n$, a wynosi
+$$S_j-S_k=\sum\limits_{i=1}^js_i-\sum\limits_{i=1}^ka_i=\sum\limits_{i=k}^ja_i$$
+i to jest koniec.
+
+\section*{ZAD. 6}
+
+Jeśli dwie liczby się powtarzają, to oczywiście wystarczy wziąć dwa singletony tych powtarzających się liczb. Przyjmijmy więc, że taka sytuacja nie ma miejsca.
+\smallskip
+
+Spośród 10 liczb możemy wybierać niepuste podzbiory na 
+$$2^{10}-1=1023$$ 
+sposobów, bo zbiór potęgowy zbioru $10$ elementowego ma $2^{10}$ elementów, ale my nie chcemy zbioru pustego z oczywistych przyczyn.
+\smallskip
+
+Suma $s$ podzbioru 10 różnych liczb naturalnych jest pomiędzy
+\begin{align*}
+    1\leq s\leq 945=\sum\limits_{i=1}^{10}(89+i)
+\end{align*}
+więc mamy $943$ możliwych wartości $s$, a dla dowolnego zbioru $S$ możemy takich wartości wyprodukować $1023$. W takim razie co najmniej dwie z nich mają tę samą sumę.
+
+
+\end{document}
