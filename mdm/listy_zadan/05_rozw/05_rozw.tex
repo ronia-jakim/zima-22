@@ -52,6 +52,9 @@ $$a^{\psi(n)}\equiv 1\mod n.$$
 
 $$a^ {\phi(n)}=a^{A\psi(n)}.$$
 
+
+{\color{cyan}DEBILU CIULU JEDEN WYSTARCZY POKAZAC ZE SIE DZIELI PRZEZ KAZDA LICZBE PIERWSZA DO JEJ POTEGI Z ROZKLADU N NA CZYNNIKI PIERWSZE}
+
 \section*{ZAD. 3}
 
 Niech $n$ będzie najwięszką z tych liczb. Chcemy pokazać, że
@@ -125,5 +128,64 @@ Suma $s$ podzbioru 10 różnych liczb naturalnych jest pomiędzy
 \end{align*}
 więc mamy $943$ możliwych wartości $s$, a dla dowolnego zbioru $S$ możemy takich wartości wyprodukować $1023$. W takim razie co najmniej dwie z nich mają tę samą sumę.
 
+
+\section*{ZAD. 7}
+
+Mamy dane $nk+r$ kulek i $n$ szuflad, gdzie $0\leq r$ i $s<n$. Chcemy szufladę w której jest co najmniej $sk+\min(r,s)$ kulek.
+\smallskip
+
+Rozważmy najgorszy przypadek, czyli kiedy rozkładamy kulki tak bardzo równo jak się da. Niech w ostatnich szufladkach będzi więcej kulek, wtedy w $i$-tej szufladce dostajemy
+$$\lfloor{nk+r+i\over n}\rfloor=\lfloor k+{r+i\over n}\rfloor=k+\lfloor{r+i\over n}\rfloor$$
+kulek, co udowadniałam w zadaniu 2 na liście 2. Zadanie sprowadza się do pokazania, że możemy wybrać taki ciąg $i_1,...,i_s$, że
+$$\sum\limits_{k=1}^s\lfloor{r+i_k\over n}\rfloor=\min(r,s).$$
+
+Zauważy, że jeśli $r<n$, to dokładnie $n-r$ tych wartości jest równe zero, natomiast pozostałe $r$ jest równe 1. Teraz, jeśli $s<r$, to wystarczy wziąc $s$ szufladek z dodatkową piłeczką, a w przeciwnym wypadku wystarczy wziąć wszystkie $r$ szufladek z dodatkową piłeczką i $s-r$ szufladek bez dodatkowej piłeczki. 
+
+W przeciwnym wypadku $r\geq n$, więc $s<r$ i wtedy każda szufladka ma co najmniej $k+1$ piłeczek, więc dowolne $s$ szufladek ma ich co nie mniej niż $sk+s$.
+
+\section*{ZAD. 8}
+
+Mamy szachownicę o $n$ wierszach i $m$ kolumnach. Wieże na szachownicy nie atakują się, jeśli nie są ani w jednej kolumnie ani w jednym wierszu. Mamy więcej kolumn, więc ograniczają nas tak naprawdę wiersze, których jest $n$. Jeśli więc będziemy wymagać $n+1$ wież które sa w różnych wierszach i kolumnach, to nam się nie uda, bo co najmniej dwie znajdą się w jednym wierszu. W takim razie 
+$$k\leq n.$$
+
+\begin{center}
+\begin{tikzpicture}
+    \node at (0, 0) {1};
+    \node at (1, 0) {2};
+    \node at (2, 0) {3};
+    \node at (3, 0) {4};
+    \node at (4, 0) {5};
+    \node at (5, 0) {6};
+    \node at (6, 0) {...};
+    \node at (7, 0) {m};
+
+    \node at (-1, -1) {1};
+    \node at (-1, -2) {2};
+    \node at (-1, -3) {3};
+    \node at (-1, -4) {...};
+    \node at (-1, -5) {n};
+
+    %\draw (-1.5, 0.5)--(-1.5, -5.5);
+    \draw (-0.5, 0.5)--(-0.5, -5.5);
+    \draw (0.5, 0.5)--(0.5, -5.5);
+    \draw (1.5, 0.5)--(1.5, -5.5);
+    \draw (2.5, 0.5)--(2.5, -5.5);
+    \draw (3.5, 0.5)--(3.5, -5.5);
+    \draw (4.5, 0.5)--(4.5, -5.5);
+    \draw (5.5, 0.5)--(5.5, -5.5);
+    \draw (6.5, 0.5)--(6.5, -5.5);
+    \draw (7.5, 0.5)--(7.5, -5.5);
+    
+    %\draw (-1.5, 0.5)--(7.5, 0.5);
+    \draw (-1.5, -0.5)--(7.5, -0.5);
+    \draw (-1.5, -1.5)--(7.5, -1.5);
+    \draw (-1.5, -2.5)--(7.5, -2.5);
+    \draw (-1.5, -3.5)--(7.5, -3.5);
+    \draw (-1.5, -4.5)--(7.5, -4.5);
+    \draw (-1.5, -5.5)--(7.5, -5.5);
+\end{tikzpicture}
+\end{center}
+
+Podpiszmy pona na planszy wartością bezwzględną numeru kolumny i wiersza
 
 \end{document}
