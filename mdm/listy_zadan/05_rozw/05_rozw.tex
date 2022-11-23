@@ -18,42 +18,59 @@
 
 \section*{ZAD. 1}
 
-Funkcja Eulera $\phi(n)$ zwraca ilość liczb względnie pierwszych z $n$. W zadaniu spotykamy się tylko z potęgami liczby pierwszej, a wiemy, że dla dowolnej liczby $k$
-$$k\perp p_i^{n_i}\iff p_i\nmid k.$$
-Wielokrotności liczby $p_i$ w ciągu $\{0,1,...,p_i^{n_i}-1\}$ jest
-$$|\{0,p_i,2p_i,...,p_i^{n_i}-p_i\}|=p^{n_i-1}$$
-a więc $\phi(p_i^{n_i})$ daje ilość wszystkich liczb w tym ciągu z pominięciu wielokrotności $p_i$, więc
-$$\phi(p_i^{n_i})=p_i^{n_i}-p_i^{k_i-1}.$$
-
-
-\begin{align*}
-    \psi(n)&=lcm(\phi(p_1^{n_1}),\phi(p_2^{n_2}),...,\phi(p_s^{n_s}))=\\
-    &=lcm(p_1^{n_1-1}(p_1-1),p_2^{n_2-1}(p_2-1),...,p_s^{n_s-1}(p_s-1))=\\
-    &=lcm(p_1-1,...,p_s-1)\prod\limits_{i=1}^sp_i^{n_i-1}
-\end{align*}
-
-Zauważmy, że dla $i\neq j$ $p_i^{n_i-1}\perp p_j^{n_j-1}$.
+Funkcja Eulera $\phi(n)$ zwraca ilość liczb względnie pierwszych z $n$.
 \medskip
 
-Udowodnijmy pomocniczo, że jeśli $n=n_1n_2$ dla $n_1\perp n_2$, to
-$$\phi(n)=\phi(n_1)\phi(n_2).$$
-Weźmy dowolne $m$ takie, że $m\perp n$ i $m<n$. Zauważmy, że zachodzi wtedy $m$ jest jednocześnie względnie pierwsze z $n_1$ i $n_2$. Kombinatorycznie, $m$ które to spełniają jest $\phi(n_1)\cdot\phi(n_2)$ i to daje nam wszystkie możliwości na $m$.
-\medskip
+% Udowodnijmy pomocniczo, że jeśli $n=n_1n_2$ dla $n_1\perp n_2$, to
+% $$\phi(n)=\phi(n_1)\phi(n_2).$$
+% Weźmy dowolne $m$ takie, że $m\perp n$ i $m<n$. Zauważmy, że zachodzi to wtedy i tylko wtedy, gdy $m$ jest jednocześnie względnie pierwsze z $n_1$ i $n_2$. Kombinatorycznie, $m$ które to spełniają jest $\phi(n_1)\cdot\phi(n_2)$ i to daje nam wszystkie możliwości na $m$, czyli wartość $\phi(n)$.
+% \medskip
 
-Teraz, jeśli weźmiemy $n_1=p_1^{n_1}$ oraz $n_2=\prod\limits_{i=2}^sp_i^{n_i}$, to mamy $n_1\perp n_2$ i 
-$$\phi(n)=\phi(p_1^{n_1})\phi(\prod\limits_{i=2}^sp_i^{n_i}).$$
-Możemy tę samą operację powtórzyć dla drugiego czynnika, co da nam
-$$\phi(n)=\prod\limits_{i=1}^s\phi(p_i^{n_i})=\prod\limits_{i=1}^sp_i^{n_i-1}(p_i-1).$$
-Zauważmy teraz, że istnieje $A\in\N$ takie, że
-$$\phi(n)=\prod\limits_{i=1}^sp_i^{n_i-1}(p_i-1)=A\cdot lcm(p_1-1,...,p_s-1)\prod\limits_{i=1}^sp_i^{n_i-1}=A\cdot \psi(n).$$
+% Teraz, jeśli weźmiemy $n_1=p_1^{n_1}$ oraz $n_2=\prod\limits_{i=2}^sp_i^{n_i}$, to mamy $n_1\perp n_2$ i 
+% $$\phi(n)=\phi(p_1^{n_1})\phi(\prod\limits_{i=2}^sp_i^{n_i}).$$
+% Możemy tę samą operację powtórzyć dla drugiego czynnika, co da nam
+% $$\phi(n)=\prod\limits_{i=1}^s\phi(p_i^{n_i}).$$
 
-Wracając do treści zadania, chcemy pokazać, że dla $a\perp n$ zachodzi
-$$a^{\psi(n)}\equiv 1\mod n.$$
+Zauważmy teraz, że $n|(a^{\psi(n)}-1)$ wtw gdy $a^{\psi(n)}-1$ jest podzielne przez wszystkie elementy rozkładu $n$ na czynniki pierwsze, więc:
+$$n|a^{\psi(n)}-1\iff(\forall\;i\in\{1,2,...,s\})\;p_i^{n_i}|(a^{\psi(n)}-1).$$
+Tę podzielność można równoważnie wyrazić jako przystawanie $a^{\psi(n)}$ do $n$ modulo 1:
+$$n|(a^{\psi(n)}-1)\iff a^{\psi(n)}\equiv 1\mod n.$$
+\bigskip
 
-$$a^ {\phi(n)}=a^{A\psi(n)}.$$
+Ustalmy dowolne $i$. Zauważmy, że $\phi(p_i^{n_i})|\psi(n)$, więc istnieje liczba całkowita $M$ taka, że
+$$\psi(n)=\phi(p_i^{n_i})\cdot M.$$
+\podz{sep}
+\bigskip
 
+Na początek chcemy pokazać twierdzenie Eulera, czyli dla dowolnego $m$ i $b\perp m$ zachodzi
+$$b^{\phi(n)}\equiv 1\mod m.$$
+Niech $G$ będzie grupą liczb naturalnych $p$ takich, że $0\leq p<m$ i $p\perp m$ z mnożeniem modulo $m$. W grupie tej jest $\phi(m)$ elementów. Niech $H$ będzie podgrupą cykliczną $G$ generowaną przez $b$. Wtedy rząd $H$ (czyli rząd elementu $b$) dzieli rząd $G$, bo w przeciwnym wypadku dla pewnych liczb naturalnych $k,r$, $r<o(b)$
+$$e=b^{k\cdot o(b+r}=b^{k\cdot o(b)}\cdot b^{r}=(b^{o(b)})^kb^r=e\cdot b^r=b^r,$$
+ale $b^r\neq e$ i mamy sprzeczność. W takim razie istnieje pewne $t$ takie, że
+$$\phi(m)=o(b)\cdot t$$
+i wtedy
+$$b^{\phi(m)}=b^{o(b)\cdot t}=(b^{o(b)})^t=e^t=1^t=1\equiv 1\mod m.$$
+\bigskip
 
-{\color{cyan}DEBILU CIULU JEDEN WYSTARCZY POKAZAC ZE SIE DZIELI PRZEZ KAZDA LICZBE PIERWSZA DO JEJ POTEGI Z ROZKLADU N NA CZYNNIKI PIERWSZE}
+\podz{sep}
+\bigskip
+
+Wracając do $n$, z twierdzenia Eulera mamy
+$$a^{\phi(p_i^{n_1})}\equiv 1\mod p_i^{n_1}.$$
+Postawmy tezę, że
+$$a^{\phi(p_i^{n_i})}\equiv 1\mod n,$$
+i niech $k$ będzie liczbą całkowitą, że $a^{\phi(p_i^{n_i})}=kn+1$, wtedy
+$$a^{\phi(p_i^{n_i})}=kn+1=kp_i^{n_i}\prod\limits_{j=1,j\neq i}^sp_i^{n_i}+1,$$
+i ponieważ $\prod\limits_{j=1,j\neq i}^sp_i^{n_i}\in\N$ daje to
+$$a^{\phi(p_i^{n_i})}\equiv 1\mod n.$$
+\bigskip
+
+Ze względu na definicję funkcji $\psi(n)$ wiemy, że istnieje $M\in\N$ takie, że
+$$\psi(n)=M\cdot \phi(p_i^{n_i})$$
+W takim razie
+$$a^{\psi(n)}=a^{M\cdot\phi(p_i^{n_i})}=(a^M)^{\phi(p_i^{n_i})}.$$
+Ponieważ liczba $a$ była względnie pierwsza z $n$, to również liczba $a^M$ jest z nią względnie pierwsza, możemy ją nazwać $a^M=A\perp n$, co daje nam
+$$a^{\psi(n)}=A^{\phi(p_i^{n_i})}\equiv 1\mod n.$$
 
 \section*{ZAD. 3}
 
@@ -148,44 +165,33 @@ W przeciwnym wypadku $r\geq n$, więc $s<r$ i wtedy każda szufladka ma co najmn
 Mamy szachownicę o $n$ wierszach i $m$ kolumnach. Wieże na szachownicy nie atakują się, jeśli nie są ani w jednej kolumnie ani w jednym wierszu. Mamy więcej kolumn, więc ograniczają nas tak naprawdę wiersze, których jest $n$. Jeśli więc będziemy wymagać $n+1$ wież które sa w różnych wierszach i kolumnach, to nam się nie uda, bo co najmniej dwie znajdą się w jednym wierszu. W takim razie 
 $$k\leq n.$$
 
+Ponumerujmy "przekątne" planszy kolejnymi liczbami naturalnymi. Przez przekątną rozumiem tutaj zbiór pól takich, że możemy przejść po ukosie stykając się rogami z góry w dół w prawo (zielona), albo możemy dojść do prawej krawędzi planszy i przeskakujemy na początek i dochodzimy na dół (pomarańczowa).
 \begin{center}
-\begin{tikzpicture}
-    \node at (0, 0) {1};
-    \node at (1, 0) {2};
-    \node at (2, 0) {3};
-    \node at (3, 0) {4};
-    \node at (4, 0) {5};
-    \node at (5, 0) {6};
-    \node at (6, 0) {...};
-    \node at (7, 0) {m};
+    \begin{tikzpicture}
+        \filldraw[color=acc, fill=acc] (1, 4) rectangle (2, 3);
+        \filldraw[color=acc, fill=acc] (2, 3) rectangle (3, 2);
+        \filldraw[color=acc, fill=acc] (3, 2) rectangle (4, 1);
+        \filldraw[color=acc, fill=acc] (4, 1) rectangle (5, 0);
 
-    \node at (-1, -1) {1};
-    \node at (-1, -2) {2};
-    \node at (-1, -3) {3};
-    \node at (-1, -4) {...};
-    \node at (-1, -5) {n};
-
-    %\draw (-1.5, 0.5)--(-1.5, -5.5);
-    \draw (-0.5, 0.5)--(-0.5, -5.5);
-    \draw (0.5, 0.5)--(0.5, -5.5);
-    \draw (1.5, 0.5)--(1.5, -5.5);
-    \draw (2.5, 0.5)--(2.5, -5.5);
-    \draw (3.5, 0.5)--(3.5, -5.5);
-    \draw (4.5, 0.5)--(4.5, -5.5);
-    \draw (5.5, 0.5)--(5.5, -5.5);
-    \draw (6.5, 0.5)--(6.5, -5.5);
-    \draw (7.5, 0.5)--(7.5, -5.5);
-    
-    %\draw (-1.5, 0.5)--(7.5, 0.5);
-    \draw (-1.5, -0.5)--(7.5, -0.5);
-    \draw (-1.5, -1.5)--(7.5, -1.5);
-    \draw (-1.5, -2.5)--(7.5, -2.5);
-    \draw (-1.5, -3.5)--(7.5, -3.5);
-    \draw (-1.5, -4.5)--(7.5, -4.5);
-    \draw (-1.5, -5.5)--(7.5, -5.5);
-\end{tikzpicture}
+        \filldraw[color=def, fill=def] (0, 1) rectangle (1, 0);
+        \filldraw[color=def, fill=def] (3, 4) rectangle (4, 3);
+        \filldraw[color=def, fill=def] (4, 3) rectangle (5, 2);
+        \filldraw[color=def, fill=def] (5, 2) rectangle (6, 1);
+        \foreach \x in {0,...,6}
+            \foreach \y in {0,...,4}
+                \coordinate (\x\y) at (\x,\y);
+        
+        \foreach \x in {0,...,6}
+            \foreach \y [count=\yi] in {0,...,3}
+                \draw (\x\y)--(\x\yi);
+        
+        \foreach \y in {0,...,4}
+            \draw (0\y)--(6\y);
+            
+        
+    \end{tikzpicture}
 \end{center}
 
-Podpiszmy pona na planszy wartością bezwzględną numeru kolumny i wiersza
+Takich przekątnych mamy $m$, bo dla każdego pola na górnej krawędzi planszy mamy unikalną przekątną. Zauważmy, że wieże nie szachują się, jeśli stoją wszystkie na takiej jednej przekątnej. Mamy $m(k-1)+1$ wież. Rozkładając pierwsze $m(k-1)$ jak najbardziej równo dostaniemy po $k-1$ wież w każdej przekątnej. Ostatnia wieża może więc trafić do dowolnej przekątnej i na niej będzie $k$ wież które się nie biją.
 
 \end{document}

@@ -1,0 +1,86 @@
+\documentclass{article}[16pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+\section*{ZAD 1.}
+
+$$w(x)=\frac12 c_0T_0(x)+c_1T_1(x)+...+c_nT_n(x)$$
+
+\begin{align*}
+    \begin{matrix}
+        B_{n+2}:=B_{n+1}:=0\\
+        B_k:=2xB_{k+1}-B_{k+2}+c_k
+    \end{matrix}
+\end{align*}
+
+wtedy $w(x)=\frac12(B_0-B_2)$.
+\medskip
+
+Wiemy, ze
+$$\color{acc}T_k(x)=2xT_{k-1}(x)-T_{k-2}(x)$$
+
+Indukcja po $n$? Dla $n=2$ mamy
+\begin{align*}
+    w(x)&=\frac12c_0T_0(x)+c_1T_1(x)+c_2T_2(x)=\frac12c_0+c_1x+c_2(2x^2-1)
+\end{align*}
+
+\begin{align*}
+    B_4&=B_3=0\\
+    B_2&=2xB_3-B_4+c_2=c_2\\
+    B_1&=2xB_2-B_3+c_1=2xc_2+c_1\\
+    B_0&=2xB_1-B_2+c_0=4x^2c_2+2xc_1-c_2+c_0\\
+    w(x)&=\frac12(B_0-B_2)=\frac12(4x^2c_2+2xc_1-c_2+c_0-c_2)=2x^2c_2+xc_1-c    _2+\frac12c_0
+\end{align*}
+więc śmiga.
+
+Załóżmu indukcyjnie, że algorytm działa dla dowolnego algorytmu zawierającego $T_0(x),...,T_n(x)$. Pokażemy, że działa wtedy też dla wielomianu z doklejonym $T_{n+1}(x)$.
+\begin{align*}
+    w(x)&=\frac12T_0(x)+...+c_nT_n(x)+c_{n+1}T_{n+1}(x)=\\
+    &=\frac12T_0(x)+...+c_nT_n(x)+c_{n+1}(2xT_n(x)-T_{n-1}(x))=\\
+    &=\frac12T_0(x)+...+T_{n-1}(x)(c_{n-1}-c_{n+1})+T_n(c_n+2xc_{n+1})
+\end{align*}
+
+Taki wielomian z założenia indukcyjnego można rozwiązać za pomocą algorytmu, więc mamy
+\begin{align*}
+    B_{n+2}&=B_{n+1}=0\\
+    B_n&=2xB_{n+1}-B_{n+2}+c_n+2xc_n=c_n+2xc_{n+1}\\
+    B_{n-1}&=2xB_n-B_{n+1}+c_{n-1}-c_{n+1}=4x^2c_{n+1}+2xc_n+c_{n-1}-c_{n+1}\\
+    B_{n-2}&=2xB_{n-1}-B_nc_{n-2}...
+\end{align*}
+Rozważmy więc nowy ciąg, $C$, zdefiniowany rekurencyjnie:
+\begin{align*}
+    C_{n+3}&=C_{n+2}=0\\
+    C_{n+1}&=c_{n+1}\\
+    C_n&=2xc_{n+1}+c_n=B_n\\
+    C_{n-1}&=2xC_n-C_{n+1}=4x^2c_{n+1}+2xc_n-c_{n+1}+c_{n-1}=B_{n-1}\\
+    C_k&=2xC_{k+1}-C_{k+2}+c_k
+\end{align*}
+Ponieważ $C_n$ i $C_{n-1}$ odpowiadają $B_n$ i $B_{n-1}$ i oba ciągi mają tę samą definicję rekurencyjną, to są sobie równe od $n$ w dół. Skoro $C$ to algorytm dla $w(x)$ w całość, to
+$$w(x)=\frac12(C_0-C_2)$$
+i koniec.
+
+\section*{ZAD. 5}
+
+Tabelka w ramach pomocy:
+
+\begin{center}
+    \begin{tabular}{ c c c c c c c c c c c }
+        $x_0$ & & $x_0$ & & $x_1$ & & $x_1$ & & $x_2$ & & $x_2$\\
+        7     & &  7    & &  6    & &  6    & &  22   & &  22\\
+        &   -1    &  & -1   & &   0    & &  16   & &    56\\
+        &    &     0    & &  1   & &    16   & &    40\\
+        &    &     &    1   & &   ${15\over2}$ && 24\\
+        & & & & ${13\over4}$ && ${33\over4}$\\
+        & & & & & ${5\over2}$
+    \end{tabular}
+\end{center}
+
+\begin{align*}
+    p(x)&=7-(x+1)+x(x+1)^2+{13\over4}x^2(x+1)^2+{5\over2}x^2(x+1)^2(x-1)\\
+    p'(x)&=\frac12x(25x^3+46x^2+30x+11)
+\end{align*}
+
+\end{document}
