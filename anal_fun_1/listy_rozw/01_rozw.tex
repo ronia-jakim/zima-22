@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\begin{document}
+    \subsection*{ZAD. 3.}
+    \emph{
+        Pokazac, ze ciag funkcji $f_n$ zbiega do funkcji $f$ w normie przestrzeni $C[0,1]$ (tzn. $\|f_n-f\|\to \infty$) $\iff$ gdy $f_n$ jest jednostajnie zbiezny do $f$.
+    }
+    \bigskip
+
+    Po pierwsze, jaka kurwa jest norma w przestrzeni $C[0,1]$?
+    \smallskip
+
+    Dla przestrzeni $C[0,1]$ okreslilismy tak zwana {\color{acc}norme jednostajna}, to znaczy
+    $$\|f\|_\infty=\max\limits_{x\in[0,1]}|f(x)|.$$
+
+    LOL
+
+    Teraz co to jest zbieznosc jednostajna?\\
+    Wikipedia mowi
+    $$(\forall\;\varepsilon>0)(\exists\;N)(\forall\;n\geq N)(\forall\;x\in X)\;\|f_n(x)-f(x)\|<\varepsilon$$
+
+    $\color{def}\implies$
+    
+    Wychodzimy z $\|f_n-f\|\to\infty\infty$, czyli
+    $$(\forall\;\varepsilon>0)(\exists\;N)(\forall\;n\geq N)\;\|f_n-f\|<\varepsilon.$$
+    Ustalmy wiec dowolny $\varepsilon>0$. Wtedy istnieje $N$ takie, ze dla kazdego $n>N$ mamy
+    \begin{align*}
+        \varepsilon>\|f_n-f\|_\infty
+    \end{align*}
+    i dla dowolnego $x\in[0,1]$:
+    \begin{align*}
+        \varepsilon>\|f_n-f\|_\infty\geq |f_n(x)-f(x)|,
+    \end{align*}
+    czyli $f_n$ zbiega jednostajnie do $f$.
+    \smallskip
+
+    $\color{def}\impliedby$
+
+    Wychodzimy z tego, ze $f_n$ jest zbiezne jednostajnie do $f$. Ustalmy wiec dowolny $\varepsilon>0$. Wiemy, ze wtedy istnieje $N$ takie, ze dla kazdego $n\geq N$ zachodzi
+    $$(\forall\;x\in[0,1])\;|f_n-f|<\varepsilon,$$
+    czyli zachodzi to w szczegolnosci dla $x$ takiego, ze $\max_{x\in[0,1]}|f_n-f|=\|f_n-f\|_\infty$. W takim razie dla dowolnego $\varepsilon>0$ znajdziemy $N$ takie, ze dla kazdego $n\geq N$ prawdziwe jest
+    $$\varepsilon>\|f_n-f\|$$
+
+
+    \subsection*{ZAD. 4.}
+
+    \emph{
+        Udowodnic zupelnosc przestrzeni $C[0,1]$.
+    }
+
+    \textbf{Wskazowka:} Dla ciagu Cauchy'ego $f_n$ pokazac zbieznosc punktowa korzystajac z nierownosci
+    $$|f_n(t)-f_m(t)|\leq\|f_n-f_m\|_\infty$$
+    i z zupelnosci $\C$ (lub $\R$). Niech $f$ bedzie granica punktowa ciagu $f_n$. Pokazac, ze $f$ jest jednostajna granica ciagu $f_n$ korzystajac z nierownosci:
+    $$|f_n(t)-f(t)|\leq |f_m(t)-f(t)|+\|f_n-f_m\|_\infty$$
+    Pokazac, ze $f$ jest ciagle, korzystajac z nierownosci
+    $$|f(t)-f(s)|\leq |f_n(t)-f_n(s)|+2\|f_n-f\|_\infty.$$
+    \textbf{Uwaga:} Dowod prznosi sie na przypadek $C(K)$ przestrzeni funkcji ciaglych na zwartej przestrzeni metrycznej (lub topologicznej) K.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    
+    Wezmy dowolny ciag Cauchy'ego $f_n\in C[0,1]$. Czyli zachodzi
+    $$(\forall\;\varepsilon)(\exists\;N)(\forall\;n,m>N)\;\|f_n-f_m\|<\varepsilon$$
+
+    Wezmy wiec dowolny $\varepsilon>0$ i $n,m$ spelniajace
+    $$\|f_n-f_m\|<\varepsilon.$$
+    Latwo zauwazyc, ze dla dowolnego $t\in[0,1]$ jest
+    $$\|f_n-f_m\|\geq |f_n(t)-f_m(t)|.$$
+    Niech wiec $f$ bedzie funkcja taka, ze dla kazdego $t\in[0,1]$ $f(t)$ to granica ciagu $f_n(t)$, ktora istnieje bo $f_n(t)$ jest ciagiem Cauchy'ego w $\R$, a $\R$ jest przestrzenia zupelna wiec $f_n(t)$ posiada granice.
+
+    Chcemy teraz pokazac, ze $f$ jest granica jednostajna ciagu $f_n$.
+    \begin{align*}
+        \varepsilon>\|f_n-f_m\|=\|f_n-f-f_m+f\|\geq|\|f_n-f\|-\|f_m-f\||\geq \|f_n-f\|-\|f_m-f\|
+    \end{align*}
+    z czego wynika, ze
+    \begin{align*}
+        \|f_n-f_m\|+\|f_m-f\|\geq\|f_n-f\|
+    \end{align*}
+    i jakiegos dla dowolnego $t\in [0,1]$
+    $$\|f_n-f_m\|+|f_m(t)-f(t)|\geq |f_n(t)-f(t)|.$$
+
+    Chcemy pokazac, ze w takim wypadku mozemy ograniczyc $|f_n(t)-f(t)|$ przez dowolnego $\varepsilon>0$.
+
+    Wezmy dowolny $\varepsilon>0$. Z warunku ciagu Cauchyego mamy, ze istnieje wtedy $N$ takie, ze $n,m\geq N$ zapewnia nam
+    $$\varepsilon>\|f_n-f_m\|.$$
+    Co wiecej, mozemy to $m$ dostosowac tak, zeby
+    $$\varepsilon>|f_m(t)-f(t)|$$
+    w takim razie
+    $$2\varepsilon>\|f_n-f_m\|+|f_m(t)-f(t)|\geq |f_n(t)-f(t)|.$$
+
+    Pozostaje pokazac, ze $f$ jest funkcja ciagla, czyli
+    $$(\forall\;\varepsilon>0)(\exists\;\delta>0)(\forall\;x,y\in[0,1])\;|x-y|<\delta\implies|f(x)-f(y)|<\varepsilon.$$
+
+    Wezmy dowolnego $\varepsilon>0$ i takie $s,t\in[0,1]$, ze $|f_n(t)-f_n(s)|\leq \varepsilon$. Pokazalismy tez, ze $f_n$ zbiega jednostajnie do $f$, wiec $n$ musi byc takie, ze $\|f_n-f\|<\varepsilon$. Wtedy mamy
+    $$|f(t)-f(s)|\leq |f_n(t)-f_n(s)|+2\|f_n-f\|_\infty\varepsilon+2\varepsilon=3\varepsilon$$
+    i $f$ jest funkcja ciagla.
+
+    \subsection*{ZAD. 5.}
+
+    \emph{
+        Niech $c$ oznacza przestrzen liniowa ciagow zbieznych o wyrazach zespolonych. Niech $\|\{x_n\}\|=\sup_{n\geq1}|x_n|$. Pokazac, ze $c$ jest przestrzenia Banacha. Pokazac, ze ciagu zbiezne do $0$ tworza domknieta podprzestrzen $c_0$ w $c$.
+    }
+
+    \textbf{Wskazowka:} Mozna utozsamic $c$ z $C(K)$ gdzie $K=\{1,\frac12,\frac13,...,\frac1n,...\}\cup\{0\}$.
+    \bigskip
+
+    \podz{sep}
+    \bigskip
+
+    Mamy juz norme na tej przestrzeni, wiec nie trzeba jej unormowywac. Wystarczy, ze $c$ bedzie przestrzenia zupelna.
+    \medskip
+
+    Wezmy dowolny ciag Cauchy'ego $(a_n)_n$ z przestrzeni $c$. Chcemy znalezc jego granice.
+
+    Po pierwsze, poniewaz elementy $(a_n)_n$ sa ciagami zbieznymi, to dla kazdego $n$ istnieje granica. Niech wiec ciag $b$ zawiera na $n$-tym miejscu granice $n$-tego ciagu z $(a_n)_n$, to zanczy
+    $$b(n)=\lim_{m\to\infty}a_n(m).$$
+
+    Pokazemy, ze $b$ jest ciagiem Cauchy'ego o wyrazach zespolonych, co z zupelnosci $\C$ da nam jego zbieznosc.
+
+    Poniewaz $(a_n)_n$ jest ciagiem Cauchy'ego, to dla dowolnego $\varepsilon$ znajdziemy sobie miejsce od ktorego dla wszystkich $n,m$ zachodzi
+    \begin{align*}
+        \varepsilon>\|a_n-a_m\|\geq |\|a_n\|-\|a_m\||\geq |\|a_n\|-b(n)-\|a_m\|-b(m)|\geq |\|a_n\|-b(n)|-|\|a_m\|-b(m)|
+    \end{align*}
+
+    Ustalmy sobie $\varepsilon>0$. Chce, zeby dla niego istnialo $N$ takie, ze dla kazdego $n\geq N$ $\|a_n-b\|<\varepsilon$. Dla ulatwienia niech $\|a_n-b\|\geq\|a_m-b\|$.
+    $$\|a_n-a_m\|=\|a_n-b-a_m+b\|\geq |\|a_n-b\|-\|a_m-b\||$$
+
+    {\color{def}WROCIC DO TEGO}
+
+    \subsection*{ZAD. 6.}
+
+    \emph{Udowodnic twierdzenie Weierstrassa o gestosci wielomanow w $C[-1,1]$ korzystajac z tego, ze kazda funkcja ciagla o okresie $2\pi$ jest jednostajna granica ciagu wielomianow trygonometrycznych.}
+
+    \textbf{Wskazowka:} Dla funkcji ciaglej $f(x)$ okreslonej na $[-1,1]$ funkcja $f(\cos t)$ ma okres $2\pi$ i jest parzysta. Z tego powodu mozna ja aproksymowac jednostajnie wilomianami trygonometrycznymi postaci
+    $$a_0+a_1\cos t+...+a_n\cos nt.$$
+    Zauwazyc, ze $\cos nt$ jest wilomianem od $\cos t$, tzn:
+    $$\cos nt=T_n(\cos t),$$
+    gdzie $T_n$ jest wielomianem stopnia $n$. Pokazac, ze funkcje $f(x)$ mozna aproksymowac jednostajnie wilomianami postaci
+    $$a_0+a_1T_1(x)+...+a_nT_n(x)$$
+
+    {\color{def}NIE WIEM, NIE MYSLE}
+
+    \subsection*{ZAD. 7.}
+    
+    \emph{Dla funkcji ciaglej $f$ na przedziale $[0,1]$ okreslamy wielomian Bernsteina wzorem}
+    $$B_n(f)(x)=\sum\limits_{k=0}^n f\Big({k\over n}\Big){n\choose k}(1-x)^{n-k}x^k$$
+    \emph{Pokazac, ze $B_n(f)$ jest jednostajnie zbiezny do $f$.}
+
+    \textbf{Wskazowka:} Zajrzec do ksiazki S. Lojasiewicz, \emph{Wstep do teorii funkcji rzeczywistych} (rozdzial II \S 3. Twierdzenie 1).
+
+\end{document}
