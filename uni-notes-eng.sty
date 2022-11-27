@@ -11,7 +11,7 @@
 
 %\RequirePackage{courier} % bo lubię tę czcionkę w sumie
 
-\RequirePackage[ttdefault=true]{AnonymousPro} % będzie jak VS Code :v
+%\RequirePackage[ttdefault=true]{AnonymousPro} % będzie jak VS Code :v
 
 \sloppy
 
@@ -36,7 +36,10 @@
 %\DeclareTextFontCommand{\textvtt}{\vttfamily}
 %\makeatother
 
-\renewcommand*\familydefault{\ttdefault} % ustawia czcionkę maszynową jako domyślną
+%\renewcommand*\familydefault{\ttdefault} % ustawia czcionkę maszynową jako domyślną
+
+\RequirePackage{paratype}
+\renewcommand{\familydefault}{\sfdefault}
 
 \RequirePackage{ragged2e}
 %\justifying % justuje tekst

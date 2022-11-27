@@ -1,0 +1,49 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 6}
+\date{}
+
+%\pagecolor{back2}
+%\color{text2}
+
+\begin{document}
+\maketitle
+
+\section*{ZAD. 1.}
+
+Rozważmy najpierw prawą stronę równania. Spośród $n$ osób wybieramy najpierw lidera delegacji. Możemy to zrobić na $n$ sposobów. Chcemy mu dobrać pewną delegację osób. Ponieważ lider został już wybrany, to zostaje nam $(n-1)$ osób. Dla każdej z nich mamy dwie możliwości: albo osoba zostanie wybrana albo nie. Czyli dla każdej z $(n-1)$ możemy zadecydować jej los na $2$ sposoby, co daje nam
+$$n\cdot 2^{n-1}$$
+sposobów na wybranie delegacji z co najmniej $1$ osobą.
+\medskip
+
+Teraz zajmujemy się lewą stroną równania. Suma przechodzi przez wszystkie możliwe rozmiary delegacji: możemy wybrać delegację która ma tylko jedną osobę (wtedy $k=1$),a możemy też przecież wybrać delegację o $k=n-1$ lub $k=n$ członkach. W każdej z takich $k$-osobowych delegacji lidera możemy wybrać na $k$ sposobów. Całość daje to samo rozwiązanie co przechodzenie przez każdą potencjalną osobę po kolei i decydowanie czy ona trafia do delegacji czy też nie.
+
+\section*{ZAD. 2.}
+
+Jeśli jedynek jest o co najmniej 2 więcej niż zer, to całość nam nie zadziała. Na przykład w 1101 nie możemy rozdzielić dwóch pierwszych 1. Załóżmy więc, że
+$$k<l+2$$
+
+Aby ułatwić sobie zadanie, sklejmy $k-1$ jedynek z zerami. Na razie niech zera będą zawsze przez jedynką, to znaczy tworzymy pary 01. Ustawiamy je jedna koło drugiej i zrobić to możemy na jeden sposób. Zostaje nam $k-(k-1)=1$ jedynka, którą musimy wstawić na sam przód ciągu i $l-(k-1)$ zer. Nie mamy ograniczeń na położenie zer, więc możemy je wstawić na dowolne miejsce między dotychczasowymi $2k-1$ elementami lub na jednym z końców, co daje nam
+$${2k\choose l-k+1}$$
+miejsc na wstawienie 0. Dostajemy więc ${2k\choose l-k+1}$ ciągów kiedy zera stoją przed jedynkami.
+\smallskip
+
+Teraz zauważmy, że jeśli odbijemy początkowe pary jedynek i zer, tzn. postawimy jedynki przed zerami, dostaniemy sytuację lustrzaną. Czyli kolejne ${2k\choose l-k+1}$ sposobów na ustawienie ciągu. Daje to ostateczną liczbę ciągów, gdzie jedynki nigdy nie są koło siebie, czyli
+$$2\cdot {2k\choose l-k+1}$$
+
+\section*{ZAD. 3.}
+
+Zasada włączeń i wyłączeń, ale chwilowo mi się nie chce.
+
+\section*{ZAD. 4.}
+
+Liczba wszystkich permutacji to $n!$. Teraz wystarczy od wszystkich permutacji odjąć te, które nam nie pasują. Możemy rozdzielić te przypadki na dwie grupy: pierwsze $k$ liczb znajduje się na pierwszych $k$ miejscach i kiedy jakaś grupa spośród pierwszych $k$ elementów jest wymieszana z pozostałymi $(n-k)$ elementami. Będziemy musieli użyć nieporządków chyyyba, ale chwilowo nie chce mi się myśleć więcej. 
+
+\end{document}
