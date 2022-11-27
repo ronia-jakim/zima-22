@@ -1,90 +1,116 @@
 \section{Zbiory}
-\subsection{Rodziny}
+
+\subsection{Wstęp o zbiorkach}
+
 \begin{multicols}{2}
     
-    {\color{def}Pierscien zbiorow} to rodzina $\rodz R\subseteq \Po X$ taka, ze\smallskip\\
-    \point $\emptyset\in \rodz R$\smallskip\\
-    \point $A, B\in\rodz R\implies A\cup B,A\setminus B\in \rodz R$\smallskip
-    
-    {\color{def}Cialo zbiorow} to pierscien zbiorow, dla ktorego $X\in\rodz R$\smallskip
+$$A\Delta B=(A\setminus B)\cup (B\setminus A)$$
 
-    {\color{def}$\sigma$-pierscien zbiorow} to rodzina $\rodz R$ ktora jest pierscieniem zamknietym na przeliczalne sumy. Z tego wynika, ze
-    $$A_n\in\rodz R\implies \lim\limits_{n\to\infty}\sup A_n,\lim\limits_{n\to\infty}\inf A_n\in\rodz R$$
-    
-    {\color{def}$\sigma$-cialo zbiorow} to $\sigma$-pierscien do ktorego nalezy $X$\medskip
+Mówimy, że ciąg zbiorów $A_n$ zbiega od dołu do $A$, [$A_n\uparrow A$] jeżeli
+$$A=\bigcup\limits_{n=1}^\infty A_n$$
+analogicznie zbieganie od góry [$A_n\downarrow A$]:
+$$A=\bigcap\limits_{n=1}^\infty A_n.$$
 
-    \podz{back}\medskip
+{\color{def}Granice górna i dolna}:
+$$\lim\sup_n A_n=\bigcap\limits_{n=1}^\infty\bigcup\limits_{k=n}^\infty A_k$$
+$$\lim\inf A_n=\bigcup\limits_{n=1}^\infty\bigcap\limits_{k=n}^\infty A_k$$
+i ogółem
+$$A=\lim A_n\iff \lim\sup A_n=\lim\inf A_n=A.$$
 
-    Niech $\rodz F\subseteq \Po X$ bedzie rodzina zbiorow, wowczas\smallskip\\
-    {\color{acc}\point $r(\rodz F)$} - pierscien generowany przez rodzine $\rodz F$\smallskip\\
-    {\color{acc}\point $s(\rodz F)$} - $\sigma$-pierscien generowany przez rodzine $\rodz F$\smallskip\\
-    {\color{acc}\point $a(\rodz F)$} - cialo generowane przez $\rodz F$\smallskip\\
-    {\color{acc}\point $\sigma(\rodz F)$} - $\sigma$-cialo generowane przez $\rodz F$\medskip
+\podz{sep}
+\medskip
 
-    {\color{def}$\sigma$-cialo zbiorow borelowskich(*)} [$Bor(\R)$] - najmniejsze cialo zawierajace rodzine wszystkich otwartych podzbiorow $\R$\smallskip\\
-    \indent (*) {\color{acc}zbior borelowski} - dowolny zbior ot-\\
-    \indent warty (domkniety) uzyskany przez sume/prze-
-    \indent kroj/dopelnienie przeliczalnie wielu 
-    \indent zbiorow otwartych (domknietych)
+Każdy niepusty otwarty $U\subseteq \R$ można zapisać
+$$U=\bigcup\limits_{n=1}^\infty (a_n,b_n),$$
+gdzie $a_n,b_n\in\Q$.
+\smallskip
+
+Dla zbioru domkniętego $F\subseteq\R$ mamy z kolei
+$$F\subseteq\bigcup\limits_{n=1}^\infty(a_n,b_n)$$
+i istnieje wtedy takie $N$, że
+$$F\subseteq\bigcup\limits_{n=1}^N(a_n,b_n).$$
 
 \end{multicols}
-
-$$\lim\inf A_n = \bigcup\limits_{n=1}^\infty\bigcap\limits_{k=n}^\infty A_k \quad\lim\sup A_n=\bigcap\limits_{n=1}^\infty\bigcup\limits_{k=n}^\infty A_k$$
-\begin{center}
-    Jesli $lim\inf A_n=\lim\sup A_n=A$, to $\lim A_n=A$.
-\end{center}
 \bigskip
 
-\podz{sep2}\bigskip
-
-\subsection{Funkcyje}
-
-\begin{multicols}{2}
-    {\color{def}Funkcja zbioru} - dla ustalonej rodziny $\rodz R$ funkcja postaci $f:\rodz R\to\R$\smallskip
-
-    {\color{def}Addytywna funkcja zbioru} (miara skonczenie addytywna) - dla $\rodz R$ bedacego pierscieniem zbiorow to funkcja $\mu:\rodz R\to [0,\infty]$ spelniajaca:\smallskip\\
-    \point $\mu(\emptyset) = 0$\smallskip\\
-    \point $A,B\in\rodz R\;\land\;A\cap B=\emptyset\implies \mu(A\cup B)=\mu(A)+\mu(B)$\medskip
-
-    {\color{def}Przeliczalnie addytywna funkcja zbioru} $\mu$ - jesli dla dowolnego $R$ i $A_n$ takich, ze $(\forall\;i,j)\;A_i\cap A_j=\emptyset$ oraz $R=\bigcup\limits_n A_n$ zachodzi wzor
-    $$\mu(\bigcup\limits_n A_n)=\sum\limits_n\mu(A_n)$$
-    {\color{acc}Warunek rownowazny}: jest ciagla z dolu, czyli dla $A_n\uparrow A$ zachodzi $\lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$
-    Jesli zbiory $A_n$ nie sa rozlaczne, to 
-    $$\mu(\bigcup\limits_n A_n)\leq\sum\limits_n\mu(A_n)$$
-
-    Dla {\color{def}addytywnej funkcji zbioru} $\mu:\rodz R\to \R$ ponizsze sa {\color{def}rownowazne}:\smallskip\\
-    \point $\mu$ jest przeliczalnie addytywna\smallskip\\
-    \point $\mu$ jest ciagla z dolu: \\
-    \indent\indent $A_n\downarrow A\implies \lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$\smallskip\\
-    \point $\mu$ jest ciagla z gory na zbiorze $\emptyset$:\\
-    \indent\indent $A_n\downarrow\emptyset\implies\lim\limits_{n\to\infty}\mu(A_n)=0$
-
-\end{multicols}\bigskip
-
-\podz{sep2}\bigskip
-
-\subsection{Miara Lebesgue'a}
+\podz{sep}
+\bigskip
 
 \begin{multicols}{2}
 
-    Niech $\rodz R$ bedzie peirscieniem na $\R$ generowanym przez zbiory postaci $[a, b)$, wowczas funkcje $\lambda:\rodz R\to\R$ dla zbioru $R=\bigcup\limits_{i=1}^n[a_i,b_i)$, $(\forall\;i,j)\;[a_i,b_i)\cap[a_j, b_j)=\emptyset,\;a_i<b_i$ definiujemy
-    $$\lambda(R)=\sum\limits_{i=1}^n(b_i-a_i)\;(\kawa)$$
+Rodzina $\rodz{R}\subseteq\Po{X}$ jest {\color{def}pierścieniem} $[r(\rodz{R})]$, jeśli:\smallskip\\
+\point $\emptyset\in\rodz{R}$\\
+\point $(\forall\;A,B\in\rodz{R})\;A\setminus B\in\rodz{R}\;i\;A\cup B\in\rodz{R}$ (\emph{wnioskiem z tego jest, że $A\cap B\in\rodz{R}$}).
+\smallskip
 
-    Funckja ta jest przeliczalnie addytywna na pierscieniu przedzialow
-    \medskip
+Pierścień, który jest dodatkowo zamknięty na przeliczalne sumy, tzn. 
+$$(\forall\;A_n\in\rodz{R})\;\bigcup A_n\in\rodz{R}$$ 
+nazywa się {\color{def}$\sigma$-pierścieniem} [$s(\rodz{R})$].
+\medskip
 
-    {\color{def}Miara Lebesgue'a} to standardowy sposob przypisywania miary podzbiorom przestrzeni $n$-wymiarowej, gdzie $\lambda$ odpowiada $n=1$ (dla $n=2$ liczymy pole, a dla $n=3$ - objetosc).\medskip
+Pierścień, który jest domknięty na dopełnienia, jest nazywany {\color{def}ciałem} [$a(\rodz{R})$], natomiast $\sigma$-pierścień domknięty na dopełnienia to {\color{def}$\sigma$-ciało} [$\sigma(\rodz{R})$]. W $\sigma$- mamy też domknięcie na {\color{acc}$\lim\sup$ i $\lim\inf$} ciągów zbiorów.
+\medskip
 
-    Niech $[a_n,b_n)$ bedzie dowolnym ciagiem takim, ze $(\forall\;i, j)\;[a_i,b_i)\cap[a_j,b_j)=\emptyset$, \\$[a_i,b_i)\subseteq[a,b)$, wtedy
-    $$\sum_n(b_n-a_n)\leq b-a$$
+Rodzina $\rodz{R}$ zbiorów $A\subseteq \R$ takich, że
+$$A=\bigcup[a_n,b_n)$$
+jest pierścieniem. Co więcej, każdy taki $A$ można zaprezentować za pomocą rozłącznych przedziałów.
+\bigskip
 
-    Jesli $[a_n,b_n)$ jest dowolnym ciagiem przedzialow takim, ze $[a,b)\subseteq \bigcup_n[a_n,b_n)$ to
-    $$b-a\leq \sum_n(b_n-a_n)$$
+{\color{def}$\sigma$-ciało zbiorów borelowskich} [$\sigma(\rodz{U})$] to najmniejsze $\sigma$-ciało zawierające rodzinę $\rodz U$ wszystkich podzbiorów otwartych $\R$.
 
-    \podz{sep}
+Jeśli $\rodz{F}$ to zbiór przedziałów postaci $[p,q)$, $p,q\in\Q$ to mamy równość
+$$\sigma(\rodz{F})=Bor(\R)$$
 
-    \subsection{Konstrukcja miary}
-
-    {\color{def}}
-    
 \end{multicols}
+\bigskip
+
+\podz{sep}
+\bigskip
+
+\subsection{Funkcje zbiorów}
+
+\begin{multicols}{2}
+
+Jeśli $\rodz{R}$ jest pierścieniem zbiorów i mamy funkcję 
+$$\mu:\rodz{R}\to[0,\infty]$$
+to $\mu$ jest {\color{def}addytywną funkcją zbiorów}, jeśli\smallskip\\
+\point $\mu(\emptyset)=0$\\
+\point $\mu(A\cup B)=\mu(A)+\mu(B)$ dla $A\cap B=\emptyset$.
+
+Kilka fajnych {\color{acc}własności}:\smallskip\\
+\point $A\subseteq B\implies \mu(A)\leq\mu(B)$\\
+\point $A\subseteq B$ i $\mu(A)<\infty\implies \mu(B\setminus A)=\mu(B)=\mu(A)$\\
+\point $A_1,..., A_n$ parami rozłączne, to $\mu(\bigcup A_i)=\sum\mu(A_i)$.
+\medskip
+
+{\color{def}Przeliczalnie addytywna funkcja zbioru} to $\mu$ jak wyżej takie, że dla dowolnego $A$ i $A_i$ rozłącznych takich, że
+$$A=\bigcup A_i$$
+zachodzi
+$$\mu(A)=\mu(\bigcup A_i)=\sum\mu(A_i)$$
+
+Jeśli $\mu$ jest przeliczalną funkcją zbioru i $A-\bigcup A_i$, to zachodzi
+$$\mu(A)=\mu(\bigcup A_i)\leq \sum\mu(A_i)$$
+
+Addytywna funkcja zbioru jest przeliczalna $\iff$ jest {\color{acc}ciągła z dołu} (alternatywnie z góry), tzn:
+$$(\forall\;A)(\forall\;A_n)\;A_n\uparrow A\implies \lim\mu(A_n)=\mu(A).$$
+
+Dla addytywnej $\mu$  {\color{acc}następujące warunki są równoważne}:\smallskip\\
+\point $\mu$ - przeliczalnie addytywna\\
+\point $\mu$ - ciągła z góry/dołu\\
+\point $\mu$ - ciągła z góry na zbiór $\emptyset$.
+
+\end{multicols}
+\bigskip
+
+\podz{sep}
+\bigskip
+
+\subsection{Miara Lebesgue'a I}
+
+\begin{multicols*}{2}
+
+Dla $A=\bigcup\limits_{i=1}^n[a_i, b_i)$, gdzie $[a_i, b_i)$ są rozłączne, definiujemy {\color{def}naturalną funkcję zbioru} $\lambda$:
+$$\lambda(A)=\sum\limits_{i=1}^n[a_i,b_i).$$
+Od razu warto zaznaczyć, że $[a_i,b_i)$ nie musi być ciągiem skończonym - ciągi nieskończone też śmigają, bo $\lambda$ jest przeliczalną addytywną funkcją zbioru.
+
+\end{multicols*}
