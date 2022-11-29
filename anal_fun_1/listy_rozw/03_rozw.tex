@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\begin{document}
+    \subsection*{ZAD. 1.}
+
+    \emph{Udowodnić, że jeśli $x_n\to x$ oraz $y_n\to y$ w przestrzeni unormowanej $X$, to $x_n+y_n\to x+y$. Pokazać, że jeśli $\lambda_n\to \lambda$, gdzie $\lambda_n, \lambda\in\C$, to $\lambda_nx_n\to\lambda x$.}
+
+    Skoro $x_n\to x$ oraz $y_n\to y$, wiemy, że zachodzi
+    $$(\forall\;\varepsilon>0)(\exists\;N)(\forall\;n\geq N)\;\|x_n-x\|<\varepsilon$$
+    $$(\forall\;\varepsilon>0)(\exists\;N)(\forall\;n\geq N)\;\|y_n-y\|<\varepsilon$$
+
+    Weźmy więc dowolnego $\varepsilon>0$. Wtedy dla $x_n$ znajdziemy $N_x$ że dla $n\geq N_x$ wszystkie $x_n$ są co oddalone od $x$ o mniej niż $\varepsilon$. Tak samo dla $y_n$ znajdziemy $N_y$ które to spełnia. Możemy więc wybrać 
+    $$N=max(N_x, N_y).$$
+    Wtedy dla dowolnego $n\geq N$ zachodzą dwie nierówności:
+    $$\|x_n-x\|<\varepsilon$$
+    $$\|y_n-y\|<\varepsilon$$
+    które po dodaniu tworzą
+    $$\varepsilon>\|x_n-x\|+\|y_n-y\|\geq\|x_n-x+y_n-y\|=\|(x_n+y_n)-(x+y)\|.$$
+
+    \podz{sep}
+
+    Weźmy dowolny $\varepsilon>0$ wtedy również
+    $${\varepsilon\over \|x\|+1}>0$$
+    $${\varepsilon\over |\lambda|+1}>0$$
+    są dowolnie małe, w zależności od doboru $\varepsilon$. Czyli znajdziemy $N$ takie, że dla wszystkich $n\geq N$ zachodzi
+    $$|\lambda_n-\lambda|<{\varepsilon\over \|x\|+1}$$
+    $$\|x_n-x\|<{\varepsilon\over |\lambda|+1 }$$
+    Niech $M$ będzie takie, że dla każdego $n\geq M$ jest
+    $$|\lambda_n|-|\lambda|\leq||\lambda_n|-|\lambda||\leq|\lambda_n-\lambda|<1$$
+    i wtedy
+    $${|\lambda_n|\over |\lambda|+1}<1.$$
+    Weźmy dowolny $n$ taki, że $n\geq\max(N, M)$, wtedy:
+    \begin{align*}
+    \|\lambda_nx_n-\lambda x\|&=\|\lambda_nx_n-x\lambda_n+x\lambda_n-x\lambda\|=\|\lambda_n(x_n-x)+x(\lambda_n-\lambda)\|\leq\\
+    &\leq\|\lambda_n(x_n-x)\|+\|x(\lambda_n-\lambda)\|=|\lambda_n|\|x_n-x\|+\|x\||\lambda_n-\lambda|<\\
+    &<|\lambda_n|{\varepsilon\over |\lambda|+1}+\|x\|{\varepsilon\over \|x\|+1}<\varepsilon+\varepsilon=2\varepsilon
+    \end{align*}
+
+\subsection*{ZAD. 2.}
+\emph{Pokazać zupełność przestrzeni $L^p(0, 1)$ dla $p\geq 1$.}
+\smallskip
+
+\textbf{Wskazówka:} Postępować tak jak w przypadku $p=1$. Skorzystać z nierówności
+$$\|\sum|f_n|\|_p\geq\sum\|f_n\|_p.$$
+
+\podz{sep}
+\medskip
+
+{\color{def}Twierdzenie}: Przestrzeń unormowana jest zupełna $\iff$ każdy szereg bezwzględnie zbieżny jest zbieżny.
+\medskip
+
+Weźmy dowolny szereg bezwzględnie zbieżny
+$$\sum\limits_{n=1}^\infty\|f_n\|_p=b<\infty.$$
+Chcemy pokazać, że jest on zbieżny, to znaczy że szereg jego sum częściowych
+$$S_n=\sum\limits_{k=1}^n |f_n|$$
+jest zbieżny, czyli
+$$\sum\limits_{k=1}^\infty S_k=s<\infty.$$
+
+Niech $g(x)=\sum\limits_{n=1}^\infty|f_n(x)|$. Funkcja ta jest mierzalna i nieujemna bo jest granicą punktową szeregów funkcji nieujemnych i mierzalnych. Zatem mamy
+$$\|g\|_p=\Big(\int\limits_0^1|g(x)|^pdx\Big)^{\frac1p}=\Big(\int\limits_0^1(\sum\limits_{n=1}^\infty|f_n(x)|)^p\Big)^\frac1p\leq \Big(\int\limits_0^1\sum|f_n|^p\Big)^\frac1p\leq\sum\Big(\int|f_n|^p\Big)^\frac1p=\sum\|f_n\|<\infty.$$
+
+W takim razie szereg $\sum f_n(x)$ jest bezwzględnie zbieżny prawie wszędzie. Możemy więc określić
+$$h(x)=\begin{cases}\sum|f_n(x)|\quad \text{gdy zbieżny}\\
+0\end{cases}$$
+
+{\color{cyan}ja ni cholery nie rozumiem co sie dzieje}
+
+\subsection*{ZAD. 3.}
+\emph{W przestrzeni $C_\R[0,1]$ znaleźć odległość funkcji $x^n$ od dwuwymiarowej podprzestrzeni $E=\{ax+b\;:\;a,b\in\R\}$.}
+\medskip
+
+Tutaj pamiętam, że najładniejszą opcją będzie przewrócenie funkcji $x^n$ tak, żeby zaczynała i kończyła się w 0. Ale to na koniec, najpierw chcę się nauczyć robić to cierpiąc.
+\medskip
+
+Zauważmy, że $E$ to wykres funkcji $g(x)=ax+b$. Odległość między funkcją $f$ a dowolną funkcją z tej przestrzeni to najmniejsza wartość
+\begin{align*}
+    \|f-g\|&=\int\limits_0^1|f(x)-g(x)|dx=\int\limits_0^1|x^n-(ax+b)|dx=\pm\int\limits_0^1x^n-(ax+b)dx=\\
+    &={1\over n+1}-{a\over2}-b
+\end{align*}
+
+
+\end{document}
