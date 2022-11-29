@@ -76,9 +76,30 @@ Tutaj pamiętam, że najładniejszą opcją będzie przewrócenie funkcji $x^n$ 
 
 Zauważmy, że $E$ to wykres funkcji $g(x)=ax+b$. Odległość między funkcją $f$ a dowolną funkcją z tej przestrzeni to najmniejsza wartość
 \begin{align*}
-    \|f-g\|&=\int\limits_0^1|f(x)-g(x)|dx=\int\limits_0^1|x^n-(ax+b)|dx=\pm\int\limits_0^1x^n-(ax+b)dx=\\
-    &={1\over n+1}-{a\over2}-b
+    \|f-g\|&=\max|x^n-ax-b|
 \end{align*}
+
+\podz{sep}
+\smallskip
+
+To ja chyba jednak wolę metodę na Szwarca. Rozważmy odległość funkcji
+$$x^n-x$$
+od dowolnej funkcji liniowej postaci
+$$ax+b$$
+Na wykresie to wygląda mniej więcej tak:
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[axis y line = middle, axis x line = middle]
+        \addplot[color=def, domain=-0.2:1.2]{x^5 - x};
+        \addplot[color=acc, domain=-0.3:1.2]{0.5*x -0.3};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Chcemy, żeby największa odległość między tymi dwoma wykresami była jak najmniejsza. To będzie funkcja stale równa $\frac y2$, gdzie $y$ to najbardziej ujemna wartość $x^n-x$. Ale to długie, bo trzeba pokazać, że nic innego nie śmignie bo mamy funkcję prostą i aaaa.
+
+
 
 
 \end{document}
