@@ -44,6 +44,40 @@ Zasada włączeń i wyłączeń, ale chwilowo mi się nie chce.
 
 \section*{ZAD. 4.}
 
-Liczba wszystkich permutacji to $n!$. Teraz wystarczy od wszystkich permutacji odjąć te, które nam nie pasują. Możemy rozdzielić te przypadki na dwie grupy: pierwsze $k$ liczb znajduje się na pierwszych $k$ miejscach i kiedy jakaś grupa spośród pierwszych $k$ elementów jest wymieszana z pozostałymi $(n-k)$ elementami. Będziemy musieli użyć nieporządków chyyyba, ale chwilowo nie chce mi się myśleć więcej. 
+Liczba wszystkich permutacji to $n!$. Teraz wystarczy od wszystkich permutacji odjąć te, które nam nie pasują, czyli mają co najmniej jedną liczbę $i\leq k$ na pozycji $i$.
+
+Rozważmy ciąg rekurencyjny $a_k$ taki, że $a_k$ to liczba permutacji zbioru $n$-elementowego, że pierwsze $k$ elementów nie jest na swoim wyjściowym miejscu. Dla $a_0$ mamy oczywiście wartość $n!$.
+
+Dla $k+1$-elementu ciągu możemy skorzystać z poprzednich wartości.
+
+\section*{ZAD. 5.}
+
+Szukamy liczby permutacji zbioru $\{1,2,...,n\}$ takich, że dla każdego $i$ nie stoi ono na pozycji $i$. Niech $d_n$ oznacza liczbę nieporządków na zbiorze $n$ elementowym.
+
+
+\section*{ZAD. 12.}
+
+{\color{acc}(a)} $\{id, (12345), (13524), (14253), (15432)\}$
+\smallskip
+
+Tak, jest to grupa, ponieważ wszystkie elementy to potęgi $(12345)$ (czyli mamy podgrupę cykliczną).
+$$(12345)(12345)=(13524)$$
+$$(12345)(13524)=(14253)$$
+$$(12345)(14253)=(15432)$$
+$$(12345)(15432)=(1)(2)(3)(4)(5)$$
+
+{\color{acc}(b)} $\{id, (12)(34), (13)(24), (14)(23)\}$
+\smallskip
+
+$$(12)(34)(13)(24)=(14)(23)$$
+$$(12)(34)(14)(23)=(13)(24)$$
+$$(12)(34)(12)(34)=(1)(2)(3)(4)$$
+
+$$(13)(24)(14)(23)=(12)(34)$$
+$$(13)(24)(13)(24)=id$$
+$$(13)(24)(12)(34)=(14)(32)$$
+
+$$(14)(23)(13)(24)=(12)(34)$$
+$$(14)(23)(12)(34)=(13)(24)$$
 
 \end{document}
