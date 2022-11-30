@@ -40,19 +40,66 @@ $$2\cdot {2k\choose l-k+1}$$
 
 \section*{ZAD. 3.}
 
-Zasada włączeń i wyłączeń, ale chwilowo mi się nie chce.
+Określmy zbiory:
+$$A=\{k\;:\;1\leq k\leq n,\; 2 | k\}$$
+$$B=\{k\;:\;1\leq k\leq n,\; 3 | k\}$$
+
+Zacznijmy od znalezienia $|A\cup B|$. Z zasady włączeń i wyłączeń jest to
+$$|A\cup B|=|A|+|B|-|A\cap B|=\lfloor{n\over 2}\rfloor+\lfloor{n\over 3}\rfloor-\lfloor{n\over 6}\rfloor,$$
+bo $A\cap B$ to liczby podzielne jednocześnie przez $3$ i $2$, czyli podzielne przez $6$.
+\medskip
+
+Teraz niech
+$$C=\{k\;:\;1\leq k\leq n,\; 14 | k\;lub\;21 | k\}$$
+$$D=\{k\;:\;1\leq k\leq n,\; 10 | k\;lub\;15 | k\}$$
+$$|C|=\lfloor{n\over 14}\rfloor+\lfloor{n\over 21}\rfloor -\lfloor{n\over 42}\rfloor$$
+$$|D|=\lfloor{n\over 10}\rfloor+\lfloor{n\over15}\rfloor-\lfloor{n\over 30}\rfloor$$
+$$|C\cup D|=|C|+|D|-\lfloor{n\over 210}\rfloor$$
+
+Czyli teraz od sumy $|A\cup B|$ chcemy odjąć $|C\cup D|$ i to jest nasz wynik.
+
 
 \section*{ZAD. 4.}
 
 Liczba wszystkich permutacji to $n!$. Teraz wystarczy od wszystkich permutacji odjąć te, które nam nie pasują, czyli mają co najmniej jedną liczbę $i\leq k$ na pozycji $i$.
 
-Rozważmy ciąg rekurencyjny $a_k$ taki, że $a_k$ to liczba permutacji zbioru $n$-elementowego, że pierwsze $k$ elementów nie jest na swoim wyjściowym miejscu. Dla $a_0$ mamy oczywiście wartość $n!$.
+Rozważmy ciąg rekurencyjny $a(n, k)$ taki, że $a(n, k)$ to liczba permutacji zbioru $n$-elementowego, że pierwsze $k$ elementów nie jest na swoim wyjściowym miejscu. Dla $a(n, 0)$ mamy oczywiście wartość $n!$ a dla $a(n, 1)=(n-1)(n-1)!$.
 
-Dla $k+1$-elementu ciągu możemy skorzystać z poprzednich wartości.
+Prześledźmy wędrówkę pierwszego elementu. Jeżeli zamienimy go z jednym z pierwszych $k$ elementów, to możęmy to zrobić na $(k-1)$ sposobów i zostaje nam wtedy $(k-2)$ elementy w $(n-2)$ elementach. Jeżeli zamienimy pierwszy element z jednym z ostatnich $(n-k)$ elementów, możemy to zrobić na $(n-k)$ sposobów i zostaje nam wtedy do ustawienia $(k-1)$ elementów spośród zbioru $(n-2)$ elementowego. Jeśli natomiast na miejscu pierwszego elementu postawimy jeden z pozostałych $(n-1)$ elementów ale nie zamienimy go z jedynką, to pozostaje nam ustawienie $(k-1)$ elementów spośród zbioru $(n-1)$ elementowego. Daje to poniższy wzór rekurencyjny:
+$$a(n, k)=(k-1)a(n-2, k-2)+(n-k)a(n-2, k-1)+(n-1)a(n-1, k-1)$$
 
 \section*{ZAD. 5.}
 
-Szukamy liczby permutacji zbioru $\{1,2,...,n\}$ takich, że dla każdego $i$ nie stoi ono na pozycji $i$. Niech $d_n$ oznacza liczbę nieporządków na zbiorze $n$ elementowym.
+Szukamy liczby permutacji zbioru $\{1,2,...,n\}$ takich, że dla każdego $i$ nie stoi ono na pozycji $i$.
+\medskip
+
+Popatrzmy na liczbę permutacji, w których dokładnie $k$ elementów pozostaje na swoim miejscu. Z $n$ elementów te $k$ które zostanie pozostawione w swoim miejscu może zostać wybranie na ${n\choose k}$ sposobów. Z zasady włączeń i wyłączeń, mamy, że ilość permutacji, w których przynajmniej jeden element jest na swoim miejscu to
+\begin{align*}
+    {n\choose 1}(n-1)!-{n\choose 2}(n-2)!+{n\choose 3}(n-3)!-...=\sum\limits_{k=1}^n(-1)^{k-1}{n\choose k}(n-k)!=\sum\limits_{k=1}^n(-1)^{k-1}{n!\over k!}.
+\end{align*}
+Nieporządek to permutacja, w której żaden element nie jest na swoim miejscu to liczba wszystkich permutacji pomniejszona o liczbę permutacji w których przynajmniej jeden element jest na swoim miejscu:
+\begin{align*}
+    d_n=n!-\sum\limits_k=1^n(-1)^{k-1}{n!\over k!}=n!+\sum\limits_{k=1}^n(-1)^k{n!\over k!}=\sum\limits_{k=0}^n{n!\over k!}(-1)^k=n!\sum\limits_{k=0}^n{(-1)^k\over k!}
+\end{align*}
+
+Wzór Taylora na $e^x$ to
+$$e^x=\sum\limits_{k=0}^\infty{x^k\over k!}$$
+i dla $x=-1$ przyjmuje to wartość
+$$e=\sum\limits_{k=0}^\infty{(-1)^k\over k!}$$
+czyli liczba nieporządków to w przybliżeniu
+$$d_n\approx n!e^{-1}={n!\over e}$$
+
+\section*{ZAD. 6.}
+
+Najpierw zajmijmy się przyporządkowaniem skarpet do komody. Każda z nich ma być pełna, więc jeśli $n<5$, to oczywiście nie możemy zrobić żeby rzadna nie była pusta. Dajmy każdej z komód po jednej skarpecie, co dla rozróżnialnych skarpet można zrobić na $5!$ sposobów i pozostałe $n-5$ skarpet rozkładamy na $20$ szuflad.
+\medskip
+
+Pozostałe $n-5$ skarpet możemy ułożyć w ciąg na $(n-5)!$ sposobów. Dla dowolnego takiego ciągu chcemy włożyć między skarpety kapcia, który rozgranicza które skarpety trafią do której szuflady. Takich kapciów potrzeba nam tylko $19$, bo zawartość ostatniej szuflady jest ograniczana końcem ciągu skarpet. Teraz wybieramy miejsca dla tych $19$ kapciów spośród $n-5+19=n+14$ miejsc w ciągu. Możemy to zrobić na ${n+14\choose 19}$ sposobów.
+\medskip
+
+Łącząć wszystko w jedną odpowiedź, dostajemy
+$$5!\cdot(n-5)!\cdot{n+14\choose 19}$$
+sposobów na rozmieszczenie $n$ skarpet w $5$ komód po $4$ szuflady tak, żeby żadna komoda nie była pusta.
 
 
 \section*{ZAD. 12.}
@@ -60,7 +107,7 @@ Szukamy liczby permutacji zbioru $\{1,2,...,n\}$ takich, że dla każdego $i$ ni
 {\color{acc}(a)} $\{id, (12345), (13524), (14253), (15432)\}$
 \smallskip
 
-Tak, jest to grupa, ponieważ wszystkie elementy to potęgi $(12345)$ (czyli mamy podgrupę cykliczną).
+TAK, jest to grupa, ponieważ wszystkie elementy to potęgi $(12345)$ (czyli mamy podgrupę cykliczną).
 $$(12345)(12345)=(13524)$$
 $$(12345)(13524)=(14253)$$
 $$(12345)(14253)=(15432)$$
@@ -69,9 +116,11 @@ $$(12345)(15432)=(1)(2)(3)(4)(5)$$
 {\color{acc}(b)} $\{id, (12)(34), (13)(24), (14)(23)\}$
 \smallskip
 
+TAK:
+
 $$(12)(34)(13)(24)=(14)(23)$$
 $$(12)(34)(14)(23)=(13)(24)$$
-$$(12)(34)(12)(34)=(1)(2)(3)(4)$$
+$$(12)(34)(12)(34)=id$$
 
 $$(13)(24)(14)(23)=(12)(34)$$
 $$(13)(24)(13)(24)=id$$
@@ -79,5 +128,27 @@ $$(13)(24)(12)(34)=(14)(32)$$
 
 $$(14)(23)(13)(24)=(12)(34)$$
 $$(14)(23)(12)(34)=(13)(24)$$
+$$(14)(23)(14)(23)=id$$
+
+Zbiór ten jest zamknięty na składanie permutacji, branie odwrotności i jego działanie jest łączne ze względu na definicję $S_5$.
+\medskip
+
+{\color{acc}(c)} $\{id, (12)(345), (135)(24), (15324), (12)(45), (134)(25), (143)(25)\}$
+\smallskip
+
+NIE:
+$$(12)(345)(135)(24)=(14)(25)$$
+nie jest zamknięta na składanie permutacji, bo wynik powyższego działania nie należy do danego zbioru.
+
+\subsection*{ZAD. 14.}
+
+Obracając wierzchołki dwunastościanu dostajemy $60$ symetrii:
+\smallskip
+
+Weźmy dowolny wierzchołek. Sąsiaduje on z $3$ innymi, więc jeśli przerzucimy ten wybrany wierzchołek na dowolny inny, co można zrobić na $20$ sposobów, bo mamy $20$ wierzchołków, to dla jednego z jego sąsiadów miejsce możemy wybrać na trzy sposoby. Pozostali sąsiedzi muszą sią dostosować do tego układu tak, żeby sądiedztwo wierzchołków nie zostało naruszone. Daje to $20\cdot 3=60$ symetrii obrotowych.
+\medskip
+
+Teraz zauważmy, że dla każdego takiego obrotu możemy go złożyć z obrotem o $\pi$ względem osi poprowadzanej przez wybrany wierzchołek i wierzchołek naprzeciwko niego. Takie złożenie jest nadal symetrią i mamy $60\cdot 2=120$ symetrii na dwunastościanie foremnym.
+
 
 \end{document}
