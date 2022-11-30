@@ -1,0 +1,108 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\begin{document}
+
+\subsection*{ZAD. 1.}
+
+\emph{Find (by "drawing" pictures representing graphs) all pairwise non-simorfphic graphs of order 4}
+\medskip
+
+Trivial
+
+\subsection*{ZAD. 2.}
+
+\emph{For a graph $G$, define a relation $\approx$ on $V(G)$ by saying $v\approx w$ iff there exists a path in $G$ with endpoints $v$ and $w$. Show that $\approx$ is an equivalence relation.}
+\medskip
+
+{\color{acc}Reflexivity:} $v\approx v$ 
+\smallskip
+
+Any path of length $0$ begins and ends in one vertex without any in the middle.
+\smallskip
+
+{\color{acc}Symmetry:} $v\approx w\implies w\approx v$
+\smallskip
+
+Obviously if we have an undirected graph and path $v...w$, then we also have path going through the same vertices but in reversed order, that is $w...v$.
+\smallskip
+
+{\color{acc}Transitivity:} $(v\approx w\;\land\;w\approx z)\implies v\approx z$
+\smallskip
+
+We know that there exists a path $v...w$ and another path $w...z$. The end of the first one is the same as the beggining of the second, so we can connect those two paths. That gives us a path $v...ww...z=v...w...z$.
+
+\subsection*{ZAD. 3.}
+
+\emph{Given a graph $G$ define its complement $\overline{G}$ as a graph with vertices $V(\overline{G})=V(G)$ such that fiven $v,w\in V(G)$ with $v\neq w$ we have $vw\in E(\overline{G})$ iff $vw\notin E(G)$
+}
+
+(a) Show that if $G\simeq\overline{G}$, then $|G|\equiv 0\;or\;1\mod{4}$
+
+(b) Show that for any graph $G$, either $G$ or $\overline{G}$ is connected.
+\medskip
+
+{\color{acc}(a)} Let us assume that $G$ has $n$ vertices. If we want $G$ to be isomorphic with $\overline G$, then they have to have the same number of edges. Between $n$ vertices we can have no more than
+$${n\choose 2}={n!\over (n-2)!2!}={n(n-1)\over2}$$
+We want to be able to divide this number into two equal parts, so $n(n-1)$ must be divisible by $2\cdot2=4$, so either $n$ is divisible by $4$ (then $n\equiv0\mod4$) or $(n-1)$ is divisible by $4$ ($n\equiv1\mod4$).
+\medskip
+
+{\color{acc}(b)} If $G$ is connected then śmiga. Otherwise, $G$ is not connected. Then there are at least two $U, W\subseteq V(G)$ such that for any $u\in U$ and $w\in W$ there is no $uw\in G$. Then we have $uw\in \overline G$ for every such $u, w$. So we can move between any two vertices just by jumping between $U$ and $W$.
+
+\subsection*{ZAD. 4.}
+
+\emph{Show that any graph of order at least $2$ has two vertices of the same degree.}
+\medskip
+
+Let us take a graph of order $n$. Any of its vertices can have degree between $0$ and $(n-1)$. 
+\smallskip
+
+If at least one of those vertices has order $0$, then no vertex can have order $(n-1)$, so we are left with $(n-2)$ possible degrees and $(n-1)$ vertices. By the pigeonhole principle, at least two vertices have the same degree.
+\smallskip
+
+If no vertex has order $0$, then we have $(n-1)$ possible degrees and $n$ vertices. Again, by the pigeonhole principle, at least two vertices have the same degree.
+
+\subsection*{ZAD. 5.}
+
+\emph{{\color{def}(a)} Show that every connected graph $G$ contains a vertex $v\in G$ such that $G-\{v\}$ is connected.}
+
+\textbf{Hint:} pick $v$ so that some connected component of $G-\{v\}$ is as big as possible.
+\medskip
+
+We have a graph of order $n$ and we want to take away one of its edges. Let $v$ be a vertex such that $G-\{v\}$ contains a path as long as possible. Because $G$ was a connceted graph, then this path spanned across all $n$ of its vertices, so in $G-\{v\}$ the longest path would be $(n-1)$ vertices long. Which means, that the graph we obtained is connected.
+\medskip
+
+\emph{{\color{def}(b)} A connected graph with at least one vertex is called a \text{tree} if it has no cycles. Show that every tree with $\geq2$ vertices has a vertex of degree 1 (such a vertex is called a \text{leaf}).}
+\medskip
+
+Let us suppose that there is a tree with no vertices of degree $1$. We will label it as $G$. Now, let $P$ be the longest path in $G$. If we takie it out of $G$, we have a straight line with some vertex $u$ as its beggining and another vertex $v$ as its end. Now they are of degree $1$. But if we put them back inside $G$, they cannot have degree $1$, so they must be connected to some other vertex. But this is the longest path, so no new vertex can be added, therefore $u$ must be connected with $v$, which gives us a cycle and a contradiction.
+\medskip
+
+\emph{{\color{def}(c)} Deduce that if $T$ is a tree then $e(T)=|T|-1$}
+\medskip
+
+A quick throwback to the definition of $e(G)$ for my dumb self:
+$$e(G)=\frac12\sum\limits_{v\in G}d(v).$$
+
+Now we gonna do induction on the number of vertices. For $n=2$ we have a tree with $|T|=2$ and $e(T)=\frac12(1+1)=1=|T|-1$.
+\smallskip
+
+Let us suppose that for a tree with $n$ vertices this formula is true. We add one new vertex. Because in a tree we have at leas one (actually two but nevermind) vertex of degree one, by removing it we change $e(T)$ by only $1$ - one less degree from the removed vertex and one less in degree of the only vertex it was connected to. At the same time, we change $|T|$ by one, so we have:
+$$e(T)=e(T')+1=(|T'|-1)+1=(|T|-2)+1=|T|-1.$$
+The end <3
+
+\emph{{\color{def}(d)} Let $G$ be a graph with $|G|=n$. We say that a tuple $(d_G(v_1),...,d_G(v_n))$, where $\{v_1,...,v_n\}=V(G)$ is a degree sequence of $G$. Show that a given tuple $(d_1,...,d_n)$ of integers, where $n\geq2$, is a degree sequence of a tree $\iff$ $d_i\geq1$ for all $i$ and $\sum\limits_{i=1}^nd_i=2n-2$.}
+
+$\color{acc}\implies$
+
+It is simply from the previous excercise. For a tree with $n$ degrees we have
+$$\frac12\sum d_G(v_i)=n-1$$
+$$\sum d_G(v_i)=2n-2.$$
+
+$\color{acc}\impliedby$
+
+\end{document}
