@@ -9,13 +9,61 @@
 
 \subsection*{ZAD. 1.}
 \emph{Describe the orbits of the natural action of $GL_n(\R)$ on $\R^n$.}
+\medskip
 
 The natural action of $GL_n(\R)$ on $\R^n$ would be for $A\in GL_n(\R)$
 $$\phi_A(x)=Ax.$$
 
 An orbit for $\R^n$ is a set
-$$O(x)=\{\phi_A(x)\;:\;\A\in GL_n(\R)\}.$$
+$$O(x)=\{\phi_A(x)\;:\;A\in GL_n(\R)\}.$$
 
-In this case an orbit is a set of vectors $y$ such that there exists an invertible matrix $A$ for which $Ax=y$.
+In this case an orbit is a set of vectors $y$ such that there exists an invertible matrix $A$ for which $Ax=y$. So these are all isometries of $x$. {\color{acc}And some more?}
+
+\subsection*{ZAD. 2.}
+
+\emph{Let $(A, +)$ be a commutative group.}
+
+\emph{{\color{acc}(a)} Show that the following formula:}
+$$(\forall\;a\in A)\;0\cdot a=a,\;1\cdot a=-a$$(
+\emph{gives an action of $\Z_2$ on $A$ by automorphism.}
+\medskip
+
+I guess this means that for all $x\in \Z_2$ we have that $\phi_x(a)$ defined as above is an automorphism. So let us take any two $a,b\in A$. Then we have
+$$\phi_0(a)+\phi_0(b)=a+b=\phi_0(a+b)$$
+$$\phi_1(a+b)=-(a+b)=(-b)+(-a)=(-a)+(-b)=\phi_1(a)+\phi_1(b)$$
+
+\emph{{\color{acc}(b)} Describe the homomorphism}
+$$\psi:\Z_2\to Aut(A)$$
+\emph{which corresponds to the action from (a) above}.
+\medskip
+
+So we send $0$ to identity and $1$ to function such that $a\mapsto a^{-1}$, let us call it $f$. This is a homomorphism, because
+$$\psi(0)=id$$
+$$\psi(1)=f$$
+$$\psi(0+1)=\psi(0)\circ\psi(1)=id\circ f=f=\psi(1)=\psi(1+0)$$
+$$\psi(1+1)=\psi(1)\circ\psi(1)=f\circ f=id=\psi(0)=\psi(1+1)$$
+
+\emph{{\color{acc}(c)} For which groups $A$, the homomorphism $\psi$ from (b) above is a monomorphism?}
+\medskip
+
+For groups that have at least three elements.
+
+\subsection*{ZAD. 3.}
+
+\emph{Assume that there is $g\in G\setminus\{e\}$ such that $ord(g)\neq 2$. Show that:}
+$$Aut(G)\neq \{id_G\}.$$
+
+{\color{cyan}KURWA NIE WIEEEEEEEEEEEEEEEEEM}
+
+\subsection*{ZAD. 4.}
+
+\emph{Show that}
+$$Aut(\Z_2\times\Z_2)\simeq S_3.$$
+
+Ok. So. Big brain time. Cuz Dominik had a proof that is waaay tooooo looooooooong.
+\medskip
+
+The group on the right has $4$ elements: (0, 0), (0, 1), (1, 0), (1,1). For a homomorphism we only need to determine where does (0, 1) and (1, 0) go. Neither of them can go onto (0, 0) cus its the neutral element. 
+
 
 \end{document}

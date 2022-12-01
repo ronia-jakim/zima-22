@@ -1,0 +1,83 @@
+\section{Ramsey Theory}
+
+\subsection{Ramsey theorem}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+    In graph $G$ we define a {\color{def}$k$-edge-coloring} for $k\geq2$ is a function
+    $$c:E(G)\to[k]$$
+
+    A subgraph $H\leq G$ is {\color{def}monochromatic} if $c|_{E(H)}$ has a constant value.
+    \medskip
+
+    The question in this chapter is weather or not we can find a monochromatic graph $K_r$ given a $k$-edge coloring of $K_n$?
+    
+    &
+
+    chuj wam wszystkim w dupe
+
+    \\
+
+    & \\
+
+    \hline 
+
+    & \\
+
+    {\color{def}Ramsey number} $R(s, t)$ is the smallest $n$ (if it exists) such that any red/blue edge coloring of $K_n$ has a red $K_s$ or a blue $K_t$.
+    \medskip
+
+    {\color{def}Ramsey's theorem} - let $s,t\geq2$, then $R(s, t)$ exists. Moreover, is $s,t>2$ then $R(s,t)\leq R(s-1, t)+R(s, t-1)$.
+
+\end{tabularx}
+
+\prooflink{ramsey-theorem}
+\medskip
+
+\prooflang{ramsey-theorem}{GB}
+\medskip
+
+By induction on $s+t$. The base cases is when $s=2$ or $t=2$.
+
+When $s=2$ we have $R(s, t)=t$ because either have a red edge of color red or we have the whole $K_t$ is blue.
+
+When $t=2$ similarly.
+\medskip
+
+Now, when $s,t>2$, let $n=R(s-1, t) + R(s, t-1)$ and let us color a $K_n$. Let us take any $v\in K_n$. Then there are 
+$$R(s-1, t)+R(s, t-1)-1$$
+edges incident to $v$. Therefore, either $R(s-1, t)$ of them are red or $R(s, t-1)$ are blue. Without loss of generality, let us assume that there are $R(s-1, t)$ edges
+$$\{vw\;:\;w\in A\}$$
+are red, where $A\subseteq V(K_n)$, $|A|=R(s-1, t)$. Then we have either a red $K_{s-1}$ inside $A$ to which we add the red edges to $v$ to get a red $K_s$, or we have a blue $K_t$. Analogous proof for the other number.
+\medskip
+
+\prooflang{ramsey-theorem}{PL}
+
+\subsection{Ramsey but no restrictions on colorzzz}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+Let $k,s_1,...,s_k\geq 2$. The Ramsey number $R(s_1,...,s_k)$ is the smallest number $n$ such that any $k$-edge coloring on graph $K_n$ contains at least one of $K_{s_1},...,K_{s_k}$ monochromatic graphs.
+\medskip
+
+Similar argument: $\color{acc} R(s,t,u)\leq R(s,t, u-1)+R(s, t-1, u)+R(s-1, t, u)$ and so on for more colors.
+\medskip
+
+{\color{def}Multicolor Ramsey Theorem} - let $k,s_1,...,s_k\geq 2$. Then $R(s_1,...,s_k)$ exists and if $k> 2$ we have 
+$$R(s_1,...,s_k)\leq R(s_1,...,s_{k-2}, R(s_{k-1}, s_{k-2})).$$
+
+\end{tabularx}
+
+\prooflink{multi-ramsey-theo}
+\medskip
+
+\prooflang{multi-ramsey-theo}{GB}
+\medskip
+
+Induction on $k$. If $k=2$, then we have the standard Ramsey theorem.
+\medskip
+
+Now we have $k>2$. Let $n=R(s_1,...,s_{k-2}, R(s_{k-1}, s_k))$. We will be coloring $K_n$. Let $s_{k-1}$ be light blue and $s_{k-2}$ be dark blue, while the remaining colors be non-blue. We will "merge" blue colors. Then we get a $k-1$ coloring.
+
+We know that in $K_n$ contains a $K_{s_i}$ coloring for $i\in [k-2]$ and a blue $K_{R(s_{k-2}, s_k)}$.  By the definition of Ramsey numbers, then if we want to choose in the latter one two colors, we will always find a $s_{k-2}$ light blue coloring or a $s_k$ dark blue coloring. Which is the end, my fellow kidz.
+

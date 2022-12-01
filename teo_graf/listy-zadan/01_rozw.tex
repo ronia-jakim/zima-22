@@ -105,4 +105,10 @@ $$\sum d_G(v_i)=2n-2.$$
 
 $\color{acc}\impliedby$
 
+Suppose by contradition, that there exists a graph $G$ with $n$ vertices such that $\sum d_i=2n-2$ which is not a tree.
+
+First, let us assume that such a graph does not have any vertices of odd degree, as a tree must have at least one which has degree $1$. Then we must have at most $(2n-2)/2=n-1$ vertices of any degree. But we have $n$ vertices so one would be of degree $0$ and this is a contradiction.
+
+Now, let us assume that at least one vertex has odd degree. But because the sum of all degrees is even, then there must be an even amount of vertices with odd degrees. If the graph is not connected, then we would have two classes of vertex $W, V$, with no edges between them and each would have to contain at least $2$ vertices.
+
 \end{document}
