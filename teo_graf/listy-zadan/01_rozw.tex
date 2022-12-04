@@ -105,10 +105,39 @@ $$\sum d_G(v_i)=2n-2.$$
 
 $\color{acc}\impliedby$
 
-Suppose by contradition, that there exists a graph $G$ with $n$ vertices such that $\sum d_i=2n-2$ which is not a tree.
+Induction on $n$. For $n=2$ we have that $\sum d_i=2$, so the edges are connected by one edge and this is a tree. 
 
-First, let us assume that such a graph does not have any vertices of odd degree, as a tree must have at least one which has degree $1$. Then we must have at most $(2n-2)/2=n-1$ vertices of any degree. But we have $n$ vertices so one would be of degree $0$ and this is a contradiction.
+Now, let us take any graph with $n+1$ vertices that has $\sum d_i=2n$. Then we cannot have all vertices of even degree because at least one would have degree 0. We have $n$ edges and so at least one vertex has degree $1$. We can cut it out to obtain a graph of $n$ vertices and $\sum d_i=2n-2$, which is a tree. Now, if we add a vertex of degree $1$ we still will have a tree which concludes my very insightful investigation.
 
-Now, let us assume that at least one vertex has odd degree. But because the sum of all degrees is even, then there must be an even amount of vertices with odd degrees. If the graph is not connected, then we would have two classes of vertex $W, V$, with no edges between them and each would have to contain at least $2$ vertices.
+\subsection*{ZAD. 6.}
+
+\emph{Let $G=(V, E)$ be a graph. Show that there exists a partition $V=A\cup B$ such that all vertices of $G[A]$ and of $G[B]$ have even degree.}
+
+\textbf{Hint:} consider what happens when we remove a vertex $x$ of odd degree and "invert" adjacency between the neighbors of $v$.
+\medskip
+
+Ok, so we doing induction once again. So for $n=1$ it is quite obvious. 
+
+So let us assume that for all graphs that have $n$ vertices this works. Now, let us take a graph $G$ with $n+1$ vertices. If there are no vertices of odd degree then we all good. So let us assume that there exists at least one vertex of odd degree, we gonna name him $Krzys$. To simplify the upcoming struggles, we gonna say that $Krzys$' signature is $x$. And that he is a priest. Now, let us say that $Krzys$ is a pedophile and that he is currently serving his sentence in jail. However, we cannot let the sheep wander without a shepherd, so we want to rewire his believers so that they are connected with each other via a priest. That is, we make new graph $G'$ where $V(G')=V(G')\setminus x$ and for all $a,b\in N_G(x)$ if $ab\in G$ we remove this connection and if $ab\notin G$ we add this connection. This graph has $n$ vertices, so we can divide it into two vertex classes $A$ and $B$ such that all vertices in them have even degrees. Now, let 11 years pass and $Krzys$ is out of the prison. We need to let him back to the church. Therefore, we must choose if he joins the vertex class $A$ or $B$. We still want the degrees to be even and since $Krzys$ had odd degree, he must have an even degree of neighbors in one of $A$ or $B$. Therefore, we need to add him to that group. We need to severe the fragile, artificial connections that were made and revive those that were lost but without connecting $A$ and $B$. 
+
+Such operation does not change the parity of degrees. Let us assume that in $A$ we have even number of neighbors of $Krzys$, let us name this number $k$. By adding $x$ without changing anything else we make them be of odd degree. We had $k$ neighbors of $x$ in $A$ and this is even. One vertex could have a total of $k-1$ edges with its neighbors, which would be an odd number so $k-1$ minus an even number would give us an odd number plus one from $Krzys$ would be even.
+
+In $B$ let us say we had $m$ neighbors of $Krzys$, which is an odd number. Each could have been connected with a maximum of $m-1$ neighbors, which is an even number. So now after reversing it we would have $m-1$ minus an even number, yield once again an even number.
+
+This way, we divided $G$ into two classes of vertices, both containing only vertices of even degree.
+
+\subsection*{ZAD. 7.}
+
+\emph{Suppose $G$ is a graph that has no induced cycles of odd length - that is, for any $A\subseteq V(G)$, the graph $G[A]$ is not a cycle of odd length. Show that $G$ is bipartite.}
+\medskip
+
+Induction on the number of vertices. Let $n=2$, then it is obvious. 
+
+\subsection*{ZAD. 8.}
+
+\emph{Let $G$ be a regular bipartite graph with vertex classes $W$ and $M$. Show that $G$ contains a matching from $W$ to $M$.}
+\medskip
+
+
 
 \end{document}
