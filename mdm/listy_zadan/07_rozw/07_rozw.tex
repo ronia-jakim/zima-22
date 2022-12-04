@@ -1,0 +1,63 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 7}
+\date{}
+
+%\pagecolor{back2}
+%\color{text2}
+
+\begin{document}
+\maketitle
+
+\section*{ZAD. 1.}
+
+Niech $k$ będzie liczbą pionków do rozłożenia. Jeśli $k>n$, to wtedy co najmniej dwa muszą być w jednej kolumnie, a więc jeden nie będzie na lewo od drugiego. W takim razie musi być $k\leq n$.
+\medskip
+
+Ułóżmy najpierw $k$ pionków na planszy $k\times k$ tak, żeby w każdej parze jeden był na lewo i niżej niż drugi. Takie ułożenie jest jedno, to zaczy pionki muszą stać na przekątnej od lewego dolnego rogu do prawego górnego.
+
+Jeśli ustawimy najpierw $k$ pionków na planszy $k\times k$. Utożsamimy kolumny zawierające pionki z liczbą $1$, natomiast kolumny puste z liczbą $0$. Wtedy sposobów żeby ustawić $n-k$ jedynek w ciąg $n$ elementowy mamy ${n\choose n-k}$. Analogiczna sytuacja zachodzi dla wierszy, a ogólna ilość rozwiązań to 
+$${n\choose n-k}^2,$$ 
+gdyż łączymy każde ustawienie kolumn z każdym ustawieniem wierszy.
+
+\section*{ZAD. 2.}
+
+Liczba Fibonaciego $F_n$ odpowiada na pytanie, ile jest ciągów składających się tylko z $1$ i $2$ sumujących się do $(n-1)$. Popatrzmy teraz na sumę z zadania:
+$$F_n=\sum\limits_{i=0}^{n-1}{n-1-i\choose i}.$$
+Pierwszy wyraz, ${n-1\choose 0}$ to liczba ciągów składających się tylko z $1$ sumujących się do $(n-1)$. Drugi wyraz, ${n-2\choose 1}$ skraca ciąg $(n-1)$ jedynek o jeden i wybiera jedną z pozostałych $(n-2)$ jedynek która zostanie zamieniona na $2$. W ten sposób dostajemy ilość ciągów sumujących się do $(n-1)$ zawierających tylko jedną liczbę $2$. Tak więc dla $k$-tego wyrazu sumy usuwamy $k$ jedynek, a z pozostałych na $k$ sposobów wybieramy te, które zostaną zastąpione przez $2$ ${n-1-k\choose k}$.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Teza:
+$$F_{m+2n}=\sum\limits{i=0}^n{n\choose i}F_{i+m}$$
+
+Niech $x_n=\begin{pmatrix}
+    F_{m+1+n}\\F_{n+m}
+\end{pmatrix}$ oraz $A=\begin{pmatrix}
+    1&1\\1&0
+\end{pmatrix}$. Zauważmy, że
+$$A^2=\begin{pmatrix}
+    2&1\\1&1
+\end{pmatrix}=A+I$$
+czyli
+$$A^{2n}=(A^2)^n=(A+I)^n=\sum\limits_{i=0}^n{n\choose i}A^i$$
+Mnożąc obie strony przez $x_0=\begin{pmatrix}
+    F_{m+1}\\F_m
+\end{pmatrix}$ otrzymujemy
+$$\begin{pmatrix}F_{m+2n+1}\\F_{m+2n}\end{pmatrix}=x_{2n}=A^{2n}x_0=\sum\limits_{i=0}^n{n\choose i}A^ix_0=\sum\limits_{i=0}^n{n\choose i}\begin{pmatrix}
+    F_{m+i+1}\\F_{m+i}
+\end{pmatrix}$$
+i przyrównując drugie współrzędne otrzymujemy:
+$$F_{m+2}=\sum\limits_{i=0}^n{n\choose i}F_{m+i}$$
+
+
+\end{document}
