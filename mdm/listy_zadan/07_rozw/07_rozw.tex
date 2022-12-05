@@ -124,12 +124,32 @@ wtedy
 
 $$s_n=\sum\limits_{i=1}^ni2^i=n2^n+s_{n-1}$$
 
+\subsection*{ZAD. 11.}
+
+
+
 \subsection*{ZAD. 14.}
 
 {\color{acc}(a)} $a_n=n^2$
-
 \begin{align*}
-    f(x)=\sum n^2x^n
+    {1\over 1-x}&=\sum\limits_{n=0}^\infty x^n\\
+    {1\over(1-x)^2}&=\sum\limits_{n=0}^\infty nx^{n-1}\\
+    {x\over(1-x)^2}&=\sum\limits_{n=0}^\infty nx^n\\
+    {x+1\over(1-x)^3}&=\sum\limits_{n=0}^\infty n^2x^{n-1}\\
+    {x(x+1)\over(1-x)^3}&=\sum\limits_{n=0}^\infty n^2x^n
+\end{align*}
+
+{\color{acc}(b)} $a_n=n^3$
+\begin{align*}
+    {x^2+4x+1\over(1-x)^4}&=\sum\limits_{n=0}^\infty n^3x^{n-1}\\
+    {x^3+4x^2+x\over (1-x)^4}&=\sum\limits_{n=0}^\infty n^3x^n
+\end{align*}
+
+{\color{acc}(c)} $a_n={n+k\choose k}$
+\begin{align*}
+    \sum\limits_{n=0}^\infty {n+k\choose k}x^n&={k\choose k}+x{k+1\choose k}+x^2{k+2\choose k}+...=\\
+    &=1+(k+1)x+{(k+1)(k+2)\over 2}x^2+...=\\
+    &=1+kx+(k+2)x^2
 \end{align*}
 
 \end{document}
