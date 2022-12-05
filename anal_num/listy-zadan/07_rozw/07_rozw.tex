@@ -6,13 +6,119 @@
 
 \begin{document}
 
+Co mam: 1, 4, 6, 8 (4)
+
+MAX: 10
+
 \section*{ZAD. 1}
 
-Wykazac, ze wielomiany Czebyszewa $T_k$ spelniaja rownosci
-$$\int\limits_{-1}^1(1-x^2)^{-\frac12}T_k(x)T_l(x)dx=0$$
-$$\int\limits_{-1}^1(1-x^2)^{-\frac12}[T_k(x)]^2dc=\begin{cases}
-    \pi\quad k=0\\
-    \frac\pi2
+Chcemy udowodnić, że
+$$\int\limits_{-1}^1(1-x^2)^{-\frac12}T_k(x)T_l(x)dx=\begin{cases}
+    0\quad k\neq l\\
+    \pi\quad k=l=0\\
+    \frac\pi2\quad k=l\neq 0
 \end{cases}$$
+
+Po pierwsze zauważmy, że
+$$\int\limits_{-\pi}^\pi \cos(k\theta)\cos(l\theta)d\theta=\begin{cases}
+    0\quad k\neq l\\
+    2\pi\quad k=l=0\\
+    \pi
+\end{cases}$$
+
+Korzystając z zależności
+\begin{align*}
+    \frac12(\cos(x-y)+\cos(x+y))&=\frac12(\cos(x)\cos(y)-\sin(x)\sin(y)+\cos(x)\cos(y)+\sin(x)\sin(y))=\\
+    &=\frac12(2\cos(x)\cos(y))=\cos(x)\cos(y)
+\end{align*}
+
+Jeśli $k=l=0$, to mamy
+
+\begin{align*}
+    \int\limits_{-\pi}^\pi\cos^2(0\cdot\theta)d\theta=\int\limits_{-\pi}^\pi1d\theta=\pi-(-\pi)=2\pi
+\end{align*}
+
+natomiast jeśli $k=l\neq0$, to jest
+
+\begin{align*}
+    \int\limits_{-\pi}^\pi\cos^2(k\theta)d\theta&={2k(\pi+\pi)+\sin(2k\pi)-\sin(-2k\pi)\over 4k}={4k\pi\over 4k}=\pi
+\end{align*}
+
+Jeśli $k\neq l$:
+\begin{align*}
+    \int\limits_{-\pi}^\pi\cos(k\theta)\cos(l\theta)d\theta&=\int\limits_{-\pi}^\pi\frac12(\cos((k-l)\theta)+\cos((k+l)\theta))d\theta=\\
+    &=\frac12\int\limits_{-\pi}^\pi\cos((k-l)\theta)d\theta+\frac12\int\limits_{-\pi}^\pi\cos((k+l)\theta)d\theta=\\
+    &=\frac12{\sin((k-l)\theta)\over k-l}+\frac12{\sin((k+l)\theta)\over k-l}=\\
+    &=\frac12\Big({\sin((k-l)\pi)-\sin((l-k)\pi)\over k-l}+{\sin((k+l)\pi)-\sin((-k-l)\pi)\over k+l}\Big)=\\
+    &={\sin(\pi{k-l+l-k\over2})\cos(\pi{k-l+l-k\over2})\over k-l}+{\sin(\pi{k+l-k-l\over2})\cos(\pi{k+l-k-l\over2})\over k+l}=\\
+    &=0+0=0
+\end{align*}
+
+Wracając do Czebyszewa, wiemy, że $T_n(\cos(\theta))=\cos(n\theta)$. W takim razie
+\begin{align*}\int\limits_{-1}^1(1-x^2)^{-\frac12}T_k(x)T_l(x)dx&=\begin{bmatrix}
+    x=\cos(\theta)\\
+    dx=-\sin(\theta)d\theta=-\sqrt{1-\cos^2(\theta)}d\theta
+\end{bmatrix}=-\int\limits_{\pi}^0\cos(k\theta)\cos(l\theta)d\theta=\\
+&=\int\limits_0^\pi\cos(k\theta)\cos(l\theta)d\theta
+\end{align*}
+A ponieważ $\cos(x)$ jest funkcją parzystą, to
+$$\int\limits_{-\pi}^\pi\cos(k\theta)\cos(l\theta)d\theta=2\int\limits_{0}^\pi\cos(k\theta)\cos(l\theta)d\theta$$
+
+\subsection*{ZAD. 4.}
+
+$$\Big\|\sum\limits_{j=0}^nc_jf_j\Big\|_2^2=\sum\limits_{j=0}^n|c_j|^2\|f_j\|_2^2$$
+
+Norma:
+$$\|f\|_2=\Big(\int_{-1}^1f^2(x)(1-x^2)^{-\frac12}dx\Big)^{\frac12}$$
+
+\begin{align*}
+    \|\sum\limits_{j=0}^{n}c_jf_j\|_2^2&=\langle \sum\limits_{j=0}^nc_jf_j, \sum\limits_{i=0}^nc_if_i\rangle=\sum\limits_{j=0}^n|c_j|\langle f_j,\sum\limits_{i=0}^nc_if_j\rangle=\\
+    &=\sum\limits_{j=0}^n|c_j|\sum\limits_{i=0}^n|\overline{c_i}|\langle f_j,f_i\rangle=\sum\limits_{j=0}^n\sum\limits_{i=0}^n|c_j||\overline{c_i}|\langle f_j,f_i\rangle=\\
+    &=\sum\limits_{j=0}^n|c_j|^2\langle f_j,f_j\rangle=\sum\limits_{j=0}^n|c_j|^2\|f_j\|^2_2
+\end{align*}
+
+\subsection*{ZAD. 6.}
+
+Wiem, że $\langle f_i,f_j\rangle=0$ dla każdego $i\neq j$. Chce pokazać, że
+$$\sum\limits_{i=0}^ma_if_i=0\iff a_i=0$$
+
+Załóżmy nie wprost, że co najmniej jedno $a_k\neq 0$. Weźmy to $k$ i wtedy:
+
+\begin{align*}
+    0=\langle0,f_k\rangle=\langle \sum\limits_{i=0}^ma_if_i,f_k\rangle&=\sum\limits_{i=0}^n|a_i|\langle f_i,f_k\rangle=|a_k|\langle f_k,f_k\rangle=|a_k|\|f_k\|^2\neq 0
+\end{align*}
+co daje sprzeczność.
+
+\subsection*{ZAD. 8.}
+
+\begin{center}
+\begin{tabular}{c || c | c | c | c | c | c | c | c | c |}
+    T & 0 & 10 & 20 & 30 & 40 & 80 & 90 & 95\\
+
+    \hline
+
+    S & 68 & 67.1 & 66.4 & 65.6 & 64.6 & 61.8 & 61.0 & 60
+\end{tabular}
+\end{center}
+
+Średnia wartość $x$ to $\overline x=45.625$, wartość średnia $y$ - $\overline{y}=64.3125$, średnie nachylenie:
+$$\overline{a}={\sum(x_i-\overline{x})(y_i-\overline{y})\over \sum(x_i-\overline{x})^2}=-0.07993035770813546$$
+
+I chcemy, żeby to przechodziło przez średni punkt:
+$$64.3125=-0.07993\cdot 45.625+b\implies b = 67.9593$$
+
+a więc
+$$S=-0.07993T+67.9593$$
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}
+        \addplot[domain=-5:100, color=acc]{-0.07993*x+67.9593};
+        \addplot[only marks] coordinates {
+            (0, 68)(10,67.1)(20,66.4)(30,65.6)(40,64.6)(80,61.8)(90,61)(95,60)
+        };
+    \end{axis}
+\end{tikzpicture}    
+\end{center}
 
 \end{document}

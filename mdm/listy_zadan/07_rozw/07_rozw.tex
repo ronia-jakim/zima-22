@@ -60,4 +60,76 @@ i przyrównując drugie współrzędne otrzymujemy:
 $$F_{m+2}=\sum\limits_{i=0}^n{n\choose i}F_{m+i}$$
 
 
+\section*{ZAD. 3.}
+
+Sposobów na ułożenie $2n$ skarpet (czyli $n$ par) jest $(2n)!$. Jednak zazwyczaj skarpety z jednej pary są nierozróżnialne, więc nie ma znaczenia które będzie pierwsza. W każdej parze mamy $2$ sposoby na wybranie która skarpeta jest pierwsza, mamy $n$ par więc ogółem tych sposobów jest $2^n$. Czyli ogółem sposobów na ułożenie $n$ par skarpet jest
+$${(2n)!\over 2^n}.$$
+
+Zastanówmy się teraz, ile jest sposobów na ułożenie $n$ par skarpet tak, żeby określone $k$ par było obok siebie. Zwijając $k$ par skarpet razem zmniejszamy liczbę elementów o $k$, czyli teraz mamy $(2n-k)$ rozróżnialnych skarpet. Rozłożyć niezwinięte $(2n-2k)$ skarpet tak, żeby skarpety z jednej pary nie były obok siebie można na ${(2n-2k)!\over 2^{n-2k}}$ sposobów. Mamy teraz ciąg $(2n-2k)$ ustawionych skarpet w który chcemy włożyć $k$ dodatkowych elementów. Całość będzie się sumować do $(2n-k)$, więc z $(2n-k)$ możemy wybrać które $k$ miejsc wybierzemy na ${2n-k\choose k}$ sposobów. Czyli $k$ par skarpet zmuszamy do bycia razem podczas gdy pozostałe są rozdzielone na 
+$${(2n-2k)!\over 2^{n-2k}}{2n-k\choose k}$$
+sposobów.
+
+Teraz, z zasady włączeń i wyłączeń, dostajemy szukaną odpowiedź w postaci:
+$$A_{n}={(2n)!\over 2^n}-\sum\limits_{i=1}^n(-1)^{k+1}{n\choose k}{(2n-2k)!\over 2^{n-2k}}{2n-k\choose k}=\sum\limits_{k=0}^n(-1)^k{n\choose k}{2n-k\choose k}{(2n-2k)!\over 2^{n-k}}$$
+
+
+\subsection*{ZAD. 4.}
+
+$$\begin{cases}
+    a_0=1\\
+    a_1=0\\
+    a_n=\frac12(a_{n-1}+a_{n-2})
+\end{cases}$$
+
+Rozważmy ciąg geometryczny: $x_n=q^n$, wtedy
+\begin{align*}
+    q^n&=\frac12(q^{n-1}q^{n-2})\\
+    q^2&=\frac12(q+1)
+\end{align*}
+Czyli $x_n=q^n$ dla $q$ będących zerami wielomianu
+$$w(x)=x^2-\frac12x-\frac12=(x-\frac14)^2-\frac9{16}$$
+$$x-\frac14=\pm \frac34$$
+$$x=1\;\lor\;x=-{1\over 2}.$$
+
+Czyli ciąg $x_n$ rozwiązuje
+$$x_n=c_11^n+c_2\Big(-{1\over 2}\Big)^n$$
+Dla dwóch pierwszych wyrazów daje to
+\begin{align*}
+    \begin{cases}
+        x_0=1=c_1+c_2\\
+        x_1=0=c_1-{c_2\over2}
+    \end{cases}\\
+\end{align*}
+czyli $c_2=\frac23$ oraz $c_1=\frac13$ a postać jawna ciągu to
+$$x_n=\frac13+\frac23(-2)^{-n}$$
+
+
+\subsection*{ZAD. 5.}
+
+\href{https://math.stackexchange.com/questions/1258484/getting-rid-of-exponents-with-n-when-solving-with-annihilators-a-n-a-n-12a}{jakis losowy stackexchange}
+
+{\color{acc}(c)} $a_{n+2}=2^{n+1}-a_{n+1}-a_n$
+\smallskip
+
+Wprowadźmy nowy ciąg, $b_n$ taki, że
+$$b_n={a_n\over 2^{n-1}}$$
+wtedy
+\begin{align*}
+    b_{n+2}2^{n+1}&=2^{n+1}-b_{n+1}2^n-b_n2^{n-1}\\
+    b_{n+2}&=1-b_{n+1}2^{-1}-b_n2^{-2}\\
+    q^{n+2}&=1-\frac12q^{n+1}-\frac14q^{n}
+\end{align*}
+
+\subsection*{ZAD. 8.}
+
+$$s_n=\sum\limits_{i=1}^ni2^i=n2^n+s_{n-1}$$
+
+\subsection*{ZAD. 14.}
+
+{\color{acc}(a)} $a_n=n^2$
+
+\begin{align*}
+    f(x)=\sum n^2x^n
+\end{align*}
+
 \end{document}
