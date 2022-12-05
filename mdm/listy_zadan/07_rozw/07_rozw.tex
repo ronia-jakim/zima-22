@@ -120,14 +120,6 @@ wtedy
     q^{n+2}&=1-\frac12q^{n+1}-\frac14q^{n}
 \end{align*}
 
-\subsection*{ZAD. 8.}
-
-$$s_n=\sum\limits_{i=1}^ni2^i=n2^n+s_{n-1}$$
-
-\subsection*{ZAD. 11.}
-
-
-
 \subsection*{ZAD. 14.}
 
 {\color{acc}(a)} $a_n=n^2$
@@ -145,11 +137,24 @@ $$s_n=\sum\limits_{i=1}^ni2^i=n2^n+s_{n-1}$$
     {x^3+4x^2+x\over (1-x)^4}&=\sum\limits_{n=0}^\infty n^3x^n
 \end{align*}
 
-{\color{acc}(c)} $a_n={n+k\choose k}$
+{\color{acc}(c)} $a_n={n+k\choose k}$, dla ułatwienia zmieniam ten zapis na $a(n,k)={n+k\choose k}$
+\medskip
+
+Dla $k=0$ mamy $a(n,0)=1$ oraz
+$$f_0(x)=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty x^n={1\over 1-x}$$
+
+Teza: dla dowolnego $k$ mamy
+$$f_k(x)={1\over(1-x)^{k+1}}$$
+
+Załóżmy, że dla pierwszych $k$ działa. Teraz sprawdźmy jak to wygląda dla $k+1$. 
+$$a(n, k+1)={n+k+1\choose k+1}={(n+k+1)!\over n!(k+1)!}={(n+k+1)(n+k)...(n+1)\over (k+1)!}$$
+
+Dalej mamy
 \begin{align*}
-    \sum\limits_{n=0}^\infty {n+k\choose k}x^n&={k\choose k}+x{k+1\choose k}+x^2{k+2\choose k}+...=\\
-    &=1+(k+1)x+{(k+1)(k+2)\over 2}x^2+...=\\
-    &=1+kx+(k+2)x^2
+    f_{k+1}(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty{(n+k+1)(n+k)...(n+1)\over (k+1)!}x^n={1\over(k+1)}\sum\limits_{n=0}^\infty(n+k+1)a(n, k)x^n=\\
+    &=\frac1{k+1}\Big[\sum\limits_{n=0}^\infty(n+k)a(n, k)x^n+\sum\limits_{n=0}^\infty a(n, k)x^n\Big]=\\
+    &={1\over k+1}\Big[{k(1-x)+(k+1)x\over(1-x)^{k+2}}+{1\over(1-x)^{k+1}}\Big]=\\
+    &={1\over k+1}\Big[{k(1-x)+(k+1)x+(1-x)\over (1-x)^{k+2}}\Big]=\frac1{k+1}{(k+1)(1-x+x)\over(1-x)^{k+2}}={1\over(1-x)^{k+2}}
 \end{align*}
 
 \end{document}
