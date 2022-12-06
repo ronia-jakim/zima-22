@@ -104,21 +104,39 @@ czyli $c_2=\frac23$ oraz $c_1=\frac13$ a postać jawna ciągu to
 $$x_n=\frac13+\frac23(-2)^{-n}$$
 
 
-\subsection*{ZAD. 5.}
+% \subsection*{ZAD. 5.}
 
-\href{https://math.stackexchange.com/questions/1258484/getting-rid-of-exponents-with-n-when-solving-with-annihilators-a-n-a-n-12a}{jakis losowy stackexchange}
+% \href{https://math.stackexchange.com/questions/1258484/getting-rid-of-exponents-with-n-when-solving-with-annihilators-a-n-a-n-12a}{jakis losowy stackexchange}
 
-{\color{acc}(c)} $a_{n+2}=2^{n+1}-a_{n+1}-a_n$
-\smallskip
+% {\color{acc}(a)} $a_{n+2}=2a_{n+1}-a_n+3^n-1$
+% \smallskip
 
-Wprowadźmy nowy ciąg, $b_n$ taki, że
-$$b_n={a_n\over 2^{n-1}}$$
-wtedy
-\begin{align*}
-    b_{n+2}2^{n+1}&=2^{n+1}-b_{n+1}2^n-b_n2^{n-1}\\
-    b_{n+2}&=1-b_{n+1}2^{-1}-b_n2^{-2}\\
-    q^{n+2}&=1-\frac12q^{n+1}-\frac14q^{n}
-\end{align*}
+
+
+% {\color{acc}(c)} $a_{n+2}=2^{n+1}-a_{n+1}-a_n$
+% \smallskip
+
+% Wprowadźmy nowy ciąg, $b_n$ taki, że
+% $$b_n={a_n\over 2^{n-1}}$$
+% wtedy
+% \begin{align*}
+%     b_{n+2}2^{n+1}&=2^{n+1}-b_{n+1}2^n-b_n2^{n-1}\\
+%     b_{n+2}&=1-b_{n+1}2^{-1}-b_n2^{-2}
+% \end{align*}
+% Kolejny ciąg: $c_n=b_n-\frac47$, wtedy
+% \begin{align*}
+%     b_{n+2}-\frac47&=-\frac12(b_{n+1}-\frac47)-\frac14(b_n-\frac47)\\
+%     c_{n+2}&=-\frac12c_{n+1}-\frac12c_n\\
+%     w(x)&=x^2+\frac12x+\frac12\\
+%     x&=-\frac14\pm{i\sqrt{14}\over8}
+% \end{align*}
+
+% $$c_n=c_1\Big(-\frac14+{i\sqrt{14}\over8}\Big)^n+c_2\Big(-\frac14-{i\sqrt{14}\over8}\Big)^n$$
+% $$\begin{cases}
+%     c_0=\frac{10}7=c_1+c_2\\
+%     c_1=\frac37=c_1\Big(-\frac14+{i\sqrt{14}\over8}\Big)+c_2\Big(-\frac14-{i\sqrt{14}\over8}\Big)
+% \end{cases}$$
+% Co po żmudnych wyliczeniach daje $c_2=i\sqrt{14}-10$ oraz $c_1=i\sqrt{14}-9$. 
 
 \subsection*{ZAD. 14.}
 
@@ -155,6 +173,55 @@ Dalej mamy
     &=\frac1{k+1}\Big[\sum\limits_{n=0}^\infty(n+k)a(n, k)x^n+\sum\limits_{n=0}^\infty a(n, k)x^n\Big]=\\
     &={1\over k+1}\Big[{k(1-x)+(k+1)x\over(1-x)^{k+2}}+{1\over(1-x)^{k+1}}\Big]=\\
     &={1\over k+1}\Big[{k(1-x)+(k+1)x+(1-x)\over (1-x)^{k+2}}\Big]=\frac1{k+1}{(k+1)(1-x+x)\over(1-x)^{k+2}}={1\over(1-x)^{k+2}}
+\end{align*}
+
+\subsection*{ZAD 15.}
+
+{\color{acc}(a)}
+
+\begin{align*}
+    f(x)&=\sum\limits_{n=0}^\infty a_nx^n=x+2x^2+\frac13x^3+4x^4+\frac15x^5+...=\\
+    &=\sum\limits_{n=0}^\infty 2nx^{2n}+\sum\limits_{n=0}^\infty{x^{2n+1}\over 2n+1}
+\end{align*}
+
+Niech $g(x)=\sum\limits_{n=0}^\infty x^{2n}$
+
+\begin{align*}
+    g(x)&={1\over 1-x^2}\\
+    g'(x)&=\sum\limits_{n=0}^\infty 2nx^{2n-1}={2x\over(1-x^2)^2}\\
+    \sum\limits_{n=0}^\infty 2nx^{2n}&={2x^2\over(1-x^2)^2}
+\end{align*}
+
+Dalej, niech $h(x)=\sum\limits_{n=0}^\infty {x^{2n+1}\over 2n+1}$. Wtedy
+\begin{align*}
+    h'(x)&=\sum\limits_{n=0}^\infty x^{2n}={1\over 1-x^2}\\
+    h(x)&=\int{dx\over 1-x^2}=\frac12\log\Big[{|x+1|\over|x-1|}\Big]
+\end{align*}
+
+Podstawiając te funkcje za odpowiednie składniki $f(x)$ dostajemy
+$$f(x)={2x^2\over(1-x^2)^2}+\frac12\log\Big[{|x+1|\over|x-1|}\Big]$$
+
+{\color{acc}(b)}
+\smallskip
+
+Po pierwsze, zauważmy, że
+$$H_n=H_{n-1}+\frac1n.$$
+\begin{align*}
+    f(x)&=\sum\limits_{n=0}^\infty H_nx^n=\sum\limits_{n=1}^\infty H_nx^n=\sum\limits_{n=1}^\infty [H_{n-1}+\frac 1n]x^n=\\
+    &=x\sum\limits_{n=1}^\infty H_{n-1}x^{n-1}+\sum\limits_{n=1}^\infty \frac1nx^n 
+\end{align*}
+
+Rozważmy funckję $h(x)=\sum\limits_{n=1}^\infty\frac1nx^n$. Wtedy
+\begin{align*}
+    h(x)&=\sum\limits_{n=1}^\infty \frac1nx^n\\
+    h'(x)&=\sum\limits_{n=1}^\infty x^{n-1}=\sum\limits_{n=0}^\infty x^n={1\over 1-x}\\
+    h(x)&=\int{dx\over 1-x}=-\log|1-x|
+\end{align*}
+
+co daje
+\begin{align*}
+    f(x)&=xf(x)-\log|1-x|\\
+    f(x)&={\log|1-x|\over x-1}
 \end{align*}
 
 \end{document}
