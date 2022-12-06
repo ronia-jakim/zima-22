@@ -131,13 +131,33 @@ This way, we divided $G$ into two classes of vertices, both containing only vert
 \emph{Suppose $G$ is a graph that has no induced cycles of odd length - that is, for any $A\subseteq V(G)$, the graph $G[A]$ is not a cycle of odd length. Show that $G$ is bipartite.}
 \medskip
 
-Induction on the number of vertices. Let $n=2$, then it is obvious. 
+Suppose that $G$ is a graph such that it does not contain induced cycles of odd length. Without loss of generality, take $G$ that is connected, otherwise we would have several connected components each being bipartite. Let us choose one vertex, $v_0\in G$ and divide all the other vertices into two sets:
+\begin{align*}
+    A&=\{v\;:\;\text{the shortest }v...v_0\in G\text{ is of odd length}\}\\
+    B&=\{v\;:\;\text{the shortest }v...v_0\in G\text{ is of even length}\}
+\end{align*}
+We will show that $A$ and $B$ are vertex classes of graph $G$.
+
+Suppose that there exists an edge $wu\in A$. Then we have a cycle
+$$w...v...uw\in G$$
+consisting of a path $w...v$ of length $2k$ for some $k$ and $v...u$ of length $2n$. Additionally, we have the last path $wu$ of length $1$, which gives us a cycle of length $2(k+n)+1$, which certainly cannot be classified as even.
+
+Now, if there exists an edge $wu\in B$, then we have
+$$w...v...uw\in G$$
+with $w...v$ having length $2k+1$ and $v...u$ of length $2n+1$, adding up to a cycle of length $2(k+n+1)+1$. 
+
+Therefore, $G$ does not contain $wv$ for $w,v\in A$ or $w,v\in B$ and is bipartite.
 
 \subsection*{ZAD. 8.}
 
 \emph{Let $G$ be a regular bipartite graph with vertex classes $W$ and $M$. Show that $G$ contains a matching from $W$ to $M$.}
 \medskip
 
+A graph $G$ is regular if there exists an $r$ such that 
+$$(\forall\;v\in G)\;d(v)=r.$$
+A graph $G$ contains a matching if for any $A\subseteq V$ we have $|N(A)|\geq |A|$.
+\medskip
 
+Let us take a $r$-regular bipartite graph $G$ with vertex classes $W$ and $M$. Without the loss of generality, let us take any $A\subseteq W$. We know, that every $a\in A$ must have $r$ neighbors, each in $M$. We must have $r|A|$ edges leaving $A$ and we know that $|N(A)|\geq r$. If $|A|\leq r$, then we know that $|N(G)|\geq r\geq |A|$ and the Hall's condition is satisfied. Otherwise, we would have $|A|>r$ and if $n=|A|>|N(A)|=m$, then we $nr$ edges going to $m<n$ vertices, implying that some vertex from $N(A)$ has degree larger than $r$.
 
 \end{document}
