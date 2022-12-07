@@ -6,6 +6,30 @@
 \usepackage{tabularx}
 
 \begin{document}
-\emph{chuj wszystkim w dupe}
+
+\subsection*{ZAD 1.}
+\emph{Let $\geq1$, and let $x_1,...,x_{3n}\in\R^2$ be points such that $\|x_i-x_j\|\leq1$ for all $i$ and $j$. Prove that $\|x_i-x_j\|>\frac1{\sqrt{2}}$ for at most $3n^2$ pairs $(i,j)$ with $i<j$.}
+
+\textbf{Hint:} can four of these points have all pairwise distances greater than ${1\over sqrt{2}}$?
+\medskip
+
+Let us create a graph $G$ with vertices $1,...,3n$ such that $i$ corresponds to $x_i$. Let us connect $x_i$ and $x_j$ iff $\|x_i-x_j\|>{1\over sqrt2}$. If a vertex is connected with $3$ other vertices, then one pair of those cannot be connected with each other. Otherwise, we would have a square with side of length $>{1\over sqrt2}$ and so the diagonal would be greater than ${1\over sqrt2}\sqrt2=1$ giving us a contradiction. I dunno, I dont wanna think right now.
+
+\subsection*{ZAD 2.}
+\emph{Let $G$ be a graph with $n\geq r+2\geq 4$ vertices and $t_r(n)+1$ edges.}
+
+\emph{(a) Show that for every $p$ with $r+1\leq p\leq n$, $G$ has a subgraph $H$ with $|H|=p$ and $e(H)=t_r(p)+1$.}
+\medskip
+
+\subsection*{ZAD 13.}
+\emph{Show that a graph $G$ has an Euler trail $\iff$ it has at most $2$ vertices of odd degree.}
+
+$\color{acc}\implies$
+
+We have a graph that contains a path that goes through each edge once. If there is exactly one vertex of odd degree, we know that it has to be one end of aforementioned path.
+
+\subsection*{ZAD 14.}
+
+Ain't no problem walking around crossing each bridge only one, the problem begins when you want to end where you started.
 
 \end{document}
