@@ -64,6 +64,100 @@ Wracając do Czebyszewa, wiemy, że $T_n(\cos(\theta))=\cos(n\theta)$. W takim r
 A ponieważ $\cos(x)$ jest funkcją parzystą, to
 $$\int\limits_{-\pi}^\pi\cos(k\theta)\cos(l\theta)d\theta=2\int\limits_{0}^\pi\cos(k\theta)\cos(l\theta)d\theta$$
 
+\subsection*{ZAD. 2.}
+
+{\color{def}(a)} !!! zmieniam oznaczenie funkcji wagowej na $w(x)$ bo tak.
+
+(to jest z Kincaida)
+\smallskip
+
+Tak jak na slajdzie zauważono, jeżeli $P_n(x)=a_nx^n+...$, to $P_n=a_np_n(x)$ gdzie $p_n$ to standardowy wielomian ortogonalny.
+
+Standardowe wielomiany ortogonalne są definiowane w następujący sposób:
+$$p_0(x)=1$$
+$$p_1(x)=(x-a_1)p_0(x)$$
+$$p_k(x)=(x-a_k)p_{k-1}(x)-b_kp_{k-2}(x),$$
+gdzie
+\begin{align*}
+    a_n&={\langle xp_{n-1},p_{n-1}\rangle\over\langle p_{n-1},p_{n-1}\rangle}\\
+    b_n&={\langle xp_{n-1},p_{n-2}\rangle\over\langle p_{n-2},p_{n-2}\rangle}
+\end{align*}
+
+Udowodnimy przez indukcję względem $n$, że $\langle p_n,p_i\rangle=0$ dla $i<n$.
+
+Jeżeli $n=1$, to mamy
+\begin{align*}
+    0=\langle p_1, p_0\rangle &= \langle (x-a_1)p_0, p_0\rangle=\langle xp_0,p_0\rangle-a_1\langle p_0,p_0\rangle
+\end{align*}
+$$a_1={\langle xp_0,p_0\rangle\over \langle p_0,p_0\rangle}={\int w(x)xdx\over \int w(x)dx}$$
+co jest wyznaczone jednoznacznie.
+
+Jeżeli $n\geq 2$ i $\langle p_{n-1},p_i\rangle=0$ dla $i<n-1$, to chcemy
+\begin{align*}
+    0=\langle p_n,p_{n-1}\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2},p_{n-1}\rangle=\\
+    &=\langle (x-a_n)p_{n-1},p_{n-1}\rangle-b_n\langle p_{n-2},p_{n-1}\rangle=\\
+    &=\langle xp_{n-1},p_{n-1}\rangle-a_n\langle p_{n-1},p_{n-1}\rangle -b_n\cdot 0=\\
+    &=\langle xp_{n-1},p_{n-1}\rangle-a_n\langle p_{n-1},p_{n-1}\rangle
+\end{align*}
+$$a_n={\langle xp_{n-1},p_{n-1}\rangle\over \langle p_{n-1},p_{n-1}\rangle},$$
+co jest zdefiniowane jednoznacznie.
+
+\begin{align*}
+    0=\langle p_n,p_{n-2}\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2}, p_{n-2}\rangle=\\
+    &=\langle (x-a_n)p_{n-1},p_{n-2}\rangle-b_n\langle p_{n-2},p_{n-2}\rangle=\\
+    &=\langle xp_{n-1},p_{n-2}\rangle-b_n\langle p_{n-2},p_{n-2}\rangle
+\end{align*}
+$$b_n={\langle xp_{n-1},p_{n-2}\rangle\over \langle p_{n-2},p_{n-2}\rangle}$$
+co również jest jednoznaczne z poprzednich definicji.
+\medskip
+
+Dalej, dla dowolnego $i<n-1$ mamy
+\begin{align*}
+    \langle p_n,p_i\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2},p_i\rangle=\\
+    &=\langle xp_{n-1},p_i\rangle-a_n\langle p_{n-1},p_i\rangle -b_n\langle p_{n-2},p_i\rangle=\\
+    &=\langle p_{n-1},xp_i\rangle=\langle p_{n-1},p_{i+1}+a_{i+1}p_i+b_{i+1}p_{i-1}\rangle =0
+\end{align*}
+
+{\color{def}(b)}
+
+To, że lnz to zadanie 6, więc sobie pominę. Jest ich $n+1$ sztuk, a przestrzeń $\Pi_n$ jest wymiaru $n+1$, bo jej bazą standardową jest
+$$1,x,x^2,...,x^n$$
+czyli mamy maksymalny układ liniowo niezależny, ergo baza.
+
+{\color{def}(c)}
+
+W poprzednim podpunkcie pokazaliśmy, że wielomiany ortogonalne $P_0,...,P_{k-1}$ tworzą bazę $\Pi_{k-1}$. W takim razie
+$$Q=\sum\limits_{i=0}^{k-1}c_iP_i$$
+i mamy
+\begin{align*}
+    \langle Q,P_k\rangle &=\langle \sum\limits_{i=0}^{k-1}c_iP_i,P_k\rangle=\sum\limits_{i=0}^{k-1}c_i\langle P_i,P_k\rangle=\sum\limits_{i=0}^{k-1}c_i\cdot 0=0.
+\end{align*}
+
+
+\subsection*{ZAD. 3.}
+
+Wielomiany ortogonalne są definiowane w następujący sposób:
+$$P_0(x)=a_0$$
+$$P_1(x)=(a_1x-b_1)P_0(x)$$
+$$P_k(x)=(a_kx-b_k)P_{k-1}(x)-c_kP_{k-2}(x).$$
+Chcemy pokazać, że zera wielomianu $P_n$ są rzeczywiste, pojedyncze i leżą w przedziale $(a, b)$, możemy więc ograniczyć się do przestrzeni $\Pi_n$ rozpiętej przez wielomiany $P_0,...,P_n$, bo tylko te mają wpływ na wartość $P_n$.
+
+Załóżmy, nie wprost, że $P_n$ ma $m$ miejsc zerowych $x_1,...,x_m$ dla $0\leq m<n$. Wiemy, że
+$$\langle P_0,P_n\rangle=\int\limits_{a}^ba_0p(x)P_n(x)dx=a_0\int\limits_a^bp(x)P_n(x)dx=0$$
+$$\int\limits_a^bp(x)P_n(x)dx=0$$
+
+Ponieważ $p(x)$ nie zmienia znaku na przedziale $[a,b]$, to $P_n(x)$ nie może takie być. W takim razie dla pewnego $i\in\{1,...,m\}$ $P_n(x)$ zmienia znak w $x_i$. Oznaczmy wielomian $Z(x)=(x-x_1)...(x-x_m)$. Wtedy $P_n(x)Z(x)p(x)$ jest wielomianem niezmieniającym znak na przedziale $[a, b]$, czyli
+$$c=\int\limits_a^bZ(x)P_n(x)p(x)dx\neq 0$$
+
+Ale z drugiej strony wiemy, że $Z$ jest wielomianem stopnia $m<n$, więc może zostać zapisane w postaci
+$$Z=\sum\limits_{k=0}^mx_kP_k,$$
+co daje nam
+\begin{align*}
+    c&=\int\limits_a^bp(x)Z(x)P_n(x)dx=\int\limits_a^bp(x)P_n(x)\sum\limits_{k=0}^mx_kP_k(x)dx=\\
+    &=\sum\limits_{k=0}^mx_k\int\limits_a^bp(x)P_k(x)P_n(x)dx=\sum\limits_{k=0}^mx_k\cdot 0=0
+\end{align*}
+i jest sprzeczność.
+
 \subsection*{ZAD. 4.}
 
 $$\Big\|\sum\limits_{j=0}^nc_jf_j\Big\|_2^2=\sum\limits_{j=0}^n|c_j|^2\|f_j\|_2^2$$
