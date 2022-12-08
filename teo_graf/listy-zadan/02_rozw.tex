@@ -21,12 +21,31 @@ Let us create a graph $G$ with vertices $1,...,3n$ such that $i$ corresponds to 
 \emph{(a) Show that for every $p$ with $r+1\leq p\leq n$, $G$ has a subgraph $H$ with $|H|=p$ and $e(H)=t_r(p)+1$.}
 \medskip
 
+\subsection*{ZAD 11.}
+\emph{(a) Let $G$ be a connected graph of order $n\geq1$ and let $k<n$ be such that for any $v,w\in G$ with $v\neq w$ and $v\not \sim w$ we have $d(v)+d(w)\geq k$. Show that $P_k\leq G$.}
+\medskip
+
+Let us take any $v$ and $w$ such that $vw\notin G$. We know that $d(v)+d(w)\geq k$ and that there exists a path $v...w$.
+
+If all $u\in N(v)\cup N(w)$ are connected, then we can take $k$ of them and have a $P_k$.
+
+\subsection*{ZAD 12.}
+
+NOPE.
+
 \subsection*{ZAD 13.}
-\emph{Show that a graph $G$ has an Euler trail $\iff$ it has at most $2$ vertices of odd degree.}
+\emph{Show that a graph $G$ has an Euler trail $\iff$ it has at most $2$ vertices of odd degree. (we kinda assume that it is connected)}
 
 $\color{acc}\implies$
 
-We have a graph that contains a path that goes through each edge once. If there is exactly one vertex of odd degree, we know that it has to be one end of aforementioned path.
+We have a graph that contains a path that goes through each edge once. Let us suppose that there are at lest $3$ vertices of odd degree. But then we would have to start our path at one of then, go through the other odd degree vertex and end and the third odd degree vertex. But the middle vertex has to have the same number of edges coming in and out of it, making one of them redundant. Hence there is no Eulerian path.
+\smallskip
+
+$\color{acc}\impliedby$
+
+If we have a graph with $2$ vertices of odd degree that are not connected with each other, we can temporarily connect them to obtain a cycle. Now we have a cycle through all the vertices that will become an Eulerian path once the artificial edge is removed.
+
+And we cannot have only one vertex of odd degree because of hand shaking lemma. Elo.
 
 \subsection*{ZAD 14.}
 
