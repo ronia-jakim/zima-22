@@ -1,0 +1,62 @@
+\subsection{Arbitrary subgraphs}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+    {\color{def}Forbidden subgraph problem}: given a graph $H$, how many edges can a $H$-free graph of order $n$ have?
+    $$\color{def}ex(n; H)=\max\{e(G)\;:\;\text{G - H-free graph with }|G|=n\}.$$
+
+    From previous theorems we know that:\smallskip
+
+    \point $ex(n; K_{r+1})=t_r(n)$ and $ex(n;K_{r+1})\sim {n^2\over2}(1-\frac1r)$
+
+    \point $ex(n; K_{t,t})=O(n^{2-\frac1t})$
+    \medskip
+
+    Let us write 
+    $$\color{acc}e(H)=\lim_{n\to\infty}{ex(n;H)\over{n\choose 2}}$$
+
+    and proof that for $n\geq 2$ the sequence
+    $$({ex(n;H)\over{n\choose 2}})_{n=2}^\infty$$
+    converges.
+
+    &
+
+    {\color{def}Problem zakazanego podgrafu}: mając dany graph $H$, ile krawędzi może mieć $H$-wolny graf rzędu $n$?
+    $$\color{def}ex(n; H)=\max\{e(G)\;:\;\text{G - H-wolny graf z }|G|=n\}.$$
+
+    Z poprzednich twierdzeń wiemy, że:\smallskip
+
+    \point $ex(n; K_{r+1})=t_r(n)$ oraz $ex(n;K_{r+1})\sim {n^2\over2}(1-\frac1r)$
+
+    \point $ex(n; K_{t,t})=O(n^{2-\frac1t})$
+    \medskip
+
+    Oznaczmy
+    $$\color{acc}e(H)=\lim_{n\to\infty}{ex(n;H)\over{n\choose 2}}$$
+
+    i udowodnijmy, że dla $n\geq 4$, ciąg
+    $$({ex(n;H)\over{n\choose 2}})_{n=2}^\infty$$
+    jest zbieżny.    
+
+\end{tabularx}
+
+\prooflink{forbidden-convergence}
+\medskip
+
+\prooflang{forbidden-convergence}{GB}
+\medskip
+
+DUNNO
+\medskip
+
+\prooflang{forbidden-convergence}{PL}
+\medskip
+
+Ciąg $(x_n)_{n=2}^\infty$ jest ograniczony od dołu przez $0$, więc wystarczy pokazać, że nie jest to ciąg rosnący. Niech $n\geq3$ i niech $G$ będzie $H$-wolnym grafem z $|G|=n$ oraz $e(G)=ex(n; H)$. Wtedy dla dowolnego $v\in G$ graf $G-\{v\}$ jest $H$-wolny i ma rząd $n-1$, implikując, że
+$$e(G-\{v\})\leq ex(n-1, H).$$
+
+Z drugiej strony, dowolna krawędź $uw\in E(G)$ jest używa t dokładnie $n-2$ grafach $G-\{v\}$ dla $v\in G$ (w tych, gdzie $v\notin\{u,w\}$). To z kolei implikuje, że
+$$(n-2)e(G)=\sum\limits_{v\in G}e(G-\{v\})$$
+i z tego mamy
+$$x_n={ex(n;H)\over {n\choose2}}={2e(G)\over n(n-1)}=\sum\limits_{v\in G}{2e(G-\{v\})\over n(n-1)(n-2)}\leq {2ex(n-1;H)\over (n-1)(n-2)}$$
+czyli ciąg nie jest rosnący, a więc musi do czegoś zbiegać.

@@ -5,5 +5,87 @@
     {\color{def}Jensen's Inequality}: $a<b\in\R$ and $f:[a,b]\to\R$ is convex. Then
     $$\frac1n\sum\limits_{i=1}^nf(x_1)\geq f(\frac1n\sum\limits_{i=1}^nx_i)$$
     for all $x_1,...,x_n\in[a,b]$.
+    \smallskip
 
+    A particular case of Jensen's Inequality is
+    $$b_t(x)=\begin{cases}
+        {x\choose t}=\frac1{t!}x(x-1)...(x-t+1)\quad x\geq t-1\\
+        0
+    \end{cases}$$
+
+    &
+
+    {\color{def}Nierówność Jensena}: $a<b\in\R$ i $f:[a,b]\to\R$ jest wypukła. Wtedy
+    $$\frac1n\sum\limits_{i=1}^nf(x_1)\geq f(\frac1n\sum\limits_{i=1}^nx_i)$$
+    dla wszystkich $x_1,...,x_n\in[a,b]$.
+    \smallskip
+
+    Specjalnym przypadkiem nierówności Jensena jest
+    $$b_t(x)=\begin{cases}
+        {x\choose t}=\frac1{t!}x(x-1)...(x-t+1)\quad x\geq t-1\\
+        0
+    \end{cases}$$
+    \\
+
+    & \\
+
+    \hline
+
+    & \\
+
+    {\color{def}t-fan} is a graph $H$ such that $H\simeq K_{1,t}$.
+
+    For any $t\geq2$, there exists a function $f=f_t:\N\to(0,\infty)$ with $f(n)=O(n^{2-\frac1t})$, such that if $G$ is a $K_{t,t}$-free graph with $|G|=n$ then $e(G)\leq f(n)$.
+
+    &
+
+    {\color{def}t-wachlarzem} jest graf $H$ taki, ze $H\simeq K_{1,t}$.
+
+    Dla dowolnego $t\geq2$ istnieje funkcja $f=f_t:\N\to(0, \infty)$ z $f(n)=O(n^{2-\frac1t})$, taka, ze jesli $G$ jest $K_{t,t}$-wolnym grafem z $|G|=n$, to $e(G)\leq f(n)$.
+
+\end{tabularx}
+
+\prooflink{jensen-bullshit}
+\medskip
+
+\prooflang{jensen-bullshit}{GB}
+\medskip
+
+DUNNO
+\medskip
+
+\prooflang{jensen-bullshit}{PL}
+\medskip
+
+Niech $G$ bedzie $K_{t,t}$-wolnym grafem z $|G|=n\geq1$ i niech $e(G)=m$. Niech $k$ bedzie iloscia t-wachlarzy w $G$.
+\medskip
+
+Każdy wierzchołek $v\in G$ jest wierzchołkiem stopnia $t$ dla dokładnie ${d(v)\choose t}=b_t(d(v))$ t-grafów w $G$, implikując, że
+$$k=\sum\limits_{v\in G}b_t(d(v))\geq n\cdot b_t(\frac1n\sum\limits_{v\in G}d(v))=n\cdot b_t\Big({2m\over n}\Big),$$
+gdzie środkowa nierówność wynika z nierówności Jensena, a następująca po niej równość - z handshaking lemma. Z drugiej strony, ponieważ $G$ jest $K_{t,t}$-wolnym grafem, dowolny zbiór $t$ wierzchołków w $G$ jest wierzchołkiem stopnia $1$ w co najwyżej $(t-1)$ t-wachlarzach w $G$. To implikuje, że
+$$k\leq {n\choose t}(t-1)\leq {n^t\over t!}t.$$
+
+Ponieważ $tn=O(n^{2-\frac1t})$, to bez straty ogólności możemy założyć, że $m\geq tn$ i z tego dostajemy
+$${2m\over n}\geq {m\over n}+y\geq t.$$
+Z nierówności Jensena dostajemy
+$$k\geq n{{2m\over n}\choose t}\geq {n\Big({2m\choose n}-t+1\Big)^t\over t!}>{n\over t!}\Big({m\over n}^t\Big)={m^t\over n^{t-1}t!}.$$
+To w połączeniu z przykładem 2.4. ze skryptu, którego nie chce mi się przepisywać, daje $m^t\leq n^{2t-1}t$, czyli
+$$m\leq \sqrt[t]{t}n^{2-\frac1t}.$$
+Czyli funkcja 
+$$f_t(n)=\max({tn, \sqrt[t]{t}n^{2-\frac1t}})$$ 
+spełnia warunki twierdzenia.
+\medskip
+
+\podz{sep}
+\medskip
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+    Theorem above is similar to the {\color{acc}Zarankiewicz problem}, which, given $n\geq t\geq2$, asks about the smallest number $\color{def}z_t(n)$ such that any $K_{t,t}$-free graph $G$ with $n$ vertices in each class has $e(G)\leq z_t(n)$. We call $z_t(n)$ {\color{acc}Zarankiewicz numbers} and the theorem above implies that
+    $$z_t(n)\leq f_t(2n)=O(n^{2-\frac1t})$$
+
+    &
+    
+    Twierdzenie powyżej jest podobne do {\color{acc}problemu Zarankiewicza}, który, mając dane $n\geq t\geq 2$, pyta o najmniejszą liczbę $\color{def}z_t(n)$ taką, że dowolny $K_{t,t}$-wolny graf $G$ z $n$ wierzchołkami w każdej klasie ma $e(G)\leq z_t(n)$. Liczby $z_t(n)$ nazywamy liczbami {\color{acc}liczbami Zarankiewicza} i twierdzenie wyżej implikuje, że
+    $$z_t(n)\leq f_t(2n)=O(n^{2-\frac1t})$$
 \end{tabularx}
