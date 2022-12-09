@@ -60,3 +60,80 @@ $$(n-2)e(G)=\sum\limits_{v\in G}e(G-\{v\})$$
 i z tego mamy
 $$x_n={ex(n;H)\over {n\choose2}}={2e(G)\over n(n-1)}=\sum\limits_{v\in G}{2e(G-\{v\})\over n(n-1)(n-2)}\leq {2ex(n-1;H)\over (n-1)(n-2)}$$
 czyli ciąg nie jest rosnący, a więc musi do czegoś zbiegać.
+\medskip
+
+\podz{sep}
+\medskip
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+    {\color{def}Chromatic number} of a graph $H$ [$\chi(H)$] is the smallest integer $r\geq1$ such that $H$ is $r-partite$.
+    \medskip
+
+    {\color{def}Erd\"os-Stone Theorem}
+
+    Let $k,r$ be integers with $k-1\geq r\geq1$ and let $\varepsilon>0$. Then there exists an integer $N$ such that for all $n\geq N$, if $G$ is a graph with $|G|=n$ and $e(G)\geq(1-\frac1r+\varepsilon){n\choose 2}$, then $T_{r+1}(k)\leq G$.
+
+    No proof for your stupid arse.
+    \medskip
+
+    Let $H$ be a graph with $e(H)\geq1$. Then $ex(H)=1-{1\over \chi(H)-1}$
+
+    &
+    
+    {\color{def}Liczba chromatyczna} grafu $H$ [$\chi(H)$] to najmniejsza liczba całkowita $r\geq1$ taka, że $H$ jest $r$-dzielny.
+    \medskip
+
+    {\color{def}Twierdzenie Erd\"osa-Stone'a}
+
+    Niech $k,R$ będą liczbami całkowitymi z $k-1\geq r\geq1$ i niech $\varepsilon>0$. Wtedy istnieje liczba całkowita $N$ taka, że dla każdego $N\geq N$, jeżeli $G$ jest grafem z $|G|=n$ i $e(G)\geq (1-\frac1r+\varepsilon){n\choose 2}$, wtedy $T_{r+1}(k)\leq G$.
+
+    Nie ma dowodu dla twojej głupiej dupy.
+    \medskip
+
+    Niech $H$ będzie grafem z $e(H)\geq1$. Wtedy $ex(H)=1-{1\over\chi(H)-1}$.
+
+\end{tabularx}
+
+\prooflink{chi-before-erdos}
+\medskip
+
+\prooflang{chi-before-erdos}{GB}
+\medskip
+
+DUNNO
+\medskip
+
+\prooflang{chi-before-erdos}{PL}
+\medskip
+
+Niech $r\chi(H)-1$, wybierzmy $k$ takie, że $H\leq T_{r+1}(k)$ (na przykład możemy wziąć $k=(r+1)|H|$) i niech $\varepsilon>0$. Oznaczmy przez $N$ liczbę całkowitą z twierdzenia Erd\"osa-Stone'a. Wtedy dla dowolnego $n\geq N$ i dowolnego $H$-wolnego grafu $G$ z $|G|=n$ wiemy, że $G$ jest również $T_r(K)$-wolny i z tego powodu
+$$e(G)<(1-\frac1r+\varepsilon){n\choose 2}.$$
+
+Z tego wiemy, że $ex(n;H)<(1-\frac1r+\varepsilon){n\choose 2}$ dla wszystkich $N\geq N$, a więc
+$$ex(H)\leq 1-\frac1r+\varepsilon.$$
+Ale ponieważ $\varepsilon>0$ był z dowolnie mały, to mamy
+$$ex(H)\leq 1-\frac1r.$$
+
+Z drugiej strony dla dowolnego $n\geq r$ graf $T_r(n)$ jest $H$-wolny, bo $H$ nie jest $r$-dzielny i mamy $t_r(n)\sim (1-\frac1r){n\choose 2}$, implikując że $ex(H)\geq 1-\frac1r$.
+\medskip
+
+\podz{sep}
+\medskip
+
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X }
+
+    {\color{def}Upper density} [$ud(G)$] of an infinite graph $G$ is defined as:
+    $$ud(G)=\lim\sup\limits_{n\to\infty}1\max\Big\{{e(H)\over{n\choose2}}\;:\;H\leq G,\;|H|=n\Big\}$$
+
+    In an infinite graph $G$ we have either $ud(G)=1$ or $ud(G)=1-\frac1r$ for some $r\geq1$.
+
+    &
+
+    {\color{def}Górna gęstość} [$ud(G)$] nieskończonego grafu $G$ jest zdefiniowana jako:
+    $$ud(G)=\lim\sup\limits_{n\to\infty}1\max\Big\{{e(H)\over{n\choose2}}\;:\;H\leq G,\;|H|=n\Big\}$$
+
+    Dla nieskończonego grafu $G$ następuje albo $ud(G)=1$ albo $ud(G)=1-\frac1r$ dla pewnego $r\geq1$.
+
+\end{tabularx}
