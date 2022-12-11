@@ -137,3 +137,30 @@ Z drugiej strony dla dowolnego $n\geq r$ graf $T_r(n)$ jest $H$-wolny, bo $H$ ni
     Dla nieskończonego grafu $G$ następuje albo $ud(G)=1$ albo $ud(G)=1-\frac1r$ dla pewnego $r\geq1$.
 
 \end{tabularx}
+
+\prooflink{upper-density-val}
+\medskip
+
+\prooflang{upper-density-val}{GB}
+\medskip
+
+DUNNO
+\medskip
+
+\prooflang{upper-density-val}{PL}
+\medskip
+
+Niech $x_n$ będzie ciągiem takim, że
+$$x_n=\max\Big\{{e(H)\over{n\choose2}}\;:\;H\leq G,|H|=n\Big\}.$$
+Wystarczy pokazać, że dla każdego $r\geq 1$, jeśli $ud(G)>1-\frac1r$, wtedy tak naprawdę $ud(G)\geq1-\frac1{r+1}$.
+\smallskip
+
+Załóżmy, że $ud(G)>1-\frac1r$ i wybierzmy $\varepsilon>0$ taki, że
+$$ud(G)=\lim\limits_{n\to\infty}\sup (x_n>1-\frac1r+\varepsilon).$$
+Wtedy możemy znaleźć ciąg $(H_l)_{l=1}^\infty$ podgrafów $G$ takich, że 
+$$e(H_l)\geq(1-\frac1r+\varepsilon){|H_l|\over2}$$ 
+dla wszystkich $l$ oraz $|H_l|\to\infty$ razem z $l\to infty$. Z twierdzenia Erd\"osa-Stone'a mamy, że $T_{r+1}(n)\leq G$ dla wszystkich $n\geq r+1$. To z kolei pociąga fakt, że
+$$x_n\geq {t_{r+1}(n)\over {n\choose2}}$$
+dla wszystkich $n\geq r+1$. Z tego wynika, że
+$$ud(G)=\lim\limits_{n\to\infty}\sup x_n\geq \lim\limits_{n\to\infty}{t_{r+1}(n)\over{n\choose2}}=1-{1\over r+1}$$
+tak jak chcieliśmy.
