@@ -18,18 +18,46 @@
 
 \subsection*{ZAD. 2.}
 
+Rozważmy równanie
+$$z^k=1.$$
+Jednym z jego pierwiastków jest liczba $z=e^{{2i\pi\over k}}$. Zauważmy też, że
 \begin{align*}
-    A(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}\\
-    A(x)+A(-x)&=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}+\sum\limits_{n=0}^\infty a_{2n}(-x)^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}(-x)^{2n+1}=\\
-    &=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}+\sum\limits_{n=0}^\infty a_{2n}x^{2n}-\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}=\\
-    &=2\sum\limits_{n=0}^\infty a_{2n}x^{2n}
+    1+z+z^2+...+z^{k-1}=0,
 \end{align*}
-$$\color{acc}\sum\limits_{n=0}^\infty a_{2n}x^{2n}=\frac12(A(x)+A(-x))$$
+bo
+\begin{align*}
+    (z-1)(1+z+...+z^{k-1})&=z+z^2+...+z^k-1-z-...-z^{k-1}=z^k-1\\
+    {z^k-1\over z-1}&=1+z+...+z^{k-1}
+\end{align*}
+ale $z^k-1=0$, więc
+$$1+z+...+z^{k-1}=0.$$
+
+Dla $k=2$ mamy $z=-1$ i:
+\begin{align*}
+    A(x)&=a_0+a_1x+a_2x^2+a_3x^3+...\\
+    A(-x)&=a_0-a_1x+a_2x^2-a_3x^3+...
+\end{align*}
+co po wysumowaniu daje
+\begin{align*}
+    A(x)+A(-x)&=2a_0+a_1x(1-1)+2a_2x^2+a_3x^3(1-1)+...=\sum\limits_{n=0}^\infty 2a_{2n}x^{2n}
+\end{align*}
+i upraszczając dostajemy:
+$$\color{acc}\sum\limits_{n=0}^\infty a_{2n}x^{n}=\frac12(A(\sqrt x)+A(-\sqrt x))$$
 
 \begin{align*}
-    A(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty a_{3n}x^{3n}+\sum\limits_{n=0}^\infty a_{3n+1}x^{3n+1}+\sum\limits_{n=0}^\infty a_{3n+2}x^{3n+2}=\\
-    &=\sum\limits_{n=0}^\infty a_{3n}(x^3)^n+\sum\limits_{n=0}^\infty a_{3n+1}(x^3)^nx+\sum\limits_{n=0}^\infty a_{3n+2}(x^3)^nx^2
+    A(x)&=a_0+a_1x+a_2x^2a_3x^3+a_4x^4+a_5x^5+a_6x^6+a_7x^7+...\\
+    A(zx)&=a_0+a_1zx+a_2z^2x^2+a_3z^3x^3+a_4z^4x^4+a_5z^5x^5+a_6z^6x^6+a_7z^7x^7+...\\
+    A(z^2x)&=a_0+a_1z^2x+a_2z^4x^2+a_3z^6x^3+a_4z^8x^4+a_5z^{10}x^5+a_6z^{12}x^6+a_7z^{14}x^7+...
 \end{align*}
+Zauważmy, że $z^{3k}=1^k=1$, więc przy $a_{3n}$ zawsze mamy tylko $x^{3n}$, natomiast przy pozostałych potęgach, czyli $z^{3k+r}$, gdzie $r=1$ lub $r=2$ mamy
+$$z^{3k+r}=z^{3k}z^r=z^r.$$  
+Dodając wszystkie te wartości, tak jakd dla przypadku $k=2$, dostajemy
+\begin{align*}
+    A(x)+A(zx)+A(z^2x)&=3a_0+a_1x(1+z+z^2)+a_2x^2(1+z+z^2)+3a_3x^3+a_4x^4(1+z^1+z^2)+...=\\
+    &=3a_0+3a_{3}x^{3}+...=\sum\limits_{n=0}^\infty 3a_{3n}x^{3n}
+\end{align*}
+a więc aby dostać funkcję tworzącą ciągu $a_{3n}$ wystarczy wziąc 
+$$\color{acc}\frac13(A(\sqrt[3]{x})+A(e^{{2i\pi\over3}}\sqrt[3]{x})+A(e^{{4i\pi\over3}}\sqrt[3]{x}))=\sum\limits_{n=0}^\infty a_{3n}x^n.$$
 
 \subsection*{ZAD. 3.}
 $$a_n=\sum\limits_{i=0}^\infty F_iF_{n-i}$$
