@@ -16,6 +16,21 @@
 \begin{document}
 \maketitle
 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+    \hline
+
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\
+
+    \hline
+
+
+    - & + & - & + & - & + & + & - & - & +  & -  & -  & +  & +  & -\\
+
+    \hline
+\end{tabular}
+\end{center}
+
 \subsection*{ZAD. 2.}
 
 Rozważmy równanie
@@ -23,7 +38,7 @@ $$z^k=1.$$
 Jednym z jego pierwiastków jest liczba $z=e^{{2i\pi\over k}}$. Zauważmy też, że
 \begin{align*}
     1+z+z^2+...+z^{k-1}=0,
-\end{align*}
+\end{align*} 
 bo
 \begin{align*}
     (z-1)(1+z+...+z^{k-1})&=z+z^2+...+z^k-1-z-...-z^{k-1}=z^k-1\\
@@ -125,5 +140,71 @@ $$(-1)^{n-k}=(-1)^{n-k}(-1)^{2k}=(-1)^{n-k+2k}=(-1)^{n+k}$$
 co jest wzorem ogólnym na ilość nieporządków.
 
 \subsection*{ZAD. 7.}
+
+Wykładnicza funkcja tworząca dla ciągu $a_n$ to funkcja postaci
+$$f(x)=\sum\limits_{n=0}^\infty {a_n\over n!}x^n.$$
+
+Z poprzedniego zadania wiemy, że
+$$d_{n}=(n-1)(d_{n-2}+d_{n-1})=nd_{n-1}+(-1)^n$$
+
+\begin{align*}
+    f(x)&=\sum\limits_{n=0}^\infty {d_n\over n!}x^n=\sum\limits_{n=0}^\infty {nd_{n-1}+(-1)^n\over n!}x^n=x\sum\limits_{n=0}^\infty {d_{n-1}\over (n-1)!}x^{n-1}+\sum\limits_{n=0}^\infty {(-1)^n\over n!}x^n=\\
+    &=x\sum\limits_{n=1}^\infty {d_n\over n!}x^n+e^{-x}=x\sum\limits_{n=0}^\infty {d_n\over n!}x^n-x+e^{-x}=xf(x)-x+e^{-x}\\
+\end{align*}
+$$f(x)(1-x)=e^{-x}-x$$
+$$f(x)={e^{-x}-x\over 1-x}$$
+
+\subsection*{ZAD. 10.}
+
+Mamy zadanie $2n$ punktów, które chcemy połączyć za pomocą $n$ linii. Niech $a(n)$ będzie ilością takich podziałów. 
+
+Biorąc dowolny punkt musimy dla niego wybrać partnera tak, żeby po obu stronach tak przedzielonego okręgu były parzyste ilości punktów. Na pewno możemy wziąć sąsiada po lewej stronie, a następne potencjalne punkty są co dwa, więc takich podziałów mamy $n$. 
+
+Każdy taki wybór daje nam unikatowy podział pozostałych $2n-2$ punktów na dwie części. Jeśli w lewej części podziału mamy $2n-2k-2$ punktów, to w prawej zostaje ich $2k$, gdzie $k=0,...,n-1$. Daje to nam wzór rekurencyjny:
+$$a(n)=\sum\limits_{k=0}^{n-1}a(k)a(n-k-1),$$
+który jest identyczny ze wzorem na liczbę Catalana:
+$$C_n=\sum\limits_{k=0}^{n-1}C_iC_{n-k-1}.$$
+Warunki początkowe szukanego ciągu to $a(0)=1$, bo mamy $0$ punktów i chcemy je łączyć $0$ linii, więc nie robimy nic na jeden sposób. Zgadza się to z wartością $C_0=1$, czyli $a(n)={2n\choose n}-{2n\choose n+1}$, co odpowiada wzorowi na $n$-tą liczbę Catalana.
+
+\subsection*{ZAD. 13.}
+
+Pokażę najpierw, że $a_{n+1}=a_n+na_{n-1}$. Jeśli mamy dane $(n+1)$ elementów i chcemy zrobić z nich permutację rzędu $2$, to możemy ostatni zostawić tam gdzie był - jest on wtedy punktem stałym i dalej tworzymy inwolucję na $n$ elementach i jest ich $a_n$. Możemy też ostatni element wciągnąć w cykl dwuelementowy z jednym z pozostałych $n$ elementów na $n$ sposobów, a pozostałe elementy wchodzą w inwolucję na $(n-1)$ elementach. Czyli
+$$a_{n+1}=a_n+na_{n-1},$$
+gdzie $a_0=1$, bo mamy tylko jedną pustą permutację oraz $a_1=1$ bo mamy tylko identyczność.
+
+Wykładnicza funkcja tworząca tego ciągu to
+\begin{align*}
+    f(x)&=\sum\limits_{n=0}^\infty {a_n\over n!}x^n=\sum\limits_{n=2}^\infty {a_{n-1}+(n-1)a_{n-2}\over n!}x^n+1+x=1+x+\sum\limits_{n=2}{a_{n-1}\over n!}x^n+\sum\limits_{n=2}{(n-1)a_{n-2}\over n!}x^n\\
+    f'(x)&=1+\sum\limits_{n=2}{a_{n-1}\over(n-1)!}x^{n-1}+x\sum\limits_{n=2}{a_{n-2}\over (n-2)!}x^{n-2}=\\
+    &=\sum\limits_{n=0}{a_n\over n!}x^n+x\sum\limits_{n=0}{a_n\over n!}x^n=f(x)+xf(x)
+\end{align*}
+\begin{align*}
+    g(x)&=e^{x+{x^2\over2}}\\
+    g'(x)&=(1+x)e^{x+{x^2\over2}}
+\end{align*}
+Czyli $f(x)=e^{x+{x^2\over2}}$.
+
+\subsection*{ZAD. 14.}
+
+Organizujemy przyjęcie na $n$ osób, ale mamy tylko $k$ stołów. Chcemy sprawdzić ile jest możliwych usadzeń $n$ osób przy $k$ stołach. Jeśli jeden gość jest delikwentem którego najlepiej posadzić w kącie przy osobnym stole, to pozostałe osoby rozsadzamy na $\begin{bmatrix}
+    n-1\\k-1
+\end{bmatrix}$ sposobów. Jeśli delikwent jest w stanie siedzieć przy ludziach, wybieramy mu na $(n-1)$ osobę po której prawej stronie (lub lewej, sytuacja lustrzana) usiądzie, a pozostałych rozsadzamy na $\begin{bmatrix}
+    n-1\\k
+\end{bmatrix}$ sposobów. Daje to zależność z treści zadania.
+
+Dla $n=0$ mamy $x^{\overline0}=1=\sum\begin{bmatrix}0\\k\end{bmatrix}x^k=1+0=1$. Załóżmy więc, że dla pierwszych $n$ liczb to działa, wtedy
+\begin{align*}
+    x^{\overline{n+1}}&=(x+n)x^{\overline{n}}=(x+n)\sum\limits_{k=0}\begin{bmatrix}n\\k\end{bmatrix}x^k=\sum\limits_{k=0}\begin{bmatrix}n\\k\end{bmatrix}x^{k+1}+\sum\limits_{k=0}\begin{bmatrix}n\\k\end{bmatrix}nx^k=\\
+    &=\sum\limits_{k=1}\begin{bmatrix}n\\k-1\end{bmatrix}x^k+\sum\limits_{k=1}\begin{bmatrix}n\\k\end{bmatrix}nx^k+0=\\
+    &=\sum\limits_{k=1}\Big(\begin{bmatrix}n\\k-1\end{bmatrix}+n\begin{bmatrix}n\\k\end{bmatrix}\Big)x^k=\sum\limits_{k=1}\begin{bmatrix}
+        n+1\\k
+    \end{bmatrix}x^k=\sum\limits_{k=0}\begin{bmatrix}
+        n+1\\k
+    \end{bmatrix}x^k
+\end{align*}
+Ostatnia równość zachodzi, bo dla $n>0$ $\begin{bmatrix}
+    n\\0
+\end{bmatrix}=0$, więc jest równoznaczna z dodaniem zera.
+
 
 \end{document}
