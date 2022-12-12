@@ -68,9 +68,62 @@ $$a_n=\sum\limits_{i=0}^\infty F_iF_{n-i}$$
 
 \subsection*{ZAD. 4.}
 
+$k$-ta pochodna funkcji $f(x)=(1+x)^\alpha$ to
+$$f^{(k)}(x)=\alpha(\alpha-1)...(\alpha-k+1)(1+x)^{\alpha-k}$$
+czyli szereg Maclaurina (tzn. szereg Taylora w zerze) dla funkcji $f(x)$ to:
 \begin{align*}
     (1+x)^\alpha&=(1+0)^\alpha+{\alpha\over 1!}(1+0)^{\alpha-1}x+{\alpha(\alpha-1)\over 2!}(1+0)^{\alpha-2}x^2+...=\\
-    &=\sum\limits_{n=0}^\infty {\alpha(\alpha-1)...(\alpha-n+1)\over n!}x^n=\sum\limits_{n=0}^\infty a^{\underline{n}\over n!}x^n
+    &=\sum\limits_{n=0}^\infty {\alpha(\alpha-1)...(\alpha-n+1)\over n!}x^n=\sum\limits_{n=0}^\infty {a^{\underline{n}}\over n!}x^n
 \end{align*}
+Co zgadza się ze wzorem podanym w treści zadania.
+
+\subsection*{ZAD. 6.}
+
+$$d_{n+1}=n(d_n+d_{n-1})$$
+
+Na podłodze mamy rozłożone $(n+1)$ par skarpet o różnych wzorach i kolorach. Chcemy być osobą nietuzinkową, więc nie możemy nosić dwóch skarpet z jednej pary, dlatego szukamy ilości sposobów na jakie możemy pomieszać naszą kolekcję. 
+
+Podnosimy górną skarpetkę z pierwszej pary. Odkładamy ją na bok i na $n$ sposobów wybieramy skarpetkę z pozostałych $n$ par. Teraz mamy dwie możliwości:
+
+\point jeśli po prostu zamienimy skarpetę numer $1$ z wybraną na $n$ sposobów skarpetą, to zostaje nam pomieszać pozostałe $(n-1)$ skarpet, czyli mamy $nd_{n-1}$
+
+\point jeśli z kolei nie zadowolimy się zwykłą podmianą pierwszej skarpety i tej wybranej, to tymczasowo kładziemy pierwszą skarpetę na wybranym miejscu i uznajemy to parę, po czym dokonujemy przemieszania nowo utworzonych $n$ par skarpet, czyli $nd_n$.
+\medskip
+
+Po zsumowaniu tych dwóch możliwych scenariuszy dostajemy
+$$d_{n+1}=nd_n+nd_{n-1}$$
+potencjalnych sposobów ułożenia kolekcji skarpet w sposób ciekawy.
+\bigskip
+
+Do tej rekurencji potrzebujemy znać wartość $d_0$ oraz $d_1$, gdyż $d_2=1\cdot d_1+1\cdot d_0$. 
+
+Przy $d_0$ mamy zbiór pusty, więc nie robimy nic. To można nie robić tylko na jeden sposób, czyli $d_0=1$. 
+
+Przy $d_1$ mamy tylko jeden element, więc tak czy siak on musi wylądować na miejscu $1$, więc na singletonie nie jesteśmy w stanie utworzyć ani jednego nieporządku. Stąd $d_1=0$.
+\smallskip
+
+$$d_n=nd_{n-1}+(-1)^n$$
+
+Dla $n=1$ mamy 
+$$d_1=1d_0+(-1)^1=1-1=0$$
+co jest prawdą jak tłumaczyłam wyżej. Teraz załóżmy, że wzór jest poprawny dla pierwszych $n$ wyrazów. Wtedy
+\begin{align*}
+    d_{n+1}&=n(d_n+d_{n-1})\overset{*}{=}nd_n+d_n-(-1)^n=(n+1)d_n+(-1)^{n+1}
+\end{align*}
+Równość z $*$ wynika z faktu, że
+$$d_n=nd_{n-1}+(-1)^n$$
+$$nd_{n-1}=d_n-(-1)^n$$
+
+\begin{align*}
+    d_n&=nd_{n-1}+(-1)^n=n((n-1)d_{n-2}+(-1)^{n-1})+(-1)^n=\\
+    &=n(n-1)((n-2)d_{n-3}+(-1)^{n-2})+n(-1)^{n-1}+(-1)^n=\\
+    &=n!d_0+\sum\limits_{k=1}^{n-1}{n!\over (n-k)!}(-1)^{n-k}=\sum\limits_{k=0}^{n}{n!\over(n-k)!}(-1)^{n+k}=\\
+    &=\sum\limits_{k=0}^n{n\choose k}k!(-1)^{n+k}
+\end{align*}
+zamiana wykładnika przy $(-1)^{n-k}$ jest możliwa, bo $(-1)^{2k}=1$, czyli:
+$$(-1)^{n-k}=(-1)^{n-k}(-1)^{2k}=(-1)^{n-k+2k}=(-1)^{n+k}$$
+co jest wzorem ogólnym na ilość nieporządków.
+
+\subsection*{ZAD. 7.}
 
 \end{document}
