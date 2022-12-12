@@ -1,0 +1,43 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 8}
+\date{}
+
+%\pagecolor{back2}
+%\color{text2}
+
+\begin{document}
+\maketitle
+
+\subsection*{ZAD. 2.}
+
+\begin{align*}
+    A(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}\\
+    A(x)+A(-x)&=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}+\sum\limits_{n=0}^\infty a_{2n}(-x)^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}(-x)^{2n+1}=\\
+    &=\sum\limits_{n=0}^\infty a_{2n}x^{2n}+\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}+\sum\limits_{n=0}^\infty a_{2n}x^{2n}-\sum\limits_{n=0}^\infty a_{2n+1}x^{2n+1}=\\
+    &=2\sum\limits_{n=0}^\infty a_{2n}x^{2n}
+\end{align*}
+$$\color{acc}\sum\limits_{n=0}^\infty a_{2n}x^{2n}=\frac12(A(x)+A(-x))$$
+
+\begin{align*}
+    A(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty a_{3n}x^{3n}+\sum\limits_{n=0}^\infty a_{3n+1}x^{3n+1}+\sum\limits_{n=0}^\infty a_{3n+2}x^{3n+2}=\\
+    &=\sum\limits_{n=0}^\infty a_{3n}(x^3)^n+\sum\limits_{n=0}^\infty a_{3n+1}(x^3)^nx+\sum\limits_{n=0}^\infty a_{3n+2}(x^3)^nx^2
+\end{align*}
+
+\subsection*{ZAD. 3.}
+$$a_n=\sum\limits_{i=0}^\infty F_iF_{n-i}$$
+
+\begin{align*}
+    f(x)&=\sum\limits_{n=0}^\infty a_nx^n=\sum\limits_{n=0}^\infty x^n\sum\limits_{i=1}^n F_iF_{n-i}
+\end{align*}
+
+
+
+\end{document}

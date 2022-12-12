@@ -10,10 +10,15 @@
 \subsection*{ZAD 1.}
 \emph{Let $\geq1$, and let $x_1,...,x_{3n}\in\R^2$ be points such that $\|x_i-x_j\|\leq1$ for all $i$ and $j$. Prove that $\|x_i-x_j\|>\frac1{\sqrt{2}}$ for at most $3n^2$ pairs $(i,j)$ with $i<j$.}
 
-\textbf{Hint:} can four of these points have all pairwise distances greater than ${1\over sqrt{2}}$?
+\textbf{Hint:} can four of these points have all pairwise distances greater than ${1\over \sqrt{2}}$?
 \medskip
 
-Let us create a graph $G$ with vertices $1,...,3n$ such that $i$ corresponds to $x_i$. Let us connect $x_i$ and $x_j$ iff $\|x_i-x_j\|>{1\over sqrt2}$. If a vertex is connected with $3$ other vertices, then one pair of those cannot be connected with each other. Otherwise, we would have a square with side of length $>{1\over sqrt2}$ and so the diagonal would be greater than ${1\over sqrt2}\sqrt2=1$ giving us a contradiction. I dunno, I dont wanna think right now.
+Let us construct a graph $G$ with vertices representing those points and being connected if and only if the distance between them is at least ${1\over\sqrt{2}}$.
+
+Graph $G$ cannot contain a $K_4$ because if it did contain it, we would have a rhombus with side of length larger than ${1\over\sqrt2}$ and so one of the diagonals would be longer than $1$. So we have a $K_4$ free graph with I guess $e(G)\geq t_3(n)$ (cuz like it does not need to be partite?) and so
+$$G\simeq T_3(n)$$
+which has $3$ vertex classes, each of size $n$. So we have $3n$ vertices, each of degree $2n$ and so $e(G)=\frac12\sum d(v)=\frac12 3n\cdot 2n=3n^2$. So we have at most $3n^2$ edges. This is an awful proof.
+
 
 \subsection*{ZAD 2.}
 \emph{Let $G$ be a graph with $n\geq r+2\geq 4$ vertices and $t_r(n)+1$ edges.}
