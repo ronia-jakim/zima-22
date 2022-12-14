@@ -12,7 +12,97 @@
 \maketitle
 
 \subsection*{ZAD. 1.}
-No ale to widać kurwa no
 
+(to jest z Kincaida)
+\smallskip
+
+Standardowe wielomiany ortogonalne są definiowane w następujący sposób:
+$$p_0(x)=1$$
+$$p_1(x)=(x-a_1)p_0(x)$$
+$$p_k(x)=(x-a_k)p_{k-1}(x)-b_kp_{k-2}(x),$$
+gdzie
+\begin{align*}
+    a_n&={\langle xp_{n-1},p_{n-1}\rangle\over\langle p_{n-1},p_{n-1}\rangle}\\
+    b_n&={\langle xp_{n-1},p_{n-2}\rangle\over\langle p_{n-2},p_{n-2}\rangle}
+\end{align*}
+
+Udowodnimy przez indukcję względem $n$, że $\langle p_n,p_i\rangle=0$ dla $i<n$.
+
+Jeżeli $n=1$, to mamy
+\begin{align*}
+    0=\langle p_1, p_0\rangle &= \langle (x-a_1)p_0, p_0\rangle=\langle xp_0,p_0\rangle-a_1\langle p_0,p_0\rangle
+\end{align*}
+$$a_1={\langle xp_0,p_0\rangle\over \langle p_0,p_0\rangle}={\int w(x)xdx\over \int w(x)dx}$$
+co jest wyznaczone jednoznacznie.
+
+Jeżeli $n\geq 2$ i $\langle p_{n-1},p_i\rangle=0$ dla $i<n-1$, to chcemy
+\begin{align*}
+    0=\langle p_n,p_{n-1}\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2},p_{n-1}\rangle=\\
+    &=\langle (x-a_n)p_{n-1},p_{n-1}\rangle-b_n\langle p_{n-2},p_{n-1}\rangle=\\
+    &=\langle xp_{n-1},p_{n-1}\rangle-a_n\langle p_{n-1},p_{n-1}\rangle -b_n\cdot 0=\\
+    &=\langle xp_{n-1},p_{n-1}\rangle-a_n\langle p_{n-1},p_{n-1}\rangle
+\end{align*}
+$$a_n={\langle xp_{n-1},p_{n-1}\rangle\over \langle p_{n-1},p_{n-1}\rangle},$$
+co jest zdefiniowane jednoznacznie.
+
+\begin{align*}
+    0=\langle p_n,p_{n-2}\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2}, p_{n-2}\rangle=\\
+    &=\langle (x-a_n)p_{n-1},p_{n-2}\rangle-b_n\langle p_{n-2},p_{n-2}\rangle=\\
+    &=\langle xp_{n-1},p_{n-2}\rangle-b_n\langle p_{n-2},p_{n-2}\rangle
+\end{align*}
+$$b_n={\langle xp_{n-1},p_{n-2}\rangle\over \langle p_{n-2},p_{n-2}\rangle}$$
+co również jest jednoznaczne z poprzednich definicji.
+\medskip
+
+Dalej, dla dowolnego $i<n-1$ mamy
+\begin{align*}
+    \langle p_n,p_i\rangle&=\langle (x-a_n)p_{n-1}-b_np_{n-2},p_i\rangle=\\
+    &=\langle xp_{n-1},p_i\rangle-a_n\langle p_{n-1},p_i\rangle -b_n\langle p_{n-2},p_i\rangle=\\
+    &=\langle p_{n-1},xp_i\rangle=\langle p_{n-1},p_{i+1}+a_{i+1}p_i+b_{i+1}p_{i-1}\rangle =0
+\end{align*}
+
+\subsection*{ZAD. 2.}
+
+Z zadania 1 z listy 7 możemy się domyślić, że
+$$P_0=T_0=1\quad P_1=T_1=x$$
+\begin{align*}
+    c_1&={\langle x, 1\rangle\over\langle 1, 1\rangle}={\int\limits_{-1}^1x(1-x^2)^{-\frac12}dx\over \int\limits_{-1}^1(1-x^2)^{-\frac12}dx}={0\over \pi}=0
+\end{align*}
+więc $P_1=x$ i zapewne wielomiany $P$ spełniają zależność wielomianów Czebyszewa, czyli
+$$T_k=2xT_{k-1}(x)- T_{k-2}.$$
+Jedyny problem jest taki, że my byśmy chcieli dostać zależność bez mnożenia przez dwa. Załóżmy, że
+$$P_k=xP_{k-1}-\frac14P_{k-2}$$
+dla $k\geq 3$, a dla $k=2$ mamy $P_2=\frac12 T_2$. Podsuwam hipotezę, że wówczas dla $k\geq 3$ jest
+$$P_k={2^{1-k}}T_k$$
+Dla $k=3$ mamy
+$$P_3=xP_2-\frac14P_1=\frac12xT_2-\frac14T_1=\frac14(2xT_2-T_1)=\frac14T_3$$
+Czyli zakładamy, że dla pierwszych $n$ to śmiga, wówczas:
+$$P_{n+1}=xP_n-\frac14P_{n-1}=2^{1-n}xP_n-2^{-2}2^{2-n}T_{n-1}=2^{1-n}xT_n-2^{-n}T_{n-1}=2^{-n}(2xT_n-T_{n-1})=2^{1-(n-1)}T_{n+1}$$
+
+I teraz
+$$\langle P_i, P_j\rangle=\langle 2^{1-i}T_i, 2^{1-j}T_j\rangle=2^{1-i}2^{1-j}\langle T_i,T_j\rangle=0$$
+a więc faktycznie są ortogonalne c:
+
+\subsection*{ZAD. 3.}
+
+$n$-ty wielomian optymalny ma postać
+$$\sum\limits_{k=0}^n{\langle f, P_k\rangle\over\langle P_k,P_k\rangle}P_k$$
+a z poprzedniego zadania wiemy, że (poza małymi wyjątkami)
+$$P_k=2^{1-k}T_k$$
+
+Czyli
+$$w*=\sum\limits_{k=0}^\infty 2^{k-1}{\langle f, T_k\rangle\over \langle T_k, T_k\rangle}T_k$$
+Wystarczy pokazać, że dla dowolnego $p\in \Pi_n$, który możemy zapisać jako
+$$p=\sum\limits_{k=0}^na_k2^{1-k}P_k$$
+jest
+\begin{align*}
+    \langle f-w*,p\rangle&=\langle f, p\rangle-\langle w*,p\rangle=\\
+    &=\sum\limits_{k=0}^na_k\langle f, P_k\rangle-\sum\limits_{j=0}^n\sum\limits_{k=0}^na_j{\langle f, P_k\rangle\over\langle P_k, P_k\rangle}\langle P_k, P_j\rangle=\\
+    &=\sum\limits_{k=0}^na_k\langle f, P_k\rangle-\sum\limits_{k=0}^na_k{\langle f, P_k\rangle}=0
+\end{align*}
+
+\begin{align*}
+    w*&=\sum\limits_{k=0}^n2^{1-k}{\langle f, T_k\rangle\over \langle T_k, T_k\rangle}T_k=\sum\limits_{k=0}^n{2^{2-k}\over \pi}\langle f, T_k\rangle T_k
+\end{align*}
 
 \end{document}
