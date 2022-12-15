@@ -1,0 +1,55 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 9}
+\date{}
+
+\begin{document}
+    \maketitle
+
+    \subsection*{ZAD. 1.}
+
+    Najpierw przewozimy kozę, a wilka z kapustą zostawiamy na starym brzegu. Potem wracamy z pustą łódką i zabieramy kapustę. Dobijamy do docelowego brzegu, wysadzamy kapustę i zabieramy kozę. Wracamy na startowy brzeg i zostawiamy kozę, po czym szybko zabieramy wilka zanim on złapie kozę. Odstawiamy wilka na brzeg z kapustą, po czym wracamy po kozę i koniec. 
+
+    \pgraf
+        \node (KOZA) at (2, 0) {
+            \includesvg[width=20px]{goat}
+        };
+
+        \node (WOLF) at (0, 0) {
+            \includesvg[width=20px]{wolf}
+        };
+
+        \node (CABBAGE) at (4, 0) {
+            \includesvg[width=20px]{cabbage}
+        };
+    \kgraf
+
+    \pgraf
+        \node (000) at (0, 0) {(0, 0, 0)};
+        \node (100) at (4, 0) {(1, 0, 0)};
+        \node (010) at (0, 4) {(0, 1, 0)};
+        \node (001) at (2.5, 1.5) {(0, 0, 1)};
+        \node (110) at (4, 4) {(1, 1, 0)};
+        \node (101) at (6.5, 1.5) {(1, 0, 1)};
+        \node (111) at (6.5, 5.5) {(1, 1, 1)};
+        \node (011) at (2.5, 5.5) {(0, 1, 1)};
+
+        \draw (000)--(100)--(101)--(111)--(011)--(010)--(000);
+        \draw (111)--(110)--(100);
+        \draw (110)--(010);
+        \draw[color=sep] (000)--(001)--(101);
+        \draw[color=sep] (001)--(011);
+        \draw[color=def] (000)--(010)--(110)--(100)--(101)--(111);
+    \kgraf
+
+    Przedstawiamy ten problem za pomocą grafu, którego wierzchołki pokrywają się z wierzchołkami sześcianu. Będziemy przemieszczać 
+    
+\end{document}
