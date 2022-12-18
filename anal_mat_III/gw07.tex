@@ -22,6 +22,7 @@
 \newcommand{\Z}{\mathds{Z}}
 \newcommand{\C}{\mathds{C}}
 
+
 \usepackage{geometry}
 
 \usepackage{tikz}
@@ -39,6 +40,7 @@
 
 \usepackage{xcolor}
 \definecolor{def}{HTML}{E86354}
+\definecolor{gr}{HTML}{046137}
 
 \begin{document}
 \maketitle
@@ -93,45 +95,63 @@ Po pierwsze zauważmy, że podana funkcja ma wartości nieujemne, więc jeśli j
 \end{align*}
 Widzimy, że funkcja o nieujemnych wartościach jest ograniczona od góry przez funkcję o wartościach nieujemnych dążącą do 0 (ponieważ $f$ jest klasy $C1$), więc i funkcja $G(x,y)\xrightarrow{(x,y)\to(x_0,y_0)}0$.
 
+\bigskip
+
+
+% {\color{red}2. RÓŻNOWARTOŚCIOWOŚĆ:}
+% \medskip
+
+% Żeby funkcja była różnowartościowa, musi być odwracalna w każdym punkcie swojej dziedziny. To znaczy, że pierwsza pochodna nie może nigdy się zerowa. Przyjżyjmy się Jakobianowi funkcji $F$
+% \begin{align*}
+%     \begin{bmatrix}
+%         1 & f'(y)\\
+%         f'(x) & 1
+%     \end{bmatrix}
+% \end{align*}
+% Jego wyznacznik to 
+% $$1-f'(x)f'(y)$$
+% a ponieważ 
+% $$(\forall\;a\in\R)\;|f'(a)|<1,$$
+% to również
+% $$|f'(x)f'(y)|<1,$$
+% co daje nam 
+% $$1-f'(x)f'(y)>0,$$
+% a więc badana funkcja jest odwracalna w każdym punkcie dziedziny. To znaczy, że jest różnowartościowa.
+% \medskip
+
+% {\color{red}3. NA:}
+% \medskip
+
+% Jeśli funkcja jest "na", to nie może być ściśle wklęsła ani ściśle wypukła. Czyli wyznacznik jej Hesjana musi być 0.
+% \begin{align*}
+%     \begin{bmatrix}
+%         {d\over dx}1 & {d\over dx} f'(y)\\
+%         {d\over dy}f'(x) & {d\over dy}1
+%     \end{bmatrix}=
+%     \begin{bmatrix}
+%         0 & 0\\
+%         0 & 0
+%     \end{bmatrix}
+% \end{align*}
+% wyznacznik jest stale równy zero, więc mamy funkcje która nie jest ani wypukła ani wklęsła, więc przechodzi całą przeciwdziedzinę.
+
+
+{\color{red}2. RÓŻNOWARTOŚCIOWOŚĆ I NA}
 \medskip
 
-
-{\color{red}2. RÓŻNOWARTOŚCIOWOŚĆ:}
-\medskip
-
-Żeby funkcja była różnowartościowa, musi być odwracalna w każdym punkcie swojej dziedziny. To znaczy, że pierwsza pochodna nie może nigdy się zerowa. Przyjżyjmy się Jakobianowi funkcji $F$
-\begin{align*}
-    \begin{bmatrix}
-        1 & f'(y)\\
-        f'(x) & 1
-    \end{bmatrix}
+{\color{gr}Jeśli funkcja jest $1-1$ oraz "na", to jest funkcją odwracalną. Czyli wystaczy pokazać, że $F$ jest odwracalne na całej swojej dziedzinie. Z twierdzenia o funkcji odwrotnej wiemy, że $F$ jest odwracalna w pewnym otoczeniu punktu $a\in\R^2$, jeżeli
+\begin{align*}\begin{bmatrix}
+    {d\over dx}F_1(a) & {d\over dy}F_1(a)\\
+    {d\over dx}F_2(a) & {d\over dy}F_2(a)
+\end{bmatrix}&=
+\begin{bmatrix}
+    1 & f'(a_2)\\
+    f'(a_1) & 1
+\end{bmatrix}=\\
+&=1-f'(a_2)f'(a_1)\geq\\
+&\geq 1-|f'(a_2)||f'(a_1)|\geq 1-k^2>0.
 \end{align*}
-Jego wyznacznik to 
-$$1-f'(x)f'(y)$$
-a ponieważ 
-$$(\forall\;a\in\R)\;|f'(a)|<1,$$
-to również
-$$|f'(x)f'(y)|<1,$$
-co daje nam 
-$$1-f'(x)f'(y)>0,$$
-a więc badana funkcja jest odwracalna w każdym punkcie dziedziny. To znaczy, że jest różnowartościowa.
-\medskip
-
-{\color{red}3. NA:}
-\medskip
-
-Jeśli funkcja jest "na", to nie może być ściśle wklęsła ani ściśle wypukła. Czyli wyznacznik jej Hesjana musi być 0.
-\begin{align*}
-    \begin{bmatrix}
-        {d\over dx}1 & {d\over dx} f'(y)\\
-        {d\over dy}f'(x) & {d\over dy}1
-    \end{bmatrix}=
-    \begin{bmatrix}
-        0 & 0\\
-        0 & 0
-    \end{bmatrix}
-\end{align*}
-wyznacznik jest stale równy zero, więc mamy funkcje która nie jest ani wypukła ani wklęsła, więc przechodzi całą przeciwdziedzinę.
+Widzimy, że jakobian tej funkcji jest niezerowy dla dowolnego $a\in\R^2$, w takim razie funkcja jest odwracalna na całej swojej dziedzinie. A więc jest bijekcją.}
 
 
 \section*{ZAD 2.}
@@ -139,26 +159,79 @@ wyznacznik jest stale równy zero, więc mamy funkcje która nie jest ani wypuk�
 $$f:\R^n\to\R^m$$
 $$m<n$$
 
-Jakobian w tym wypadku to macierz o $m$ wierszach i $n$ kolumnach. Z kursu algebry liniowej wiemy, że rząd takiej macierzy to co najwyżej $m$. Jest tak, bo układ $n$ wektorów (kolumny) z przestrzeni $m$ wymiarowej, gdzie $m<n$ może mieć co najwyżej $m$ wektorów niezależnych liniowo.
+Jakobian tej funkcji to macierz o $m$ wierszach i $n$ kolumnach:
+$$
+\begin{bmatrix}
+    {d\over dx_1}f_1(x) & {d\over dx_2}f_1(x)&...&{d\over dx_n}f_1(x)\\
+    {d\over dx_1}f_2(x) & {d\over dx_2}f_2(x)&...&{d\over dx_n}f_2(x)\\
+    ... & ... & ... & ...\\
+    {d\over dx_1}f_m(x) & {d\over dx_2}f_m(x)&...&{d\over dx_n}f_m(x)\\
+\end{bmatrix}
+$$
+Wyznacznik możemy wyliczyć tylko z macierzy kwadratowych, więc w tym wypadku mamy problem. Rozważmy więc funkcję
+$$F\begin{pmatrix}
+    x_1\\x_2\\x_3\\x_4\\x_5\\...\\x_n
+\end{pmatrix}=\begin{pmatrix}
+    y_1\\y_2\\...\\y_m\\x_{m+1}\\...\\x_{n}
+\end{pmatrix}$$
+gdzie $y=f(x)$. Funkcja $F$ jest bijekcją wtedy i tylko wtedy gdy $f$ jest $1-1$ i na.
+\smallskip
+
+$\implies$
+
+$\quad 1.$ Jeżeli $f$ nie jest "na", to mamy $a\in\R^m$ taki, że $(\forall\;x\in\R^n)\;f(x)\neq a$. Jeżeli teraz weźmiemy $b\in\R^n$ takie, że pierwsze $m$ współrzędnych pokrywa się z $a$, a pozostałe to $1$, to dowolny punkt $x\in\R^n$ nie pokryje pierwszych $m$ współrzędnych $b$. A więc $F$ nie może być "na".
+
+$\quad 2.$ Jeżeli $f$ nie jest $1-1$, to dla dwóch $a \neq b$ mamy $f(a)=f(b)$. Jeżeli istnieje taka para, która różni się na pierwszych $m$ współrzędnych, a na pozostałych $n-m$ ich współrzędne się pokrywają, to nie trudno zauważyć, że $F$ nie jest $1-1$. Jeżeli z kolei różnią się na którejś z $n-m$, to wystarczy rozważyć nową funkcję $F$, która "przesuwa" y nieco niżej.
 \medskip
 
-Załóżmy, nie wprost, że $f$ jest przekształceniem jednoznacznym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijecką.
+$\impliedby$
+
+Z różnowartościowości $f$ od razu wynika różnowartościowość $F$. Tak samo, jeżeli $f$ jest "na", to bez problemu pokrywamy pierwsze $m$ współrzędnych, natomiast fakt, że dolna część definicji $F$ jest identycznością, daje nam pokrycie pozostałych $n-m$ współrzędnych i $F$ jest na.
 \medskip
 
-Rozważmy wszystkie takie podprzestrznie $W$, które są rozpinane między innymi przez pewien wektor bazowy $e$. Dobieramy do niego $m-1$ wektorów na
-$${n\choose m-1}\geq{m+1\choose m-1}={(m+1)m\over m}$$
-sposobów, co dla $m\geq2$ jest równe co najmniej $m+1$. 
-\medskip
+Jeżeli $F$ jest bijekcją, to musi istnieć funkcja $F^{-1}$, to znaczy że $F$ musi być odwracalne dla każdego $x\in\R^n$. Korzystając z twierdzenia o funkcji odwrotnej mamy, że $F$ jest bijekcją jeśli jej jakobian jest niezerowy w każdym punkcie. Przyjrzyjmy się więc macierzy Jacobiego $F$:
+\begin{align*}
+    \begin{bmatrix}
+        {d\over dx_1}f_1(x) & {d\over dx_2}f_1(x)&...&{d\over dx_n}f_1(x)\\
+        {d\over dx_1}f_2(x) & {d\over dx_2}f_2(x)&...&{d\over dx_n}f_2(x)\\
+        ... & ... & ... & ...\\
+        {d\over dx_1}f_m(x) & {d\over dx_2}f_m(x)&...&{d\over dx_n}f_m(x)\\
+        {d\over dx_1}id(x) & {d\over dx_{2}}id(x) &...&{d\over dx_n}id(x)\\
+        ... & ... & ... & ...\\
+        {d\over dx_1}id(x) & {d\over dx_{2}}id(x) &...&{d\over dx_n}id(x)\\
+    \end{bmatrix}=
+    \begin{bmatrix}
+        {d\over dx_1}f_1(x) & {d\over dx_2}f_1(x)&...&{d\over dx_n}f_1(x)\\
+        {d\over dx_1}f_2(x) & {d\over dx_2}f_2(x)&...&{d\over dx_n}f_2(x)\\
+        ... & ... & ... & ...\\
+        {d\over dx_1}f_m(x) & {d\over dx_2}f_m(x)&...&{d\over dx_n}f_m(x)\\
+        1 & 1 &...&1\\
+        ... & ... & ... & ...\\
+        1 & 1&...&1\
+    \end{bmatrix}
+\end{align*}
+Macierz ta ma wyznacznik zerowy, gdyż wszystkie jej kolumny są liniowo zależne przez obecność $1$ na ostatnich współrzędnych.
 
-Teraz, jeżeli dla punktu odpowiadającemu wektorowi $e$ policzymy Jakobian dla każdej z tych $M\geq m+1$ macierzy, to zauważmy, że ponieważ jesteśmy w przekształceniu między przestrzeniami o wymiarze $m$, to mamy tylko $m$ wektorów liniowo niezależnych. Czyli w pewnej macierzy Jakobiego wartości pochodnych w tym punkcie będą odpowiadały wektorom liniowo zależnym, czyli wyznacznik będzie zerowy. W takim razie, dla tej podprzestrzeni w której to się dzieje, obcięcie $f$ nie jest 1-1, czyli również całe przekształcenie nie może być różnowartościowe. W takim razie nie jest bijeckją i dochodzimy do sprzeczności.
+% Jakobian w tym wypadku to macierz o $m$ wierszach i $n$ kolumnach. Z kursu algebry liniowej wiemy, że rząd takiej macierzy to co najwyżej $m$. Jest tak, bo układ $n$ wektorów (kolumny) z przestrzeni $m$ wymiarowej, gdzie $m<n$ może mieć co najwyżej $m$ wektorów niezależnych liniowo.
+% \medskip
 
-\newpage
+% Załóżmy, nie wprost, że $f$ jest przekształceniem jednoznacznym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijecką.
+% \medskip
 
-Załóżmy, że $f$ jest przekształceniem jednoznaczym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijekcją. Wybrać wektory, na których rozpięta będzie popdrzestrzeń $W$ możemy na
-$${n\choose m}\geq {m+1\choose m}=m+1.$$
-Dalej zauważmy, że każde takie obcięcie jest przekształceniem między przestrzeniami o stopniu $m$, czyli macierz Jakobiego będzie kwadratowa (możemy obliczyć wyznacznik). Mamy co najmniej $m+1$ takich macierzy i dla każdego punktu co najwyżej $m$ liniowo niezależnych wektorów odpowiadających wartościom pochodnych cząstkowych w tym punkcie, które możemy wpisać w te macierze. Czyli w jednej z tych macierzy na pewno będziemy mieli wektory liniowo zależne. To znaczy, że wyznacznik się zeruje, a więc takie obcięcie $f$ do $W\leq\R^n$ nie jest 1-1. W takim razie również całe przekształcenie nie mozę być 1-1, a więc w szczególności nie jest bijekcją.
+% Rozważmy wszystkie takie podprzestrznie $W$, które są rozpinane między innymi przez pewien wektor bazowy $e$. Dobieramy do niego $m-1$ wektorów na
+% $${n\choose m-1}\geq{m+1\choose m-1}={(m+1)m\over m}$$
+% sposobów, co dla $m\geq2$ jest równe co najmniej $m+1$. 
+% \medskip
 
-$${(m+1)!\over(m-1)!2!}={(m+1)m\over 2}$$
+% Teraz, jeżeli dla punktu odpowiadającemu wektorowi $e$ policzymy Jakobian dla każdej z tych $M\geq m+1$ macierzy, to zauważmy, że ponieważ jesteśmy w przekształceniu między przestrzeniami o wymiarze $m$, to mamy tylko $m$ wektorów liniowo niezależnych. Czyli w pewnej macierzy Jakobiego wartości pochodnych w tym punkcie będą odpowiadały wektorom liniowo zależnym, czyli wyznacznik będzie zerowy. W takim razie, dla tej podprzestrzeni w której to się dzieje, obcięcie $f$ nie jest 1-1, czyli również całe przekształcenie nie może być różnowartościowe. W takim razie nie jest bijeckją i dochodzimy do sprzeczności.
+
+% \newpage
+
+% Załóżmy, że $f$ jest przekształceniem jednoznaczym, to znaczy bijekcją. Wtedy, jeżeli będziemy rozważać $f$ obcięte do $W\leq\R^n$ rozpiętych przez pewne $m$ wektorów bazowych, to takie obcięcie $f$ nadal będzie bijekcją. Wybrać wektory, na których rozpięta będzie popdrzestrzeń $W$ możemy na
+% $${n\choose m}\geq {m+1\choose m}=m+1.$$
+% Dalej zauważmy, że każde takie obcięcie jest przekształceniem między przestrzeniami o stopniu $m$, czyli macierz Jakobiego będzie kwadratowa (możemy obliczyć wyznacznik). Mamy co najmniej $m+1$ takich macierzy i dla każdego punktu co najwyżej $m$ liniowo niezależnych wektorów odpowiadających wartościom pochodnych cząstkowych w tym punkcie, które możemy wpisać w te macierze. Czyli w jednej z tych macierzy na pewno będziemy mieli wektory liniowo zależne. To znaczy, że wyznacznik się zeruje, a więc takie obcięcie $f$ do $W\leq\R^n$ nie jest 1-1. W takim razie również całe przekształcenie nie mozę być 1-1, a więc w szczególności nie jest bijekcją.
+
+% $${(m+1)!\over(m-1)!2!}={(m+1)m\over 2}$$
 
 
 \end{document}
