@@ -16,19 +16,25 @@
 
     \subsection*{ZAD. 1.}
 
-    Najpierw przewozimy kozę, a wilka z kapustą zostawiamy na starym brzegu. Potem wracamy z pustą łódką i zabieramy kapustę. Dobijamy do docelowego brzegu, wysadzamy kapustę i zabieramy kozę. Wracamy na startowy brzeg i zostawiamy kozę, po czym szybko zabieramy wilka zanim on złapie kozę. Odstawiamy wilka na brzeg z kapustą, po czym wracamy po kozę i koniec. 
+    Najpierw przewozimy kozę, a wilka z kapustą zostawiamy na starym brzegu. Potem wracamy z pustą łódką i zabieramy kapustę. Dobijamy do docelowego brzegu, wysadzamy kapustę i zabieramy kozę. Wracamy na startowy brzeg i zostawiamy kozę, po czym szybko zabieramy wilka zanim on złapie kozę. Odstawiamy wilka na brzeg z kapustą, po czym wracamy po kozę i koniec.
+    \bigskip
+
+    \podz{sep}
+    \bigskip
+
+    Przedstawiamy ten problem za pomocą grafu, którego wierzchołki pokrywają się z wierzchołkami sześcianu. Wierzchołki opiszemy trójkami $(w,g,c)$, gdzie wartości kolejnych współrzędnych to miejsce danej postaci. $w$ będzie oznaczać wilka, $g$ kozę, a $c$ to kapusta. Wartość $0$ oznacza, że dane stworzonko znajduje się na wyjściowym brzegu, a wartość $1$ - na brzegu docelowym.
 
     \pgraf
-        \node (KOZA) at (2, 0) {
-            \includesvg[width=20px]{goat}
+        \node (KOZA) at (1, 0) {
+            \includesvg[width=10px]{goat}
         };
 
         \node (WOLF) at (0, 0) {
-            \includesvg[width=20px]{wolf}
+            \includesvg[width=10px]{wolf}
         };
 
-        \node (CABBAGE) at (4, 0) {
-            \includesvg[width=20px]{cabbage}
+        \node (CABBAGE) at (2, 0) {
+            \includesvg[width=10px]{cabbage}
         };
     \kgraf
 
@@ -47,9 +53,67 @@
         \draw (110)--(010);
         \draw[color=sep] (000)--(001)--(101);
         \draw[color=sep] (001)--(011);
-        \draw[color=def] (000)--(010)--(110)--(100)--(101)--(111);
+        
+        \draw[very thick, color=def] (000)--(100);
+        \draw[very thick, color=def] (000)--(001);
+        \draw[very thick, color=def] (011)--(111);
+        \draw[very thick, color=def] (110)--(111);
     \kgraf
-
-    Przedstawiamy ten problem za pomocą grafu, którego wierzchołki pokrywają się z wierzchołkami sześcianu. Będziemy przemieszczać 
     
+    Zastanówmy się teraz, które krawędzie są na pewno nielegalne. Krawędź $(0,0,0)--(1,0,0)$ oraz $(0,0,0)--(0,0,1)$ zostawiają odpowiednio kapustę lub wilka z kozą, więc ich na pewno nie chcemy użyć. Nie możemy też przejść z $(0,1,1)--(1,1,1)$, bo to znaczy, że dowozimy wilka na brzeg gdzie do tej pory była koza i kapusta. Tak samo ruch $(1,1,0)--(1,1,1)$ implikuje że koza przeżyła z wilkiem sam na sam.
+
+    Zostajemy z dwoma możliwymi ścieżkami od $(0,0,0)$ do $(1,1,1)$:
+    $$(0,0,0)--(0,1,0)--(0,1,1)--(0,0,1)--(1,0,1)--(1,1,1),$$
+    która jest reprezentacja mojego rozwiązania oraz
+    $$(0,0,0)--(0,1,0)--(1,1,0)--(1,0,0)--(1,0,1)--(1,1,1),$$
+    gdzie do samotnej kozy zamiast kapusty dowozimy wilka i zabieramy kozę etc.
+
+    \subsection*{ZAD. 8.}
+
+    Wierzchołki grafu dwudzielnego $G$ można podzielić na dwie klasy: $W$ i $M$. Oznaczmy moc $w=|W|$ i wtedy $|M|=n-w$. Będziemy mieli najwięcej krawędzi, jeśli stopień każdego wierzchołka będzie największy. Suma stopni wierzchołków w $W$ wynosi
+    $$d(W)=w\cdot(n-w)$$
+    natomiast dla $M$ jest to
+    $$d(M)=(n-w)w.$$
+    Czyli suma stopni wszystkich wierzchołków w grafie to
+    $$d(G)=d(W)+d(M)=w(n-w)+(n-w)w=2w(n-w)$$
+    i będzie to największe, gdy $w=\lfloor {n\over2}\rfloor$, bo wtedy mamy $d(G)$ to około $2\Big({n\over2}\Big)^2$.
+
+    Wiadomo, że liczba krawędzi w grafie to
+    $$e(G)={d(G)\over2},$$
+    bo przy zliczaniu stopni wierzchołków każdą krawędź liczymy podwójnie, więc trzeba to podzielić na dwa. W takim razie dostajemy
+    $$e(G)={d(G)\over 2}\approx{n^2\over4},$$
+    a ponieważ liczba krawędzi grafów jest zazwyczaj liczbą całkowitą, to musimy zaokrąglić otrzymany wynik do dołu, co daje
+    $$e(G)=\lfloor{n^2\over4}\rfloor$$
+    
+    \subsection*{ZAD. 9.}
+
+    Jeżeli $G$ jest spójny, to zadanie mamy z głowy. W przeciwnym wypadku istnieją $u,w\in G$ takie, że nie ma między nimi żadnej ścieżki. Czyli możemy wierzchołki $G$ podzielić na dwa zbiory $U,W$ takie, że $u\in U$ i $w\in U$ i dla każdego $a\in U$ i dla każdego $b\in W$ $ab\notin G$. gdyby tak nie było, to mielibyśmy w $G$ ścieżkę $u...w$.
+    
+    Wtedy w grafie $\overline G$ dostajemy prawie graf dwudzielny o klasach wierzchołków $U$ i $W$ takie, że dla każdego $a\in U$ i $b\in W$ mamy $ab\in \overline G$. Czyli jeżeli chcemy przejść między wierzchołkami $a,b\in U$ takimi, że $ab\notin\overline G$ to wystarczy zahaczyć o wierzchołek z $W$ i mamy ścieżkę.
+
+    \subsection*{ZAD. 14.}
+    Niech $G$ będzie drzewem o $n$ wierzchołkach, które nazwiemy $v_i$. Chcemy pokazać, że
+
+    \begin{center}
+    $G$ jest drzewem $\iff$ $\sum\limits_{i=1}^nd_G(v_i)=2(n-1)$.
+    \end{center}
+
+    $\color{def}\implies$
+
+    Po pierwsze zauważmy, że $e(G)=|G|-1=n-1$. Można to pokazać w prosty sposób za pomocą indukcji. Jeżeli mamy drzewo o $n+1$ wierzchołkach, to możemy obciąć jeden liść, co da nam drzewo $T'$ o $n$ wierzchołkach. Ilość krawędzi spada o jeden, więc $e(T')=n-1$ z założenia indukcyjnego. Jeśli teraz dołożymy z powrotem ten liść, to dodajemy jedną krawędź i jeden wierzchołek, co daje $e(T)=(n+1)-1$.
+    \smallskip
+
+    Wiemy, że $e(G)=\frac12\sum\limits_{i=1}^nd(v_i)$, czyli
+    $$\sum\limits_{i=1}^nd(v_i)=2e(G)=2(n-1)$$
+
+    $\color{def}\impliedby$
+
+    Indukcja po $n$. Dla $n=2$ mamy $\sum\limits_{i=1}^n=2(2-1)=2$ czyli $e(G)=1$ i mamy drzewo o dwóch wierzchołkach.
+
+    Teraz mamy graf o $(n+1)$ wierzchołkach takich, że 
+    $$\sum\limits_{i=1}^{n+1}d(v_i)=2n.$$ 
+    Jeżeli wszystkie wierzchołki mają stopień parzysty, to mielibyśmy co najmniej jeden wierzchołek stopnia 0, co jest sprzeczne z dodatniością stopnia każdego wierzchołka. Czyli potrzebujemy co najmniej jedną parę wierzchołków stopnia $1$, jeśli jeden taki wierzchołek wytniemy, to dostajemy graf $G'$ o $n$ wierzchołkach, dla których
+    $$\sum\limits_{i=1}^nd(v_i)=2n-2=2(n-1),$$
+    a więc $G'$ jest drzewem z założenia indukcyjnego. W takim razie jak dodamy do niego wierzchołek stopnia $1$, to tak naprawdę doklejamy jeden liść, więc dalej dostajemy drzewo.
+
 \end{document}
