@@ -68,6 +68,96 @@
     $$(0,0,0)--(0,1,0)--(1,1,0)--(1,0,0)--(1,0,1)--(1,1,1),$$
     gdzie do samotnej kozy zamiast kapusty dowozimy wilka i zabieramy kozę etc.
 
+    \subsection*{ZAD. 2.}
+
+    Rys. 1.
+    \smallskip
+
+    Wybierając wierzchołek z dopiskiem $x$ możemy go umieścić na $4$ różnych miejscach. Wiernie pójdzie za nim jego sąsiad z dołu, a jeden wierzchołek z drugiego skrzydełka będzie musiał wybrać jedno z pozostałych dwóch miejsc na skrzydełkach, co daje $2\cdot 4=8$ automorfizmów. Niezależnie od skrzydełek możemy przekręcić lub nie pionową oś, co dodatkowo podwoi nam liczbę automorfizmów, a więc ostatecznie mamy ich
+    $$2\cdot 8=16.$$
+
+    Rys. 2.
+    \smallskip
+
+    Zaznaczony wierzchołek może przejść na dowolny z tych $8$ które są w grafie. Za nim pójdą jego sąsiedzi, których jest $3$ i możemy im wybrać miejsce na $3!=6$ sposobów. Czyli mamy $8\cdot6=48$ automorfizmów na kostce jako grafie.
+
+    \subsection*{ZAD. 3.}
+
+\begin{center}
+\scalebox{.6}
+{
+    \begin{tikzpicture}
+        \node (O1) at (0, 6) {$\bullet$};
+        \node (O2) at (4, 3.5) {$\bullet$};
+        \node (O5) at (-4, 3.5) {$\bullet$};
+        \node (O4) at (-2, 0) {$\bullet$};
+        \node (O3) at (2, 0) {$\bullet$};
+        \draw (O1)--(O2)--(O3)--(O4)--(O5)--(O1);
+        \node (I1) at (0, 5) {$\bullet$};
+        \node (I2) at (2.5, 3.5) {$\bullet$};
+        \node (I5) at (-2.5, 3.5) {$\bullet$};
+        \node (I4) at (-1.5, 1) {$\bullet$};
+        \node (I3) at (1.5, 1) {$\bullet$};
+        \draw (I1)--(I3)--(I5)--(I2)--(I4)--(I1);
+        \draw (O1)--(I1);
+        \draw (O2)--(I2);
+        \draw (O3)--(I3);
+        \draw (O4)--(I4);
+        \draw (O5)--(I5);
+    \end{tikzpicture}
+}
+% \scalebox{.6}
+% {
+%     \begin{tikzpicture}
+%         \node (1) at (0, 6) {$\bullet$};
+%         \node (2) at (4, 3.5) {$\bullet$};
+%         \node (3) at (2, 0) {$\bullet$};
+%         \node (4) at (-2, 0) {$\bullet$};
+%         \node (5) at (-4, 3.5) {$\bullet$};
+%         \draw (5)--(1)--(2);
+%         \draw (4)--(1)--(3);
+%         \draw (4)--(2)--(3)--(4)--(5);
+%         \draw (3)--(5)--(2);
+%     \end{tikzpicture}
+% }
+\end{center}
+    Poniżej zaprezentuję dwa rozwiązania: jedno podobne do sposobu rozwiązywania poprzedniego zadania i jedno z inspiracją zaczerpniętą z internetu:
+    \medskip
+
+    $\quad1.$ Jeżeli wybierzemy jeden wierzchołek, możemy dla niego znaleźć nowe miejsce na $10$ sposobów. Każdy wierzchołek ma $3$ sąsiadów, więc ustawić taką trójkę możemy na $10\cdot3!=60$ sposobów. I dalej u jednego sąsiada możemy obrócić jego dwóch nieokreślonych jeszcze sąsiadów między sobą, określając już w pełni nowe ustawienie grafu (wtedy sąsiedzi pozostałych dwóch sąsiadów oryginalnie wybranego grafu również się zamienią). Daje to $2\cdot 60=120$ automorfizmów.
+    \medskip
+
+    $\quad2.$ Podpiszmy każdy wierzchołek pewnym dwuelementowym cyklem z $S_5$. Takich cykli jest ${5\choose 2}=10$, czyli idealnie tyle ile mamy wierzchołków. Teraz chcemy, żeby każdy wierzchołek łączył się z $3$ innymi, ale żeby te wierzchołki nie były ze sobą połączone. Zauważmy, że jeżeli wyrzucimy dwa elementy, to zostaną nam cykle długości dwa na zbiorze $3$ elementowym i tam mamy ${3\choose 2}=3$ cykle długości $2$. W dodatku łatwo zauważyć, że jeżeli zasadą istnienia krawędzi między wierzchołkami będzie nieprzecinanie się cykli, to wtedy sąsiedzi dowolnego wierzchołka nie będą mogli zostać ze sobą połączeni.
+
+    W takim razie dowolna permutacja z $S_5$ będzie nam wyznaczać automorfizm, bo jeśli $(a,b)$ i $(c,d)$ są niezależne, a $\sigma$ jest permutacją, to
+    $$(\sigma(a), \sigma(b))\;i\;(\sigma(c), \sigma(d))$$
+    są nadal cyklami niezależnymi, bo $\sigma$ jest bijekcją. Czyli mamy $|S_5|=120$ możliwych automorfizmów. 
+
+    \subsection*{ZAD. 4.}
+
+    Grafy, w których liczba stopni wierzchołków jest taka sama są izomorficzne. Chcemy więc pokazać, że istnieją dokładnie $3$ grafy które mają wierzchołki różnego stopnia.
+
+    Graf pełny ma każdy wierzchołek stopnia $3$. Teraz możemy odciąć jedną krawędź i nie ważne w którym wierzchołku to zrobimy, dostaniemy graf dla którego dwa wierzchołki mają stopień jeden. Obcięcie dowolnej krawędzi da nam graf w którym tylko dwa wierzchołki są połączone, a usunięcie jej da graf zawierający tylko $3$ punkty. Czyli mamy albo $\Delta$ albo V albo $.\setminus$ albo $\therefore$
+    \medskip
+
+    Mamy $4$ wierzchołki, ich stopień jest między $3$ a $0$. Korzystając z handshaking lemma wiemy, że wierzchołków nieparzystego stopnia musi być parzyście wiele.
+    \smallskip
+
+    Jeżeli największy stopień to $3$:\\
+    \point $4$ wierzchołki stopnia $3$ - graf pełny\\
+    \point $3$ wierzchołki stopnia $1$ i jeden stopnia $3$
+    \point $1$ wierzchołek stopnia $1$, dwa stopnia $2$ i jeden stopnia $3$\smallskip\\
+    Jeżeli największy stopień to $2$:\\
+    \point $4$ wierzchołki stopnia $2$\\
+    \point $2$ wierzchołki stopnia $1$ i dwa stopnia $2$\\
+    \point $2$ wierzchołki stopnia $1$, jeden stopnia $2$ i jeden stopnia $0$\\
+    \point $3$ wierzchołki stopnia $2$ - {\color{def}to jest trójkąt i wtedy mamy $4$ możliwości}, dlatego nie liczę grafów tworzonych z $K_3$\smallskip\\
+    Jeżeli największy stopień to $1$:\\
+    \point $4$ wierzchołki stopnia $1$
+    \medskip
+
+    Wypisywałam w ten sposób, bo szczerze nie mam ochoty rysować $15$ grafów w \LaTeX.
+
     \subsection*{ZAD. 8.}
 
     Wierzchołki grafu dwudzielnego $G$ można podzielić na dwie klasy: $W$ i $M$. Oznaczmy moc $w=|W|$ i wtedy $|M|=n-w$. Będziemy mieli najwięcej krawędzi, jeśli stopień każdego wierzchołka będzie największy. Suma stopni wierzchołków w $W$ wynosi
