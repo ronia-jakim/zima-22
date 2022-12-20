@@ -14,6 +14,8 @@
 \begin{document}
     \maketitle
 
+    \emph{W języku angielskim krawędzie nazywamy} edges, \emph{więc w anglojęzycznej (a teraz też i międzynarodowej) notacji mielibyśmy $e(G)$ jako oznaczenie ich ilości. Na wykładzie używaliśmy $m(G)$ zamiast $k(G)$ do oznaczenia tej wielkości, co nie ma najmniejszego odniesienia do języka, którym się posługujemy. Z tego też powodu odmawiam używania tej części notacji z wykładu.}
+
     \subsection*{ZAD. 1.}
 
     Najpierw przewozimy kozę, a wilka z kapustą zostawiamy na starym brzegu. Potem wracamy z pustą łódką i zabieramy kapustę. Dobijamy do docelowego brzegu, wysadzamy kapustę i zabieramy kozę. Wracamy na startowy brzeg i zostawiamy kozę, po czym szybko zabieramy wilka zanim on złapie kozę. Odstawiamy wilka na brzeg z kapustą, po czym wracamy po kozę i koniec.
@@ -157,6 +159,13 @@
     \medskip
 
     Wypisywałam w ten sposób, bo szczerze nie mam ochoty rysować $15$ grafów w \LaTeX.
+
+    \subsection*{ZAD. 6.}
+
+    $n(Q_k)$ to liczba ciągów długości $k$ złożona tylko z $0$ i $1$. Na każdym miejscu możemy wybrać $0$ lub $1$, więc mamy $2^k$ sposobów na wybranie ciągu.
+
+    Liczba krawędzi to po prostu ustawienie na stałe jednej współrzędnej na $k$ sposobów i ilość ciągów $(k-1)$ elementowych, czyli $2^{k-1}k$. Bardziej konkretny dowód to dla dowolnego wierzchołka możemy zmienić ciąg na $k$ sposobów, po prostu negując jedną z $k$ współrzędnych. Mamy więc graf $k$-regularny, czyli 
+    $$e(G)=\frac12\sum\limits_{i=1}^{2^k} d(v_i)=\frac122^k\cdot k=2^{k-1}k.$$
 
     \subsection*{ZAD. 8.}
 
