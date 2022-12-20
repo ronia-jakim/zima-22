@@ -1,0 +1,50 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+
+\author{Weronika Jakimowicz}
+\title{Zadania z $\star\star$ LISTA 12}
+\date{28 grudnia 2023}
+
+\begin{document}
+    \maketitle
+
+\subsection*{ZAD. 12}
+\emph{
+    Niech $f$ będzie funkcją ciągłą taką, że ${\partial f\over\partial x}$ istnieje i jest ciągła. Pokazać, że
+}
+$${d\over dx}\int\limits_a^x\int\limits_c^df(x,y,z)dzdy=\int\limits_c^df(x,x,z)dz+\int\limits_a^x\int\limits_c^d{\partial f\over\partial x}(x,y,z)dzdy$$
+
+Rozważmy funkcję
+$$g(x,y)=\int\limits_c^df(x,y,z)dz$$
+oraz
+$$h(x)=\int\limits_a^xg(x,y)dy.$$
+Będziemy liczyć
+$${d\over dx}h(x)={d\over dx}\int\limits_a^x\int\limits_c^df(x,y,z)dzdy=\lim\limits_{t\to0}{h(x+t)-h(x)\over t}.$$
+Dla ułatwienia zapisu, sprawdźmy najpierw jak będzie wyglądał licznik powyższego ułamka:
+\begin{align*}
+    h(x+t)-h(x)&=\int\limits_a^{x+t}g(x+t,y)dy-\int\limits_a^xg(x,y)dy=\\
+    &=\int\limits_a^x[g(x+t, y)-g(x, y)]dy+\int\limits_x^{x+t}g(x+t, y)dy
+\end{align*}
+Wartość drugiego elementu tej sumy, to znaczy
+$$\int\limits_x^{x+t}g(x+t, y)dy$$
+możemy ocenić za pomocą twierdzenia o wartości średniej, czyli istnieje $\xi\in[x, x+t]$ takie, że
+$$\int\limits_x^{x+t}g(x+t, y)dy=(x+t-x)f(x, \xi).$$
+Teraz wracając do całości:
+\begin{align*}
+    {d\over dx}h(x)&=\lim\limits_{t\to0}\frac1t\Big(\int\limits_a^{x}[g(x+t, y)-g(x,y)]dy+\int\limits_x^{x+t}g(x+t, y)dy\Big)=\\
+    &=\lim\limits_{t\to0}\int\limits_a^x{g(x+t, y)-g(x,y)\over t}dy+\lim\limits_{t\to0}\frac1t\int\limits_x^{x+t}g(x+t, y)dy=\\
+    &=\lim\limits_{t\to0}\int\limits_a^x{g(x+t, y)-g(x,y)\over t}dy+\lim\limits_{t\to0}{x+t-x\over t}g(x+t, \xi)=\\
+    &=\lim\limits_{t\to0}\int\limits_a^x{g(x+t, y)-g(x,y)\over t}dy+g(x, x),
+\end{align*}
+bo w drugim składniku ${x+t-x\over t}={t\over t}=1$ natomiast $\xi\in[x, x+t]$ szerokość tego przedziału zmierza do $0$, więc $\xi=x$. Teraz chcemy włożyć $\lim$ pod całkę, więc musimy pokazać, że ${g(x+t, y)-g(x, y)\over t}$ zbiega jednostajnie do ${\partial\over\partial x}g(x, y)$. Popatrzmy na ciąg
+$$p_n(x, y)={g(x+\frac 1n, y)-g(x, y)\over \frac1n}.$$
+Nietrudno zauważyć, że dla $n\to \infty$ mamy to samo co dla $t\to0$, natomiast z ciągłości $g$ (jako złożenia funkcji ciągłych), mamy zbieżność jednostajną tego ciągu do ${\partial\over\partial x}g(x, y)$. Czyli wracając do długiego równania, mamy
+\begin{align*}
+    {d\over dx}\int\limits_a^x\int\limits_c^df(x, y, z)dzdy={d\over dx}h(x)&=\int\limits_a^x{\partial\over\partial x}g(x, y)dy+g(x, x)=\\
+    &=\int\limits_a^x{\partial\over\partial x}\int\limits_c^df(x, y, z)dzdy+\int\limits_c^df(x, x, z)dz=\\
+    &=\int\limits_a^x\int\limits_c^d{\partial\over\partial x}f(x, y, z)dzdy+\int\limits_c^df(x, x, z)dz
+\end{align*}
+gdzie włożenia ${\partial\over\partial x}$ pod całkę dokonuję, bo w $\int\limits_c^df(x, y, z)dz$ funkcja $f$ zależy od $x$ a cała całka zmienia się przez zmianę wartości $f$ w $x$.
+
+\end{document}
