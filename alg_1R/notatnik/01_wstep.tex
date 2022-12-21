@@ -1,12 +1,13 @@
 \section{DEFINICJA GRUPY}
 
-\subsection{Grupy}
+\subsection{Działania}
 
 \pdef
 
 {\color{def}DZIAŁANIE} w zbiorze $A$ to funkcja
 $$\star:A\times A\to A$$
 $$(x, y)\mapsto x\star y$$
+\smallskip
 
 \kdef
 
@@ -14,9 +15,32 @@ Algebrą nazywamy niepusty zbiór $A$ ze wszystkimi działaniami na nim określo
 
 Dwie algebry są {\color{def}izomorficzne}, jeżeli istnieje $F:A\bijekcja B$ takie, że
 $$(\forall\;i\leq k)(\forall\;a_1,...,a_{l_i}\in A)\;F(f_i(a_1,...,a_{l_i}))=g_i(F(a_1),...,F(a_{l_i}))$$
+Struktury izomorficzne oznaczamy $\color{acc}A\izomorfizm B$. Warto zauważyć, że $\izomorfizm$ ma \emph{własności relacji równoważności}, to znaczy jest zwrotny, symetryczny i przechodni.
+\medskip
+
+\pdef
+\textbf{\color{def}SŁOWNICZEK}:
+\smallskip
+
+%\begin{multicols}{2}
+    \point epi-morfizm -> "na"
+
+    \point mono-morfizm -> 1-1
+
+    \point izo-morfizm -> bijeckja
+
+    \point endo-morfizm -> w samego siebie
+
+    \point auto-morfizm -> endomorfizm który jest bijekcją.
+%\end{multicols}
+\smallskip
+
+\kdef
 
 Działanie jest {\color{def}łączne} \ang{assosiative}, jeżeli
 $$(\forall\;a,b,c\in A)\;a(bc)=(ab)c$$
+a {\color{def}przemienne} \ang{commutative}, gdy
+$$(\forall\;a,b\in A)\;ab=ba$$
 
 
 \subsection{Przykłady grup}
