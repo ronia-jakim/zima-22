@@ -1,6 +1,6 @@
 \section{DEFINICJA GRUPY}
 
-\subsection{Działania}
+\subsection{Działania, struktury}
 
 \pdef
 
@@ -10,8 +10,22 @@ $$(x, y)\mapsto x\star y$$
 \smallskip
 
 \kdef
+\medskip
 
-Algebrą nazywamy niepusty zbiór $A$ ze wszystkimi działaniami na nim określonymi, to znaczy zestawienie $(A, f_1,...,f_k)$. Mówimy, że dwie algebry $A=(A, f_1,...,f_k)$ i $B=(B, g_1,...,g_k)$ są {\color{acc}podobne}, jeśli dla każdego $i\leq k$ arność (czyli liczba argumentów) $f_i$ jest równa arności $g_i$, czyli liczbie $l_i$.
+Zwykle rozważamy działania binarne, ale działaniem może być funkcją z $A^n$ w $A$ (jak na przykład branie średniej arytmetycznej 3 liczb). Zdarza się też, że mamy działanie unarne, takie jak na przykład branie liczby przeciwnej do $m\in\Z$.
+\medskip
+
+Działanie jest {\color{def}łączne} \ang{assosiative}, jeżeli
+$$(\forall\;a,b,c\in A)\;a(bc)=(ab)c$$
+a {\color{def}przemienne} \ang{commutative}, gdy
+$$(\forall\;a,b\in A)\;ab=ba$$
+Tutaj warto zaznaczyć, że jeśli działanie jest łączne dla $3$ argumentów, to jest również łączne dla $k$ argumentów. Dowód przez indukcję jest trywialny.
+\medskip
+
+\podz{sep}
+\bigskip
+
+Algebrą nazywamy niepusty zbiór $A$ ze wszystkimi działaniami na nim określonymi, to znaczy zestawienie $(A, f_1,...,f_k)$. Zbiór $A$ nazywamy {\color{acc}uniwersum} lub dziedziną struktury. Mówimy, że dwie algebry $A=(A, f_1,...,f_k)$ i $B=(B, g_1,...,g_k)$ są {\color{acc}podobne}, jeśli dla każdego $i\leq k$ arność (czyli liczba argumentów) $f_i$ jest równa arności $g_i$, czyli liczbie $l_i$.
 
 Dwie algebry są {\color{def}izomorficzne}, jeżeli istnieje $F:A\bijekcja B$ takie, że
 $$(\forall\;i\leq k)(\forall\;a_1,...,a_{l_i}\in A)\;F(f_i(a_1,...,a_{l_i}))=g_i(F(a_1),...,F(a_{l_i}))$$
@@ -36,14 +50,63 @@ Struktury izomorficzne oznaczamy $\color{acc}A\izomorfizm B$. Warto zauważyć, 
 \smallskip
 
 \kdef
+\medskip
 
-Działanie jest {\color{def}łączne} \ang{assosiative}, jeżeli
-$$(\forall\;a,b,c\in A)\;a(bc)=(ab)c$$
-a {\color{def}przemienne} \ang{commutative}, gdy
-$$(\forall\;a,b\in A)\;ab=ba$$
+$B=(B, g_1,...,g_k)$ jest {\color{def}podalgebrą} $A=(A, f_1,...,f_k)$, jeżeli
 
+\point $B\subseteq A$
 
-\subsection{Przykłady grup}
+\point $(\forall\;i\leq k)\;g_i=f_i\obet_ B$
+\medskip
+
+Niech $B\subseteq A$, wtedy $B$ jest uniwersum podstruktury struktury $A$ z naturalnymi działaniami $\iff$ $B$ jest zamknięty na działania $f_1,...,f_k$. W takim przypadku $B$ traktujemy jako strukturę będącą podstrukturą struktury $A$.
+\medskip
+
+Jeżeli $F:A\to B$ jest homomorfizmem struktur, to $Im(F)$ jest podstrukturą $B$.
+\bigskip
+
+{\color{acc}Złożenie homomorfizmów jest homomorfizmem} a odwzorowanie odwrotne do izomorfizmu jest izomorfizmem.
+\medskip
+
+{\color{def}DOWÓD:}
+\smallskip
+
+Niech $f:(X, \cdot)\to(Y, \circ)$ i $g:(Y, \circ)\to(Z\star)$ są homomorfizmami, a $h(x)=g(f(x))$ jest ich złożeniem, to dla dowolnego $a,b\in X$ mamy
+\begin{align*}
+    h(a\cdot b)=g(f(a\cdot b))=g(f(a)\circ f(b))=g(f(a))\star g(f(b))=h(a)\star h(b)
+\end{align*}
+więc $h$ spełnia warunki homomorfizmu. Jeżeli $f, g$ były epi, mono, ... morfizmami, to zachowanie odpowiednich własności wynika z własności składania funkcji różnowartościowych, na czy bijekcji.
+\smallskip
+
+Niech $\phi:(X, \cdot)\bijekcja (Y, \circ)$ będzie izomorfizmem. Chcemy pokazać, że $\phi^{-1}$ jest homomorfizmem. Weźmy $a, b\in Y$ i $c, d\in X$ takie, że $\phi(c)=a$ oraz $\phi(d)=b$. Wtedy
+$$ab=\phi(c)\phi(d)=\phi(cd),$$
+czyli
+$$\phi^{-1}(ab)=cd,$$
+a ponieważ $\phi^{-1}(a)=c$ i $\phi^{-1}(b)=d$, to mamy
+$$\phi^{-1}(ab)=cd=\phi^{-1}(a)\phi^{-1}(b).$$
+Natomiast fakt, że $\phi^{-1}$ jest bijekcją wynika z tego, że $\phi$ jest bijekcją.
+
+\subsection{Grupy}
+
+\pdef
+
+{\color{def}Grupa} to struktura $G=(G, \cdot)$ taka, że:
+
+\point $\cdot$ jest działaniem łącznym
+
+\point istnieje element neutralny $e\in G$ dla działania $\cdot$
+
+\point dla każdego $g\in G$ istnieje element odwrotny $g^{-1}\in G$ takie, że $gg^{-1}=g^{-1}g=e$
+\smallskip
+
+\kdef
+
+Tutaj warto zaznaczyć, że \emph{element neutralny jest jedyny}. W przeciwnym przypadku istniałyby co najmniej dwa elementy neutralne $e_1,e_2$, ale wtedy
+$$e_1=e_1\cdot e_2=e_2.$$
+
+Z łączności działania na grupie wynika, że dla każdego $g\in G$ \emph{istnieje co najwyżej jeden element odwrotny}. Gdyby $x,y$ były dwoma elementami odwrotnymi do $g$, to
+$$x=xe=x(gy)=(xg)y=ey=y,$$
+co prowadzi do sprzeczności.
 
 \subsection{Podgrupy}
 
