@@ -10,43 +10,24 @@
 \maketitle
 
 \subsection*{ZAD. 17}
-Tak jak we wskazówce, pokażemy najpierw, że
-$$\lim\limits_{n\to\infty}n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{j=0}^nf(\frac jn)\Big)=\frac12(f(1)-f(0)).$$
-Zauważmy najpierw, że skoro $f$ jest ciągłą funkcją całkowalną na badanym przedziale, to
-$$f(1)-f(0)=\int\limits_0^1f'(x)dx$$
-a z drugiej strony dla $x_i\in[\frac {i-1}n,\frac in]$
-$$f(1)-f(0)=\sum\limits_{i=1}^n(f(\frac in)-f(\frac{i-1}n))=\sum\limits_{i=1}^nf'(x_i)\frac1n,$$
-co dla $n\to\infty$ zmierza do $\int\limits_0^1f'(x)dx$.
 
-Popatrzmy teraz na lewą stronę równania
-\begin{align*}
-    n(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{i=1}^nf(\frac in))&=n\int\limits_0^1f(x)dx-\sum\limits_{i=1}^nf(\frac in)=n\sum\limits_{i=1}^n\int\limits_\frac {i-1}n^\frac{i}nf(x)dx-\sum\limits_{i=1}^nf(\frac in)=\\
-    &=n\sum\limits_{i=1}^n\int\limits_{\frac{i-1}n}^\frac in[f(x)-f(\frac in)]dx=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_x^{\frac in}f'(t)dtdx
-\end{align*}
+Zacznijmy od wskazówki, to znaczy pokazania, że
+$$\lim\limits_{n\to\infty}n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{i=1}^nf\Big(\frac in\Big)\Big)={f(1)-f(0)\over 2}$$
 
-Ponieważ dla każdego $\frac {i-1}n\leq x$ zachodzi
-$$\int\limits_{{i-1\over n}}^\frac in |f'(t)|dt\leq \int\limits_x^\frac in |f'(t)|dt,$$
-to mamy
-\begin{align*}
-    n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_x^{\frac in}f'(t)dtdx&\leq n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_x^{\frac in}|f'(t)|dtdx\leq n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_{{i-1\over n}}^\frac in |f'(t)|dtdx=\\
-    &=n\sum\limits_{i=1}^n\Big[(\frac in-\frac{i-1}n)\int\limits_{{i-1\over n}}^\frac in |f'(t)|dt\Big]=\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in |f'(t)|dt=\int\limits_0^1|f'(t)|dt
-\end{align*}
-
-Teraz chcemy sprawdzić co się dzieje, gdy $n\to\infty$ z wyrażeniem
-$$n\Big(\int\limits_0^1f(x)dx-\frac 1n\sum\limits_{i=1}^nf(\frac in)\Big)-{f(1)-f(0)\over 2}$$
+Według wzoru Taylora wiemy, że istnieje $\xi_i\in[\frac in, {i+1\over n}]$ takie, że
+$$f(x)=f(\frac in)+f'(\xi_i)(x-\frac in)$$
+$$f(x)-f(\frac in)=f'(\xi_i)(x-\frac in)$$
 
 \begin{align*}
-    n\Big(\int\limits_0^1f(x)dx-\frac 1n\sum\limits_{i=1}^nf(\frac in)\Big)-{f(1)-f(0)\over 2}&\leq|n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{i=1}^nf(\frac in)\Big)|-\int\limits_0^1f'(x)dx\leq \int\limits_0^1|f'(x)|dx-\int\limits_0^1f'(x)dx
+    \sum\limits_{i=1}^nf\Big(\frac in\Big)&-n\int\limits_0^1f(x)dx=\sum\limits_{i=1}^nf\Big(\frac in\Big)-n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac inf(x)dx=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\big[f\Big(\frac in\Big)-f(x)\big]dx=\\
+    &=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac inf'(\xi_i)\big[x-\frac in\big]dx-{f(1)-f(0)\over2}=n\sum\limits_{i=1}^nf'(\xi_i)\Big[{x^2\over 2}-{i\over n}x\Big]_{{i-1\over n}}^\frac in=\\
+    &=n\sum\limits_{i=1}^n\Big[f'(\xi_i){1\over2n^2}\Big]=\frac1{2n}\sum\limits_{i=1}^nf'(\xi_i)\xrightarrow{n\to\infty}\frac12\int\limits_0^1f'(x)dx={f(1)-f(0)\over 2}
 \end{align*}
 
+Przyjrzyjmy się teraz zależności którą mamy udowadniać.
+\begin{align*}
+    n\int\limits_0^1\int\limits_0^1f(x,y)dxdy&-\frac1n\sum\limits_{j=1}^n\sum\limits_{k=1}^nf\Big(\frac jn, \frac kn\Big)=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_0^1f(x,y)dxdy-\frac1n\sum\limits_{i=1}^n\sum\limits_{k=1}^nf\Big(\frac in, \frac kn\Big)=\\
+    &=
+\end{align*}
 
-% Teraz zauważamy, że
-% $$\lim\limits_{n\to\infty}n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{j=0}^nf(\frac jn)\Big)=\frac12(f(1)-f(0)),$$
-% to wtedy
-% $$\lim\limits_{n\to\infty}\Big[n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{j=0}^nf(\frac jn)\Big)-\frac 1{2}(f(1)-f(0))\Big]=0.$$
-
-% Korzystając z wcześniej wyliczonych wartości mamy
-% \begin{align*}
-%     n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{j=0}^nf(\frac jn)\Big)-\frac12(f(1)-f(0))&=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^{i\over n}\int\limits_x^\frac in f'(t)dtdx-\sum\limits_{i=1}^nf'(x_i)\frac1n
-% \end{align*}
 \end{document}
