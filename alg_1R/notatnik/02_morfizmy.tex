@@ -1,5 +1,49 @@
 \section{HOMOMORFIZMY}
 
+Jeżeli $F:A\to B$ jest homomorfizmem struktur, to $Im(F)$ jest podstrukturą $B$.
+\bigskip
+
+\pdef
+\textbf{\color{def}SŁOWNICZEK}:
+\smallskip
+
+%\begin{multicols}{2}
+    \point epi-morfizm -> "na"
+
+    \point mono-morfizm -> 1-1
+
+    \point izo-morfizm -> bijeckja
+
+    \point endo-morfizm -> w samego siebie
+
+    \point auto-morfizm -> endomorfizm który jest bijekcją.
+%\end{multicols}
+\smallskip
+
+\kdef
+\medskip
+
+{\color{acc}Złożenie homomorfizmów jest homomorfizmem} a odwzorowanie odwrotne do izomorfizmu jest izomorfizmem.
+\medskip
+
+{\color{def}DOWÓD:}
+\smallskip
+
+Niech $f:(X, \cdot)\to(Y, \circ)$ i $g:(Y, \circ)\to(Z\star)$ są homomorfizmami, a $h(x)=g(f(x))$ jest ich złożeniem, to dla dowolnego $a,b\in X$ mamy
+\begin{align*}
+    h(a\cdot b)=g(f(a\cdot b))=g(f(a)\circ f(b))=g(f(a))\star g(f(b))=h(a)\star h(b)
+\end{align*}
+więc $h$ spełnia warunki homomorfizmu. Jeżeli $f, g$ były epi, mono, ... morfizmami, to zachowanie odpowiednich własności wynika z własności składania funkcji różnowartościowych, na czy bijekcji.
+\smallskip
+
+Niech $\phi:(X, \cdot)\bijekcja (Y, \circ)$ będzie izomorfizmem. Chcemy pokazać, że $\phi^{-1}$ jest homomorfizmem. Weźmy $a, b\in Y$ i $c, d\in X$ takie, że $\phi(c)=a$ oraz $\phi(d)=b$. Wtedy
+$$ab=\phi(c)\phi(d)=\phi(cd),$$
+czyli
+$$\phi^{-1}(ab)=cd,$$
+a ponieważ $\phi^{-1}(a)=c$ i $\phi^{-1}(b)=d$, to mamy
+$$\phi^{-1}(ab)=cd=\phi^{-1}(a)\phi^{-1}(b).$$
+Natomiast fakt, że $\phi^{-1}$ jest bijekcją wynika z tego, że $\phi$ jest bijekcją.
+
 \subsection{Rodzaje}
 
 \subsection{Jądro, obraz}

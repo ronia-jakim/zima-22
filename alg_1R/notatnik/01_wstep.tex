@@ -32,26 +32,6 @@ $$(\forall\;i\leq k)(\forall\;a_1,...,a_{l_i}\in A)\;F(f_i(a_1,...,a_{l_i}))=g_i
 Struktury izomorficzne oznaczamy $\color{acc}A\izomorfizm B$. Warto zauważyć, że $\izomorfizm$ ma \emph{własności relacji równoważności}, to znaczy jest zwrotny, symetryczny i przechodni.
 \medskip
 
-\pdef
-\textbf{\color{def}SŁOWNICZEK}:
-\smallskip
-
-%\begin{multicols}{2}
-    \point epi-morfizm -> "na"
-
-    \point mono-morfizm -> 1-1
-
-    \point izo-morfizm -> bijeckja
-
-    \point endo-morfizm -> w samego siebie
-
-    \point auto-morfizm -> endomorfizm który jest bijekcją.
-%\end{multicols}
-\smallskip
-
-\kdef
-\medskip
-
 $B=(B, g_1,...,g_k)$ jest {\color{def}podalgebrą} $A=(A, f_1,...,f_k)$, jeżeli
 
 \point $B\subseteq A$
@@ -62,31 +42,10 @@ $B=(B, g_1,...,g_k)$ jest {\color{def}podalgebrą} $A=(A, f_1,...,f_k)$, jeżeli
 Niech $B\subseteq A$, wtedy $B$ jest uniwersum podstruktury struktury $A$ z naturalnymi działaniami $\iff$ $B$ jest zamknięty na działania $f_1,...,f_k$. W takim przypadku $B$ traktujemy jako strukturę będącą podstrukturą struktury $A$.
 \medskip
 
-Jeżeli $F:A\to B$ jest homomorfizmem struktur, to $Im(F)$ jest podstrukturą $B$.
-\bigskip
-
-{\color{acc}Złożenie homomorfizmów jest homomorfizmem} a odwzorowanie odwrotne do izomorfizmu jest izomorfizmem.
-\medskip
-
-{\color{def}DOWÓD:}
-\smallskip
-
-Niech $f:(X, \cdot)\to(Y, \circ)$ i $g:(Y, \circ)\to(Z\star)$ są homomorfizmami, a $h(x)=g(f(x))$ jest ich złożeniem, to dla dowolnego $a,b\in X$ mamy
-\begin{align*}
-    h(a\cdot b)=g(f(a\cdot b))=g(f(a)\circ f(b))=g(f(a))\star g(f(b))=h(a)\star h(b)
-\end{align*}
-więc $h$ spełnia warunki homomorfizmu. Jeżeli $f, g$ były epi, mono, ... morfizmami, to zachowanie odpowiednich własności wynika z własności składania funkcji różnowartościowych, na czy bijekcji.
-\smallskip
-
-Niech $\phi:(X, \cdot)\bijekcja (Y, \circ)$ będzie izomorfizmem. Chcemy pokazać, że $\phi^{-1}$ jest homomorfizmem. Weźmy $a, b\in Y$ i $c, d\in X$ takie, że $\phi(c)=a$ oraz $\phi(d)=b$. Wtedy
-$$ab=\phi(c)\phi(d)=\phi(cd),$$
-czyli
-$$\phi^{-1}(ab)=cd,$$
-a ponieważ $\phi^{-1}(a)=c$ i $\phi^{-1}(b)=d$, to mamy
-$$\phi^{-1}(ab)=cd=\phi^{-1}(a)\phi^{-1}(b).$$
-Natomiast fakt, że $\phi^{-1}$ jest bijekcją wynika z tego, że $\phi$ jest bijekcją.
-
 \subsection{Grupy}
+
+{\color{def}Monoid} to zbiór $X$ z działaniem łącznym oraz elementem neutralnym. Liczby naturalne z dodawaniem są przykładem monoidu.
+\medskip
 
 \pdef
 
@@ -100,6 +59,8 @@ Natomiast fakt, że $\phi^{-1}$ jest bijekcją wynika z tego, że $\phi$ jest bi
 \smallskip
 
 \kdef
+Grupa trywialna to zbiór z działaniem zawierający jedynie jego element neutralny: $\{e\}$.
+\medskip
 
 Tutaj warto zaznaczyć, że \emph{element neutralny jest jedyny}. W przeciwnym przypadku istniałyby co najmniej dwa elementy neutralne $e_1,e_2$, ale wtedy
 $$e_1=e_1\cdot e_2=e_2.$$
@@ -107,7 +68,83 @@ $$e_1=e_1\cdot e_2=e_2.$$
 Z łączności działania na grupie wynika, że dla każdego $g\in G$ \emph{istnieje co najwyżej jeden element odwrotny}. Gdyby $x,y$ były dwoma elementami odwrotnymi do $g$, to
 $$x=xe=x(gy)=(xg)y=ey=y,$$
 co prowadzi do sprzeczności.
+\medskip
 
-\subsection{Podgrupy}
+Jeśli działanie grupy jest przemienne, to nazywamy ją {\color{def}grupą abelową} lub przemienną. Tak jak działanie w grupie oznaczamy zwykle przez $\cdot$, tak w grupie abelowej, aby podkreślić jego przemienność, działanie jest zwykle oznaczane przez $+$. Podobnie, potęgowanie w grupie abelowej nie oznaczamy $x^n$, a raczej $nx$.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Działanie w grupie możemy opisać za pomocą {\color{acc}tabelki}
+\begin{center}
+    \begin{tabular}{c | c | c | c | c }
+        $\star$ & $a_1$ & $a_2$ &...& $a_k$\\
+
+        \hline
+
+        $a_1$ & $a_1a_1$ & $a_1a_2$ & ... & $a_1a_k$\\
+
+        $a_2$ & $a_2a_1$ & $a_2a_2$ & ... & $a_2a_k$\\
+
+        ... & \\
+
+        $a_k$ & $a_ka_1$ & $a_ka_2$ & ... & $a_ka_k$
+    \end{tabular}
+\end{center}
+\smallskip
+
+Jeżeli działanie jest przemienne, to oczywiście taka tabelka będzie symetryczna.
+\bigskip
+
+Grupę przemienną $G=\{e,a,b,c\}$ nazywamy {\color{def}grupą czwórkową Kleina} [$K_4$]. Grupa izometrii własnych $n$-kąta foremnego [$\color{acc}D_n$] jest nazywana grupą {\color{def}dihedralną} i nie jest ona grupą abelową. Jej podgrupą jest na przykład {\color{acc}grupa obrotów własnych} $n$-kąta foremnego [$O_n$].
+
+\podz{sep}
+\bigskip
+
+{\color{def}Pierścieniem} nazywamy zbiór $X$ z dwoma działaniami, $+$ i $\cdot$, z których $\cdot$ jest łączne, a $+$ jest przemienne. W dodatku, $\cdot$ jest rozdzielne względem $+$:
+$$(\forall\;x,y,z\in X)\;x\cdot(y+z)=x\cdot y+x\cdot z$$
+Jeśli dodatkowo mnożenie w pierścieniu jest działaniem przemiennym, to taki pierścień nazywamy {\color{acc}przemienny}. Jeśli zaś istnieje element neutralny dla mnożenia, to jest on {\color{acc}pierścieniem z jednością}.
+\medskip
+
+Pierścienie $K$, dla których $K\setminus\{0\}$ jest grupą przemienną względem mnożenia nazywamy {\color{def}ciałami}. Najprostszym ciało są zbiory $\Q,\R,\C$ ze zwykłym dodawaniem i mnożeniem. Zbiór $\Q(\gimel)$ wszystkich liczb zespolonych postaci $a+bi$ dla wymiernych $a,b$ jest ciałem.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Niech $H\subseteq G$ dla pewnej grupy $G$. Mówimy, że $H$ jest {\color{def}podgrupą} grupy $G$ [$\color{acc}H\leq G$], jeżeli $H$ jest grupą względem działania z $G$ (ograniczonego do $H$). Dodatkowo, jeśli $H\neq G$ to mówimy, że $H$ jest {\color{acc}podgrupą właściwą}. Na przykład
+$$(\Z, +)\leq (\Q, +)\leq(\R, +).$$
+
+Przy sprawdzaniu, czy dany zbiór $H$ jest podgrupa $G$ wystarczy sprawdzić, czy $(\forall\;x,y\in H)\;xy^{-1}\in H$.
+\medskip
+
+Jeśli $a,b\in G$, to $\color{acc}(ab)^{-1}=b^{-1}a^{-1}$.
+\medskip
+
+{\color{def}DOWÓD:}
+\smallskip
+
+Chcemy sprawdzić, że $(b^{-1}a^{-1})ab=e$
+$$(b^{-1}a^{-1})ab=b^{-1}(a^{-1}a)b=b^{-1}eb=b^{-1}b=e$$
+a więc dostajemy to, czego się spodziewaliśmy. 
+\kdowod
+\bigskip
+
+Zdefiniujemy $a^{-n}=(a^{-1})^n$ i nie trudno pokazać, że też $a^{-n}=(a^n)^{-1}$. Dalej mamy $a^{n+m}=a^na^m$, a dla grupy przemiennej zachodzi $(ab)^n=a^nb^n$.
 
 \subsection{Grupa cykliczna}
+
+{\color{def}Rząd grupy} to ilość jej elementów: $org(G)=|G|$. Dla każdego $g\in G$ definiujemy {\color{def}rząd elementu} $ord(g)=N$ jako najmniejszą liczbę naturalną taką, że $g^N=e$. Znając pojęcie grup cyklicznych (niżej) możemy też podać definicję: $ord(g)=\langle g\rangle$.
+
+Jeśli $ord(g)=n$ i weźmiemy $N$ takie, że $g^N=e$, to mamy pewność, że $\color{acc}n|N$. Gdyby tak nie było, to mielibyśmy $N=kn+r$, $0<r<n$ i
+$$g^N=g^{kn+r}=g^{kn}g^r=(g^n)^kg^r=e^kg^r=g^r\neq e.$$
+W takim razie dla $g, g^2, ..., g^n$ są elementami parami różnymi i tworzą podgrupę grupy $G$.
+\medskip
+
+{\color{def}Grupa cykliczna} to grupa utworzona przez wzięcie wszystkich potęg $g\in G$: $H=\{g, g^1, ..., g^{ord(g)}\}$, przy czym możemy mieć $ord(g)=\infty$. W takim przypadku dostajemy podgrupę nieskończoną. Dla grupy cyklicznej utworzonej przez $g$, ten element nazywamy {\color{def}generatorem}. Zauważmy, że wszystkie grupy cykliczne sa {\color{acc}abelowe}.
+\smallskip
+
+Grupa zawierająca wszystkie liczby całkowite z dodawaniem jest grupą cykliczną generowaną przez $1$ lub przez $-1$. Widzimy więc, że generator grupy nie jest wyznaczony jednoznacznie.
+
+Dla $N\in \N$ definiujemy $C_N$ jako liczby naturalne $< N$ z dodawaniem modulo $N$. Zwykle oznaczamy ją $(\Z_M, +_N)$. Możemy pokazać, że każda grupa cykliczna skończona rzędu $N$ jest izomorficzne z $C_N$, natomiast grupy cykliczne nieskończone są izomorficzne z $C_\infty$.
