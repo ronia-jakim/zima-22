@@ -6,15 +6,86 @@
 \title{Zadania z $\star\star$ LISTA 10}
 \date{25 grudnia 2023}
 
+\allowdisplaybreaks
+
+\color{black}
+\pagecolor{white}
+
 \begin{document}
+\clearpage
 \maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 16}
+Chcemy pokazać, że
+$$\lim\limits_{t\to\infty}\int\limits_a^bf(x,\sin tx)dx=\frac1{2\pi}\int\limits_a^b\int\limits_0^{2\pi}f(x,\sin y)dydx$$
+% tutaj zakładam, że w poleceniu wkradł się maleńki błąd drukarski i powinno być tak jak wyżej ($dydx$) zamiast $dxdy$, bo jeśli np. $b<2\pi$, to całkując $\int_0^{2\pi}f(x,\sin y)dx$ wyszlibyśmy poza dziedzinę funkcji $f$.
+\medskip
+
+\podz{sep}
+\medskip
+
+Ustalmy z góry $x_0$. Wtedy $f(x_0, y)$ jest funkcją która zależy tylko od $y$, a $x_0$ jest traktowane jako stała. Niech więc $g(y)=f(x_0,y)$. Pokażemy najpierw, że
+$$\lim\limits_{t\to\infty}\int\limits_a^bg(\sin tx)dx=\frac1{2\pi}\int\limits_a^b\int\limits_0^{2\pi}g(\sin y)dydx.$$
+Przenosząc prawą stronę na lewo i wkładając ją pod granicą (bo granica sumy to suma granic, a granica z wyrażenia stałego to ono same), dostajemy
+$$0=\lim\limits_{t\to\infty}\int\limits_a^bg(\sin tx)dx-\frac1{2\pi}\int\limits_a^b\int\limits_0^{2\pi}g(\sin y)dydx=\lim\limits_{t\to\infty}\int\limits_a^b\Big[g(\sin tx)-\int\limits_0^{2\pi}g(\sin y)dy\Big]dx.$$
+Dalej, zauważmy, że
+\begin{align*}
+    \int\limits_0^{2\pi}g(\sin y)dy&=\int\limits_0^\pi g(\sin y)dy+\int\limits_\pi^{2\pi}g(\sin y)dy=\\
+    &=\int\limits_0^\pi g(\sin y)dy+\int\limits_{-\pi}^0g(\sin y)dy={1\over2\pi}\int\limits_{-\pi}^\pi g(\sin y)dy,
+\end{align*}
+bo przesunęliśmy jedną całkę o cały okres funkcji $\sin y$, więc wartości się nie zmieniają.
+
+Wzór Taylora na funkcję $g(\sin y)$ w pobliżu punktu $\sin tx_0$ wygląda następująco:
+$$g(\sin y)=g(\sin tx_0)+[g(\sin tx_0)]'(y-tx_0)=g(\sin tx_0)+t\cos tx_0g'(\sin tx_0)(y-tx_0)$$
+$$g(\sin y)-g(\sin tx_0)=t\cos tx_0g(\sin tx_0)(y-tx_0)$$
+
+Wróćmy teraz do obliczanej granicy:
+\begin{align*}
+    \int\limits_a^b\Big[g(\sin tx)&-{1\over2\pi}\int\limits_{-\pi}^\pi g(\sin y)dy\Big]dx={1\over2\pi}\int\limits_a^b\int\limits_{-\pi}^\pi\Big[g(\sin tx)-g(\sin y)\Big]dydx
+\end{align*}
+i zauważmy, że w środku całki $\int_{-\pi}^\pi$ $x$ jest traktowane jako stała, to znaczy możemy zastosować wyżej podany wzór Taylora dla $x_0=x$, żeby otrzymać
+\begin{align*}
+    \int\limits_{-\pi}^\pi\Big[g(\sin x)-g(\sin y)\Big]dy&=\int\limits_{-\pi}^\pi \Big[t\cos tx g(\sin tx)(y-tx)\Big]dy=\\
+    &=t\cos tx\Big[{y^2\over 2}-txy\Big]_{-\pi}^\pi=t\cos tx\Big[{\pi^2\over 2}-tx\pi-{\pi^2\over 2}+tx\pi\Big]=\\
+    &=t\cos tx\cdot 0=0
+\end{align*}
+Czyli całe wyrażenie też jest równe 0:
+\begin{align*}
+    \lim\limits_{t\to\infty}\int\limits_a^b\Big[g(\sin tx)-&{1\over2\pi}\int\limits_{-\pi}^{\pi}g(\sin y)dy\Big]dx=\lim\limits_{t\to\infty}\int\limits_a^b{1\over 2\pi}\int\limits_{-\pi}^\pi\Big[g(\sin tx)-g(\sin y)\Big]dydx=\\
+    &=\lim\limits_{t\to\infty}\int\limits_a^b{1\over 2\pi}\cdot 0dx=\lim\limits_{t\to\infty}0=0.
+\end{align*}
+
+\podz{sep}
+\medskip
+
+W oryginalnej wersji zadania mamy pokazać to samo dla funkcji dwóch zmiennych:
+$$\lim\limits_{t\to\infty}\int\limits_a^bf(x,\sin tx)dx=\frac1{2\pi}\int\limits_a^b\int\limits_0^{2\pi}f(x,\sin y)dydx.$$
+Jeżeli znowu przeniesiemy wszystko na jedną stronę i wejdziemy pod $\lim$, to dostajemy
+\begin{align*}
+    \lim\limits_{t\to\infty}{1\over 2\pi}\int\limits_a^b\int\limits_{-\pi}^\pi\Big[f(x,\sin tx)-f(x,\sin y)\Big]dydx,
+\end{align*}
+czyli wystarczy pokazać, że
+$$\int\limits_{-\pi}^\pi \Big[f(x,\sin tx)-f(x, \sin y)\Big]dy=0.$$
+Tutaj, tak samo jak w przypadku $g(y)$, mamy funkcję która jest różnicą funkcji całkiem niezależnej od zmiennej po której całkujemy i funkcji która od tej zmiennej zależy tylko w jednej zmiennej. Czyli dla tego danego $x$ z zewnętrznej całki możemy użyć funkcji
+$$h(y)=f(x, y)$$
+i wtedy mamy
+$$\int\limits_{-\pi}^\pi\Big[f(x, \sin tx)-f(x, \sin y)\Big]dy=\int\limits_{-\pi}^\pi\Big[h(\sin tx)-h(\sin y)\Big]dy,$$
+a my wiemy, że jest to równe zero jak wyżej. Łącząc wszystko w jedną całość mamy
+\begin{align*}
+    \lim\limits_{t\to\infty}\int_a^bf(x,\sin tx)dx&-{1\over2\pi}\int\limits_a^b\int\limits_0^{2\pi}f(x,\sin y)dydx=\lim\limits_{t\to\infty}\int\limits_a^b\Big[f(x,\sin x)-{1\over2\pi}\int\limits_0^{2\pi}f(x,\sin y)dy\Big]dx=\\
+    &=\lim\limits_{t\to\infty}{1\over2\pi}\int\limits_a^b\int\limits_0^{2\pi}\Big[f(x,\sin tx)-f(x,\sin y)\Big]dydx=\\
+    &=\lim\limits_{t\to\infty}{1\over 2\pi}\int\limits_a^b0dx=\lim\limits_{t\to\infty}0=0.
+\end{align*}
+$$\lim\limits_{t\to\infty}\int_a^bf(x,\sin tx)dx={1\over 2\pi}\int\limits_a^b\int\limits_0^{2\pi}f(x,\sin y)dydx$$
+
 
 \subsection*{ZAD. 17}
 
 Zacznijmy od wskazówki, to znaczy pokazania, że
 $$\lim\limits_{n\to\infty}n\Big(\int\limits_0^1f(x)dx-\frac1n\sum\limits_{i=1}^nf\Big(\frac in\Big)\Big)={f(1)-f(0)\over 2}$$
 
-Według wzoru Taylora wiemy, że istnieje $\xi_i\in[\frac in, {i+1\over n}]$ takie, że
+Według wzoru Taylora wiemy, że istnieje $\xi_i\in[{i-1\over n}, \frac in]$ takie, że
 $$f(x)=f(\frac in)+f'(\xi_i)(x-\frac in)$$
 $$f(x)-f(\frac in)=f'(\xi_i)(x-\frac in)$$
 
@@ -23,11 +94,29 @@ $$f(x)-f(\frac in)=f'(\xi_i)(x-\frac in)$$
     &=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac inf'(\xi_i)\big[x-\frac in\big]dx-{f(1)-f(0)\over2}=n\sum\limits_{i=1}^nf'(\xi_i)\Big[{x^2\over 2}-{i\over n}x\Big]_{{i-1\over n}}^\frac in=\\
     &=n\sum\limits_{i=1}^n\Big[f'(\xi_i){1\over2n^2}\Big]=\frac1{2n}\sum\limits_{i=1}^nf'(\xi_i)\xrightarrow{n\to\infty}\frac12\int\limits_0^1f'(x)dx={f(1)-f(0)\over 2}
 \end{align*}
+\medskip
 
-Przyjrzyjmy się teraz zależności którą mamy udowadniać.
+\podz{sep}
+\medskip
+
+Popatrzmy teraz na wzór Taylora dla dwóch zmiennych. Podobnie jak wyżej, istnieje $(\xi_i,\alpha_k)\in[{i-1\over n}, \frac in]\times[{k-1\over n}, \frac kn]$ takie, że
+$$f(x,y)=f(\frac in, \frac kn)+(x-\frac in)f_x(\xi_i,\alpha_k)+(y-\frac kn)f_y(\xi_i,\alpha_k)$$
+$$f(x,y)-f(\frac in,\frac kn)=(x-\frac in)f_x(\xi_i,\alpha_k)+(y-\frac kn)f_y(\xi_i,\alpha_k)$$
+gdzie $f_x$ to pierwsza pochodna względem $x$, a $f_y$ to pierwsze pochodna względem $y$.
 \begin{align*}
-    n\int\limits_0^1\int\limits_0^1f(x,y)dxdy&-\frac1n\sum\limits_{j=1}^n\sum\limits_{k=1}^nf\Big(\frac jn, \frac kn\Big)=n\sum\limits_{i=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_0^1f(x,y)dxdy-\frac1n\sum\limits_{i=1}^n\sum\limits_{k=1}^nf\Big(\frac in, \frac kn\Big)=\\
-    &=
+    n\int\limits_0^1f(x,y)dxdy&-\frac1n\sum\limits_{i=1}^n\sum\limits_{k=1}^nf(\frac in, \frac kn)=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_{{k-1\over n}}^\frac knf(x,y)dxdy-\frac1n\sum\limits_{i=1}^n\sum\limits_{k=1}^nf(\frac in,\frac kn)=\\
+    &=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_{{k-1\over n}}^\frac kn \Big[f(x,y)-f(\frac in,\frac kn)\Big]dxdy\stackrel{*}{=}\\
+    &=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac in\int\limits_{{k-1\over n}}^\frac kn\Big[(x-\frac in)f_x(\xi_i,\alpha_k)+(y-\frac kn)f_y(\xi_i,\alpha_k)\Big]dxdy=\\
+    &=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac inf_x(\xi_i,\alpha_k)\int\limits_{{k-1\over n}}^\frac kn[x-\frac in]dxdy+n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac inf_y(\xi_i,\alpha_k)\int\limits_{{k-1\over n}}^\frac kn[y-\frac kn]dxdy\stackrel{**}{=}\\
+    &=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac inf_x(\xi_i,\alpha_k)\frac1{2n^2}dy+n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac inf_y(\xi_i,\alpha_k)\int\limits_{{k-1\over n}}^\frac kn[y-\frac kn]dydx=\\
+    &=n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\frac1{2n^3}f_x(\xi_i,\alpha_i)+n\sum\limits_{i=1}^n\sum\limits_{k=1}^n\int\limits_{{i-1\over n}}^\frac inf_y(\xi_i,\alpha_k)\frac1{2n^2}dx=\\
+    &={1\over2n^2}\sum\limits_{i=1}^n\sum\limits_{k=1}^n\frac1{2n^3}f_x(\xi_i,\alpha_i)+{1\over2n^2}\sum\limits_{i=1}^n\sum\limits_{k=1}^n\frac1{2n^3}f_y(\xi_i,\alpha_i)
 \end{align*}
+Przejście w $*$ jest wykorzystaniem wzoru Taylora wyprowadzonego wyżej, natomiast przejście $**$ jest na podstawie twierdzenie Fubiniego dot. funkcji ciągłej (jaką jest $f$) na prostokącie $[{i-1\over n}, \frac in]\times[{k-1\over n}, \frac kn]$.
+\begin{align*}
+    \lim\limits_{n\to\infty}\Bigg({1\over2n^2}\sum\limits_{i=1}^n\sum\limits_{k=1}^n\frac1{2n^3}f_x(\xi_i,\alpha_i)&+{1\over2n^2}\sum\limits_{i=1}^n\sum\limits_{k=1}^n\frac1{2n^3}f_y(\xi_i,\alpha_i)\Bigg)=\frac12\int\limits_0^1\int\limits_0^1f_x(x, y)dxdy+\frac12\int\limits_0^1\int\limits_0^1f_y(x,y)dxdy=\\
+    &=\frac12\int\limits_0^1f(1,y)-f(0,y)dy+\frac12\int\limits_0^1f(x,1)-f(x,0)dx
+\end{align*}
+
 
 \end{document}
