@@ -16,6 +16,14 @@
 \begin{document}
 \maketitle
 
+\textbf{\large\color{def}ZMIANY}:\smallskip
+
+\point Zadanie 1. - suma
+
+\point Zadanie 2. - krótkie uzasadnienie interpretacji $F_n$
+
+\point Zadanie 14.b. - krótkie uzasadnienie
+
 \section*{ZAD. 1.}
 
 Niech $k$ będzie liczbą pionków do rozłożenia. Jeśli $k>n$, to wtedy co najmniej dwa muszą być w jednej kolumnie, a więc jeden nie będzie na lewo od drugiego. W takim razie musi być $k\leq n$.
@@ -26,10 +34,16 @@ Ułóżmy najpierw $k$ pionków na planszy $k\times k$ tak, żeby w każdej parz
 Jeśli ustawimy najpierw $k$ pionków na planszy $k\times k$. Utożsamimy kolumny zawierające pionki z liczbą $1$, natomiast kolumny puste z liczbą $0$. Wtedy sposobów żeby ustawić $n-k$ jedynek w ciąg $n$ elementowy mamy ${n\choose n-k}$. Analogiczna sytuacja zachodzi dla wierszy, a ogólna ilość rozwiązań to 
 $${n\choose n-k}^2,$$ 
 gdyż łączymy każde ustawienie kolumn z każdym ustawieniem wierszy.
+\medskip
+
+Sumując teraz po wszystkich możliwych wartościach $k$ dostajemy
+\begin{align*}
+    \sum\limits_{k=0}^n{n\choose n-k}^2&=\sum\limits_{k=0}^n{n\choose n-k}{n\choose k}=(1+1)^n=2^n
+\end{align*}
 
 \section*{ZAD. 2.}
 
-Liczba Fibonaciego $F_n$ odpowiada na pytanie, ile jest ciągów składających się tylko z $1$ i $2$ sumujących się do $(n-1)$. Popatrzmy teraz na sumę z zadania:
+Liczba Fibonaciego $F_n$ odpowiada na pytanie, ile jest ciągów składających się tylko z $1$ i $2$ sumujących się do $(n-1)$. \emph{Wynika to z tego, że ciąg sumujący się do $(n+1)$ możemy uzyskać dodając do dowolnego ciągu sumującego się do $n$ jedynkę na końcu. Możemy też dodać dwójkę do dowolnego ciągu sumującego się do $(n-2)$. Czyli ilość ciągów długości $(n+1)$ to $a_{n+1}=a_n+a_{n-1}$.} Popatrzmy teraz na sumę z zadania:
 $$F_n=\sum\limits_{i=0}^{n-1}{n-1-i\choose i}.$$
 Pierwszy wyraz, ${n-1\choose 0}$ to liczba ciągów składających się tylko z $1$ sumujących się do $(n-1)$. Drugi wyraz, ${n-2\choose 1}$ skraca ciąg $(n-1)$ jedynek o jeden i wybiera jedną z pozostałych $(n-2)$ jedynek która zostanie zamieniona na $2$. W ten sposób dostajemy ilość ciągów sumujących się do $(n-1)$ zawierających tylko jedną liczbę $2$. Tak więc dla $k$-tego wyrazu sumy usuwamy $k$ jedynek, a z pozostałych na $k$ sposobów wybieramy te, które zostaną zastąpione przez $2$ ${n-1-k\choose k}$.
 \bigskip
@@ -83,7 +97,7 @@ $$\begin{cases}
 
 Rozważmy ciąg geometryczny: $x_n=q^n$, wtedy
 \begin{align*}
-    q^n&=\frac12(q^{n-1}q^{n-2})\\
+    q^n&=\frac12(q^{n-1}+q^{n-2})\\
     q^2&=\frac12(q+1)
 \end{align*}
 Czyli $x_n=q^n$ dla $q$ będących zerami wielomianu
@@ -150,6 +164,9 @@ $$x_n=\frac13+\frac23(-2)^{-n}$$
 \end{align*}
 
 {\color{acc}(b)} $a_n=n^3$
+Z poprzedniego podpunktu mamy
+$${x(x+1)\over(1-x)^3}=\sum\limits_{n=0}^\infty n^2x^n$$
+jeśli więc obie strony zróżniczkujemy, to dostaniemy
 \begin{align*}
     {x^2+4x+1\over(1-x)^4}&=\sum\limits_{n=0}^\infty n^3x^{n-1}\\
     {x^3+4x^2+x\over (1-x)^4}&=\sum\limits_{n=0}^\infty n^3x^n

@@ -16,6 +16,15 @@
 \begin{document}
 \maketitle
 
+\textbf{\large\color{def}ZMIANY}:\smallskip
+
+\point Zadanie 2.
+
+\point Zadanie 5.
+
+\point Zadanie 6.
+
+
 \section*{ZAD. 1.}
 
 Rozważmy najpierw prawą stronę równania. Spośród $n$ osób wybieramy najpierw lidera delegacji. Możemy to zrobić na $n$ sposobów. Chcemy mu dobrać pewną delegację osób. Ponieważ lider został już wybrany, to zostaje nam $(n-1)$ osób. Dla każdej z nich mamy dwie możliwości: albo osoba zostanie wybrana albo nie. Czyli dla każdej z $(n-1)$ możemy zadecydować jej los na $2$ sposoby, co daje nam
@@ -27,16 +36,14 @@ Teraz zajmujemy się lewą stroną równania. Suma przechodzi przez wszystkie mo
 
 \section*{ZAD. 2.}
 
+{\color{def}Zamieniłam pomysł z łączeniem w pary na o wiele prostsze wyjaśnienie.}
+\medskip
+
 Jeśli jedynek jest o co najmniej 2 więcej niż zer, to całość nam nie zadziała. Na przykład w 1101 nie możemy rozdzielić dwóch pierwszych 1. Załóżmy więc, że
 $$k<l+2$$
 
-Aby ułatwić sobie zadanie, sklejmy $k-1$ jedynek z zerami. Na razie niech zera będą zawsze przez jedynką, to znaczy tworzymy pary 01. Ustawiamy je jedna koło drugiej i zrobić to możemy na jeden sposób. Zostaje nam $k-(k-1)=1$ jedynka, którą musimy wstawić na sam przód ciągu i $l-(k-1)$ zer. Nie mamy ograniczeń na położenie zer, więc możemy je wstawić na dowolne miejsce między dotychczasowymi $2k-1$ elementami lub na jednym z końców, co daje nam
-$${2k\choose l-k+1}$$
-miejsc na wstawienie 0. Dostajemy więc ${2k\choose l-k+1}$ ciągów kiedy zera stoją przed jedynkami.
-\smallskip
-
-Teraz zauważmy, że jeśli odbijemy początkowe pary jedynek i zer, tzn. postawimy jedynki przed zerami, dostaniemy sytuację lustrzaną. Czyli kolejne ${2k\choose l-k+1}$ sposobów na ustawienie ciągu. Daje to ostateczną liczbę ciągów, gdzie jedynki nigdy nie są koło siebie, czyli
-$$2\cdot {2k\choose l-k+1}$$
+Rozstawmy nasze $l$ zer w jednorodny ciąg. Między nimi jest $(l+1)$ pustych miejsc w które chcemy wstawiać nasze $k$ jedynek, ale każde miejsce możemy wybrać tylko raz. Czyli wybieramy $k$ spośród $(l+1)$ miejsc, co daje
+$${l+1\choose k}.$$
 
 \section*{ZAD. 3.}
 
@@ -89,19 +96,43 @@ $$e=\sum\limits_{k=0}^\infty{(-1)^k\over k!}$$
 czyli liczba nieporządków to w przybliżeniu
 $$d_n\approx n!e^{-1}={n!\over e}$$
 
-{\color{acc}Pokazac, ze blad jest maluczki}
+{\color{def}Uzasadnienie, że różnica między $d_n$ a ${n!\over e}$ jest bardzo mała:}\smallskip
+
+W zadaniu proszeni jesteśmy o uzasadnienie, że 
+$$d_n=\lfloor{n!\over e}+\frac12\rfloor$$
+
+\begin{align*}
+    {n!\over e}&=n!\sum\limits_{k=0}^\infty {(-1)^k\over k!}=n!\sum\limits_{k=0}^{n}{(-1)^k\over k!}+n!\sum\limits_{k=n+1}^\infty {(-1)^k\over k!}=\\
+    &=d_n+\sum\limits_{k=n+1}^\infty{(-1)^k\over k\cdot (k-1)...(n+1)}\leq d_n+\sum\limits_{k=n+1}^\infty {(-1)^k\over 2^{k-(n+1)+1}}=\\
+    &=d_n+\sum\limits_{k=0}^\infty {(-1)^{k+n+1}\over 2^{k+1}}
+\end{align*}
+zauważmy, że suma $\sum\limits_{k=0}^\infty {(-1)^{k+n+1}\over 2^{k+1}}$ to szereg geometryczny, czyli jego suma to
+$$\sum\limits_{k=0}^\infty {(-1)^{k+n+1}\over 2^{k+1}}=\pm\frac 12\cdot{1\over 1+\frac12}=\pm\frac12\cdot{2\over 3}=\pm\frac13$$
+Czyli różnica między $d_n$ a ${n!\over e}$ jest mniejsza niż $\frac12$, więc możemy otrzymać $d_n$ poprzez przybliżanie ${n!\over e}$ do najbliższej liczby całkowitej:
+$$d_n=\lfloor{n!\over e}+\frac12\rfloor.$$
 
 \section*{ZAD. 6.}
 
-Najpierw zajmijmy się przyporządkowaniem skarpet do komody. Każda z nich ma być pełna, więc jeśli $n<5$, to oczywiście nie możemy zrobić żeby rzadna nie była pusta. Dajmy każdej z komód po jednej skarpecie, co dla rozróżnialnych skarpet można zrobić na $5!$ sposobów i pozostałe $n-5$ skarpet rozkładamy na $20$ szuflad.
+{\color{def}Zamiana na wersje z czarnymi skarpetami}
 \medskip
 
-Pozostałe $n-5$ skarpet możemy ułożyć w ciąg na $(n-5)!$ sposobów. Dla dowolnego takiego ciągu chcemy włożyć między skarpety kapcia, który rozgranicza które skarpety trafią do której szuflady. Takich kapciów potrzeba nam tylko $19$, bo zawartość ostatniej szuflady jest ograniczana końcem ciągu skarpet. Teraz wybieramy miejsca dla tych $19$ kapciów spośród $n-5+19=n+14$ miejsc w ciągu. Możemy to zrobić na ${n+14\choose 19}$ sposobów.
+Najpierw zajmijmy się przyporządkowaniem jednolicie czarnych skarpet do komody. Każda z nich ma być pełna, więc jeśli $n<5$, to oczywiście nie możemy zrobić żeby żadna nie była pusta. Dajmy każdej komodzie po jednej skarpecie, w każdej z nich wybieramy szufladę na $4$ sposobów, więc rozłożyć po jednej jednolicie czarnej skarpecie do $5$ komód można na $4^5$ sposobów. Pozostaje nam rozmieszczenie $n-5$ skarpet do $20$ szuflad.
 \medskip
 
-Łącząć wszystko w jedną odpowiedź, dostajemy
-$$5!\cdot(n-5)!\cdot{n+14\choose 19}$$
-sposobów na rozmieszczenie $n$ skarpet w $5$ komód po $4$ szuflady tak, żeby żadna komoda nie była pusta.
+Weźmy $19$ jednolicie białych kapci, które będą nam wskazywać które skarpety idą do której szuflady i ułóżmy skarpety w ciąg. Koniec zawartości ostatniej szuflady jest wyznaczany przez koniec ciągu, stąd też o jeden kapeć mniej niż ilość szuflad.
+
+Mamy $(n-5)+19=n+14$ miejsc w które możemy postawić kapcia. Wybieramy więc $19$ takich miejsc i wkładamy w nie kapcie na
+$${n+14\choose 19}$$
+sposobów. Ostatecznie dostajemy
+$$4^5\cdot{n+14\over 19}$$
+sposobów rozłożenia jednolicie czarnych skarpet do $5$ komód po $4$ szuflady tak, żeby żadna komoda nie była pusta.
+
+% Pozostałe $n-5$ skarpet możemy ułożyć w ciąg na $(n-5)!$ sposobów. Dla dowolnego takiego ciągu chcemy włożyć między skarpety kapcia, który rozgranicza które skarpety trafią do której szuflady. Takich kapciów potrzeba nam tylko $19$, bo zawartość ostatniej szuflady jest ograniczana końcem ciągu skarpet. Teraz wybieramy miejsca dla tych $19$ kapciów spośród $n-5+19=n+14$ miejsc w ciągu. Możemy to zrobić na ${n+14\choose 19}$ sposobów.
+% \medskip
+
+% Łącząc wszystko w jedną odpowiedź, dostajemy
+% $$5!\cdot(n-5)!\cdot{n+14\choose 19}$$
+% sposobów na rozmieszczenie $n$ skarpet w $5$ komód po $4$ szuflady tak, żeby żadna komoda nie była pusta.
 
 
 \section*{ZAD. 12.}
