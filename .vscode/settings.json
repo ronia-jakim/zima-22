@@ -68,6 +68,6 @@
         "valarray": "cpp",
         "variant": "cpp"
     },
-    "editor.fontSize": 13,
+    "editor.fontSize": 14,
     "editor.fontFamily": "Anonymous Pro"
 }

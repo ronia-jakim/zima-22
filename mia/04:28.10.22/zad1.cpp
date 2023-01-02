@@ -6,7 +6,6 @@ using namespace std;
 
 #define ll long long int
 
-ll ide (ll dead, ll n, ll now);
 vector<ll> b;
 ll dead = 0;
 
@@ -32,47 +31,24 @@ int main () {
         k.push_back(pom);
     }
 
-    ll pom = 0;
+    ll sum = 0;
 
-    for (ll i = 0; i < q; i++) {
-        cout << "wchodze z: " << dead << " " << pom << " " << k[i] << endl;
+    for (ll t = 0; t < q; t++) {
 
-        if (pom > k[i]) {
-            pom -= k[i];
-        }
-        else if (pom == k[i]) {
-            pom = 0;
-            dead++;
-        }
-        else {
-            k[i] -= pom;
-            pom = 0;
-            ll r = ide(dead, n-1, k[i]);
-            cout << "$" << r << endl;
+        sum += k[t];
+        if (sum >= b[n-1]) sum = 0;
 
-            if (b[r] > k[i]) {
-                dead = r - 1;
-                pom = a[r] - (k[i] - b[r-1]);
-            }
-            else if (b[r] == k[i]) {
-                dead = r + 1;
-            }
-            else {
-                dead = r;
-                pom = a[r+1] - (k[i] - b[r]);
-            }
+        ll ret;
+        ll lewy = 0;
+        ll prawy = n-1;
+
+        while (lewy < prawy) {
+            ret = (lewy + prawy) / 2;
+            if (b[ret] <= sum) lewy = ret + 1;
+            else prawy = ret;
         }
 
-        if (dead >= n) dead = 0;
-
-        cout << n - dead << endl;
+        cout << n - lewy << endl;
     }
-}
 
-ll ide (ll st, ll end, ll k) {
-    ll mid = (st+end) / 2;
-    if(end - st <= 1) return mid;
-
-    if (b[mid] - b[dead] > k) return ide(st, mid, k);
-    else return ide(mid, end, k);
 }

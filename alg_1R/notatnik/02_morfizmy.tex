@@ -48,4 +48,16 @@ Natomiast fakt, że $\phi^{-1}$ jest bijekcją wynika z tego, że $\phi$ jest bi
 
 \subsection{Jądro, obraz}
 
+Dla danego homomorfizmu $f:G\to H$ definiujemy {\color{def}jądro} $Ker\; f=\{g\in G\;:\;f(g)=e_H\}$ oraz {\color{def}obraz} $Im\;f=\{f(g)\;:\;g\in G\}$. Z tych definicji wynika, że $Ker\;f\leq G$ oraz $Im\;f\leq H$.
+\medskip
+
+Dla monomorfizmu $f:G\to H$ jądro jest trywialne $ker\;f =\{e_G\}$. Gdyby tak nie było, to dla pewnego $e_G\neq g\in G$ mielibyśmy $f(g)=e_H$, a więc dla wszystkich innych $e_G\neq h\in G$
+$$f(h)=e_H\cdot f(h)=f(g)f(h)=f(gh),$$
+i jest $gh\neq h$ ale $f(h)=f(gh)$.
+\bigskip
+
+Jeśli $f:X\to Y$ jest epimorfizmem, to relacja $\sim$ określona na $X$ przez
+$$x\sim y\iff f(x)=f(y)$$
+jest relacją równoważności, a jej klasy abstrakcji są {\color{acc}włóknami funkcji $f$}. Jeśli $K=Ker\;f$, to dla każdego $a\in X$ mamy $aK=Ka$ i warstwy $K$ w $X$ to włókna $f$.
+
 \subsection{Zasadnicze twierdzenie o homomorfizmie}
