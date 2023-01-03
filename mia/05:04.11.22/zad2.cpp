@@ -5,12 +5,18 @@
 
 using namespace std;
 
+int n;
+vector<int> somsiad[150000];
+int odwiedzone[150000];
+
+bool dfs(int tato, int dziadzio);
+
 int main () {
     int n,m;
 
     cin >> n >> m;
 
-    vector<int> somsiad [n];
+    for (int i = 0; i < 150000; i++) odwiedzone[i] = 0;
 
     for (int i = 0; i < m; i++) {
         int a, b;
@@ -20,13 +26,11 @@ int main () {
         somsiad[b].push_back(a);
     }
 
-    for (int i = 0; i < n; i++) {
-        int len = somsiad[i].size();
-
-        
-    }
-
     cout << "YES" << endl;
 
     return 0;
+}
+
+bool dfs(int tato, int dziadzio) {
+    
 }

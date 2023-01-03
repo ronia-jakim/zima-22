@@ -13,10 +13,11 @@
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
 \subsection*{ZAD. 2}
 
-{\color{acc}(a)} Taki graf nie może istnieć, bo mamy 3 wierzchołki stopnia nieparzystego, a z hand shaking lemma wiemy, że wierzchołków stopnia nieparzystego musi być parzyście wiele.
+{\color{acc}(a)} Taki {graf} nie może istnieć, bo mamy 3 wierzchołki stopnia nieparzystego, a z hand shaking lemma wiemy, że wierzchołków stopnia nieparzystego musi być parzyście wiele.
 \medskip
 
 {\color{acc}(b)} Mamy $5$ wierzchołków, w tym jeden stopnia $4$, czyli musi być połączony ze wszystkimi pozostałymi. Na to połączenie używamy wszystkich możliwych połączeń wierzchołków stopnia $1$ (bo mamy graf prosty, więc nie możemy go połączyć wielokrotnie z wierzchołkiem stopnia $3$) i zostaje nam wierzchołek który chce mieć stopień $3$. Szuka więc jeszcze $2$ sąsiadów, ale już każdy inny wierzchołek ma dość sąsiadów i dlatego nie możemy spełnić jego oczekiwań. Czyli taki graf nie może istnieć.
@@ -40,6 +41,42 @@ Jeżeli zaś $c\notin bd$, to wtedy również $c\notin ad$, bo $ad=abbd\not\ni c
 
 \subsection*{ZAD. 13.}
 
-Graf T\"urana $T_2(n)$ to zupełny $2$-dzielny graf o $n$ wierzchołkach, który w każdej klasie ma $\lfloor {n\over 2}\rfloor$ lub $\lceil{n\over2}\rceil$ wierzchołków. Graf $T_2(n)$ jest $K_3$-wolny, czyli nie ma klik wielkości $3$. Dodając jakąkolwiek krawędź do $T_2(n)$ dostajemy graf, który już nie jest $K_3$-wolny. Jest tak, bo wszystkie połączenia między klasami wierzchołków zostały już użyte, więc łączymy dwa wierzchołki w jeden klasie, a te są już połączone ze wszystkimi wierzchołkami z drugiej klasy i mamy trójkąt. Z twierdzenia T\"urana (które poznałam na teorii grafów) możemy wyciągnąć wniosek, że jeżeli mielibyśmy graf $|G|=n$ taki, że $e(G)\geq e(T_2(n))$ i $G$ jest $K_3$-wolny, to $G\simeq T_2(n)$, a więc jednak mamy tyle samo krawędzi. Czyli skoro już wiemy, że jeśli graf jest wolny od trójkątów i ma bardzo dużo krawędzi to jest dwudzielny, to możemy skorzystać z poprzedniej listy i zadania $8$, gdzie pokazywaliśmy, że graf dwudzielny o $n$ wierzchołkach ma nie więcej niż $\lfloor{n^2\over 4}\rfloor$ wierzchołków.
+Graf T\'urana $T_r(n)$ to zupełny graf $r$-dzielny o $n$ wierzchołkach, który w każdej klasie ma $\lfloor {n\over r}\rfloor$ lub $\lceil {n\over r}\rceil$ wierzchołków. Graf $T_r(n)$ jest $K_{r+1}$-wolny, bo wybierając $(r+1)$ wierzchołków co najmniej dwa muszą leżeć w tej samej klasie i być niepołączone. Grafy T\'urana pojawiają się w {\color{acc}twierdzeniu T\'urana}, które mówi, że jeśli $|G|=n$ jest $K_{r+1}$-wolny i $e(G)\geq e(T_r(n))$, to $G\cong T_r(n)$. Z tego wynika, że $T_r(n)$ jest grafem $K_{r+1}$-wolnym o największej liczbie krawędzi.
+\medskip
+
+W zadaniu rozważamy grafy $K_3$-wolne. Z uwagi wyżej wiemy, że $T_2(n)$ będzie grafem o $n$ wierzchołkach, który jest $K_3$ wolny i ma największą możliwą liczbę krawędzi. Teraz zauważmy, że $T_2(n)$ to graf dwudzielny o jak najbardziej równych klasach wierzchołków. Na poprzedniej liście w zadaniu 8 udowodniliśmy, że graf dwudzielny o $n$ wierzchołkach ma co najwyżej $\lfloor{n^2\over 4}\rfloor$ krawędzi i jest to nadal aktualne w tym zadaniu dla grafu $T_2(n)$.
+
+\subsection*{ZAD. 14.}
+
+{\color{def}$G$ jest $2$-spójny $\iff$ (a)}:
+\medskip
+
+$\color{acc}\implies$
+\smallskip
+
+Niech $G$ będzie $2$-spójnym grafem. Załóżmy nie wprost, że istnieją dwa wierzchołki $u,v\in G$ nie leżące na jednym cyklu. Ponieważ $G$ jest grafem spójnym, to istnieje ścieżka $u...v\in G$. Ponieważ nie istnieje cykl zawierający jednocześnie $u$ i $v$, to musimy mieć co najmniej jeden wierzchołek $x\in G$ przez który wszystkie takie ścieżki przechodzą. Inaczej moglibyśmy mieć $y\in G$ taki, że $u...y...v\in G$ i może się zdarzyć, że $u...x...v$ oraz $u...y...v$ mają wspólne tylko końce, czyli $u...x...v...y...u$ jest cyklem. Ale zauważmy, że jeśli jest co najmniej jeden taki wierzchołek $x$, to usunięcie go powoduje usunięcie wszystkich ścieżek $u...v$, a co za tym idzie - rozspójnienie grafu $G$. Czyli $G$ nie może być $2$-spójny.
+\smallskip
+
+$\color{acc}\impliedby$
+\smallskip
+
+Jeżeli każde dwa wierzchołki $uv$ leżą na cyklu, to mamy co najmniej dwie rozłączne ścieżki $P_1,P_2$ między $u$ a $v$. Czyli jeśli usuniemy dowolny wierzchołek z $P_1$ lub $P_2$, to zostaje nam zawsze druga, nietknięta i rozłączna z rozciętą, ścieżka. Czyli graf jest $2$-spójny.
+\medskip
+
+{\color{def}$G$ jest $2$-spójny $\iff$ (b)}:
+\medskip
+
+$\color{acc}\implies$
+\smallskip
+
+Mamy graf $2$-spójny oraz dwie krawędzie: $ab, cd\in G$. Przedzielmy $ab$ na pół nowym wierzchołkiem $u$, czyli dodamy $au,ub$ do grafu $G$. Taki graf jest nadal $2$-spójny, bo  stare wierzchołki nie zostały zmienione, więc jeśli usuniemy cokolwiek poza $a,b,u$ graf zachowuje się tak naprawdę po staremu, natomiast jeśli usuniemy $a$ lub $b$ to dostaniemy graf jakbyśmy usunęli z poprzedniego $a$ lub $b$, ale z dołączonym "liściem". Skoro graf bez liście był spójny, to z liściem nadal jest spójny. Na koniec, jeśli usuwamy $u$, to wpływamy tylko na wierzchołki połączone przez $ab$, ale przecież z punktu $(a)$ wiemy, że $a$ i $b$ są na jednym cyklu i rozłączenie cyklu w jednym punkcie zostawia nam ścieżkę $a...b$. Czyli po prostu zamiast krótkiej drogi $ab$ mamy $a...b$, ale nadal jest to spójny graf. To samo możemy zrobić z krawędzią $cd$: dzielimy ją nowym wierzchołkiem $v$. Po tych dwóch modyfikacjach możemy nazwać nowy graf $G'$.
+
+Z poprzedniego podpunktu i fakty, że $G'$ jest $2$-spójny wiemy, że wierzchołki $u$ i $v$ leżą na jednym cyklu. Nazwijmy ten cykl $C'$. Zauważmy, że $C'$ zawiera $aub$ oraz $cvd$. Teraz jeśli przeniesiemy $C'$ na realia grafu $G$ i zaczniemy tworzyć cykl $C$, to wierzchołki różne od $a,b,c,d,u,v$ są bez zmian - prosta kalka z $C'$. Natomiast dla wierzchołków $a,b,c,d$ zamiast $aub$ i $cvd$ musimy do cyklu $C$ wrzucić tylko krawędzie $ab$ i $cd$, czyli wyjmujemy $u$ i $v$ i sklejamy z powrotem krawędzie które nimi rozrywaliśmy. W ten sposób powstał cykl $C$ zawierający nasze dwie oryginalne krawędzie.
+\smallskip
+
+$\color{acc}\impliedby$
+\smallskip
+
+Wiemy, że w grafie $G$ każde dwie krawędzie leżą na jednym cyklu. Czyli jeżeli będziemy chcieli usunąć jeden wierzchołek, to tylko rozrywamy taki cykl i dalej mamy przejście dłuższą drogą.
 
 \end{document}
