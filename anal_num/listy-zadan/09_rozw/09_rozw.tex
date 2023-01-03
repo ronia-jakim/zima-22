@@ -1,0 +1,59 @@
+\documentclass{article}[16pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\title{Ujebanko przez kolanko}
+\date{69}
+\author{maruda}
+
+\begin{document}
+\maketitle
+
+\subsection*{ZAD.2.}
+
+Jezu nie rozumiem o co chodzi w tych zadaniach.
+\medskip
+
+Wiemy, że $S_m(t^2)=P_{2m}(t)$ oraz
+$$\int\limits_{-a}^ap(x)P_{2m}(x)P_{2k}(x)dx=0$$
+dla $m\neq k$. Czyli jest
+\begin{align*}
+    0&=\int\limits_{-a}^ap(x)P_{2m}(x)P_{2k}(x)dx=\int\limits_{-a}^ap(x)S_m(x^2)S_k(x^2)dx=2\int\limits_0^ap(x)S_m(x^2)S_k(x^2)dx=\\
+    &=\begin{bmatrix} \sqrt u=x\\ {1\over 2\sqrt u}du=dx\end{bmatrix}=2\int\limits_0^{a^2}{p(\sqrt u)\over 2\sqrt u}S_m(u)S_k(u)du=\int\limits_0^{a^2}{p(\sqrt u)\over \sqrt u}S_m(u)S_k(u)du
+\end{align*}
+czyli jeśli $p'(x)={p(\sqrt x)\over \sqrt x}$, to wielomiany $S_m$ są ortogonalne na przedziale $[0,a^2]$.
+\bigskip
+
+Wiemy, że $P_{2m+1}=xR_m(x^2)$ 
+\begin{align*}
+    0&=\int\limits_{-a}^ap(x)P_{2m+1}(x)P_{2k+1}(x)dx=\int\limits_{-a}^ap(x)xR_m(x^2)xR_k(x^2)dx=\int\limits_{-a}^ap(x)x^2R_m(x^2)R_k(x^2)dx=\\
+    &=2\int\limits_0^ap(x)x^2R_m(x^2)R_k(x^2)dx=\begin{bmatrix}\sqrt u=x\\{1\over 2\sqrt u}du=dx\end{bmatrix}=2\int\limits_0^{a^2}{p(\sqrt u)\over 2\sqrt u}uR_m(u)R_k(u)du=\\
+    &=\int\limits_0^{a^2}{p(\sqrt u)}\sqrt{u}R_m(u)R_k(u)du
+\end{align*}
+czyli jeśli $p'(x)=\sqrt xp(x)$, to wielomiany $R_m$ sa ortogonalne na przedziale $[0, a^2]$.
+
+\subsection*{ZAD. 3.}
+
+% W tym zadaniu zakładam, że waga to $p(x)=(1-x^2)^{-\frac12}$?
+
+% Kwadrat normy dowolnego $\overline T_n$ to
+% $$\|\overline T_n\|^2=\int\limits_{-1}^1(1-x^2)^{-\frac12}2^{2-2n}T_n(x)T_n(x)dx=2^{2-2n}\int\limits_{-1}^1(1-x^2)^{-\frac12}T_n(x)T_n(x)dx$$
+% wiemy, że $\int\limits_{-1}^1(1-x^2)^{-\frac12}T_n(x)T_n(x)dx=\frac\pi2$ (lub $\pi$ gdy $n=0$).
+% \medskip
+
+Załóżmy teraz, że istnieje wielomian
+$$s(x)=x^n+a_{n-1}x^{n-1}+...+a_1x+a_0$$
+taki, że $\|s(x)\|^2<\|\overline T_n\|^2$. Ponieważ, tak jak na liście 7, wielomiany $\overline T_n$ są wielomianami ortogonalnymi, to
+$$s(x)=\sum\limits_{i=0}^nb_iT_i=b_nT_n+\sum\limits_{i=0}^{n-1}b_iT_i,$$
+ale ponieważ $s$ jak i $T_n$ mają przy $x^n$ jedynkę, to $b_n=1$, czyli
+$$s(x)=T_n+\sum\limits_{i=0}^{n-1}b_iT_i$$
+Mamy więc
+\begin{align*}
+    \|s\|^2&=\langle s,s\rangle=\langle\sum\limits_{i=0}^nb_iT_i,\sum\limits_{j=0}^nb_jT_j\rangle=\sum\limits_{i=0}^n\sum\limits_{j=0}^nb_ib_j\langle T_i,T_j\rangle=\sum\limits_{i=0}^nb_i^2\langle T_i,T_i\rangle=\\
+    &=\langle T_n,T_n\rangle+\sum\limits_{i=0}^{n-1}b_i^2\langle T_i,T_i\rangle=\|T_n\|^2+\sum\limits_{i=0}^{n-1}b_i^2\|T_i\|^2,
+\end{align*}
+ale ponieważ $s(x)\neq T_n(x)$, to co najmniej jedno $b_i$ musi być różne od zera, a więc mamy, że $\|s\|=\|T_n\|+A$, gdzie $A>0$, czyli każdy wielomian z wiodącym $x^n$ ma normę większą niż $T_n$.
+
+\end{document}
