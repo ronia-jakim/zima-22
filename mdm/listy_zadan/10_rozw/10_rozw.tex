@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 10}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{ZAD. 2}
+
+{\color{acc}(a)} Taki graf nie może istnieć, bo mamy 3 wierzchołki stopnia nieparzystego, a z hand shaking lemma wiemy, że wierzchołków stopnia nieparzystego musi być parzyście wiele.
+\medskip
+
+{\color{acc}(b)} Mamy $5$ wierzchołków, w tym jeden stopnia $4$, czyli musi być połączony ze wszystkimi pozostałymi. Na to połączenie używamy wszystkich możliwych połączeń wierzchołków stopnia $1$ (bo mamy graf prosty, więc nie możemy go połączyć wielokrotnie z wierzchołkiem stopnia $3$) i zostaje nam wierzchołek który chce mieć stopień $3$. Szuka więc jeszcze $2$ sąsiadów, ale już każdy inny wierzchołek ma dość sąsiadów i dlatego nie możemy spełnić jego oczekiwań. Czyli taki graf nie może istnieć.
+\medskip
+
+{\color{acc}(c)} Mamy $5$ wierzchołków i graf dwudzielny. Możemy mieć więc albo jeden wierzchołek samotny i pozostałe $4$ w jednej klasie albo klasę o $3$ wierzchołkach i klasę o $2$ wierzchołkach. Pierwszy pomysł nie jest możliwy, gdyż z klasy o jednym wierzchołku wychodzą dwie krawędzie, ale z większej klasy chce do niej wejść $8$ krawędzi. Drugi graf obalamy w ten sam sposób: z mniejszej klasy wychodzi $4$ krawędzie, ale z drugiej chce wejść tych krawędzi aż $6$.
+
+\subsection*{ZAD. 3.}
+
+Niech $G$ będzie grafem takim, że $d(G)>3$. Weźmy $u,v\in G$ takie, że $d(u, v)=d(G)>3$. Chcemy pokazać, że odległość każdych dwóch wierzchołków w $\overline G$ jest mniejsza niż $3$. Niech więc $x,y\in \overline G$ będą dwoma dowolnymi wierzchołkami. Oczywiście pula wierzchołków $G$ i $\overline G$ jest taka sama.
+
+Wierzchołki $u,v$ na pewno nie mogą być połączone w $G$, czyli są połączone w $\overline G$. W zbiorze $u,v,x,y$ mamy co najwyżej $4$ różne wierzchołki. Jeżeli $xy\in \overline G$ to koniec. W przeciwnym wypadku istnieje $xy\in G$. Nie możemy mieć $xu,xv\in G$ bo wtedy $uxv\in G$ i jest $d(u,v)\leq2$. Tak samo dla $uy,vy$. Co więcej, jeśli $ux\in G$, to mamy $vx\in\overline G$ i wtedy nie możemy mieć $vy\in G$, bo wtedy $uxyv\in G$ i jest $d(u,v)\leq 3$. Czyli jeśli $vx\in\overline G$, to mamy $vy\in\overline G$ i jest $xvy\in\overline G$ i wtedy w kontekście $\overline G$ jest $d(x,y)\leq 2$.
+
+\subsection*{ZAD. 6.}
+
+Zauważmy, że w drzewie jeśli mamy ścieżkę bez powtarzających się wierzchołków, to jest to unikalne takie połączenie. W naszym drzewie $ab$ i $cd$ są rozłączne, ale już $ac$ i $ad$ mają wspólne wierzchołki. Tak samo $bc$ i $bd$. Teraz zauważmy, że $ac$ i $bc$ mają również co najmniej jeden wspólny wierzchołek. Teraz rozważmy przypadki pod względem czy $c\in bd$. Symetryczne przypadki $d\in bd$ albo $a,b\in bd$ są analogiczne.
+
+Jeżeli $c\in bd$, to wystarczy, że do $bc$ dokleimy ścieżkę $cd$ i mamy $bccd=bd\ni c$ ma wspólny co najmniej wierzchołek $c$ ze ścieżką $ac$. 
+
+Jeżeli zaś $c\notin bd$, to wtedy również $c\notin ad$, bo $ad=abbd\not\ni c$ (lub $bd=baad$). Wtedy mamy $ac=addc$ i $d$ jest wspólnym wierzchołkiem $ac$ i $bd$.
+
+\subsection*{ZAD. 13.}
+
+Graf T\"urana $T_2(n)$ to zupełny $2$-dzielny graf o $n$ wierzchołkach, który w każdej klasie ma $\lfloor {n\over 2}\rfloor$ lub $\lceil{n\over2}\rceil$ wierzchołków. Graf $T_2(n)$ jest $K_3$-wolny, czyli nie ma klik wielkości $3$. Dodając jakąkolwiek krawędź do $T_2(n)$ dostajemy graf, który już nie jest $K_3$-wolny. Jest tak, bo wszystkie połączenia między klasami wierzchołków zostały już użyte, więc łączymy dwa wierzchołki w jeden klasie, a te są już połączone ze wszystkimi wierzchołkami z drugiej klasy i mamy trójkąt. Z twierdzenia T\"urana (które poznałam na teorii grafów) możemy wyciągnąć wniosek, że jeżeli mielibyśmy graf $|G|=n$ taki, że $e(G)\geq e(T_2(n))$ i $G$ jest $K_3$-wolny, to $G\simeq T_2(n)$, a więc jednak mamy tyle samo krawędzi. Czyli skoro już wiemy, że jeśli graf jest wolny od trójkątów i ma bardzo dużo krawędzi to jest dwudzielny, to możemy skorzystać z poprzedniej listy i zadania $8$, gdzie pokazywaliśmy, że graf dwudzielny o $n$ wierzchołkach ma nie więcej niż $\lfloor{n^2\over 4}\rfloor$ wierzchołków.
+
+\end{document}
