@@ -1,0 +1,92 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\subsection*{ZAD. 3.}
+
+\emph{Show that if $|G|=pq^2$, where $p,q$ are prime numbers, then $G$ is solvable.}
+\medskip
+
+First of all, we need to know what the heck does it mean that $G$ is solvable. Definition says that a group is solvable if it has a {\color{def}subnormal series whose quotient groups are all abelian}. Basically, we have a series of subgroups
+$$1=G_0<G_1<...<G_j<G_{j+1}<...<G_k=G$$
+such that for all $j$ $G_j\dzielnat G_{j+1}$ and $G_{j+1}/G_j$ is abelian.
+
+\medskip
+
+\podz{sep2}
+\medskip
+
+I guess we have to start from building such a chain of subgroups. Let $G_1$ be a $p$-subgroup of $G$. Then we know that $G_1$ is a normal subgroup in $G$ and that $G/G_1$ has $q^2$ elements. 
+\smallskip
+
+That means that $H=G/G_0$ is abelian, because every group of order $p^k$ has nontrivial center, so $Z(H)\neq\{e\}$. So we have either $|Z(H)|=q$ or $|Z(H)|=q^2$. The latter suits us so we need to rule out the first option. This means that $Z(H)$ is a $q$-subgroup so their number must divide $q^2$ and be $1\mod q$, meaning that we have just one such $q$-subgroup and it is normal.
+\smallskip
+
+We end up with such a magnificent subnormal series:
+$$1=G_0<G_1\text{ - p-subgroup of G}<G$$
+
+\subsection*{ZAD. 4.}
+
+\emph{Show that if $|G|=200$, then $G$ is solvable.}
+\medskip
+
+$$200=2^3\cdot5^2$$
+
+Let us check how many $5$-subgroups there are in $G$. We know that $n_5$ must divide $8$ and be $1\mod 5$. We can only have $n_5=1$ so the unique $5$-subgroup is the normal subgroup of $G$.
+\smallskip
+
+What about $2$-subgroups? We know that $n_2$ must divide $5^2$ and that $n_2\equiv 1\mod2$. If we had $5$ $2$-subgroups then we have $5\cdot 2^3$ unique Sylow $2$-subgroups and they can only have the trivial element as their intersection. But we also need a $5$-subgroup as we shown before and it also has to have a trivial intersection with all $2$-subgroups. So we cannot have $5$ $2$-subgroups and the same goes for $25$. So we are left with just one $2$-subgroup which has order $2^3$.
+\smallskip
+
+Now let $G_0=1$ and $G_1=$ the unique $2$-subgroup of $G$. We have $|G/G_1|=5^2$ which is abelian and because $G_1$ is unique then $G_1\dzielnat G$. And this is the end of my misery.
+
+\subsection*{ZAD. 5}
+
+\emph{Show that if $|G|<60$ then $G$ is solvable.}
+\medskip
+
+Liczb pierwszych które się mieszczą do $60$ jest dużo za dużo, to zacznijmy od kwadratów. Wiem, że $8^2=64$ i $7^2=49$, czyli możemy mieć co najwyżej $7$ w kwadracie w rozkładzie na czynniki pierwsze. Sześcianów jest jeszcze mniej, bo tylko $2,3$ nie wypierdala poza $60$. No to lecimy od góry, I guess?
+
+Dla $|G|=3^3\cdot2=27\cdot 2(=54)$ mamy $n_3$ dzieli $2$ i jest $1\mod3$, czyli $n_3=1$. Mamy więc unikalną $3$-grupę Sylowa, więc jest ona dzielnikiem normalnym całości i ma rząd $27$, czyli $|G/G_1|=2$ co jest grupą abelową. Więc śmiga.
+\smallskip
+
+Niech $|G|=n$. Jeśli $7$ jest w rozkładzie $n$ na czynniki pierwsze, to nie możemy mieć tam również liczby większej niż $7$ (bo $7^2=49$ i już większej liczby pierwszej nie wepchniemy), a więc liczba liczba $n_7$-podgrup musi dzielić liczbę co najwyżej $8$ ($7\cdot8=56$) i być $1\mod7$. No i jeśli wymagamy dzielenia liczby mniejszej niż $8$ to musimy mieć dokładnie jedną KURWA NO NIE BĘDĘ TEGO ROBIĆ NO
+
+
+\subsection*{ZAD. 6}
+
+Infinity cuz Feit-Thomson theorem.
+
+\subsection*{ZAD. 7.}
+
+\emph{How many elements of order $7$ are in a simple group of order $168$?}
+
+$$168=2^3\cdot 3\cdot7$$
+We know thet $G$ is simple so its only normal subgroups are a trivial group and $G$ itself. So we cannot have only one $p$-subgroups.
+
+Let us see how many of each $p$-subgroup can we have:
+$$n_2\in\{3, 7\}$$
+$$n_3\in\{4, 28\}$$
+$$n_7\in\{8\}$$
+so we know that we have exactly $8$ $7$-subgroups and all of them contain elements of order $7$ or $1$ - we have at least $48$. And we do not have any more because all elements of order $7$ must be in a subgroup of order $7$ and the only such subgroups that we are considering are $7$-subgroups.
+
+\subsection*{ZAD. 8.}
+
+O co oni mnie kurwa pytają?
+
+\subsection*{ZAD. 9.}
+
+\emph{Find a composition series of the group $\Z_n$}
+\medskip
+
+If $n$ is a prime number then we kinda have $G_0$ and $G$. And that's it.
+\medskip
+
+I guess it is gonna be easiest to start from the top? What is a normal subgroup in any $\Z_n$? Cuz it is obvious that $\Z_n$ is abelian. Let $n=pk$ for some prime $p$ and $k\in\N$. Subgroup $H=\langle p\rangle$ is a subgroup of $\Z_n$ and we want that $H\dzielnat \Z_n$. So we take any $a\in \Z_n\setminus H$ and any $h\in H$. We know that $ah=ha\in Ha$ so $aH=Ha$ and this is normal.
+
+\end{document}
