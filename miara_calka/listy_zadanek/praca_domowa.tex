@@ -1,0 +1,70 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\title{Praca domowa ciąg dalszy\medskip
+
+\large Problem \textbf{2.6.D}
+}
+\author{Weronika Jakimowicz}
+\date{}
+
+\color{black}
+\pagecolor{white}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\textbf{1. POKAZAĆ, ŻE DLA $x\in\Q$ mamy $f(x)=f(1)x$}
+\medskip
+
+Z addytywności funkcji mamy, że dla dowolnego $x\in\R$ i $k\in\N$ zachodzi:
+$$f(kx)=kf(x).$$
+Możemy pokazać to za pomocą indukcji. Dla $k=1$ jest to oczywista równość. Załóżmy, że dla $k\leq n$ jest to prawdą. Popatrzmy teraz na $k=n+1$
+$$f((n+1)x)=f(xn+x)=f(nx)+f(x)\overset{*}{=}nf(x)+f(x)=(n+1)f(x)$$
+gdzie równość z $*$ jest z założenia indukcyjnego.
+\medskip
+
+Specjalnym przypadkiem powyższej równości dla $k\in\N$ jest $x=\frac1k$. Wtedy mamy
+$$f(kx)=kf(x)=kf(\frac1k)$$
+a z drugiej strony
+$$f(kx)=f(k\cdot\frac1k)=f(1),$$
+czyli
+$$f(\frac1k)=\frac1k f(1).$$
+
+Liczby wymierne mają tę własność, że można je zapisać jako iloraz dwóch (względnie pierwszych) liczb naturalnych. Weźmy więc dowolny $q\in\Q$ taki, że $q={n\over k}$ dla $k,n\in\N$. Mamy wtedy
+$$f(q)=f(\frac nk)=nf(\frac1k)=n\cdot\frac1k \cdot f(1)=f(1)\cdot{n\over k}=qf(1).$$
+I to jest udowadniana zależność.
+\bigskip
+
+\textbf{2. JEŚLI $f$ MIERZALNA, TO $f(x)=f(1)x$ DLA $x\in\R$.}
+\medskip
+
+Dodając do przydatnych własności funkcji addytywnej, mamy
+$$f(0)=f(0+0)=f(0)+f(0)=2f(0)\implies f(0)=0$$
+$$0=f(0)=f(x-x)=f(x+(-x))=f(x)+f(-x)\implies f(-x)=-f(x)$$
+
+Twierdzenie Steinhausa (1.11.H): jeżeli $A\subseteq\R$ jest mierzalny i $\lambda(A)>0$, to różnica kompleksowa $A$ z $A$ zawiera odcinek postaci $(-\delta,\delta)$ dla pewnego $\delta>0$.
+\smallskip
+
+$$|f(x)-f(y)|=|f(x)+f(-y)|=|f(x-y)|=f(|x-y|)$$
+
+Aby pokazać ciągłość, chcemy, żeby dla każdego $\varepsilon>0$ istniało $\delta>0$ takie, że $\varepsilon>|f(x)-f(y)|=f(|x-y|)$ jeżeli $|x-y|<\delta$. Czyli tak naprawdę wystarczy nam pokazać ciągłość w okolicy zera: wtedy będziemy brać $z=x-y$ i sprawdzać, czy zachodzi $\delta>|z|\implies f(|z|)<\varepsilon$.
+\medskip
+
+Weźmy więc teraz dowolne $p\in\Q$, $p>0$ i niech $A=f^{-1}[(-p,p)]$. Ponieważ $f$ jest funkcją mierzalną, to również $A$ musi być mierzalne (Lemat 2.1.2). Jeśli $\lambda(A)>0$, to z twierdzenia Steinhausa wiemy, że dla istnieje $\delta>0$ takie, że $(-\delta,\delta)\subseteq (A-A)$. Popatrzmy teraz, jak wygląda obraz różnicy kompleksowej $A$
+\begin{align*}
+    f[(-\delta,\delta)]\subseteq f[A-A]&=f[\{x-y\;:\;x,y\in A\}]=\{f(x-y)\;:\;x,y\in A\}=\\
+    &=\{f(x)-f(y)\;:\;x,y\in f^{-1}[(-p,p)]\}=\{x-y\;:\;x,y\in(-p,p)\}=(-2p,2p)
+\end{align*}
+
+Zauważmy, że dla $x,y\in(-p,p)$ mamy
+$$|x-y|<|p-(-p)|=2p$$
+
+Podsumowując, dla dowolnego $p>0$ istnieje $\delta>0$ taka, że dla $|x-y|<2\delta$, to znaczy $x,y\in(-\delta,\delta)$ takie, że 
+$$|f(x-y)|=|f(x)-f(y)|<2p,$$
+bo $f[(-\delta,\delta)]\subseteq (-2p,2p)$. To daje ciągłość w zerze, co z addytywności przekłada sie na ciągłość na całej prostej.
+
+
+\end{document}

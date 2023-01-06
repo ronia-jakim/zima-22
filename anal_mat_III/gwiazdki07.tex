@@ -1,0 +1,87 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+\usepackage{amsmath,multirow,multicol}
+
+\author{Weronika Jakimowicz}
+\title{Zadania z $\star\star$ LISTA 007}
+\date{29 luty 2023}
+
+\color{black}
+\pagecolor{white}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{empty}
+
+\subsection*{ZAD. 2}
+\emph{Załóżmy, że funkcja $f:\R^n\to\R^m$ i $m<n$ jest klasy $C^1$, rząd $Df$ jest równy $m$ w każdym punkcie. Pokazać, że nie jest wzajemnie jednoznaczna.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Krótkie rozważanie topologiczne:
+\smallskip
+
+Dla dowolnego $n>1$ wiemy, że $\R^n$ nie jest homeomorficzne z $\R$, bo punkt rozspaja prostą, a spójność jest niezmiennikiem homeomorfizmu. Można to jeszcze przeciągnąć na $n>2$ i $\R^2\not\cong\R^n$, bo $\R^2$ bez punktu $x$ nie jest jednospójna - pętelka która przy zwężaniu przeszłaby przez $x$ nie może zostać zwężona jeśli usuniemy $x$. Jednospójność jest również niezmiennikiem homeomorfizmu, a więc tutaj nie może on istnieć.
+\medskip
+
+\podz{sep}
+\medskip
+
+Załóżmy nie wprost, że $f$ jest bijekcją.
+\smallskip
+
+Po pierwsze zauważmy, że jeżeli $h:\R^n\to\R^n$ jest funkcją ciągłą, niestałą, różniczkowalną to istnieje $x_0\in\R^n$ takie, że $Dh(x_0)\neq0$. Gdyby tak nie było, to dla każdego $x\in\R^n$ $Dh(x)=0$, ale jeśli pochodna się nie zmienia to funkcja jest stała i mamy sprzeczność. Zajmiemy się funkcją $g:\R^n\to\R^n$ taką, że
+$$g(x)=(f(x),x_{m+1},...,x_n)$$
+i ponieważ $f$ jest $1-1$, to istnieje $x_0\in\R^n$ taki, że $Dg(x_0)\neq 0$. Czyli dla pewnego bardzo małego otoczenia $x_0\in U\subseteq \R^n$ $g$ jest funkcją odwracalną, a więc w szczególności na $g[U]$.
+
+Niech więc $z,y\in U$ i niech $z,y$ różnią się na $i>m$ współrzędnej. Ponieważ na $U$ $g$ jest jednoznaczna, to możemy też wymagać, aby $g(z)$ i $g(y)$ miały tę samą pierwszą współrzędną - coś musi pokryć 
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Załóżmy nie wprost, że $f$ jest bijekcją. To znaczy, że nie możemy mieć $Df(x)=0$ dla wszystkich $x\in \R^n$. Rozważmy teraz funkcję 
+$$g(x)=(f(x),x_{m+1},...,x_n)$$
+i przypatrzmy się jej (teraz mam już nadzieję, że poprawnemu) jakobianowi
+$$
+\left[
+    \begin{array}{cccc}
+        
+
+        {d\over dx_1}f_1(x)&{d\over dx_2}f_1(x)&...&{d\over dx_n}f_1(x)\\
+        {d\over dx_1}f_2(x)&{d\over dx_2}f_2(x)&...&{d\over dx_n}f_2(x)\\
+        ... & ... & ... & ...\\
+        {d\over dx_1}f_m(x)&{d\over dx_2}f_m(x)&...&{d\over dx_n}f_m(x)\\
+        \multicolumn{2}{c}{\multirow{2}{*}{\Large0}} & \multicolumn{2}{c}{
+            \multirow{2}{*}{\Large $Id_{n-m}$}
+        }\\
+        {\color{white}.}
+    \end{array}
+\right]
+$$
+Szybko zauważmy, że wyznacznik macierzy $n\times n$ 
+$$A=\begin{bmatrix}
+    B&C\\
+    0&D
+\end{bmatrix}$$ 
+dla $B$, $D$ - macierzy kwadratowych jest równy $det(A)=det(B)\cdot det(D)$. Najłatwiej (niekoniecznie najładniej) jest to uzasadnić korzystając z metody eliminacji Gaussa. Chcemy zeschodkować macierz $B$ i macierz $D$. Zauważamy, że do schodkowania $D$ wystarczy nam tylko dolna część, która przecież nie ma nic wspólnego z $D$. Tak samo dla schodkowania góry wystarczy nam tylko korzystanie z wierszy i kolumn pokrywających sie z $B$, a więc rozłącznych z $D$. Czyli górną część przekątnej zrobiliśmy korzystając tylko z $B$, a dolną - tylko z $D$, więc mnożąc to wszystko dostajemy schodki tylko $B$ (czyli $det(B)$) pomnożone ze schodkami tylko $D$ (czyli $det(D)$).
+\medskip
+
+Niech więc 
+$$A_x=\begin{bmatrix}
+    {d\over dx_1}f_1(x)&{d\over dx_2}f_1(x)&...&{d\over dx_m}f_1(x)\\
+        {d\over dx_1}f_2(x)&{d\over dx_2}f_2(x)&...&{d\over dx_m}f_2(x)\\
+        ... & ... & ... & ...\\
+        {d\over dx_1}f_m(x)&{d\over dx_2}f_m(x)&...&{d\over dx_m}f_m(x)
+\end{bmatrix}$$
+wtedy $Dg(x)=det(A_x)$, które z kolei jest jakobianem obcięcia $f$ do $\R^m$, czyli jeśli $f$ jest $1-1$, to również to obcięcie jest $1-1$ i $det(A_x)=Dg(x)\neq 0$
+\bigskip
+
+{\color{def}TUTAJ ROBIE SKIPA}
+
+Weźmy dowolne 
+
+\end{document}
