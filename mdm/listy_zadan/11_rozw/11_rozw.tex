@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 11}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 1.}
+\emph{Dane jest drzewo $T$ oraz jego automorfizm $\phi$. Udowodnij, że istnieje wierzchołek $v$ taki, że $\phi(v)=v$ lub istnieje krawędź $\{u,v\}$ taka, że $\phi(\{u,v\})=\{u,v\}$}
+\medskip
+
+\podz{sep}
+\medskip
+
+Niech $n$ będzie liczbą wierzchołków w drzewie $T$. Dla $n=1$ mamy drzewo o jednym wierzchołku i tylko jeden automorfizm na nim - identyczność, która zachowuje nie tylko wierzchołki, ale i (nieistniejące) krawędzie. Dla $n=2$ mamy tylko jedną krawędź i dwa punkty, więc ta jedyna krawędź zawsze musi przejść na samą siebie.
+\smallskip
+
+Załóżmy teraz, że dla wszystkich drzew o co najwyżej $n$ wierzchołkach teza jest prawdziwa. Niech $|T|=n+1$. Zauważmy, że jeśli $\phi$ jest automorfizmem na $T$, a $v\in T$ jest jego dowolnym liściem, to $\phi(v)$ musi nadal być liściem - inaczej $v$ stopnia $1$ przeszłoby na wierzchołek będący węzłem, a więc mający co najmniej stopień $2$ i takie $\phi$ nie mogłoby być automorfizmem na $T$.
+
+Wiemy też, że w drzewie jest na pewno jeden wierzchołek stopnia $1$, niech więc 
+$$L=\{v\in T\;:\;d(v)=1\}$$
+będzie wierzchołkiem wszystkich liści, który na pewno jest niepusty. Niech $T'=T\setminus L$. Wtedy jeśli $\phi'$ jest automorfizmem na $T'$, to na mocy założenia indukcyjnego $\phi'$ spełnia tezę. Z uwagi wyżej wiemy, że liście muszą przejść na siebie, więc jeśli będziemy rozszerzać $\phi'$ do całego $T$, to $\phi[L]=L$, czyli nie wpływa na poprawność tezy dla rozszerzenia $\phi'$ do całego $T$.
+
+\subsection*{ZAD. 2.}
+\emph{Graf prosty $G$ jest samodopełniający wtedy i tylko wtedy, gdy jest izomorficzny ze swym dopełnieniem. Pokaż, że samodopełniający graf $n$ wierzchołkowy istnieje dokładnie wtedy, gdy $n\equiv0$ lub $n\equiv1\mod 4$}
+\medskip
+
+\podz{sep}
+\medskip
+
+Graf pełny o $n$ wierzchołkach ma ${n(n-1)\over 2}$ krawędzi. My chcemy je rozdzielić po równo między dopełnienie i graf sam w sobie, czyli musimy być w stanie liczbę krawędzi $K_n$ podzielić dodatkowo na $2$, a więc $n(n-1)$ musi być podzielne przez $4$. Jest to wtedy, gdy 
+$$n\equiv0\mod4$$
+lub 
+$$(n-1)\equiv0\mod4$$
+$$n\equiv1\mod4.$$
+
+\subsection*{ZAD. 3.}
+\emph{Niech $C_1,C_2,...,C_{m-n-1}$ będą zbiorami krawędzi wszystkich $(m-n+1)$ cykli otrzymanych poprzez dodanie do drzewa spinającego $T$ grafu prostego $G$ jednej krawędzi $G$ która nie należy do $T$. Pokaż, że zbiór krawędzi dowolnego cyklu w $G$ jest różnica symetryczną pewnej liczby zbiorów wybranych spośród $C_1,C_2,...,C_{m-n-1}$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+No ale to widać
+
+\end{document}
