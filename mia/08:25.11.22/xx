@@ -1,0 +1,34 @@
+#include <cstdio> 
+#include <string> 
+#include <math.h > 
+#include <algorithm> 
+#define LL long long
+#define PI atan (1.0) *4#define DD double#define MAX 30000#define mod 100# Define Dian 1.000000011#define INF 0x3f3f3f
+using namespace std; 
+ll C (ll n,ll m) 
+{
+    ll ans=1;
+    int num=1;
+    while (m--) {
+        ans*= (n-m); 
+        ans/=num;
+        num++;
+    } 
+    return ans;
+} 
+int main () {
+    LL n,m,j,i,t;
+    LL Sum;
+    while (scanf ("%lld", &n)!=eof) {
+        if (n<=5) {
+            sum=1;
+            for (i=1;i<=n;i++)    
+            sum*=i;
+            printf ("%lld\n", sum); 
+            Continue;
+        }    
+        Sum=c (n,5) *n* (n-1) * (n-2) * (n-3) * (n-4);    
+        printf ("%lld\n", sum);
+    } 
+    return 0;
+}

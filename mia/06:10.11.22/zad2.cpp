@@ -17,6 +17,27 @@ int main () {
         return 0;
     }
 
+    int i = 0;
+    int n = s.length() - 1;
+
+    int m = 0;
+
+    int ret = 1;
+
+    while (i < n) {
+        if (s[i] == 'w' || s[i] == 'm') {
+            cout << 0 << endl;
+            return 0;
+        }
+
+        if (s[i] == 'n') {
+            if (s[i+1] == 'n') {
+                m = i;
+                
+            }
+        }
+    }
+
     cout << cosiek(s) << endl;
 
     return 0;
