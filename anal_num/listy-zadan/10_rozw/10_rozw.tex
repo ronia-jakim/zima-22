@@ -124,4 +124,15 @@ Strona 139-140 Fichtenholz część druga.
     \sum\limits_{k=0}^{n-1}\int\limits_{a+kh}^{a+(k+1)h}f(x)dx&=\sum\limits_{k=0}^{n-1}{f(a+(k+1)h)+f(a+kh)\over 2}h=\frac12\sum\limits_{k=0}^{n-1}f(a+(k+1)h)h+\frac12\sum\limits_{k=0}^{n-1}f(a+kh)h\to\frac12\int\limits_a^bf(x)dx+\frac12\int\limits_a^bf(x)dx
 \end{align*}
 
+\subsection*{ZAD. 9.}
+
+$$T_n(f)={h\over 2}[f(a)+2f(a+h)+2f(a+2h)+...+2f(a+(n-1)h)+f(a+nh)]$$
+\begin{align*}
+    \int\limits_a^bf(x)dx&=\sum\limits_{k=0}^{m-1}\int\limits_{a+kh}^{a+(2k+2)h}f(x)dx=\sum\limits_{k=0}^{m-1}{a+(2k+2)h-(a+2kh)\over6}\Big[f(a+2kh)+4f(a+2kh+1)+f(a+(2k+2)h)\Big]=\\
+    &={h\over3}[f(a)+4f(a+h)+2f(a+2h)+4f(a+3h)+3f(a+4h)+...+4f(a+(n-1)h)+f(a+nh)]=\\
+    &={h\over3}[2f(a)+4f(a+h)+4f(a+2h)+...-f(a)-2f(a+2h)-2f(a+4h)-...-f(a+nh)]=\\
+    &=\frac13[4T_n(f)-T_{\frac n2}(f)]
+\end{align*}
+
+
 \end{document}
