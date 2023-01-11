@@ -1,0 +1,127 @@
+\documentclass{article}[16pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\title{Ujebanko przez kolanko}
+\date{69}
+\author{maruda}
+
+\begin{document}
+\maketitle
+
+\subsection*{ZAD. 1.}
+\emph{Udowodnić, że wielomiany Czebyszewa spełniają tożsamość}
+$$\int\limits_{-1}^1T_n(x)dx=\begin{cases}
+    0,\quad \text{n nieparzyste}\\
+    {2\over 1-n^2}
+\end{cases}$$
+\podz{sep}
+\medskip
+
+W tym zadaniu skorzystamy z własności wielomianów Czebyszewa:
+$$T_n(\cos t)=\cos(nt)$$
+
+\begin{align*}
+    \int\limits_{-1}^1T_n(x)dx&=\begin{bmatrix}
+        x=\cos(t)\\
+        dx=\sin(t)dt
+    \end{bmatrix}=\int\limits_{\pi}^{2\pi}T_n(\cos t)dt=\int\limits_\pi^{2\pi}\sin(t)\cos(nt)dt={n\sin(x)\sin(nx)+\cos(x)\cos(nx)\over n^2-1}\Big|_\pi^{2\pi}=\\
+    &={\cos(2\pi)\cos(2n\pi)-\cos(\pi)\cos(n\pi)\over n^2-1}={\cos(2n\pi)+\cos(n\pi)\over n^2-1}
+\end{align*}
+
+Ponieważ $\cos(2\pi)=1$ oraz okres $\cos$ to $2\pi$, wiemy, że dla każdego $n$ jest $\cos(2n\pi)=1$. Wiemy, że $\cos(\pi)=-1$, czyli dla nieparzystych $n=2k+1$ mamy 
+$$\cos(n\pi)=\cos((2k+1)\pi)=\cos(2k\pi+\pi)=\cos(\pi)=-1$$
+natomiast dla parzystych $n$ jest jak dla $\cos(2n\pi)=1$.
+
+\subsection*{ZAD. 2.}
+\emph{Obliczamy wartość całki $I(f)=\int\limits_a^bf(x)dx$ stosując kwadraturę Newtona-Cotesa, czyli kwadraturę interpolacyjną z węzłami równoodległymi $x_k:=a+kh$ dla $k=0,1,...,n$, gdzie $h:={b-a\over n}$:}
+$$Q_n^{NC}(f):=\sum\limits_{k=0}^nA_k^{(n)}f(x_k).$$
+\emph{Wykazać, że}
+$$A_k^{(n)}=h(-1)^{n-k}{1\over k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq k}^n(t-j)dt$$
+\emph{Niech będzie }
+$$B_k^{(n)}={A_k^{(n)}\over b-a}.$$
+\emph{Sprawdzić, że}
+\smallskip
+
+\point \emph{wielkości $B_k^{(n)}$ są liczbami wymiernymi}
+
+\point \emph{$B_k^{(n)}=B_{n-k}^{(n)}$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Z jednej notatki ze SKOSa wiemy, że w kwadraturze interpolacyjnej jest
+$$A_k^{(n)}=\int\limits_a^bp(x)\prod\limits_{j=0,j\neq k}^n{x-x_j\over x_k-x_j}dx$$
+oraz, że dla kwadratury Newtona-Cotesa $p\equiv 1$. Czyli
+\begin{align*}
+    A_k^{(n)}&=\int\limits_a^b\prod\limits_{j=0,j\neq k}^n{x-x_j\over x_k-x_j}dx=\int\limits_a^b\prod\limits_{j=0,j\neq k}^n{x-(a+jh)\over a+kh-a-jh}dx=\int\limits_a^b\prod\limits_{j=0,j\neq k}{x-a-jh\over (k-j)h}dx=\\
+    &=\int\limits_a^b\Big[\prod\limits_{j=0}^{k-1}{x-a-jh\over (k-j)h}\Big]\Big[\prod\limits_{j=k+1}^n{x-a-jh\over (k-j)h}\Big]dx=\int\limits_a^b\Big[\prod\limits_{j=0}^{k-1}{x-a-jh\over k!}\Big](-1)^{n-k}\Big[\prod\limits_{j=k+1}^n{x-a-jh\over(n-k)!}\Big]dx=\\
+    &={(-1)^{n-k}\over k!(n-k)!}\int\limits_a^b\prod\limits_{j=0,j\neq k}(x-a-jh)dx={h(-1)^{n-k}\over k!(n-k)!}\int\limits_a^b\prod\limits_{j=0,j\neq k}\Big[{nx-na\over b-a}-j\Big]dx={h(-1)^{n-k}\over k!(n-k)!}\begin{bmatrix}
+        t={nx-na\over b-a}\\
+        dt=ndx
+    \end{bmatrix}=\\
+    &={h(-1)^{n-k}\over k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq k}^n(t-j)dt
+\end{align*}
+\medskip
+
+{\color{acc}(a)} I mean, to jest dość oczywiste
+$$B_k^{(n)}={A_k^{(n)}\over b-a}={n\over h}\cdot {h(-1)^{n-k}\over k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq k}(t-j)dt={(-1)^{n-k}\over n\cdot k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq k}(t-j)dt$$
+Początek jest jasne, że należy do wymiernych. Problem jest z całką, ale to co całkujemy to jest wielomian o współczynnikach wymiernych na przedziale o początku i końcu wymiernym, czyli wartość tej całki też będzie wymierna.
+\medskip
+
+{\color{acc}(b)}
+
+\begin{align*}
+    B_k&={(-1)^{n-k}\over n\cdot k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq k}(t-j)dt=
+\end{align*}
+\begin{align*}
+    B_{n-k}&={(-1)^{k}\over n\cdot k!(n-k)!}\int\limits_0^n\prod\limits_{j=0,j\neq n-k}(t-j)dt
+\end{align*}
+Czyli ogólnie to potrzebuję
+$$(-1)^{n-k}\int\limits_0^n\prod\limits_{j\neq k}(t-j)dt=(-1)^k\int\limits_0^n\prod\limits_{j\neq n-k}(t-j)dt$$
+
+\begin{align*}
+    B_k=(-1)^k\int\limits_0^n\prod_{j\neq k}(t-j)dt&=(-1)^k\int\limits_0^n\prod_{j\neq n-k}(t-n+j)dt=\begin{bmatrix}
+        p=n-t\\
+        -dp=dt
+    \end{bmatrix}=(-1)^k(-1)\int\limits_n^0\prod_{j\neq n-k}(j-p)dp=\\
+    &=(-1)^k\int\limits_0^n\prod_{j\neq n-k}(j-p)dp=(-1)^k(-1)^n\int\limits_0^n\prod_{j\neq n-k}(p-j)dp=(-1)^{n+k}\int\limits_0^n\prod_{j\neq n-k}(p-j)dp=\\
+    &=(-1)^{n-k}\int\limits_0^n\prod_{j\neq n-k}(p-j)dp=B_{n-k}
+\end{align*}
+
+\subsection*{ZAD. 3.}
+\emph{Niech $B_k^{(n)}$ oznaczają liczby z poprzedniego zadania. Wykazać, że}
+$$\sum\limits_{k=0}^nB_k^{(n)}=1.$$
+
+\podz{sep}
+\medskip
+
+Rozważmy funkcję $f$ stale równą zero na przedziale od 0 do 1. Wtedy
+\begin{align*}
+    1=Q_n^{NC}(f)=\sum\limits_{k=0}^nA_k^{(n)}f(x_k)=\sum\limits_{k=0}^nA_k^{(n)}
+\end{align*}
+i jeśli podzielimy to przez długość naszego przedziału, to otrzymujemy
+\begin{align*}
+    {1\over 1-0}=1=\sum\limits_{k=0}^n{A_k^{(n)}\over 1-0}=\sum\limits_{k=0}^nB_k^{(n)}
+\end{align*}
+
+\subsection*{ZAD. 6.}
+\emph{Niech $f\in C^4[a,b]$. Obliczamy wartość całki $I(f)=\int_a^bf(x)dx$ za pomocą wzoru Simpsona, czyli kwadraturą Newtona-Cotesa dla $n=2$. Udowodnić, że istnieje taka liczba $\varepsilon\in[a,b]$ dla której}
+$$I(f)-Q_2^{NC}(f)=-{f^{(4)}(\varepsilon)\over90}h^5$$
+
+\podz{sep}
+\medskip
+
+Strona 139-140 Fichtenholz część druga. 
+
+\subsection*{ZAD. 8.}
+\emph{Wykazać, że dla dowolnej funkcji $f$ ciągłej w przedziale $[a,b]$ ciąg złożonych wzorów trapezów $\{T_n(f)\}$ jest zbieżny do wartości całki $\int_a^bf(x)dx$ gdy $n\to\infty$.}
+
+\begin{align*}
+    \sum\limits_{k=0}^{n-1}\int\limits_{a+kh}^{a+(k+1)h}f(x)dx&=\sum\limits_{k=0}^{n-1}{f(a+(k+1)h)+f(a+kh)\over 2}h=\frac12\sum\limits_{k=0}^{n-1}f(a+(k+1)h)h+\frac12\sum\limits_{k=0}^{n-1}f(a+kh)h\to\frac12\int\limits_a^bf(x)dx+\frac12\int\limits_a^bf(x)dx
+\end{align*}
+
+\end{document}
