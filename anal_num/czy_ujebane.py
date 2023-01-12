@@ -17,6 +17,30 @@ proc_1 = sum(MOD1MY) / sum(MOD1)
 proc_2 = sum(MOD2MY) / sum(MOD2)
 proc_3 = sum(MOD3MY) / sum(MOD3)
 
+pracownia = 22.5
+#6 + 22.5
+
+sprawdzian = 18
+
+W = 0.15 * (suma_moje/ 62) + 0.10 * (pracownia/12)
+
+ile = (2 - W) * 20 * 4 / 3
+
+#print("EGZAMIN - ILE MUSZE: ", ile)
+
+print("CO JAK WYZERUJE EGZAMIN: ", W)
+
+
+print("ILE MAM PUNKTÓW Z ĆWICZEŃ: ", suma_moje + sprawdzian)
+print("ILE TO PROCENT: ", (suma_moje + sprawdzian) / (suma_max + 30))
+
+na_piatke = 118 / 150
+
+print("na piatke: ", na_piatke)
+print("CZYLI TERAZ TRZEBA ", na_piatke * (suma_max + 30), "ZEBY MIEC 5")
+
+print("ILE MI DO PIATKI BRAKUJE: ", 118-(suma_moje+sprawdzian), " ILE JESZCZE BEDZIE Z LIST: ", 120-suma_max)
+
 if proc_1 < 0.4 or proc_2 < 0.4 or proc_3 < 0.4:
     print("TAK DEBILU")
     print(proc_1)
