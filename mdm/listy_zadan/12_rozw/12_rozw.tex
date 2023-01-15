@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 12}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 1.}
+
+\begin{lstlisting}[language=Python]
+odwiedzone = [0] * n
+skoki = [0] * n
+
+nozyczki = -1
+
+def dfsik(j, studnia):
+    odwiedzone[j] = 1
+    skoki[j] = studnia
+    zmienna = 0
+
+    for i in sasiedzi[j]:
+        if not odwiedzone[i]:
+            zmienna++
+            skoki[j] = max(skoki[j], dfsik(i, studnia+1))
+
+    if studnia == 0 and zmienna > 1:
+        nozyczki = j
+
+    if skoki[j] <= studnia
+        nozyczki = j
+
+    return skoki[j]
+        
+
+def rozspojnia():
+    dfsik(0, 0)
+    if nozyczki == -1:
+        print("NIE ISTNIEJE WIERZCHOLEK ROZSPOJNIAJACY")
+    else:
+        print(nozyczki)
+        
+
+
+\end{lstlisting}
+
+\subsection*{ZAD. 2.}
+\begin{lstlisting}[language=Python]
+odwiedzone = [0] * n
+kolorowanie = [0] * n
+
+def dfsik(j, kolor):
+    odwiedzone[j] = 1
+    kolorowanie[j] = kolor
+
+    for i in sasiedzi[j]:
+        if not odwiedzone[i]:
+            if not dfsik(i, kolor * -1): return False
+            
+        if kolorowanie[i] == kolorowanie[j]:
+            return False
+    return True
+
+\end{lstlisting}
+
+\subsection*{ZAD. 3.}
+\begin{lstlisting}[language=Python]
+odwiedzone = [0] * n
+kolorowanie = [0] * n
+
+pom = []
+
+def dfsik(j):
+    odwiedzone[j] = 1
+    for i in sasiedzi[j]:
+        if not visited[i]: dfs(i)
+    
+    pom.append(i)
+
+def topo():
+    for i in range(len(pom)):
+        kolejnosc.append(pom[n-i])
+\end{lstlisting}
+
+    \subsection*{ZAD. 9}
+
+\begin{lstlisting}[language=Python]
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if (d[j][i] < INF && d[i][k] < INF):
+                nc = d[j][i] + d[i][k]
+                if d[j][k] > nc:
+                    d[j][k] = nc 
+                    p[j][k] = p[j][i] + p[i][k]
+            
+\end{lstlisting}
+
+\end{document}
