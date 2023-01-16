@@ -105,4 +105,22 @@ for i in range(n):
             
 \end{lstlisting}
 
+\subsection*{ZAD. 14.}
+\emph{Graf jest krawędziowo k-spójny gdy jest spójny i usunięcie z niego co najwyżej $(k-1)$ krawędzi nie rozspójnia go. Używając przepływów w sieciach pokaż, że $G$ jest krawędziowo $k$-spójny $\iff$ między dwoma wierzchołkami istnieje $k$ krawędziowo rozłącznych dróg.}
+\medskip
+
+\podz{sep}
+\medskip
+
+$\color{acc}\impliedby$
+\smallskip
+
+Niech $G$ będzie grafem takim, że między dowolnymi dwoma wierzchołkami jest $k$ krawędziowo rozłącznych dróg. Weźmy $F\subseteq E(G)$ zbiór krawędzi taki, że $G\setminus F$ jest grafem rozłącznym. Z założenia wimy, że dla dowolnych $v,w\in G$ istnieje $k$ rozłącznych dróg w $G$ między tymi dwoma wierzchołkami, więc aby $G\setminus F$ było rozłączne, to musimy co najmniej jedną krawędź z każdej z tych $k$ dróg wyjąć. Czyli $|F|\geq k$.
+\medskip
+
+$\color{acc}\implies$
+\smallskip
+
+Niech $G$ będzie grafem krawędziowo $k$-spójnym. Weźmy dwa dowolne wierzchołki $v,w\in G$. 
+
 \end{document}
