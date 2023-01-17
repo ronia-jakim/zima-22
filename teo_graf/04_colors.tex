@@ -119,4 +119,19 @@ Skipped
 
 \begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
 {\color{def}Formuła Eulera=Poincar\'e}: niech $G$ będzie grafem z $|G|=n$ i $e(G)=m$ i załóżmy, że istnieje rysunek $G$ na zamkniętej przestrzeni $X$ z $l$ ścianami. Wtedy $n-m+l\geq\epsilon(X)$, gdzie $\epsilon(X)$ jest charakterystyką Eulera przestrzeni $X$, zdefiniowaną jako $\epsilon(\sigma_g)=2-2g$ oraz $\epsilon(N_g)=2-g$.
+\medskip
+
+Niech $X$ będzie powierzchnią o charakterystyce Eulera $\epsilon$, i załóżmy, że graf $G$ może zostać narysowany na $X$. Wtedy 
+$$\chi(G)\leq\lfloor{7+\sqrt{49-24\epsilon}\over2}\rfloor$$
+\end{tabularx}
+
+\subsection{Chromatic numbers of arbitrary graphs}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+{\color{def}Liczba klik} grafu $G$ jest definiowana jako
+$$\omega(G):=\max\{r\geq1\;:\; K_r\leq G\}$$
+
+Podzbiór $W\subseteq V(G)$ jest nazywany {\color{def}niezależnym}, jeżeli $G[W]$ nie ma krawędzi. {\color{def}Liczba niezależności} grafu $G$ jest definiowana
+$$\alpha(G)=\max\{|W|\;:\;W\subseteq V(G)\text{ jest niezależny}\}$$
+
 \end{tabularx}
