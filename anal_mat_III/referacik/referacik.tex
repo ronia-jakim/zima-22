@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\title{referacik}
+\author{dupa chuj \and kurwa szmata}
+\date{21.37}
+
+\newcommand{\T}{\rodz{T}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+{\large\color{def}TENSORY} chuje małe
+\begin{description}
+    \item [$k$-tensor] to funkcja $k$-liniowa $T:V^k\to\R$ dla $V$ - przestrzeni liniowej nad $\R$. Zbiór wszystkich $k$-tensorów oznaczamy $\rodz{T}^k(V)$ i wymagamy, żeby to była przestrzeń liniowa (dodawanie, mnożenie przez skalary ma śmigać)
+    \item [Iloczyn tensorowy] dla $S\in\T^j(V)$ oraz $T\in\T^k(V)$ to $S\otimes T\in\T^{j+k}(V)$i definiujemy go: $$(S\otimes T)(v_1,...,v_{k+j})=S(v_1,...,v_j)\cdot T(v_{j+1},...,v_{k+j}),$$ bo przecież $S$ i $T$ to tak naprawdę skalary, więc sprowadza się to do mnożenia skalarów, tylko musimy zmienić dziedzinę żeby śmigało :v
+    \item Jeśli $e_1,...,e_d$ jest bazą $V$, a $\phi_1,...,\phi_d$ jest jej bazą dualną, to zbiór wszystkich iloczynów tensorowych $k$ elementów bazy dualnej jest \textbf{bazą przestrzeni $\T^k(V)$}.
+    \item Dla odzworowania liniowego $f:V\to W$ definiujemy odwzorowanie liniowe $f^*:\T^k(W)\to\T^k(V)$ jako $$(f^*T)(v_1,...,v_k)=T(f(v_1),...,f(v_k))$$
+\end{description}
+\medskip
+
+Większe chuje, czyli {\large\color{def}TENSORY ALTERNUJĄCE}
+\begin{description}
+    \item [Tensor alternujący] $\omega$ to taki, że dla dowolnego $\sigma\in S_k$ mamy $$\omega(v_{\sigma(1)},...,v_{\sigma(k)})=(sgn(\sigma))\omega(v_1,...,v_k)$$ Przestrzeń liniową tensorów alternujących oznaczamy $\Omega^k(V)$
+    \item Przekształcenie $Alt:\T^k(V)\to\Omega^k(V)$ definiowane $Alt(T)(v_1,...,v_k)=\frac1{k!}\sum_{\sigma\in S_k}(sgn(\sigma))T(v_{\sigma(1)},...,v_{\sigma(k)})$ jest liniowe.
+    \item [Iloczyn zewnętrzny tensorów alternujących] jest definiowany dla $\omega\in\Omega^k(V)$ i $\eta\in\Omega^j(V)$ jako $$\omega\land\eta={(k+1)!\over k!j!}Alt(\omega\otimes\eta)\in\Omega^{k+j}(V)$$
+    \item Zbiór wszystkich $k$-krotnych iloczynów zewnętrznych $\phi_i$ jest \textbf{bazą przestrzeni} $\Omega^k(V)$.
+\end{description}
+
+Formalne chuje {\large\color{def}POLA I FORMY}
+\begin{description}
+    \item[Przestrzeń styczna] w punkcie $p\in\R^d$ jest definiowana jako $$T_p\R^d=\R^d_p:=\{(p,v)\;:\;p,v\R^d\}$$ 
+\end{description}
+
+\end{document}

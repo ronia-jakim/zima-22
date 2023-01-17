@@ -1,0 +1,98 @@
+\section{Architecture shit}
+
+\subsection{Planar graphs}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+    {\color{def}Admissible $k$-coloring} is a map $c:V(G)\to[k]$ such that $c(v)\neq c(w)$ for any $v\sim_G w$. Therefore, $G$ has an admissible $k$-coloring $\iff$ $\chi(G)\leq k$.
+    \medskip
+
+    For a graph $G$ and a surface $X$ we can define a {\color{def}drawing of $G$ on $X$} as an injection $\phi:V\to X$ along with a collection of continuous injections $\gamma_e:[0,1]\to X$ for each $e\in E(G)$ such that:
+    \smallskip
+
+    \point $(\forall\;e=vw)\;\{\gamma_e(0),\gamma_e(1)\}=\{\phi(v),\phi(w)\}$
+
+    \point $(\forall\;e,f\in E(G))\;(e\neq f)\implies\gamma_e((0,1))\cap \gamma_f((0,1))=\emptyset$, meaning that edges in a drawing intersect only in shared vertices
+
+    \point $(\forall\;e\in E(G))\;\gamma_e((0,1))\cap\phi(V)=\empty$.
+
+    If a drawing of $G$ exists, then {\color{def}$G$ is planar}.
+    
+    &
+
+    {\color{def}Poprawne $k$-kolorowanie} jest funkcją $c:V(G)\to[k]$ taką, że $c(v)\neq c(w)$ dla każdych $v\sim_Gw$. Czyli, $G$ posiada $k$-kolorowanie $\iff$ $\chi(G)\leq k$.
+    \medskip
+
+    Dla grafu $G$ i powierzchni $X$ możemy zdefiniować {\color{def}rysunek $G$ na $X$} jako iniekcję $\phi:V\to X$ razem z rodziną ciągłych iniekcji $\gamma_e:[0,1]\to X$ dla każdego $e\in E(G)$ takich, że
+    \smallskip
+
+    \point $(\forall\;e=vw)\;\{\gamma_e(0),\gamma_e(1)\}=\{\phi(v),\phi(w)\}$
+
+    \point $(\forall\;e,f\in E(G))\;(e\neq f)\implies\gamma_e((0,1))\cap \gamma_f((0,1))=\emptyset$, czyli krawędzie przecinają się jedynie we wspólnych wierzchołkach
+
+    \point $(\forall\;e\in E(G))\;\gamma_e((0,1))\cap\phi(V)=\empty$.
+
+    Jeżeli rysunek grafu $G$ istnieje, wtedy {\color{def}$G$ jest planarny}.\\
+
+    & \\
+
+    \hline
+
+    & \\
+
+    A {\color{def}subdivision} of graph $G$ is obtained by adding a vertex in the middle of an edge repeatedly. 
+    \medskip
+
+    {\color{def}Kuratowski's Theorem}: A graph is planar $\iff$ it contains no subdivisions of $K_5$ or $K_{3,3}$ as subgraphs.
+
+    &
+    {\color{def}Elementarny podpodział} (tak mówi wikipedia???) grafu $G$ jest otrzymywany poprzez dodanie wierzchołka w środek krawędzi wielokrotnie.
+    \medskip
+
+    {\color{def}Twierdzenie Kuratowskiego}: Graf jest planarny $\iff$ nie posiada podpodziałów $K_5$ lub $K_{3,3}$ jako podgrafów.\\
+
+    & \\
+
+    \hline
+    
+    & \\
+
+    A {\color{def}face} of a graph on a surface $X$ is a smaller, enclosed region in which $X$ was divided by edges of the graph.
+    \medskip
+
+    {\color{def}Euler's Formula}: let $G$ be a connected planar graph with $|G|=n$ and $e(G)=m$ and let us suppose that there exists a drawing of $G$ with $l$ faces. Then $n-m+l=2$.
+    \medskip
+
+    {\color{def}Five Color Theorem}: if $G$ is planar, then $\chi(G)\leq 5$. This was later strengthen with {\color{def} Four Color Thorem} which said $G$ - planar $\implies$ $\chi(G)\leq4$.
+
+    &
+    
+    {\color{def}Ściana} grafu na powierzchni $X$ jest mniejszym, zamkniętym rejonem na który $X$ został podzielony przez krawędzie grafu.
+    \medskip
+
+    {\color{def}Formuła Euler'a}: niech $G$ będzie spójnym planarnych grafem z $|G|=n$ i $e(G)=m$ i załóżmy, że istnieje rysunek $G$ z $l$ ścianami. Wtedy $n-m+l=2$.
+    \medskip
+
+    {\color{def}Twierdzenie o 5 kolorach}: jeżeli $G$ jest planarny, to $\chi(G)\leq5$. Twierdzenie to zostało później wzmocnione przez {\color{def}Twierdzenie o 4 kolorach}, które mówi, że $G$ - planarny $\implies$ $\chi(G)\leq4$.
+
+\end{tabularx}
+
+\subsection{Kuratowski's Theorem}
+Skipped
+
+\subsection{Graphs on surfaces}
+
+\begin{tabularx}{\textwidth}{ X!{\color{git90gray}\vrule} X}
+
+{\color{def}Connected sum} [$X\# Y$] of surfaces $X$ and $Y$ without boundary is a surface obtained by removing open disks from $X$ and $Y$ to get surfaces $X'$ and $Y'$ with boundary and gluing $X'$ and $Y'$ along their boundary circles.
+\medskip
+
+{\color{def}Classification Theorem of Closed Surfaces}: let $X$ be a closed surfaces. Then $X$ is homeomorphic to one of:
+\smallskip
+
+\point the sphere: $\sigma_0:=\mathbb{S}^2$ of genus 0
+
+\point the connected sum $\sigma_g:=\mathbb{T}^2\#...\#\mathbb{T}^2$ of $g\geq 1$ copies of the torus $\mathbb{T}^2$ also known as the closed orientable surface of genus $g$ or
+
+\point the connected sum $N_g:=\R P^2\# ...\#\R P^2$ of $g\geq1$ copies of the real projective plane $\R P^2$ also know as the closed non-orientable surface of genus $g$.
+
+\end{tabularx}
