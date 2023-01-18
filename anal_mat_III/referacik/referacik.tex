@@ -12,7 +12,25 @@
 \maketitle
 \thispagestyle{empty}
 
-{\large\color{def}TENSORY} chuje małe
+\tableofcontents
+
+\subsection{Powtórka tego co było}
+
+{\large\color{def}DYFEOMORFIZM} to funkcja $h:U\to V$ dla otwartych $U,V\subseteq\R^n$ która jest klasy $C^\infty$ i jej odwrotność $h^{-1}:V\to U$ jest również klasy $C^\infty$. {\large\color{def}$k$-WYMIAROWA ROZMAITOŚĆ} to podzbiór $M\subseteq\R^n$ taki, że dla każdego punktu $x\in M$ istnieje otwarty podzbiór $x\ni U\subseteq\R^n$, otwarty podzbiór $V \subseteq\R^n$ oraz dyfeomorfizm $h:U\to V$ taki, że
+$$h(U\cap M)=V\cap (\R^k\times\{0\})=\{y\in V\;:\;y^{k+1}=...=y^n=0\}$$
+czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0\}$.
+\medskip
+
+{\large\color{def}UKŁAD WSPÓŁRZĘDNYCH} wg. Spivaka to różnowartościowa funkcja $W\to\R^n$ dla otwartego $W\subseteq\R^k$ taka, że
+
+\point $f(W)=M\cap U$
+
+\point $f'(y)$ ma rangę $k$ (czyli obraz ma wymiar $k$) dla każdego $y\in W$
+
+\point $f^{-1}:f(W)\to W$ jest ciągła.
+\medskip
+
+{\large\color{def}TENSORY}
 \begin{description}
     \item [$k$-tensor] to funkcja $k$-liniowa $T:V^k\to\R$ dla $V$ - przestrzeni liniowej nad $\R$. Zbiór wszystkich $k$-tensorów oznaczamy $\rodz{T}^k(V)$ i wymagamy, żeby to była przestrzeń liniowa (dodawanie, mnożenie przez skalary ma śmigać)
     \item [Iloczyn tensorowy] dla $S\in\T^j(V)$ oraz $T\in\T^k(V)$ to $S\otimes T\in\T^{j+k}(V)$i definiujemy go: $$(S\otimes T)(v_1,...,v_{k+j})=S(v_1,...,v_j)\cdot T(v_{j+1},...,v_{k+j}),$$ bo przecież $S$ i $T$ to tak naprawdę skalary, więc sprowadza się to do mnożenia skalarów, tylko musimy zmienić dziedzinę żeby śmigało :v
@@ -21,7 +39,7 @@
 \end{description}
 \medskip
 
-Większe chuje, czyli {\large\color{def}TENSORY ALTERNUJĄCE}
+{\large\color{def}TENSORY ALTERNUJĄCE}
 \begin{description}
     \item [Tensor alternujący] $\omega$ to taki, że dla dowolnego $\sigma\in S_k$ mamy $$\omega(v_{\sigma(1)},...,v_{\sigma(k)})=(sgn(\sigma))\omega(v_1,...,v_k)$$ Przestrzeń liniową tensorów alternujących oznaczamy $\Omega^k(V)$
     \item Przekształcenie $Alt:\T^k(V)\to\Omega^k(V)$ definiowane $Alt(T)(v_1,...,v_k)=\frac1{k!}\sum_{\sigma\in S_k}(sgn(\sigma))T(v_{\sigma(1)},...,v_{\sigma(k)})$ jest liniowe.
@@ -29,9 +47,36 @@ Większe chuje, czyli {\large\color{def}TENSORY ALTERNUJĄCE}
     \item Zbiór wszystkich $k$-krotnych iloczynów zewnętrznych $\phi_i$ jest \textbf{bazą przestrzeni} $\Omega^k(V)$.
 \end{description}
 
-Formalne chuje {\large\color{def}POLA I FORMY}
+{\large\color{def}POLA}
 \begin{description}
-    \item[Przestrzeń styczna] w punkcie $p\in\R^d$ jest definiowana jako $$T_p\R^d=\R^d_p:=\{(p,v)\;:\;p,v\R^d\}$$ 
+    \item[Przestrzeń styczna] w punkcie $p\in\R^d$ jest definiowana jako $$T_p\R^d=\R^d_p:=\{(p,v)\;:\;p,v\R^d\}$$ i określamy na niej działanie $(p,v)+(p,w)=(p, v+w)$ oraz $a(p, v)=(p, av)$.
+    \item[Wiązka styczna] w punkcie $p$ to zbiór $\{(p,v)\;:\;p\in\R^d,v\in\R^d\}=\bigcup\limits_{p\in\R^d}T_p\R^d$
+    \item[Pole wektorowe] zmienia definicje z $F:\R^d\to\R^d$ zadanego $F(p)=(F_1(p),...,F_d(p))$ na $F:\R^d\to T\R^d$ zadanego wzorem $F(p)=(p,\sum\limits_{i=1}^d F^i(p)e_i)$ dla wektorów bazowych $e_i$. Pola wektorowe można dodawać i mnożyć przez funkcjonał.
+    \item To samo możemy zrobić dla $1$-tensorów, czyli funkcjonałów - podmieniamy w definicji wiązki stycznej wektor $v$ na funkcjonał i dostajemy $T^*\R^d\approx\R^d\times\Omega^1(\R^d)$.
 \end{description}
+
+\section{Wprowadzenie do twierdzenia Stokes'a}
+
+{\large\color{def}FORMY}
+\begin{description}
+    \item Mówimy, że funkcja $\overline{\phi}:\R^d\to T^*\R^d$ jest nazywana \textbf{cięciem} $T^*\R^d$, a z kolei $\overline{\omega}:\R^d\to\Omega^k(T\R^d)$ jest \textbf{cięciem $T\R^d$}. Alternatywnie, te funkcje nazywamy odpowiednio \textbf{\color{acc}1-formą i $k$-formą}.   
+    \item Mimo, że wszystkie funkcjonały zapisują się jako suma $\overline{\phi_i}(E_j)=\delta_{ij}$ przemnożona przez $a_i(p)$, ale nie jest to baza, bo $a_i$ to funkcjonał a nie skalar
+    \item {\color{def}NOWE OZNACZENIE: $dx^i=\overline{\phi_i}$.}
+    \item Dowolną $k$-formę możemy zapisać jako $$\omega=\sum\limits_{i_1<...<i_k}\omega_{i_1...i_k}dx^{i_1}\land ...\land dx^{i_k}$$ gdzie $\omega_{i_k}$ to funkcje na $\R^d$ a $\omega$ powinna mieć kreseczkę, ale używamy notacji ze Spivaka :3 Jeśli te funkcje są ciągłe, to cała forma nazywa się \textbf{\color{acc}formą ciągłą} i tak samo z klasami $C^1,C^2,...,C^\infty$.
+    \item [Przestrzeń $k$-form klasy $C^m$] to $\Gamma^k_m(\R^d)=\{\omega:\R^d\to\Omega^k(T\R^d)\;:\;\omega(p)\in\Omega^k(T_p\R^d)\}$ jest przestrzenią liniową nad $\R$ z dodatkową strukturą mnożenia przez funkcje klasy $C^m$
+\end{description}
+
+{\color{def}Różniczka $dg\in\Gamma^1_0(\R^d)$} dla funkcji $g\in C^1(\R^d)$ to $1$-forma $dg={\partial g\over \partial x_1}dx^1+...+{\partial g\over \partial x_d}dx^d$. Dla funkcji różniczkowalnej $f:\R^d\to\R^m$ możemy też zdefiniować odwzorowanie liniowe $Df(p):\R^d\to\R^m$.
+
+Jeśli mamy $k$-rozmaitość $M\subseteq\R^n$ i układ współrzędnych $f:W\to\R^n$ wokół $x=f(a)$. Ponieważ ranga $f'(a)$ wynosi $k$, to liniowe przekształcenie $f_*:T_a\R^d\to T_{f(a)}\R^m$ zadaną wzorem
+$$f_*((a,v))=(f(a), Df(a)(v)).$$
+Wtedy $f_*(T_a\R^k)$ jest $k$-wymiarową podprzestrzenią $T_{f(a)}\R^n$. W dodatku jest to niezależne od wyboru układu współrzędnych, czyli jeśli $g$ też jest układem tam gdzie $f$ i $x=g(b)$, to 
+$$g_*(T_b\R^k)=f_*(f^{-1}\circ g)_*(T_b\R^k)=f_*(T_a\R^k)$$
+i to jest przestrzeń styczna $M$ w $x$, co Spivak oznacza $M_x$.
+\smallskip
+
+Kolejna funkcja, czyli 
+$$f^*:\Gamma^k_0(\R^m)\to\Gamma_0^k(\R^d)$$
+$$f^*(\omega)(a)(v_1,...,v_k)=\omega(f(a))(f_*(v_1),...,f_*(v_k))$$
 
 \end{document}

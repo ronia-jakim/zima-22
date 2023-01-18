@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{../uni-notes-eng}
+
+\title{Zadania z $^{**}$ lista 15}
+\author{Weronika Jakimowicz}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 3.}
+
+Zrobimy to taką troszkę dziwną, skończoną indukcją. To znaczy najpierw pokażemy, że jest pierwsza pochodna po oby współrzędnych. 
+
+% Jeżeli pochodna cząstkowa istnieje, to istnieje też limit
+% $$\lim\limits_{h\to0}{f\star g(x_1+h, x_2)-f\star g(x_1,x_2)\over h}$$
+% popatrzmy najpierw dokładniej na mianownik tego wyrażenia
+% \begin{align*}
+%     f\star g(x_1+h,x_2)-f\star g(x_1,x_2)&=\int\int f(x_1+h-y_1, x_2-y_2)g(y_1,y_2)dy_1dy_2-\int\int f(x_1-y_1,x_2-y_2)g(y_1,y_2)dy_1dy_2=\\
+%     &=\int\int g(y_1,y_2)[f(x_1+h-y_1, x_2-y_2)-f(x_1-y_1,x_2-y_2)]dy_1dy_2
+% \end{align*}
+% {\color{orange}ARGUMENT ZE MOGE WLOZYC POD CALKE}
+% I wkładając granicę pod całkę, dostajemy
+% \begin{align*}
+%     \lim\limits_{h\to0}{f\star g(x_1+h, x_2)-f\star g(x_1,x_2)\over h}&=\int\int g(y_1,y_2)[\lim\limits_{h\to0}{f(x_1+h-y_1, x_2-y_2)-f(x_1-y_1,x_2-y_2)\over h}]dy_1dy_2=\\
+%     &=\int\int g(y_1,y_2)f_x(x_1-y_1, x_2-y_2)dy_1dy_2
+% \end{align*}
+
+Korzystając z zadania 12 z listy 12 dla $h(x)=\int_a^bg(x,y)dy$, czyli przedział całkowania jest stały i wyraz $\int_c^df(x,x,z)dz$ się redukuje, dostajemy
+\begin{align*}
+    {d\over dx_1}\phi\star f(x_1,x_2)&={d\over dx_1}\int\int \phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2=\int\int{\partial\over\partial x_1}\phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2
+\end{align*}
+i analogicznie dla drugiej współrzędnej.
+\medskip
+
+Załóżmy teraz, że dla wszystkich $\alpha=(a_1,a_2)$ takiego, że $|\alpha|<m$ mamy ciągłe pochodne cząstkowe. Oznaczmy $D^\alpha(\phi\star f)(x)=g$. Popatrzmy teraz na dwie kolejne pochodne: dla $\alpha_1=(a_1+1,a_2)$ oraz $\alpha_2=(a_1,a_2+1)$. Zacznijmy od tej pierwszej.
+\begin{align*}
+    D^{\alpha_1}(\phi\star f)(x_1,x_2)&={d\over dx_1}g(x)={d\over dx_1}\int\int D^\alpha \phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2=\\
+    &=\int\int{d\over dx_1}D^\alpha\phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2=\\
+    &=\int\int D^{\alpha_1}\phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2
+\end{align*}
+Analogicznie dla drugiej:
+\begin{align*}
+    D^{\alpha_2}(\phi\star f)(x_1,x_2)&={d\over dx_2}g(x)={d\over dx_1}\int\int D^\alpha \phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2=\\
+    &=\int\int{d\over dx_2}D^\alpha\phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2=\\
+    &=\int\int D^{\alpha_2}\phi(x_1-y_1,x_2-y_2)f(y_1,y_2)dy_1dy_2
+\end{align*}
+I oczywiście ogranicza nas tutaj od góry fakt, że $\phi$ ma tylko $m$ pochodnych cząstkowych.
+\medskip
+
+Jeszcze słowem komentarza o funkcji $f$. Dzięki temu, że $f$ jest niezerowa tylko na ograniczonym zbiorze, to możemy ten podzbiór miary zero na którym nie jest ciągła ograniczyć przez kwadraciki o coraz to mniejszej mierze. To znaczy zbiór $S$ punktów nieciągłości $f$ jest zawarty w domkniętym
+$$S\subseteq\sum\limits_{i=0}^n[a_i,b_i]\times[a_i,b_i]$$
+którego miarę łatwo jest policzyć i możemy zmniejszać ich średnicę poniżej dowolnego $\varepsilon>0$, czyli całkowalność całości nam się nie psuje.
+
+\end{document}

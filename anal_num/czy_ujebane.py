@@ -7,8 +7,8 @@ MOD1MY = [7.5, 6, 8.5, 9]
 MOD2 = [8, 10.5, 10, 11.5, 11]
 MOD2MY = [7, 5, 6.5, 4, 2]
 
-MOD3 = [15.5]
-MOD3MY = [8.5]
+MOD3 = [15.5, 20]
+MOD3MY = [8.5, 8.5]
 
 suma_max = sum(MOD1) + sum(MOD2) + sum(MOD3)
 suma_moje = sum(MOD1MY) + sum(MOD2MY) + sum(MOD3MY)
@@ -28,18 +28,18 @@ ile = (2 - W) * 20 * 4 / 3
 
 #print("EGZAMIN - ILE MUSZE: ", ile)
 
-print("CO JAK WYZERUJE EGZAMIN: ", W)
+# print("CO JAK WYZERUJE EGZAMIN: ", W)
 
 
-print("ILE MAM PUNKTÓW Z ĆWICZEŃ: ", suma_moje + sprawdzian)
-print("ILE TO PROCENT: ", (suma_moje + sprawdzian) / (suma_max + 30))
+# print("ILE MAM PUNKTÓW Z ĆWICZEŃ: ", suma_moje + sprawdzian)
+# print("ILE TO PROCENT: ", (suma_moje + sprawdzian) / (suma_max + 30))
 
-na_piatke = 118 / 150
+# na_piatke = 118 / 150
 
-print("na piatke: ", na_piatke)
-print("CZYLI TERAZ TRZEBA ", na_piatke * (suma_max + 30), "ZEBY MIEC 5")
+# print("na piatke: ", na_piatke)
+# print("CZYLI TERAZ TRZEBA ", na_piatke * (suma_max + 30), "ZEBY MIEC 5")
 
-print("ILE MI DO PIATKI BRAKUJE: ", 118-(suma_moje+sprawdzian), " ILE JESZCZE BEDZIE Z LIST: ", 120-suma_max)
+# print("ILE MI DO PIATKI BRAKUJE: ", 118-(suma_moje+sprawdzian), " ILE JESZCZE BEDZIE Z LIST: ", 120-suma_max)
 
 if proc_1 < 0.4 or proc_2 < 0.4 or proc_3 < 0.4:
     print("TAK DEBILU")
