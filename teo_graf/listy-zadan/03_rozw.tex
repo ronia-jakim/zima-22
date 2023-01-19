@@ -1,0 +1,69 @@
+\documentclass{article}[13pt]
+
+\usepackage{../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\begin{document}
+
+\subsection*{ZAD. 1.}
+\emph{(a) Konstruując przykład kolorowania $K_8$, pokaż, że $R(3, 4)\geq9$.}
+\medskip
+
+\begin{center}
+\begin{tikzpicture}
+    \node (1) at (0, 0) {$\bullet$};
+    \node (2) at (2, 0) {$\bullet$};
+    \node (3) at (4, -2) {$\bullet$};
+    \node (4) at (4, -4) {$\bullet$};
+    \node (5) at (2, -6) {$\bullet$};
+    \node (6) at (0, -6) {$\bullet$};
+    \node (8) at (-2, -2) {$\bullet$};
+    \node (7) at (-2, -4) {$\bullet$};
+    \draw[color=title-color] (1)--(3);
+    \draw[color=title-color] (1)--(4);
+    \draw[color=title-color] (1)--(6);
+    \draw[color=title-color] (1)--(7);
+    \draw[color=title-color] (2)--(4);
+    \draw[color=title-color] (2)--(5);
+    \draw[color=title-color] (2)--(7);
+    \draw[color=title-color] (2)--(8);
+    \draw[color=title-color] (3)--(5);
+    \draw[color=title-color] (3)--(6);
+    \draw[color=title-color] (3)--(8);
+    \draw[color=title-color] (4)--(6);
+    \draw[color=title-color] (4)--(7);
+    \draw[color=title-color] (5)--(7);
+    \draw[color=title-color] (5)--(8);
+    \draw[color=title-color] (6)--(8);
+    \draw[color=acc, very thick] (1)--(2)--(3)--(4)--(5)--(6)--(7)--(8)--(1);
+    \draw[color=acc, very thick] (1)--(5);
+    \draw[color=acc, very thick] (2)--(6);
+    \draw[color=acc, very thick] (3)--(7);
+    \draw[color=acc, very thick] (4)--(8);
+\end{tikzpicture}
+\end{center}
+\medskip
+
+\podz{sep}
+\medskip
+
+\emph{(b) Pokaż, że jeśli $R(s-1, t)$ i $R(s, t-1)$ są parzyste, to wtedy tak naprawdę mamy $R(s, t)\leq R(s-1, t)+R(s, t-1)-1$.}
+\medskip
+
+Let $x=R(s-1, t)$ and $y=R(s, t-1)$. We want to consider graph $K_{x+y-1}$. Let $v\in K_{x+y-1}$ be any vertex then we have $x+y-2$ edges going from it. For my convenience, all blue edges will be removed and only red edges will remain. If we have $x$ edges going from it, then we good as the neighborhood of $v$ will form a $K_x$. If we deleted $y$ edges, then we also good because then we have $y$ neighbors that are blue so they can form a $K_y$ which will have a blue $K_{t-1}$. Now what if we could only find vertices with $(x-1)$ red edges (and $(y-1)$ blue ones)? Well then we have a graph with $(x+y-1)$, an odd number of vertices.
+
+\subsection*{ZAD. 4.}
+\emph{Mając dane dwa grafy $G$ i $H$, piszemy $R(G, H)$ dla najmniejszej liczby $n\geq2$ takiej, że dowolne czerwono-niebieskie kolorowanie $K_n$ ma albo czerwony podgraf izomorficzny do $G$ albo niebieski izomorficzny do $H$.}
+
+\emph{(a) Dlaczego $R(G, H)$ istnieje?}
+\smallskip
+
+Every finite graph is a subset of some $K_n$ so we know that in the worst possible scenario we can just get the higher bound by checking what is the smallest clique for which $G$ is a subgraph and the same for $H$.
+\medskip
+
+\emph{(b) Pokaż, że $R(K_{1,t}, K_{r+1})=rt+1$ dla wszystkich $r,t\geq1$. [Wskazówka: Użyj twierdzenia Tur\'ana.]}
+
+
+\end{document}

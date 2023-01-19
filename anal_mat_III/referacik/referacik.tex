@@ -41,7 +41,7 @@ czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0
 
 {\large\color{def}TENSORY ALTERNUJĄCE}
 \begin{description}
-    \item [Tensor alternujący] $\omega$ to taki, że dla dowolnego $\sigma\in S_k$ mamy $$\omega(v_{\sigma(1)},...,v_{\sigma(k)})=(sgn(\sigma))\omega(v_1,...,v_k)$$ Przestrzeń liniową tensorów alternujących oznaczamy $\Omega^k(V)$
+    \item [Tensor alternujący] $\omega$ to taki, że dla dowolnego $\sigma\in S_k$ mamy $$\omega(v_{\sigma(1)},...,v_{\sigma(k)})=(sgn(\sigma))\omega(v_1,...,v_k)$$ Przestrzeń liniową tensorów alternujących oznaczamy $\Omega^k(V)$ (lub$\Lambda^k(V)$, jeżeli jesteśmy Spivakiem)
     \item Przekształcenie $Alt:\T^k(V)\to\Omega^k(V)$ definiowane $Alt(T)(v_1,...,v_k)=\frac1{k!}\sum_{\sigma\in S_k}(sgn(\sigma))T(v_{\sigma(1)},...,v_{\sigma(k)})$ jest liniowe.
     \item [Iloczyn zewnętrzny tensorów alternujących] jest definiowany dla $\omega\in\Omega^k(V)$ i $\eta\in\Omega^j(V)$ jako $$\omega\land\eta={(k+1)!\over k!j!}Alt(\omega\otimes\eta)\in\Omega^{k+j}(V)$$
     \item Zbiór wszystkich $k$-krotnych iloczynów zewnętrznych $\phi_i$ jest \textbf{bazą przestrzeni} $\Omega^k(V)$.
@@ -61,6 +61,7 @@ czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0
 \begin{description}
     \item Mówimy, że funkcja $\overline{\phi}:\R^d\to T^*\R^d$ jest nazywana \textbf{cięciem} $T^*\R^d$, a z kolei $\overline{\omega}:\R^d\to\Omega^k(T\R^d)$ jest \textbf{cięciem $T\R^d$}. Alternatywnie, te funkcje nazywamy odpowiednio \textbf{\color{acc}1-formą i $k$-formą}.   
     \item Mimo, że wszystkie funkcjonały zapisują się jako suma $\overline{\phi_i}(E_j)=\delta_{ij}$ przemnożona przez $a_i(p)$, ale nie jest to baza, bo $a_i$ to funkcjonał a nie skalar
+    \item Jeżeli $f:W\to \R^n$ jest układem współrzędnych, a $\omega$ jest $k$-formą na $M$ to $f^*\omega$ jest $k$-formą na $W$.
     \item {\color{def}NOWE OZNACZENIE: $dx^i=\overline{\phi_i}$.}
     \item Dowolną $k$-formę możemy zapisać jako $$\omega=\sum\limits_{i_1<...<i_k}\omega_{i_1...i_k}dx^{i_1}\land ...\land dx^{i_k}$$ gdzie $\omega_{i_k}$ to funkcje na $\R^d$ a $\omega$ powinna mieć kreseczkę, ale używamy notacji ze Spivaka :3 Jeśli te funkcje są ciągłe, to cała forma nazywa się \textbf{\color{acc}formą ciągłą} i tak samo z klasami $C^1,C^2,...,C^\infty$.
     \item [Przestrzeń $k$-form klasy $C^m$] to $\Gamma^k_m(\R^d)=\{\omega:\R^d\to\Omega^k(T\R^d)\;:\;\omega(p)\in\Omega^k(T_p\R^d)\}$ jest przestrzenią liniową nad $\R$ z dodatkową strukturą mnożenia przez funkcje klasy $C^m$
@@ -68,8 +69,8 @@ czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0
 
 {\color{def}Różniczka $dg\in\Gamma^1_0(\R^d)$} dla funkcji $g\in C^1(\R^d)$ to $1$-forma $dg={\partial g\over \partial x_1}dx^1+...+{\partial g\over \partial x_d}dx^d$. Dla funkcji różniczkowalnej $f:\R^d\to\R^m$ możemy też zdefiniować odwzorowanie liniowe $Df(p):\R^d\to\R^m$.
 
-Jeśli mamy $k$-rozmaitość $M\subseteq\R^n$ i układ współrzędnych $f:W\to\R^n$ wokół $x=f(a)$. Ponieważ ranga $f'(a)$ wynosi $k$, to liniowe przekształcenie $f_*:T_a\R^d\to T_{f(a)}\R^m$ zadaną wzorem
-$$f_*((a,v))=(f(a), Df(a)(v)).$$
+Jeśli mamy $k$-rozmaitość $M\subseteq\R^n$ i układ współrzędnych $f:W\to\R^n$ wokół $x=f(a)$. Ponieważ ranga $f'(a)$ wynosi $k$, to liniowe przekształcenie $f_*:T_a\R^d\to T_{f(a)}\R^m$ zadane wzorem
+$$f_*((a,v))=(f(a), Df(a)(v)) <- \text{I CO ONO PONIEWAŻUJE???}$$
 Wtedy $f_*(T_a\R^k)$ jest $k$-wymiarową podprzestrzenią $T_{f(a)}\R^n$. W dodatku jest to niezależne od wyboru układu współrzędnych, czyli jeśli $g$ też jest układem tam gdzie $f$ i $x=g(b)$, to 
 $$g_*(T_b\R^k)=f_*(f^{-1}\circ g)_*(T_b\R^k)=f_*(T_a\R^k)$$
 i to jest przestrzeń styczna $M$ w $x$, co Spivak oznacza $M_x$.
@@ -78,5 +79,13 @@ i to jest przestrzeń styczna $M$ w $x$, co Spivak oznacza $M_x$.
 Kolejna funkcja, czyli 
 $$f^*:\Gamma^k_0(\R^m)\to\Gamma_0^k(\R^d)$$
 $$f^*(\omega)(a)(v_1,...,v_k)=\omega(f(a))(f_*(v_1),...,f_*(v_k))$$
+
+\textbf{\large\color{acc}Twierdzenie}: istnieje jedyna $(p+1)$-forma $d\omega$ na rozmaitości $M$ taka, że dla każdego układu współrzędnych $f:W\to \R^n$ zachodzi
+$$f^*(d\omega)=d(f^*\omega),$$
+twierdzenie to jest bardzo podobne do zadania 3 z listy 22.
+
+{\color{acc}Dowodzik:} Niech $f:W\to\R^n$ będzie układem współrzędnych takim, że $x=f(a)$ i niech $v_1,...,v_{p+1}\in M_x$. Wtedy istnieją unikalne $w_1,..,w_{{p+1}}\in\R^n$ takie, że $f_*(w_i)=v_i$. Zdefiniujmy 
+$$d\omega(x)(v_1,...,v_{p+1})=d(f^*\omega)(a)(w_1,...,w_{p+1}).$$
+Trzeba sprawdzić, że taka definicja $d\omega$ nie zależy od układu współrzędnych $f$ (patrz na uwagę wyżej, że $f_*(T_a\R^k)$ nie zależy od wyboru układu współrzędnych), więc $d\omega$ zostało dobrze dobrane. Co więcej, jasne jest, że $d\omega$ musiało zostać wybrane tak a nie inaczej, żeby śmigało.
 
 \end{document}

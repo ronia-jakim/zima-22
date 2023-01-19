@@ -2,10 +2,50 @@
 
 \subsection{Definicja}
 
-{\color{def}Pierścień} $(R, +, \cdot)$ to zbiór z mnożeniem $\cdot$ oraz dodawaniem $+$ taki, że $(R, +)$ jest grupą przemienną, mnożenie jest łączne i posiada element neutralny. Dodatkowo, dodawanie jest rozdzielne względem mnożenia, czyli dla wszystkich $x,y,z\in A$ mamy
+{\color{def}Pierścień} $(R, +, \cdot)$ to zbiór z mnożeniem $\cdot$ oraz dodawaniem $+$ taki, że $(R, +)$ jest grupą przemienną, mnożenie jest łączne i posiada element neutralny. Dodatkowo, dodawanie jest dwustronnie rozdzielne względem mnożenia, czyli dla wszystkich $x,y,z\in A$ mamy
 $$(x+y)z=xz+yz$$
+Jeżeli w pierścieniu istnieje element neutralny $1$ dla mnożenia $\cdot$ [jedność pierścienia], to jest on unikalny, a pierścień $R$ dla którego to zachodzi jest nazywany {\color{def}pierścieniem z jednością}. Dalej, jeśli mnożenie jest działaniem przemiennym, to $R$ jest {\color{def}pierścieniem z jednością}.
+\smallskip
 
 Grupa $U$ zawierająca wszystkie elementy $A$ takie, że istnieją ich odwrotności dla mnożenia nazywa się {\color{def}grupą multiplikatywną} lub {\color{acc}unit group of $A$}. Czasem zapisujemy ją jako $A^*$ i nazywamy grupą elementów, które są {\color{acc}odwracalne}. Jeżeli w pierścieniu $A$ mamy $1\neq0$ i każdy jego element jest odwracalny, to $A$ jest nazywamy {\color{def}pierścieniem z dzieleniem}.
+\medskip
+
+{\color{def}Podpierścień} z jednością $R'\subseteq R$ jest pierścieniem względem działań z $R$, a w szczególności $1_{R'}=1_R$.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Niech $R$ będzie pierścieniem przemiennym z jednością (i tak będzie prawie zawsze), wtedy $R[X]$ to pierścień wielomianów zmiennej $X$ nad $R$. Istnieje też {\color{def}pierścień formalnych szeregów potęgowych} definiowany jako
+$$R[[X]]:=\{\sum\limits_{i=0}^\infty a_iX^i\;:\;a_i\in R\}$$
+z działaniami
+$$\sum a_iX^i+\sum b_iX^i=\sum(a_i+b_i)X^i$$
+$$\Big[\sum a_iX^i\Big]\Big[\sum b_iX^i\Big]=\sum c_iX^i$$
+gdzie $c_i=\sum\limits_{n+k=i}a_nb_k$. Tutaj warto zaznaczyć, że $R[X]\subseteq R[[X]]$, bo ciągi $(0,...,0,a_i,0,...)$ zadają nam kolejne współczynniki wielomianu.
+
+Na pierścieniu wielomianów możemy zdefiniować funkcję $deg(w):R[X]\to \N$, która wielomianowi przyporządkowuje jego stopień. Wtedy dla dowolnych $w,p\in R[X]$ zachodzą poniższe własności:
+$$deg(w\cdot p)\leq deg(w)+deg(p)$$
+i zazwyczaj jest to równość, ale możemy trafić na wielomiany dziwne.
+$$deg(w+p)\leq max(deg(w), deg(p)).$$
+
+Dalej, łatwo zauważyć, że $R\subseteq R[X]$ jako zbiór wielomianów stopnia zerowego.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Kolejnym przykładem pierścienia jest $\color{acc}R^X$, czyli {\color{def}pierścień funkcji} $X\to R$ dla $R$ będącego pierścieniem. Dla dowolnych $f,g\in R^X$ definiujemy działania następująco:
+$$(f+g)(x)=f(x)+_R g(x)$$
+$$(f\cdot g)(x)=f(x)\cdot_R g(x)$$
+Alternatywnie, możemy pierścień $R^X$ zapisać jako {\color{def}produkt pierścieni} z działaniami po osiach określonymi jak w przypadku produktów grup:
+$$R^X=\prod\limits_{x\in X} R_x$$
+gdzie $R_x=R$. 
+\medskip
+
+Jeżeli $X$ jest przestrzenią topologiczną, to przestrzeń $C(X)$ zawierająca funkcje ciągłe $X\to \R$ jest podpierścieniem pierścienia $\R^X$.
+\bigskip
+
+Jeżeli zajmiemy się na chwilę kategorią miary (lub miarą i całką, co kto woli), i rozważymy ciało zbiorów $\rodz{C}\subseteq \Po{X}$ z działaniami $\cap$ i $\triangle$, to również mamy pierścień. JEżeli teraz wprowadzimy {\color{acc}pierścień Boole'a}, czyli taki w którym $a^2=a$, to możemy go utożsamić z pierścieniami tworzonymi na zbiorach potęgowych dowolnego zbioru $X$.
 
 \subsection{Dzielnik zera}
 
