@@ -55,7 +55,7 @@ czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0
     \item To samo możemy zrobić dla $1$-tensorów, czyli funkcjonałów - podmieniamy w definicji wiązki stycznej wektor $v$ na funkcjonał i dostajemy $T^*\R^d\approx\R^d\times\Omega^1(\R^d)$.
 \end{description}
 
-\section{Wprowadzenie do twierdzenia Stokes'a}
+\section{Rozmaitości i takie tam}
 
 {\large\color{def}FORMY}
 \begin{description}
@@ -66,6 +66,8 @@ czyli $U\cap M$ jest z dokładnością do dyfeomorfizmy po prostu $\R^k\times\{0
     \item Dowolną $k$-formę możemy zapisać jako $$\omega=\sum\limits_{i_1<...<i_k}\omega_{i_1...i_k}dx^{i_1}\land ...\land dx^{i_k}$$ gdzie $\omega_{i_k}$ to funkcje na $\R^d$ a $\omega$ powinna mieć kreseczkę, ale używamy notacji ze Spivaka :3 Jeśli te funkcje są ciągłe, to cała forma nazywa się \textbf{\color{acc}formą ciągłą} i tak samo z klasami $C^1,C^2,...,C^\infty$.
     \item [Przestrzeń $k$-form klasy $C^m$] to $\Gamma^k_m(\R^d)=\{\omega:\R^d\to\Omega^k(T\R^d)\;:\;\omega(p)\in\Omega^k(T_p\R^d)\}$ jest przestrzenią liniową nad $\R$ z dodatkową strukturą mnożenia przez funkcje klasy $C^m$
 \end{description}
+
+\includegraphics[width=\textwidth]{4.6.png}
 
 {\color{def}Różniczka $dg\in\Gamma^1_0(\R^d)$} dla funkcji $g\in C^1(\R^d)$ to $1$-forma $dg={\partial g\over \partial x_1}dx^1+...+{\partial g\over \partial x_d}dx^d$. Dla funkcji różniczkowalnej $f:\R^d\to\R^m$ możemy też zdefiniować odwzorowanie liniowe $Df(p):\R^d\to\R^m$.
 
@@ -87,5 +89,60 @@ twierdzenie to jest bardzo podobne do zadania 3 z listy 22.
 {\color{acc}Dowodzik:} Niech $f:W\to\R^n$ będzie układem współrzędnych takim, że $x=f(a)$ i niech $v_1,...,v_{p+1}\in M_x$. Wtedy istnieją unikalne $w_1,..,w_{{p+1}}\in\R^n$ takie, że $f_*(w_i)=v_i$. Zdefiniujmy 
 $$d\omega(x)(v_1,...,v_{p+1})=d(f^*\omega)(a)(w_1,...,w_{p+1}).$$
 Trzeba sprawdzić, że taka definicja $d\omega$ nie zależy od układu współrzędnych $f$ (patrz na uwagę wyżej, że $f_*(T_a\R^k)$ nie zależy od wyboru układu współrzędnych), więc $d\omega$ zostało dobrze dobrane. Co więcej, jasne jest, że $d\omega$ musiało zostać wybrane tak a nie inaczej, żeby śmigało.
+\bigskip
+
+Jeżeli $M$ jest $k$-wymiarową rozmaitością z brzegiem oraz $x\in \partial M$, wtedy $T_x\partial M$ jest $(k-1)$-wymiarową podprzestrzenią $k$-wymiarowej pole wektorowego $T_xM$. W $T_xM$ są dokładnie dwa wektory jednostkowe prostopadłe do $T_x\partial M$ i dokładnie jeden z nich może mieć ujemną wartość przez $f_*$, taki wektor nazywamy \emph{zewnętrznym wektorem normalnym} i oznaczamy $n(x)$. Definicja ta jest niezależna od wybranego układu współrzędnych. Tutaj warto wspomnieć, że jeśli rozmaitość na której pracujemy może mieć określoną orientację, która jest zachowywana przez różne układy współrzędnych, to ta orientacja determinuje też orientację na $T_x\partial M$ i nazywa się ją wtedy orientacją indukowaną.
+
+\section{Wprowadzenie do twierdzenia Stokes'a}
+
+Całkowanie $p$-formy $\omega$ po $p$-kostce singularnej $c$ definiujemy jako
+$$\int_c\omega=\int_{[0,1]^p}c^*\omega$$
+U nas kostka $c$ jest zgodna z układem współrzędnych $f$ opisanym na $W\supseteq[0,1]^p$. I tutaj znowu, jeżeli funkcjonujemy w obrębie rozmaitości orientowalnej i nasz układ współrzędny też jest orientowalny, to również $p$-kostka taka jest. W skrypcie chyba tak są kostki ogólnie zdefiniowane przy standardowym układzie współrzędnych.
+\medskip
+
+\textbf{\large\color{def}Twierdzenio-lemacik:} jeśli $f:\R^n\to\R^n$ jest różniczkowalna, to
+$$f^*(hdx^1\land...\land dx^n)=(h\circ f)(det\;f')dx^1\land...\land dx^n$$
+\includegraphics[width=\textwidth]{4.9.png}
+
+\textbf{\large\color{acc}Twierdzenie:} dla dwóch orientowalnych $c_1,c_2:[0,1]^k\to M$ kostek zachowujących orientację w zorienotwanej $k$-rozmaitości $M$ oraz $k$-formy $\omega$ na niej, która zanika poza przekrojem tych kostek, mamy
+$$\int_{c_1}\omega=\int_{c_2}\omega$$
+
+{\color{acc}Dowodzik:} Z definicji wiemy, że
+$$\int_{c_1}\omega=\int_{[0,1]^k}c^*\omega$$
+Zauważmy, że $(c_2^{-1}\circ c_1)([0,1]^k)$ jest pewnym podzbiorem $[0,1]^k$, a ponieważ poza $c_1([0,1]^k)\cap c_2([0,1]^k)$, gdzie $c_2^{-1}\circ c_1$ zachowuje się jak identyczność, nasza forma się zeruje, to mamy
+$$\int_{[0,1]^k}c^*\omega=\int_{[0,1]^k}(c_2^{-1}\circ c_1)^*c_2^*\omega.$$
+Wystarczy teraz pokazać, że 
+$$\int_{[0,1]^k}(c_2^{-1}\circ c_1)^*c_2^*\omega=\int_{[0,1]^k}c_2^*\omega.$$
+Niech $g=c_2^{-1}\circ c_1$, a z kolei niech
+$$c_2^*\omega=fdx^1\land...\land dx^k$$
+
+\includegraphics[width=\textwidth]{5.4.png}
+
+I kończymy powołując się na:
+
+\includegraphics[width=\textwidth]{3.13.png}
+
+Zgaduję, że orientacje były tutaj potrzebne, bo inaczej ten wyznacznik by nam się nie zgodził????
+
+Jeżeli mamy rozmaitość $M$ i zdefiniowaną na nim $k$-formę $\omega$ oraz $k$-kostkę $c$ w $M$ taką, że poza $c([0,1]^k)$ $\omega$ się zeruje, to
+$$\int_M\omega=\int_c\omega$$
+i z powyższego twierdzenia wybór takiej kostki nie jest ważny, bo to wszystko to izomorfy będą.
+\medskip
+
+{\color{acc}I DALEJ TO JUŻ JEST STOKES, NA KTÓREGO ZA BARDZO MI MÓZG NIE DZIAŁA CHWILOWO}.
+
+
+\bigskip
+
+{\Large\color{acc}PYTANIA}:
+\smallskip
+
+Co oznacza grube $\mathbb{H}^k$ u Spivaka? Wiem, że otwarte podzbiory na których możemy opisywać układy współrzędnych w nim leżą.
+\smallskip
+
+Gdzie się w to wpisują kostki? To są takie podstawowe rozmaitości $k$-wymiarowe, a $I^(x)$ to ich układ współrzędnych? OK, BYŁY DALEJ XD
+\smallskip
+
+Czemu wystarczy przy $\color{red}\star\star\star$?
 
 \end{document}
