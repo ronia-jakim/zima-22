@@ -1,0 +1,607 @@
+\documentclass{book}
+%\documentstyle[amssymb,amsmath]{article}
+%\usepackage{latexsym}
+%\usepackage{amssymb,amsmath}
+\usepackage{custom}
+
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{1.4in}
+\addtolength{\textheight}{1.4in}
+\addtolength{\topmargin}{-.5in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\Large
+Analysis in ${\mathbb R}^n$ \\
+Math 205, Section 30 \\
+Spring Quarter 2008 \\
+John Boller, e-mail:  {\tt boller@math.uchicago.edu} \\
+website:  {\tt http://www.math.uchicago.edu/$\sim$boller/M203} \\
+\end{center}
+
+
+\vspace{50pt}
+\LARGE
+\begin{center}
+{\bf Integration}
+\end{center}
+
+\vspace{30pt}
+\normalsize
+
+\section{Differential Forms}
+
+\begin{definition}
+Let $V$ be a vector space over $\R$.  Then $V^k=V\times\cdots \times V=\{(v_1, \ldots, v_k)\mid
+v_i\in V, 1\leq i\leq k\}$.
+\end{definition}
+
+\begin{definition}
+If $V$ is a vector space over $\R$, a function $T:V^k\to\R$ is called {\em multi-linear} (or sometimes
+{\em $k$-linear}) provided that, for each $i=1,\ldots, k$, we have:
+\begin{eqnarray*}
+T(v_1, \ldots, v_i+v_i', \ldots, v_k) &=& T(v_1, \ldots, v_i,\ldots, v_k)+T(v_1, \ldots, v_i',\ldots, v_k) \\
+T(v_1, \ldots, \alpha v_i, \ldots, v_k) &=& \alpha T(v_1, \ldots, v_i,\ldots, v_k) 
+\end{eqnarray*}
+for all $v_j\in V$ and all $\alpha\in\R$.
+\end{definition}
+
+\begin{definition}
+The space $\mathcal{T}^k(V)=\{T:V^k\to\R\mid \mbox{$T$ is $k$-linear}\}$ is called the collection of
+{\em $k$-tensors} on $V$.
+\end{definition}
+
+\begin{definition}
+Let $V$ be a vector space over $\R$.  The {\em dual space} is 
+the collection of 1-tensors and is denoted $V^*=\mathcal{T}^1(V)=\{T:V\to\R\mid \mbox{$T$ is linear}\}$.
+\end{definition}
+
+\begin{exercise}\
+\begin{exerenm}
+\item
+Show that $V^*$ is a vector space over $\R$.
+
+\item
+If $V$ is finite-dimensional, find $dim(V^*)$.
+
+\item
+If $V$ is finite-dimensional, show that there is a natural isomorphism 
+$V\overset{\sim}\longrightarrow (V^*)^*$.
+\end{exerenm}
+\end{exercise}
+
+\begin{exercise}
+Show that $\mathcal{T}^k(V)$ is a vector space over $\R$ with addition and scalar multiplication 
+defined as follows:
+\begin{eqnarray*}
+(T_1+T_2)(v_1, \ldots, v_k) &=& T_1(v_1, \ldots, v_k)+T_2(v_1, \ldots, v_k) \\
+(\alpha T)(v_1, \ldots, v_k) &=& \alpha T(v_1, \ldots, v_k) 
+\end{eqnarray*}
+\end{exercise}
+
+\begin{definition} 
+We define the {\em tensor product} of two tensors as follows.
+If $S\in\mathcal{T}^k(V)$ and $T\in\mathcal{T}^\ell(V)$, then $S\otimes T\in\mathcal{T}^{k+\ell}(V)$,
+where
+$$
+S\otimes T(v_1, \ldots, v_k, v_{k+1}, \ldots, v_{k+\ell})=S(v_1, \ldots, v_k)\cdot T(v_{k+1}, \ldots, v_{k+\ell}).
+$$
+\end{definition}
+
+\begin{exercise}
+If $S, S_1, S_2, T, T_1, T_2$ and $U$ are tensors and $\alpha\in\R$, show the following:
+\begin{exerenm}
+\item  $S\otimes (T_1+T_2) = S\otimes T_1 + S\otimes T_2$
+
+\item  $(S_1+S_2)\otimes T= S_1\otimes T+S_2\otimes T$
+
+\item  $(\alpha S)\otimes T=\alpha (S\otimes T)=S\otimes (\alpha T)$
+
+\item  $S\otimes (T\otimes U)=(S\otimes T)\otimes U$
+\end{exerenm}
+\end{exercise}
+
+\begin{theorem}
+If $dim(V)=n$, then the dimension of $\mathcal{T}^k(V)$ is $n^k$.
+\end{theorem}
+(Hint:  Construct tensors in $\mathcal{T}^k(V)$ as tensor products of basis elements of
+the dual space $V^*$.)
+
+\begin{definition}
+We say that a tensor $T\in\mathcal{T}^k(V)$ is {\em symmetric} provided that:
+$$
+T(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_k)=T(v_1, \ldots, v_j, \ldots, v_i, \ldots, v_k)
+$$
+for every $v_1, \ldots , v_k\in V$ and all $1\leq i< j\leq k$.  
+The collection of symmetric $k$-tensors in $\mathcal{T}^k(V)$ is denoted $\mathcal{S}^k(V)$.
+
+We say that $T$ is {\em alternating} provided that:
+$$
+T(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_k)=-T(v_1, \ldots, v_j, \ldots, v_i, \ldots, v_k)
+$$
+for every $v_1, \ldots , v_k\in V$ and all $1\leq i< j\leq k$.  
+The collection of alternating $k$-tensors in $\mathcal{T}^k(V)$ is denoted $\Lambda^k(V)$.
+\end{definition}
+
+\begin{exercise}
+Show that the standard dot product on $V=\R^n$ is a symmetric 2-tensor.
+Here, we realize the dot product as $T:V\times V\to\R$ given by
+$T(v_1, v_2)=\langle v_1, v_2\rangle$.
+\end{exercise}
+
+\begin{exercise}
+Show that the determinant is an alternating $n$-tensor on $V=\R^n$.
+Here, we realize the determinant as $D:V^n\to\R$ given by 
+$\displaystyle{D(v_1, \ldots, v_n)=\det\left[
+\begin{array}{ccc}
+| & \cdots & | \\
+v_1 & \cdots & v_n \\
+| & \cdots & | \\
+\end{array}
+\right].}$
+\end{exercise}
+
+\begin{exercise}\
+Show that $\mathcal{S}^2(V)\oplus\Lambda^2(V)=\mathcal{T}^2(V)$ by proving the following:
+\begin{exerenm}
+\item
+$\mathcal{S}^2(V)$ and $\Lambda^2(V)$ are subspaces of $\mathcal{T}^2(V)$.
+
+\item
+$\mathcal{S}^2(V)\cap\Lambda^2(V)=\{0\}$
+
+\item
+$\mathcal{S}^2(V)+\Lambda^2(V)=\mathcal{T}^2(V)$ \\ (This means that any $T\in\mathcal{T}^2(V)$
+may be written as $T=S+A$ with $S\in\mathcal{S}^2(V)$ and $A\in\Lambda^2(V)$.)
+\end{exerenm}
+\end{exercise}
+
+\begin{definition}
+If $T\in\mathcal{T}^k(V)$, we define the following operators $Sym$ and $Alt$ as follows:
+$$Sym(T)(v_1,\ldots, v_k)=\frac{1}{k!}\sum_{\sigma\in S_n}\; T(v_{\sigma (1)}, \ldots, v_{\sigma (k)})$$
+$$Alt(T)(v_1,\ldots, v_k)=\frac{1}{k!}\sum_{\sigma\in S_n}\; \mbox{sgn}(\sigma)
+T(v_{\sigma (1)}, \ldots, v_{\sigma (k)})$$
+\end{definition}
+
+\begin{exercise}\
+Prove the following properties of $Sym$ and $Alt$:
+\begin{exerenm}
+\item
+If $T\in\mathcal{T}^k(V)$, then $Sym(T)\in\mathcal{S}^k(V)$.
+
+\item
+If $T\in\mathcal{T}^k(V)$, then $Alt(T)\in\Lambda^k(V)$.
+
+\item
+If $T\in\mathcal{S}^k(V)$, then $Sym(T)=T$.
+
+\item
+If $T\in\Lambda^k(V)$, then $Alt(T)=T$.
+\end{exerenm}
+\end{exercise}
+
+\begin{exercise}
+If $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^\ell(V)$, show by example
+that it is not necessarily the case 
+that $\omega\otimes\eta\in\Lambda^{k+\ell}(V)$.
+\end{exercise}
+
+\begin{definition}
+If $\omega\in\Lambda^k(V)$ and $\eta\in\Lambda^\ell(V)$, we define their {\em wedge product}
+as follows:
+$$\omega\wedge\eta=\frac{(k+\ell)!}{k!\ell !} Alt(\omega\otimes\eta).$$
+It is clear from earlier exercises that $\omega\wedge\eta\in\Lambda^{k+\ell}(V)$.
+\end{definition}
+
+\begin{exercise}\
+If $\omega$ is a $k$-tensor, $\eta$ is an $\ell$-tensor, and $\alpha$ is a scalar, prove the following elementary facts about the wedge product:
+\begin{exerenm}
+\item
+$(\omega_1+\omega_2)\wedge\eta = \omega_1\wedge\eta +\omega_2\wedge\eta$
+
+\item
+$\omega\wedge (\eta_1+\eta_2)=\omega\wedge\eta_1 +\omega\wedge\eta_2$
+
+\item
+$(\alpha\omega)\wedge\eta =\alpha(\omega\wedge\eta)=\omega\wedge (\alpha\eta)$
+
+\item
+$\omega\wedge\eta = (-1)^{k\ell}\eta\wedge\omega$
+\end{exerenm}
+\end{exercise}
+
+\begin{theorem}\
+\begin{thmenm}
+\item
+If $S\in\mathcal{T}^k(V)$ and $T\in\mathcal{T}^\ell(V)$ and $Alt(S)=0$, then
+$$Alt(S\otimes T)=Alt(T\otimes S)=0.$$
+
+\item
+If $\omega\in\mathcal{T}^k(V)$, $\eta\in\mathcal{T}^\ell(V)$, and $\theta\in\mathcal{T}^m(V)$, then
+$$Alt(Alt(\omega\otimes\eta)\otimes\theta)=Alt(\omega\otimes\eta\otimes\theta)=
+Alt(\omega\otimes Alt(\eta\otimes\theta)).$$
+
+\item
+If $\omega\in\Lambda^k(V)$, $\eta\in\Lambda^\ell(V)$, and $\theta\in\Lambda^m(V)$, then
+$$(\omega\wedge\eta)\wedge\theta=\omega\wedge(\eta\wedge\theta)=
+\frac{(k+\ell+m)!}{k!\ell !m!} Alt(\omega\otimes\eta\otimes\theta).$$
+\end{thmenm}
+
+The implication of part iii.\ is that the wedge product is associative, and we may simply express
+any of the three terms as $\omega\wedge\eta\wedge\theta$.
+\end{theorem}
+
+\begin{theorem}
+Let$V$ be a finite-dimensional vector space with $dim(V)=n$.  
+If $\{\varphi_1, \ldots, \varphi_n\}$ is a basis for $V^*$, then the set of $k$-tensors
+$\{\varphi_{i_1}\wedge\cdots\wedge\varphi_{i_k}\mid 1\leq i_1<i_2< \cdots <i_k\leq n\}$
+is a basis for $\Lambda^k(V)$, which thus has dimension 
+$
+\left(
+\begin{smallmatrix} n \\ k \end{smallmatrix}
+\right)
+=\frac{n!}{k! (n-k)!}$.
+\end{theorem}
+
+\begin{corollary}
+$dim(\Lambda^n(\R^n))=1$, and the determinant $D$ (see 0.1.12) is a basis element.
+\end{corollary}
+
+\begin{theorem}
+Let $V$ be a finite-dimensional vector space over $\R$ with basis $\{v_1, \ldots, v_n\}$, and
+let $\omega\in\Lambda^n(V)$.  If $\{w_1, \ldots, w_n\}\subset V$ with each 
+$w_i=\sum_{j=1}^n\, a_{ij}v_j$, then
+$$\omega(w_1, \ldots, w_n)= det(a_{ij})\cdot \omega(v_1, \ldots, v_n).$$
+\end{theorem}
+
+\pagebreak
+\begin{definition}
+For a fixed $p\in\R^n$, the {\em tangent space} to $\R^n$ at $p$ is the set 
+$(\R^n)_p=\{(p,v)\mid v\in\R^n\}.$  This is a vector space with addition and scalar
+multiplication defined by $(p, v_1)+(p, v_2)=(p, v_1+v_2)$ and $\alpha (p, v)=(p, \alpha v)$,
+respectively.  This vector space has an inner product 
+$\langle\,\cdot\, , \,\cdot\,\rangle_p:(\R^n)_p\times (\R^n)_p\to\R$ defined in the natural way
+by $\langle (p, v) , (p, w) \rangle_p=\langle v , w\rangle$, where $\langle\,\cdot\, ,\,\cdot\,\rangle$ is
+the usual inner product.  Often, for simplicity, we will denote the 
+point $(p, v)$ by $v_p$.
+\end{definition}
+
+\begin{definition}
+A {\em vector field} on $\R^n$ is a function $F$ that assigns to every $p\in\R^n$ a vector
+$F(p)\in (\R^n)_p$.  If $(e_1)_p, \ldots, (e_n)_p$ is the standard basis in $(\R^n)_p$,
+then any $F(p)$ may be expressed as $F(p)=F^1(p)\cdot (e_1)_p+\cdots F^n(p)\cdot (e_n)_p$
+for some scalars $F^1(p), \ldots, F^n(p)$.  The function $F$ is said to be continuous, differentiable,
+etc.\ provided that each of its component functions $F^i$ is.
+\end{definition}
+
+\begin{definition}
+A {\em differential $k$-form} on $\R^n$ is a function $\omega$ that assigns to every $p\in\R^n$ 
+a $k$-tensor $\omega(p)\in \Lambda^k((\R^n)_p)$.  
+If $(e_1)_p, \ldots, (e_n)_p$ is the standard basis in each $(\R^n)_p$ and 
+$\varphi_1(p), \ldots, \varphi_n(p)$ is the dual basis, then there exist functions 
+$\omega_{i_1, \ldots, i_k}:\R^n\to\R$ such that 
+$$\omega (p)=\sum_{i_1< \cdots < i_k}\; \omega_{i_1, \ldots, i_k}(p)\cdot 
+\varphi_{i_1}(p)\wedge \cdots\wedge \varphi_{i_k}(p).$$
+The function $\omega$ is said to be continuous, differentiable, $C^{\infty}$, 
+etc.\ provided that each of the functions $\omega_{i_1, \ldots, i_k}$ is.
+\end{definition}
+
+\begin{remark}\
+\begin{enumerate}
+\item
+If $\omega$ and $\eta$ are differential $k$-forms, then we define 
+$\omega +\eta$ in the obvious way.
+
+\item
+If $\omega$ is a differential $k$-form and $\eta$ is a differential 
+$\ell$-form, then we define $\omega\wedge\eta$ to be a differential
+$(k+\ell)$-form in the obvious way.
+
+\item
+If $\omega$ is a differential $k$-form and $f$ is a function, then we define
+$f\cdot\omega$ in the obvious way.  In fact, we may think of $f$ as a
+differential $0$-form, and if we do, then we may denote the product above by
+$f\cdot\omega=f\wedge\omega$.
+\end{enumerate}
+\end{remark}
+
+\begin{exercise}
+If $f:\R^n\to\R$ is differentiable, then $Df(p)\in\Lambda^1(\R^n)$.
+
+(Don't write anything down, but think carefully about what $Df(p)$ is.)
+\end{exercise}
+
+\begin{exercise}
+The map $df$ defined by $df(p)(v_p)=Df(p)(v)$ is a differential $1$-form.
+\end{exercise}
+
+\begin{definition}
+Let $x_i:\R^n\to\R$ denote the $i$-th coordinate projection.  That is,
+if $v=(v_1, \ldots, v_n)\in\R^n$, then $x_i(v)=v_i$.
+\end{definition}
+
+\begin{exercise}
+Show that $\{dx_1(p), \ldots, dx_n(p)\}$ is the dual basis to 
+$\{(e_1)_p, \ldots, (e_n)_p\}$.
+\end{exercise}
+
+\begin{remark}
+The previous exercise implies that every differential $k$-form $\omega$ may be written as
+$$\omega =\sum_{i_1< \cdots < i_k}\; \omega_{i_1, \ldots, i_k}\cdot 
+dx_{i_1}\wedge \cdots\wedge dx_{i_k}$$
+for some functions $\omega_{i_1, \ldots, i_k}$.
+\end{remark}
+
+\begin{theorem}
+If $f:\R^n\to\R$ is differentiable, then $df=D_1f\cdot dx_1+\cdots D_nf\cdot dx_n$.
+\end{theorem}
+
+\pagebreak
+\begin{definition}
+Suppose $f:V\to W$ is a linear map between finite-dimensional real vector spaces.
+Then, for any $k\in\N$, we have an induced map $f^*:\mathcal{T}^k(W)\to\mathcal{T}^k(V)$ 
+defined by $$f^*(T)(v_1, \ldots, v_k)=T(f(v_1), \ldots, f(v_k)),$$
+for any $T\in\mathcal{T}^k(W)$.
+\end{definition}
+
+\begin{exercise}  Assume $f:V\to W$ is a linear map of finite-dimensional real vector spaces.
+\begin{exerenm}
+\item
+If $S$ and $T$ are tensors, show that $f^*(S\otimes T)=f^*S\otimes f^*T$.
+
+\item
+If $\omega$ and $\eta$ are alternating tensors, 
+show that $f^*(\omega\wedge\eta)=f^*\omega\wedge f^*\eta$.
+\end{exerenm}
+\end{exercise}
+
+\begin{definition}
+Suppose $f:\R^n\to \R^m$ is differentiable.
+Then, for each $p\in\R^n$, we have a linear transformation $Df(p):\R^n\to\R^m$.
+This yields a map $f_*:(\R^n)_p\to (\R^m)_{f(p)}$ defined by
+$$f_*(v_p)=(Df(p)(v))_{f(p)}.$$
+As in Definition 0.1.33 above, this linear map induces a linear map 
+$f^*:\Lambda^k((\R^m)_{f(p)})\to\Lambda^k((\R^n)_p)$ as follows.  
+If $\omega$ is a differential $k$-form on $\R^m$, then $f^*\omega$ is a differential
+$k$-form on $\R^n$ given by 
+$$(f^*\omega)(p)=f^*(\omega (f(p))).$$
+In other words, if $v_1, \ldots, v_k\in (\R^n)_p$, then
+$$f^*\omega (p)(v_1, \ldots, v_k)=\omega (f(p))(f_*(v_1), \ldots, f_*(v_k)).$$
+\end{definition}
+
+\begin{theorem}  Let $f:\R^n\to\R^m$ be differentiable.  Then:
+\begin{thmenm}
+\item
+$f^*(dx_i)=\sum_{j=1}^n\; D_jf_i\cdot dx_j$
+
+\item
+$f^*(\omega_1+\omega_2)=f^*(\omega_1)+f^*(\omega_2)$
+
+\item
+$f^*(g\cdot \omega)=(g\circ f)\cdot f^*(\omega)$
+
+\item
+$f^*(\omega\wedge\eta)=f^*\omega\wedge f^*\eta$
+\end{thmenm}
+\end{theorem}
+
+\begin{theorem}  
+If $f:\R^n\to\R^n$ is differentiable, then 
+$$f^*(g\cdot dx_1\wedge\cdots\wedge dx_n)=(g\circ f)(det Df) dx_1\wedge\cdots\wedge dx_n.$$
+\end{theorem}
+
+\begin{definition}
+We define an operator $d$ on differential forms as follows.  If $\omega$ is a differential
+$k$-form defined by
+$$\omega=\sum_{i_1< \cdots < i_k}\;\omega_{i_1,\ldots, i_k}\cdot dx_{i_1}\wedge\cdots
+\wedge dx_{i_k},$$
+then $d\omega$ is a differential $(k+1)$-form, called the {\em differential}
+of $\omega$, defined by
+$$d\omega=\sum_{i_1< \cdots < i_k}\;d\omega_{i_1,\ldots, i_k}\wedge dx_{i_1}\wedge\cdots
+\wedge dx_{i_k}
+=\sum_{i_1< \cdots < i_k}\;\sum_{j=1}^n\;D_j(\omega_{i_1,\ldots, i_k})\cdot dx_j \wedge dx_{i_1}\wedge\cdots
+\wedge dx_{i_k}.$$
+\end{definition}
+
+\begin{theorem}  Let $\omega$ and $\theta$ be differentiable $k$-forms, 
+$\eta$ a differentiable $\ell$-form,
+and $f:\R^n\to\R^m$ a differentiable function.  Then:
+\begin{thmenm}
+\item
+$d(\omega+\theta)=d\omega +d\theta$
+
+\item
+$d(\omega\wedge\eta)=d\omega\wedge\eta + (-1)^{k\ell}\omega\wedge d\eta$
+
+\item
+$d(d\omega)=0$
+
+\item
+$f^*(d\omega)=d(f^*\omega)$
+\end{thmenm}
+\end{theorem}
+
+\begin{definition}
+Let $\omega$ be a differential $k$-form.
+Then $\omega$ is called {\em closed} if $d\omega=0$, and $\omega$ is called {\em exact}
+if there exists a differential $(k-1)$-form $\eta$ such that $d\eta=\omega$.
+\end{definition}
+
+\begin{remark}
+The previous theorem implies that all exact forms are closed.
+\end{remark}
+
+\begin{exercise}\
+\begin{exerenm}
+\item
+If $\omega= P\, dx+Q\, dy+R\,dz$ is a differential $1$-form on $\R^3$, then compute $d\omega$.
+
+\item
+If $\omega= f_3\, dx\wedge dy+f_2\, dx\wedge dz+f_1\,dy\wedge dz$ is a differential $2$-form 
+on $\R^3$, then compute $d\omega$.
+\end{exerenm}
+\end{exercise}
+
+\begin{exercise}\
+\begin{exerenm}
+\item
+If $\omega= P\, dx+Q\, dy$ is a differential $1$-form on $\R^2$, then compute $d\omega$
+(and simplify!).
+
+\item
+If $\omega$ is as above with $P, Q$ smooth functions on $\R^2$, and $\omega$ is closed, 
+show there is some $f:\R^2\to\R$ such that $df=\omega$, that is, $\omega$ is exact.
+
+\item
+If $\displaystyle{\omega=-\frac{y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy}$ on $\R^2\setminus\{(0,0)\}$, 
+show there does not exist $f:\R^2\setminus\{(0,0)\}\to\R$ such that $df=\omega$.
+\end{exerenm}
+\end{exercise}
+
+\noindent
+In the next several statements, we consider restrictions under which closed forms are exact.
+
+\begin{definition}
+We say that a region $A\subset\R^n$ is {\em star-shaped (with respect to a)} provided that,
+given any $x\in A$, the line segment $\{tx+(1-t)a\mid 0\leq t\leq 1\}$ is also contained in $A$.
+\end{definition}
+
+\begin{exercise}
+Is every star-shaped region convex?  Is every star-shaped region connected?  Explain.
+\end{exercise}
+
+\begin{definition}  Let $A\subset\R^n$ be an open region that is star-shaped with respect to 0.
+Let
+$$\omega=\sum_{i_1<\cdots <i_{\ell}}\omega_{i_1, \ldots, i_{\ell}}\;
+dx_{x_1}\wedge\cdots\wedge dx_{i_{\ell}}$$
+be a differential $\ell$-form on $A$.
+Then we define the differential $(\ell -1)$-form $I\omega$ on $A$ by
+$$I\omega (x) =\sum_{i_1<\cdots <i_{\ell}}\sum_{\alpha =1}^{\ell}(-1)^{\alpha -1}\left(\int_0^1
+t^{\ell -1}\omega_{i_1, \ldots, i_{\ell}}(tx)\, dt\right)x_{i_{\alpha}}\;
+dx_{x_1}\wedge\cdots\wedge\widehat{dx_{i_{\alpha}}}\wedge\cdots\wedge dx_{i_{\ell}},
+$$  
+where the $\widehat{\phantom{w}}$ indicates that the $dx_{i_{\alpha}}$ term is omitted.
+\end{definition}
+
+\begin{theorem}  (Poincar\'{e} Lemma)
+
+Let $A\subset\R^n$ be an open region which is star-shaped with respect to 0.  Then every
+closed form on $A$ is exact.
+(Hint:  Show that $d(I\omega)+I(d\omega)=\omega$.)
+\end{theorem}
+
+\begin{exercise}
+Let $U\subset\R^n$, and let $f:U\to\R^n$ be differentiable with differentiable inverse
+$f^{-1}:f(U)\to\R^n$.  Show that if every closed form on $U$ is exact, then every closed form on $f(U)$ is exact.
+\end{exercise}
+
+\begin{definition}
+The {\em standard $n$-cube} in $\R^n$ is the $n$-fold Cartesian product 
+$[0,1]^n=[0,1]\times\cdots \times [0,1]\subset\R^n$.  A {\em singular $n$-cube} in $A\subset\R^m$
+is a continuous function $c:[0,1]^n\to A$.  Note that the standard $n$-cube may be viewed as
+a singular $n$-cube in $\R^n$ under the natural map $I:[0,1]^n\to\R^n$ given by $I(x)=x$.  
+Finally, we note that we may extend the definition to $n=0$ by viewing a singular 0-cube in $A$
+as a point in $A$.
+\end{definition}
+
+\begin{definition}
+Let $A\subset\R^m$.
+An {\em $n$-chain} in $A$ is a formal sum $\sum_{i=1}^k\, \alpha_i\cdot c_i$, where each 
+$c_i$ is a singular $n$-cube, and each $\alpha_i$ is an integer.  In other words, if $\mathcal{S}$
+is the set of all singular $n$-cubes in $A$ , then an $n$-chain is a function $f:\mathcal{S}\to\Z$ such 
+that $f(c)=0$ for all but finitely many $c\in\mathcal{S}$.
+\end{definition}
+
+\begin{exercise}
+Show that if $f$ and $g$ are $n$-chains in $A$ and $a\in\Z$, then $f+g$ and $af$ are also 
+$n$-chains in $A$ under the natural definitions $(f+g)(c)=f(c)+g(c)$ and $(af)(c)=a\cdot f(c)$.
+\end{exercise}
+
+\begin{definition}
+If $c$ is a singular $n$-chain in $A$, then we define its {\em boundary} to be the $(n-1)$-chain
+$\partial c$ as follows.  We first make the following definitions for the standard $n$-cube $I^n$.
+For each $1\leq i\leq n$, we define two singular $(n-1)$-cubes
+$I^n_{(i,0)}$ and $I^n_{(i,1)}$ by:
+$$I^n_{(i,0)}(x)=I^n(x_1, \ldots, x_{i-1}, 0, x_i, \ldots, x_{n-1})
+=(x_1, \ldots, x_{i-1}, 0, x_i, \ldots, x_{n-1})$$
+$$I^n_{(i,1)}(x)=I^n(x_1, \ldots, x_{i-1}, 1, x_i, \ldots, x_{n-1})
+=(x_1, \ldots, x_{i-1}, 1, x_i, \ldots, x_{n-1}).$$
+Then
+$$\partial I^n=\sum_{i=1}^n\sum_{\alpha =0, 1}(-1)^{i+\alpha}I^n_{(i, \alpha)}.$$
+For a general singular $n$-cube $c$, we define $c_{(i, \alpha)}=c\circ (I^n_{(i, \alpha)})$
+and 
+$$\partial c=\sum_{i=1}^n\sum_{\alpha =0, 1}(-1)^{i+\alpha}c_{(i, \alpha)}.$$
+Finally, if $c=\sum a_ic_i$ is an $n$-chain, then we define its boundary as
+$$\partial c=\partial(\sum a_1c_i)=\sum a_i\partial (c_i).$$
+\end{definition}
+
+\begin{theorem}
+If $c$ is an $n$-chain, then $\partial (\partial c)=0$.  
+(This idea is often abbreviated by $\partial^2=0$.)
+\end{theorem}
+
+\begin{exercise}
+Let $A=\R^2\setminus \{(0,0)\}$, and define $c:[0,1]\to A$ by $c(t)=(\cos 2\pi t, \sin 2\pi t)$.
+Show that $\partial c=0$ but that there is no 2-chain $c'$ in $A$ such that $\partial c'=c$.
+(Hint:  Use Stokes' Theorem.)
+\end{exercise}
+
+\begin{definition}
+(Integration on chains)
+
+Let $A\subset\R^n$.  If $\omega$ is a differential $k$-form ($k\geq 1$)
+on $A$ and $c$ is a singular $k$-cube
+ini $A$, then we define the integral of $\omega$ over $c$ as:
+$$\int_c\;\omega =\int_{[0,1]^k}c^*\omega.$$
+If $k=0$, then the differential 0-form $\omega$ is a function and the singular 0-cube $c:\{0\}\to A$ 
+is a point, so we define
+$$\int_c\;\omega =\omega (c(0)).$$
+Finally, if $c=\sum a_ic_i$ is a $k$-chain, we define the integral of $\omega$ over $c$ as:
+$$\int_c\;\omega=\sum a_i\int_{c_i}\;\omega.$$
+\end{definition}
+
+\begin{theorem}
+(Stokes' Theorem)
+
+Let $A\subset\R^n$ be an open set.  If $\omega$ is a differential $(k-1)$-form on $A$
+and $c$ is a $k$-chain in $A$, then $$\int_c\; d\omega=\int_{\partial c}\;\omega.$$
+\end{theorem}
+
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+%Spacing
+
+
+\end{document}
+
+
