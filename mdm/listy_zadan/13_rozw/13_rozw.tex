@@ -21,34 +21,105 @@
 
 \podz{sep}
 \medskip
+
 Niech $G$ będzie grafem planarnym, a $uv=e\in G$ będzie dowolną jego krawędzią. Narysujmy jak wygląda sąsiedztwo $e$:
+\begin{center}
 \begin{tikzpicture}
     \node (u) at (0, 0) {$\bullet$};
-    \node (v) at (3, 0) {$\bullet$};
-    \node (1) at (5, 2) {$\bullet$};
+    \node (v) at (2, 0) {$\bullet$};
+    \node (1u) at (0, 0.5) {$u$};
+    \node (1v) at (2, 0.5) {$v$};
+    \node (1) at (4, 1.5) {$\bullet$};
+    \node (2) at (4, 0.5) {$\bullet$};
+    \node (3) at (4, -0.5) {$\bullet$};
+    \node (4) at (4, -1.5) {$\bullet$};
+    \node (5) at (-2, 1.5) {$\bullet$};
+    \node (6) at (-2, 0.5) {$\bullet$};
+    \node (7) at (-2, -0.5) {$\bullet$};
+    \node (8) at (-2, -1.5) {$\bullet$};
+    \draw [color = acc] (u)--(v);
+    \draw (v)--(1);
+    \draw (v)--(2);
+    \draw (v)--(3);
+    \draw (v)--(4);
+    \draw (u)--(5);
+    \draw (u)--(6);
+    \draw (u)--(7);
+    \draw (u)--(8);
 \end{tikzpicture}
+\end{center}
+Co się stanie jeśli po prostu przysuniemy prawą stronę sąsiedztwa tak, żeby wierzchołki $u$ i $v$ były jeden na sobie?
 
-\subsection*{ZAD. 2.}
-\emph{Załóżmy, że graf $G$ jest grafem o co najmniej $11$ wierzchołkach. Wykaż, że grafy $G$ i $\overline G$ nie mogą być jednocześnie planarne.}
+\begin{center}
+\begin{tikzpicture}[every loop/.style={}]
+    \node (u) at (0, 0) {$\bullet$};
+    \node (v) at (0, 0) {$\bullet$};
+    \node (1u) at (0, 0.5) {$u$};
+    \node (1v) at (0, -0.5) {$v$};
+    \node (1) at (2, 1.5) {$\bullet$};
+    \node (2) at (2, 0.5) {$\bullet$};
+    \node (3) at (2, -0.5) {$\bullet$};
+    \node (4) at (2, -1.5) {$\bullet$};
+    \node (5) at (-2, 1.5) {$\bullet$};
+    \node (6) at (-2, 0.5) {$\bullet$};
+    \node (7) at (-2, -0.5) {$\bullet$};
+    \node (8) at (-2, -1.5) {$\bullet$};
+    \path (u) edge [loop, color=acc] (u);
+    \draw (v)--(1);
+    \draw (v)--(2);
+    \draw (v)--(3);
+    \draw (v)--(4);
+    \draw (u)--(5);
+    \draw (u)--(6);
+    \draw (u)--(7);
+    \draw (u)--(8);
+\end{tikzpicture}
+\end{center}
+Niebieska pętla zostaje usunięta, gdyż pracujemy na grafach prostych. Przesunęliśmy część poprawnego rysunku w lewo, co nie psuje planarności $G\bullet e$.
 \medskip
 
-\podz{sep}
-\medskip
-
-Wystarczy, że będziemy rozpatrywać tylko planarność $G$. NO NIE MOGOM NOOO.
+Graf Petersona to graf o $10$ wierzchołkach oraz $15$ krawędziach. W dodatku, najkrótsze cykle w grafie Petersona mają $5$ elementów, czyli jeśli $m$ to ilość krawędzi, a $f$ - ilość ścian, to mamy
+$$2m\geq 5f$$
+co w połączeniu z formułą Eulera (nad którą pochylamy się bardziej w zadaniu 4) dostajemy
+$$n-m+f=2$$
+$$f=2-n+m$$
+$$2m\geq 5f=5[2-n+m]=10-5n+5m$$
+$$2m=30\geq 10-5\cdot10+5\cdot 15=35=5[2-n+m]$$
+i to daje nam sprzeczność.
 
 \subsection*{ZAD. 4.}
-\emph{Udowodnij, że jeśli $G$ jest grafem płaskim, to $n(G)+f(G)=m(G)+k(G)+1$, gdzie $f(G)$ jest liczbą obszarów, a $k(G)$ jest liczbą składowych spójnośći.}
+\emph{Udowodnij, że jeśli $G$ jest grafem płaskim, to $n(G)+f(G)=m(G)+k(G)+1$, gdzie $f(G)$ jest liczbą obszarów, a $k(G)$ jest liczbą składowych spójności.}
 \medskip
 
 \podz{sep}
 \medskip
 
-Rozważmy najpierw graf spójny $G$, czyli $k(G)=1$. Chcemy, żeby
-$$n-m+f=2.$$
-Jest to prosty dowód indukcją po dowolnej wielkości. Weźmy indukcję po $n$. Mamy graf planarny $|G|=n+1$ i dla dowolnego wierzchołka $v\in G$ $G'=G-v$ spełnia
-$$n-m'+f'=2$$
-dla $m'=e(G')$, $f'=f(G')$. Zauważmy, ze jeżeli z wierzchołka który usunęliśmy wychodzi tylko jedna krawędź, to nie rozbijamy ani jednej ściany. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Rozważmy najpierw graf spójny $G$. Wtedy $k(G)=1$, a więc $n+f-m=2$, co jest formułą Eulera, dość szeroko znaną. Zrobimy szybki dowód indukcyjny po ilości krawędzi. Jeżeli $m=0$, to mamy tylko samotny wierzchołek i jedną ścianę, więc $n+f=1+1=2$, co się zgadza. Dalej załóżmy, że formuła jest prawdziwa dla wszystkich grafów spójnych o co najwyżej $m$ krawędziach. Niech $G$ będzie grafem o $(m+1)$ krawędziach. Rozważmy dwie możliwości:
+\smallskip
+
+1. $G$ nie ma cykli, czyli jest drzewem, więc mamy tylko jedną ścianę (bo jest potrzebny cykl by oddzielić kolejną) i ilość wierzchołków jest o $1$ większa niż ilość krawędzi, czyli $n=m+2$ i mamy 
+$$n-(m+1)+f=m+2-m-1+1=2$$
+tak jak chcieliśmy.
+\smallskip
+
+2. $G$ ma cykle, wtedy niech $e\in G$ będzie krawędzią należącą do pewnego cyklu. Wtedy usunięcie takiej krawędzi połączy dwie ściany w jedną większą, czyli $f'=f-1$. Z założenia indukcyjnego wiemy, że dla grafu $G'=G-e$ mamy
+$$2=n-m'+f'=n-(m-1)+(f-1)=n-m+1+f-1=n-m+f$$
+tak jak chcieliśmy.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Niech teraz $G$ będzie grafem o $k$ składowych spójności $G_1,...,G_k$. Wtedy dla każdej z nich osobno możemy zastosować formułę Eulera, czyli
+$$n_i-m_i+f_i=2$$
+gdzie $n_i,m_i,f_i$ to odpowiednio ilość wierzchołków, krawędzi i ścian w składowej $G_i$. Rysunek każdej z tych składowych możemy ograniczyć do pewnego okręgu na płaszczyźnie, czyli tylko ta "zewnętrzna" ściana jest wspólna dla wszystkich składowych spójności. W takim razie jeśli dodamy wszystkie równania jak wyżej, dostaniemy
+$$\sum\limits_{i=1}^k[n_i-m_i+f_i]=2\cdot k$$
+ale ponieważ jedna ściana jest dublowana dla każdej z tych składowych, to musimy odjąć ją od każdego $f_i$ jeden i dodać to jako tę jedną wspólną ścianę, czyli
+$$\sum\limits_{i=1}^k[n_i-m_i+(f_i-1)]+1=k+1$$
+a z kolei lewa strona sumuje się do
+$$\sum\limits_{i=1}^k[n_i-m_i+(f_i-1)]+1=n-m+f,$$
+gdzie $n,m,f$ to wartości dla pełnego grafu. Ostatecznie, dostajemy
+$$n-m+f=k+1.$$
 
 \subsection*{ZAD. 5.}
 \emph{Udowodnij, że jeśli $G$ jest spójnym grafem planarnym, w którym najkrótszy cykl ma długość $r$, to spełniona jest nierówność $(r-2)m\leq r(n-2)$. Kiedy nierówność ta staje się równościa?}
@@ -57,8 +128,65 @@ dla $m'=e(G')$, $f'=f(G')$. Zauważmy, ze jeżeli z wierzchołka który usunęli
 \podz{sep}
 \medskip
 
-Niech $G$ będzie grafem o najmniejszej długości cyklu $r$. Wtedy jeżeli weźmiemy dowolny cykl, to do niego wchodzi $r$ wierzchołków i $r$ krawędzi. Ale żeby mieć dwa różne cykle, muszą się różnic AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Niech $G$ będzie grafem planarnym o najkrótszym cyklu $r$, $n$ wierzchołkach i $m$ krawędziach. Niech $f$ będzie liczbą ścian w jego poprawnym rysunku. Wtedy z formuły Eulera mamy
+$$n-m+f=2$$
+$$f=2-n+m$$
+natomiast ponieważ tylko cykle tworzą nowe ściany, każda krawędź wpada do dwóch ścian i na jedną ścianę potrzebujemy co najmniej $r$ krawędzi, to mamy nierówność
+$$2m\geq r\cdot f$$
+Podstawiając $f=2-n+m$ otrzymujemy
+\begin{align*}
+    2m&\geq r\cdot (2-n+m)\\
+    2m-rm&\geq r\cdot(2-n)\\
+    (2-r)m&\geq r\cdot(2-n)\\
+    -(r-2)m&\geq -r(n-2)\\
+    (r-2)m&\leq r(n-2)
+\end{align*}
 
+\subsection*{ZAD. 10.}
+\emph{Na płaszczyźnie rozłożono pewną liczbę monet o jednakowej średnicy, z których żadne dwie nie nachodzą na siebie. Monety te kolorujemy tak, by te, które się stykają miały różne kolory. Nie krozystając z twierdzenia o czterech barwach pokaż, że cztery kolory zawsze wystarczą, a trzy nie zawsze.}
+\medskip
+
+\podz{sep}
+\medskip
+
+% \begin{center}
+%     \begin{tikzpicture}
+%         \draw [ultra thick, color=acc](0, 0) circle (1);
+%         \draw [ultra thick, color=acc](2, 0) circle (1);
+%         \draw [ultra thick, color=acc](-2, 0) circle (1);
+%         \draw [ultra thick, color=def](0, 2) circle (1);
+%         \draw [ultra thick, color=def](2, 2) circle (1);
+%         \draw [ultra thick, color=def](-2, 2) circle (1);
+%         \draw (1, -1.73) circle (1);
+%         \draw(-1, -1.73) circle (1);
+%         \draw (0, 0)--(2, 0)--(2, 2)--(0, 2)--(-2, 2)--(-2, 0)--(-1, -1.73)--(1, -1.73)--(2, 0);
+%         \draw (1, -1.73)--(0, 0)--(-1, -1.73)--(-2, 0)--(0, 0);
+%         \draw (0,0)--(0,2);
+%         \node at (0.3, 0.3) {A};
+%         \node at (2.3, 0) {B};
+%         \node at (1.3, -1.7) {C};
+%         \node at (-1.3, -1.7) {B};
+%         \node at (-2.3, 0) {C};
+%         \node at (-2.3, 2) {A};
+%         \node at (2.3, 2) {A};
+%         \node at (0, 2.3) {B};
+%         \draw (-1, 3.73) circle (1);
+%         \draw (1, 3.73) circle (1);
+%         \draw (2, 2)--(1, 3.73)--(0, 2)--(-1, 3.73)--(-2, 2);
+%         \draw(1, 3.73)--(-1, 3.73);
+%         \node at (1, 4) {C};
+%         \node at (-1, 4) {???};
+%     \end{tikzpicture}
+% \end{center}
+% W przykładzie wyżej kolorowanie na dolnej części grafu indukuje kolorowanie na górnej części grafu. To znaczy w zależności od ustawienia kolorów na niebieskich kółkach dostajemy 
+% \bigskip
+
+{\color{def}NIE MAM KONTRPRZYKŁADU DLA 3}
+\bigskip
+
+Będziemy rozpatrywać kolorowanie monet w ramach kolorowania grafu w którym monety to wierzchołki, a krawędzi oznaczają stykanie się dwóch monet. Udowodnimy, że jeżeli $G_n$ to graf utworzony przez ułożenie $n$ monet na stole, to
+$$\chi(G_n)\leq4.$$
+Dla $n=1$ jest to trywialne. Załóżmy teraz, że dla $n$ monet zawsze działa i weźmy $n+1$ monet aby stworzyć $G_{n+1}$. Zauważmy, że w takim grafie zawsze mamy monetę "brzegową", czyli stopnia co najwyżej $3$. Jeżeli taką monetę wyjmiemy z grafu $G_{n+1}$, to dostajemy $G_n$, które możemy pokolorować $4$ kolorami. Dołączenie wyjętej monety nic nie zmieni, bo w jej sąsiedztwie były tylko $3$ inne, więc wybieramy kolor który się między nimi nie pojawił i tak też malujemy dokładaną monetę. Czyli $\chi(G_{n+1})\leq 4$.
 
 \subsection*{ZAD. 11.}
 \emph{Dla grafy $G$ oznaczamy przez $G\bullet e$ graf powstały w wyniku ściągnięcia krawędzi $e$, a przez $P_G(k)$ - liczbę pokolorowań grafu $G$ $k$ kolorami. Pokaż, że $P_G(k)=P_{G-e}(k)-P_{G\bullet e}(k)$.}
@@ -69,6 +197,30 @@ Niech $G$ będzie grafem o najmniejszej długości cyklu $r$. Wtedy jeżeli weź
 
 Kolorujemy graf $G$ na $x$ kolorów. Możemy to zrobić na $P_G(x)$ sposobów. Niech teraz $e=uv\in G$ będzie dowolną krawędzią. Graf $G-e$ ma dwa sposoby kolorowania: takie, w których $u,v$ mają ten sam kolor (niemożliwe w $G$) i takie, w których $u,v$ mają różne kolory (możliwe w $G$). Dalej zauważmy, że jeżeli ściągamy krawędź $e$ do jednego punktu, to tak jakbyśmy malowali $u,v$ na ten sam kolor. Czyli jeśli $P_{G-e}(x)-P_{G\bullet e}(x)$ usuwa te kolorowania $G-v$ na $x$ kolorów gdzie $u$ i $v$ mają ten sam kolor, bo tylko te kolorowania pokrywają nam się z kolorowaniami $G-e$.
 
+\subsection*{ZAD. 12.}
+\emph{Niech $T$ będzie drzewem $n$-wierzchołkowym, a $C_n$ grafem cyklicznym. Pokaż, że $P_T(k)=k(k-1)^{n-1}$ oraz $P_{C_n}(k)=(k-1)^n+(-1)^n(k-1)$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Najpierw rozważmy wielomian chromatyczny (chromian wg. jednego studenta IM) drzewa. Niech $T_n$ będzie drzewem i niech $e\in T_n$ będzie liściem, czyli wierzchołkiem stopnia $1$. Wtedy $T_n\bullet e$ jest drzewem $T_{n-1}'$, bo ściągnięcie krawędzi jest w tym przypadku analogiczne do usunięcia liścia. Graf $T_n-e$ jest natomiast niespójny, z jednym samotnym wierzchołkiem oraz drzewem $T_{n-1}$, które możemy kolorować niezależnie. Czyli korzystając z poprzedniego zadania (i ukrytej indukcji) mamy
+\begin{align*}
+    P_{T_n}(x)&=P_{T_n-e}(x)-P_{T_n\bullet e}(x)=P_{T_{n-1}}(x)\cdot x-P_{T_{n-1}'}(x)=\\
+    &=x\cdot x(x-1)^{n-2}-x(x-1)^{n-2}=x(x-1)^{n-2}(x-1)=x(x-1)^{n-1}
+\end{align*}
+tak jak chcieliśmy.
+\bigskip
+
+\podz{sep}
+\bigskip
+
+Przypatrzmy się teraz na cykl długości $n$. Jeżeli wybierzemy dowolną krawędź $e\in C_n$, to graf $C_n-e$ jest ścieżką długości $n$, a więc możemy go pokolorować na $x\cdot(x-1)^{n-1}$ sposobów (pierwszy wierzchołek na $x$, każdy kolejny na $(x-1)$). Graf $C_n\bullet e$ to z kolei cykl $C_{n-1}$, czyli korzystając z ukrytej indukcji i poprzedniego zadania, dostajemy
+\begin{align*}
+    P_{C_n}(x)&=P_{C_n-e}(x)-P_{C_n\bullet e}(x)=x(x-1)^{n-1}-(x-1)^{n-1}-(-1)^{n-1}(x-1)=\\
+    &=(x-1)^{n-1}(x-1)+(-1)^n(x-1)=(x-1)^n+(-1)^n(x-1)
+\end{align*}
+
 \subsection*{ZAD. 13.}
 \emph{Wykaż, że liczba krawędzi dowolnego grafu wynosi co najmniej $\chi(G){\chi(G)-1\over2}$.}
 \medskip
@@ -76,9 +228,8 @@ Kolorujemy graf $G$ na $x$ kolorów. Możemy to zrobić na $P_G(x)$ sposobów. N
 \podz{sep}
 \medskip
 
-$$e(G)=\frac12\sum_{d\in G} d(v)\geq \frac12\sum \delta=\frac12n\delta$$
-
-$$\chi(G){\chi(G)-1\over2}\leq\chi(G){n-1\over 2}$$
+$\chi(G)$ mówi nam, ile potrzebujemy co najmniej kolorów, żeby dostać kolorowanie grafu $G$. Czyli na ile najmniej klas wierzchołków możemy podzielić graf $G$. Ponieważ $\chi(G)$ jest minimalną taką liczbą, to między każdymi dwoma wierzchołkami które są w różnych klasach mamy co najmniej jedną krawędź. Klas jest $\chi(G)$, więc jeżeli miałyby one po jednym wierzchołku, to mielibyśmy co najmniej $(\chi(G)-1)$ krawędzi wychodzących z każdej klasy. Czyli sumarycznie z każdej klasy musi wychodzić $\chi(G)(\chi(G)-1)$ krawędzi, ale ponieważ sumujemy je dwukrotnie, to dostajemy dolne ograniczenie na krawędzie w $G$ postaci:
+$$\frac12\chi(G)(\chi(G)-1)$$
 
 \subsection*{ZAD. 14.}
 \emph{Pokaż, że dla dowolnego grafu $G$ $\chi(G)\chi(\overline G)\geq n$.}
