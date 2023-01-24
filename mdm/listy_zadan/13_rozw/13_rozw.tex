@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 13}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 1.}
+\emph{Niech $G\bullet e$ oznacza graf $G$ po ściągnięciu krawędzi $e$. Pokaż, że jeśli $G$ jest planarny, to $G\bullet e$ też jest planarny. Czy graf Petersena jest planarny?}
+\medskip
+
+\podz{sep}
+\medskip
+
+\subsection*{ZAD. 2.}
+\emph{Załóżmy, że graf $G$ jest grafem o co najmniej $11$ wierzchołkach. Wykaż, że grafy $G$ i $\overline G$ nie mogą być jednocześnie planarne.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Wystarczy, że będziemy rozpatrywać tylko planarność $G$. NO NIE MOGOM NOOO.
+
+\subsection*{ZAD. 4.}
+\emph{Udowodnij, że jeśli $G$ jest grafem płaskim, to $n(G)+f(G)=m(G)+k(G)+1$, gdzie $f(G)$ jest liczbą obszarów, a $k(G)$ jest liczbą składowych spójnośći.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Rozważmy najpierw graf spójny $G$, czyli $k(G)=1$. Chcemy, żeby
+$$n-m+f=2.$$
+Jest to prosty dowód indukcją po dowolnej wielkości. Weźmy indukcję po $n$. Mamy graf planarny $|G|=n+1$ i dla dowolnego wierzchołka $v\in G$ $G'=G-v$ spełnia
+$$n-m'+f'=2$$
+dla $m'=e(G')$, $f'=f(G')$. Zauważmy, ze jeżeli z wierzchołka który usunęliśmy wychodzi tylko jedna krawędź, to nie rozbijamy ani jednej ściany. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+\subsection*{ZAD. 5.}
+\emph{Udowodnij, że jeśli $G$ jest spójnym grafem planarnym, w którym najkrótszy cykl ma długość $r$, to spełniona jest nierówność $(r-2)m\leq r(n-2)$. Kiedy nierówność ta staje się równościa?}
+\medskip
+
+\podz{sep}
+\medskip
+
+Niech $G$ będzie grafem o najmniejszej długości cyklu $r$. Wtedy jeżeli weźmiemy dowolny cykl, to do niego wchodzi $r$ wierzchołków i $r$ krawędzi. Ale żeby mieć dwa różne cykle, muszą się różnic AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+\subsection*{ZAD. 11.}
+\emph{Dla grafy $G$ oznaczamy przez $G\bullet e$ graf powstały w wyniku ściągnięcia krawędzi $e$, a przez $P_G(k)$ - liczbę pokolorowań grafu $G$ $k$ kolorami. Pokaż, że $P_G(k)=P_{G-e}(k)-P_{G\bullet e}(k)$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Kolorujemy graf $G$ na $x$ kolorów. Możemy to zrobić na $P_G(x)$ sposobów. Niech teraz $e=uv\in G$ będzie dowolną krawędzią. Graf $G-e$ ma dwa sposoby kolorowania: takie, w których $u,v$ mają ten sam kolor (niemożliwe w $G$) i takie, w których $u,v$ mają różne kolory (możliwe w $G$). Dalej zauważmy, że jeżeli ściągamy krawędź $e$ do jednego punktu, to tak jakbyśmy malowali $u,v$ na ten sam kolor. Czyli jeśli $P_{G-e}(x)-P_{G\bullet e}(x)$ usuwa te kolorowania $G-v$ na $x$ kolorów gdzie $u$ i $v$ mają ten sam kolor, bo tylko te kolorowania pokrywają nam się z kolorowaniami $G-e$.
+
+\subsection*{ZAD. 13.}
+\emph{Wykaż, że liczba krawędzi dowolnego grafu wynosi co najmniej $\chi(G){\chi(G)-1\over2}$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+$$e(G)=\frac12\sum_{d\in G} d(v)\geq \frac12\sum \delta=\frac12n\delta$$
+
+$$\chi(G){\chi(G)-1\over2}\leq\chi(G){n-1\over 2}$$
+
+\subsection*{ZAD. 14.}
+\emph{Pokaż, że dla dowolnego grafu $G$ $\chi(G)\chi(\overline G)\geq n$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Weźmy dowolny graf $G$ o $n$ wierzchołkach i niech $c_1:V(G)\to [\chi(G)]$ będzie poprawnym kolorowaniem go za pomocą $\chi(G)$ kolorów. To samo powtórzmy dla $\overline G$, to znaczy $c_2:V(\overline G)\to[\chi(\overline G)]$ jest kolorowaniem za pomocą $\chi(\overline G)$ kolorów. Zauważmy teraz, że jeżeli połączymy $G$ i $\overline G$ razem, to dostaniemy graf $K_n$. 
+\smallskip
+
+Opiszmy kolorowanie na $K_n$ takie, że każdy wierzchołek $v\in K_n$ dostaje parę uporządkowaną $(c_1(v), c_2(v))$. Ponieważ kolorowanie na $G$ i na $\overline G$ było poprawne, a dana krawędź z $K_n$ musi istnieć w dokładnie jednym z nich, to dla dwóch stycznych wierzchołków nigdy nie będziemy mieli dokładnie tej samej pary. Co więcej, ponieważ możliwości na pierwszym miejscu jest $\chi(G)$, a na drugim miejscu każdej pary jest $\chi(\overline G)$, to ogółem takich par do poprawnego pokolorowania $K_n$ utworzyliśmy $\chi(G)\cdot\chi(\overline G)$, co musi być co najmniej tyle ile $\chi(K_n)=n$. Czyli dostajemy pożądany wynik.
+
+\end{document}
