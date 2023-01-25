@@ -1,0 +1,151 @@
+\documentclass{article}[16pt]
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\title{Ujebanko przez kolanko}
+\date{69}
+\author{maruda}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 3.}
+\emph{Znaleźć, o ile to możliwe, takie węzły $x_0,x_1$ i współczynniki $A_0,A_1$, żeby dla każdego wielomianu $f$ stopnia $\leq3$ zachodziła równość $\int_0^1(1+x^2)f(x)dx=A_0f(x_0)+A_1f(x_1)$.}
+
+\subsection*{ZAD. 5.}
+\emph{Niech $\vec x=[x_1,...,x_n]^T$. Sprawdzić, że wzór definiuje normę w przestrzeni $\R^n$}
+\medskip
+
+{\color{acc}(a) $\|x\|_1:=\sum\limits_{k=1}^n|x_k|$.}
+\smallskip
+
+1. zero dla $x=0$ jest trywialne
+\smallskip
+
+2. jednorodność: niech $a\in\R$, wtedy
+\begin{align*}
+    \|ax\|=\sum\limits_{i=1}^n|ax_i|=\sum\limits_{i=1}^n|a||x_i|=|a|\sum\limits_{i=1}^n|x_i|=|a|\|x\|
+\end{align*}
+
+3. warunek trójkąta:
+\begin{align*}
+    \|x+y\|=\sum\limits_{i=1}^n|x_i+y_i|\leq\sum\limits_{i=1}^n(|x_i|+|y_i|)=\sum\limits_{i=1}^n|x_i|+\sum\limits_{i=1}^n|y_i|=\|x\|+\|y\|
+\end{align*}
+\medskip
+
+{\color{acc}(b) $\|x\|_\infty:=\max_{1\leq k\leq n}|x_k|$}
+\smallskip
+
+1. zero dla $x=0$ trywialne
+\smallskip
+
+2. jednorodność: trywialne
+\smallskip
+
+3. warunek trójkąta:
+\begin{align*}
+    \|x+y\|=\max_{1\leq k\leq n}|x_k+y_k|\leq \max_{1\leq k\leq n}(|x_k|+|y_k|)=\max_{1\leq k\leq n}|x_k|+\max_{1\leq k\leq n}|y_k|=\|x\|+\|y\|
+\end{align*}
+
+\subsection*{ZAD. 6.}
+\emph{Wykazać, że macierzowa norma spektralna, indukowana przez normę euklidesową wektorów $\|\cdot\|_2$ wyraża się wzorem $\|A\|_2=\sqrt{\sigma(A^TA)}$, gdzie promień spektralny $\sigma$ macierzy $A^TA$ jest z definicji jej nawjiększą wartością własną.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Po pierwsze zanotujmy sobie, że macierz $A$ jest ograniczonym operatorem liniowym na przestrzeni $\R^n$. Normę ograniczonych operatorów liniowych definiujemy jako
+$$\|A\|=\sup_{\|x\|<1}{\|Ax\|\over \|x\|}$$
+jest to faktycznie największa wartość własna macierzy $A$. Zgaduję, że chcemy teraz pokazać, że jest to naprawdę normą.
+\smallskip
+
+1. zero jest dość trywialne
+\smallskip
+
+2. jednorodność: niech $a\in\R$
+\begin{align*}
+    \|aA\|=\sup{\|aAx\|\over \|x\|}=\sup{|a|\|Ax\|\over \|x\|}=|a|\sup{\|Ax\|\over\|x\|}=|a|\|A\|
+\end{align*}
+
+3. warunek trójkąta:
+\begin{align*}
+    \|A+B\|=\sup{\|(A+B)x\|\over\|x\|}\leq \sup{\|Ax\|+\|Bx\|\over\|x\|}=\sup\Big[{\|Ax\|\over\|x\|}+{\|Bx\|\over \|x\|}\Big]=\sup{\|Ax\|\over\|x\|}+\sup{\|Bx\|\over\|x\|}=\|A\|+\|B\|
+\end{align*}
+
+\subsection*{ZAD. 7.}
+\emph{Wykazać, że dla każdego $\vec x\in\R^n$ zachodzą nierówności}
+\medskip
+
+{\color{acc}(a) $\|x\|_\infty\leq\|x\|_1\leq n\|x\|_\infty$}
+\smallskip
+
+Honestly, odmawiam pisania tego.
+\medskip
+
+{\color{acc}(b) $\|x\|_\infty\leq\|x\|_2\leq\sqrt{n}\|x\|_\infty$}
+\smallskip
+
+DUPA
+
+\begin{align*}
+    \|x\|=\sup|x_k|=\sup\sqrt{x_k^2}\leq \sqrt{\sum x_k^2}=\|x\|_2\leq \sqrt{\sum\sup x_k^2}=\sqrt{n\sup x_k^2}=\sqrt{n}\sup\sqrt{x_k^2}=\sqrt{n}\|x\|_\infty
+\end{align*}
+
+{\color{acc}(c) $\frac1{\sqrt{n}}\|x\|_1\leq\|x\|_2\leq\|x\|_1$}
+
+Nierówność H\"oldera: niech $p,q$ takie, że $\frac1p+\frac1q=1$, wtedy
+$$\sum\limits_{i=1}^n|x_i||y_i|\leq\Big[\sum\limits_{i=1}^n|x_i|^p\Big]^\frac1p\Big[\sum\limits_{i=1}^n|y_i|^q\Big]^\frac1q$$
+
+\begin{align*}
+    \|x_1\|=\sum|x_k|=\sum\sqrt{x_k^2}\geq\sqrt{\sum x_k^2}=\|x\|_2=\Big[\sum|x_k|^2\Big]^\frac12\Big[\sum\left({1\over\sqrt n}\right)^2\Big]^\frac12\geq\sum|x_i||\frac1{\sqrt{n}}|=\frac1{\sqrt{n}}\|x\|_1
+\end{align*}
+
+\subsection*{ZAD. 8.}
+\emph{Wykazać, że norma macierzowa indukowana przez normę wektorową $\|\cdot\|_\infty$ wyraża się wzorem $\|A\|_\infty=\max_{1\leq i\leq n}\sum|a_{ij}|$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+\begin{align*}
+    \|A\|_\infty&=\sup{\|Ax\|\over \|x\|}=\sup{\max|Ax_k|\over\max|x_k|}=\sup{{\max|\sum\limits_{j=0}^na_{kj}x_k|}\over\max|x_k|}=\\
+    &+\sup{\max|x_k||\sum a_{kj}|\over\max|x_k|}=\sup\max|\sum a_{kj}|=\max|\sum a_{kj}|
+\end{align*}
+
+\subsection*{ZAD. 9.}
+\emph{Wykazać, że wzór $\|A\|_E:=\sqrt{\sum_{1\leq i,j\leq n} a_{ij}^2}$ definiuje normę submultiplikatywną normę w $\R^{n\times n}$, zwaną normą euklidesową zgodną z normą wektorową $\|\cdot\|_2$.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Norma macierzy jest submultiplikatywna, jeżeli $\|AB\|\leq\|A\|\|B\|$. No to lecimy :v
+\medskip
+
+\begin{align*}
+    \|AB\|&=\sup{\|ABx\|\over\|x\|}=\sup{\|ABx\|\over\|Bx\|}{\|Bx\|\over\|x\|}\leq\sup{\|ABx\|\over\|Bx\|}\cdot\sup{\|Bx\|\over\|x\|}=\sup{\|Ax\|\over\|x\|}\sup{\|Bx\|\over \|x\|}
+\end{align*}
+
+Niech $x$ będzie dowolnym niezerowym wektorem.
+
+Korzystamy z nierówności Cauchy'ego-Schwarza:
+\begin{align*}
+    \|Ax\|^2=\sum_i\sum_j(a_{ij}x_j)^2\leq \sum_i\Big[\sum_ja_{ij}^2\sum_jx_j^2\Big]=\|x\|^2\sum_i\sum_ja_{ij}^2
+\end{align*}
+
+Teraz jeżeli podzielimy obie strony przez $\|x\|$, to dostajemy
+\begin{align*}
+    {\|Ax\|^2\over\|x\|^2}\leq{\|x\|^2\sum_i\sum_ja_{ij}^2\over\|x\|^2}=\sum_i\sum_ja_{ij}^2
+\end{align*}
+czyli
+$${\|Ax\|\over\|x\|}\leq\sqrt{\sum_i\sum_ja_{ij}^2}$$
+wystarczy pokazać, że dla któregoś to się zgadza. Po prostu weźmy $x_i=\frac1{\sqrt{n}}$, wtedy $\|x\|=1$, natomiast
+\begin{align*}
+    \|Ax\|=\sum_i\sum_j(\frac{a_{ij}}{\sqrt{n}})^2=\sum_i\frac1n\sum_ja_{ij}^2=\sum_i\sum_ja_{ij}^2
+\end{align*}
+
+
+\end{document}
