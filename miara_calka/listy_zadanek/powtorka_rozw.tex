@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\usepackage{../../uni-notes-eng}
+
+\begin{document}
+\subsection*{ZAD. 1.}
+\emph{Uzasadnić poniższe stwierdzenia, albo bezpośrednim argumentem, albo opierając się na poznanych faktach:}
+\medskip
+
+\emph{\color{def}Funkcja niemalejąca $h:\R\to\R$ jest borelowska.}
+\smallskip
+
+Niech $a\in \R$ oraz $y=f(a)$, wtedy zbiór
+$$\{x\in\R\;:\;f(x)\leq f(a)\}=f^{-1}[(-\infty,y]$$
+przy czym $(-\infty,y]\in Bor(\R)$, a wiemy, że to pociąga mierzalność funkcji.
+\medskip
+
+\emph{\color{def}Jeżeli zbiory $A_n,A\subseteq \R$ są borelowskie i $\lambda(A_n\Delta A)<\frac1n$ dla $n\in\N$, to istnieje ciąg $n_1<n_2<...$ taki, że funkcje charakterystyczne $\chi_{A_{n_k}}$ zbiegają do $\chi_A$ prawie wszędzie.}
+\medskip
+
+Zbieganie $\chi_{A_{n_k}}$ prawie wszędzie do $\chi_A$ oznacza, że zbiór gdzie się nie zgadzają jest miary zero. Nie zgadzają się na zbiorze $A\Delta A_{n_k}$, którego miara zbiega do zera. Koniec?
+\medskip
+
+\emph{\color{def}Jeżeli $A\subseteq\R$ jest zbiorem mierzalnym i $\lambda(A)=1$, to istnieje $r>0$ takie, że $\lambda(A\cap(-r,r))=\frac34$.}
+\medskip
+
+Może najpierw zróbmy funkcje $f:\R_+\to\R$ $f(x)=\lambda(A\cap(-x,x))$, gdzie dla $x=0$ przypisujemy $0$. Oczywiście taka funkcja jest zawsze nieujemna. Łatwo zobaczyć, że jest to funkcja ciągła oraz, że jej wartość nie może przekraczać $1$, bo $A\cap(-x,x)\subseteq A\implies \lambda(A\cap(-x,x))\leq\lambda(A)=1$. Dodatkowo, funkcja ta jest niemalejąca, bo dla $x<y$ mamy $A\cap(-x,x)\subseteq A\cap(-y,y)$. Czyli w pewnym miejscu musi przyjąć wartość $\frac34$.
+
+\subsection*{ZAD. 2.}
+\emph{Niech $f_n,f:(0,1)\to\R$ będą funkcjami mierzalnymi, takimi, że $|f_(x)|\leq\frac1{\sqrt(x)}$ dla $x\in(0,1)$. Udowodnić, że jeżeli $f_n\xrightarrow[]{\lambda}f$, to $\lim_n\in_{[0,1]}|f_n-f|d\lambda$.}
+\medskip
+
+
+
+\end{document}
