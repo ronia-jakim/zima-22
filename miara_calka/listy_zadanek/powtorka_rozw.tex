@@ -27,9 +27,14 @@ Zbieganie $\chi_{A_{n_k}}$ prawie wszędzie do $\chi_A$ oznacza, że zbiór gdzi
 Może najpierw zróbmy funkcje $f:\R_+\to\R$ $f(x)=\lambda(A\cap(-x,x))$, gdzie dla $x=0$ przypisujemy $0$. Oczywiście taka funkcja jest zawsze nieujemna. Łatwo zobaczyć, że jest to funkcja ciągła oraz, że jej wartość nie może przekraczać $1$, bo $A\cap(-x,x)\subseteq A\implies \lambda(A\cap(-x,x))\leq\lambda(A)=1$. Dodatkowo, funkcja ta jest niemalejąca, bo dla $x<y$ mamy $A\cap(-x,x)\subseteq A\cap(-y,y)$. Czyli w pewnym miejscu musi przyjąć wartość $\frac34$.
 
 \subsection*{ZAD. 2.}
-\emph{Niech $f_n,f:(0,1)\to\R$ będą funkcjami mierzalnymi, takimi, że $|f_(x)|\leq\frac1{\sqrt(x)}$ dla $x\in(0,1)$. Udowodnić, że jeżeli $f_n\xrightarrow[]{\lambda}f$, to $\lim_n\in_{[0,1]}|f_n-f|d\lambda$.}
+\emph{Niech $f_n,f:(0,1)\to\R$ będą funkcjami mierzalnymi, takimi, że $|f_n(x)|\leq\frac1{\sqrt(x)}$ dla $x\in(0,1)$. Udowodnić, że jeżeli $f_n\xrightarrow[]{\lambda}f$, to $\lim_n\int_{[0,1]}|f_n-f|d\lambda$.}
 \medskip
 
-
+Wprowadźmy sobie nowy ciąg funkcji, $g_n$ taki, że dla każdego $n$
+$$g_n=|f_n|+|f|-|f_n-f|$$
+funkcja $g_n$ jest mierzalna, gdyż skrypt, oraz nieujemna, ponieważ $|f_n-f|=|f_n+(-f)|\leq|f_n|+|-f|=|f_n|+|f|$ z nierówności trójkąta. To teraz jak wygląda całka z $g_n$?
+\begin{align*}
+    \int_{[0,1]} g_nd\lambda=\int_{(0,1)}g_nd\lambda=\int_{(0,1)}|f_n|+|f|-|f_n-f|d\lambda
+\end{align*}
 
 \end{document}
