@@ -30,11 +30,60 @@ Może najpierw zróbmy funkcje $f:\R_+\to\R$ $f(x)=\lambda(A\cap(-x,x))$, gdzie 
 \emph{Niech $f_n,f:(0,1)\to\R$ będą funkcjami mierzalnymi, takimi, że $|f_n(x)|\leq\frac1{\sqrt(x)}$ dla $x\in(0,1)$. Udowodnić, że jeżeli $f_n\xrightarrow[]{\lambda}f$, to $\lim_n\int_{[0,1]}|f_n-f|d\lambda$.}
 \medskip
 
-Wprowadźmy sobie nowy ciąg funkcji, $g_n$ taki, że dla każdego $n$
-$$g_n=|f_n|+|f|-|f_n-f|$$
-funkcja $g_n$ jest mierzalna, gdyż skrypt, oraz nieujemna, ponieważ $|f_n-f|=|f_n+(-f)|\leq|f_n|+|-f|=|f_n|+|f|$ z nierówności trójkąta. To teraz jak wygląda całka z $g_n$?
+Po pierwsze, co to znaczy, że $f_n\xrightarrow[]{\lambda}f$:
+$$\lim_n\lambda(\{x\;:\;|f_n(x)-f(x)|\geq\varepsilon\})$$
+Ustalmy więc $\varepsilon>0$ i niech 
+$$A=\{x\;:\;|f_n(x)-f(x)|\geq\varepsilon\}.$$
+
+
+\subsection*{ZAD. 3.}
+\emph{Niech $(X,\Sigma,\mu)$ będzie przestrzenią miarową, a $f_n,g_n:X\to\R$ będą funkcjami mierzalnymi.}
+\medskip
+
+\emph{\color{def}Udowodnić, że jeżeli $f_n\xrightarrow[]{\mu}f$ i $g_n\xrightarrow[]{\mu}g$, to $f_n - g_n\xrightarrow[]{\mu}f - g$}
+\medskip
+
+Ustalmy $\varepsilon>0$ i niech $N$ będzie takie, że dla każdego $n>N$ $|f_n-f| < \varepsilon$ oraz $|g_n-g|<\varepsilon$.
+
 \begin{align*}
-    \int_{[0,1]} g_nd\lambda=\int_{(0,1)}g_nd\lambda=\int_{(0,1)}|f_n|+|f|-|f_n-f|d\lambda
+    |g_n-f_n-(g-f)|=|g_n-g+(f-f_n)|\leq|g_n-g|+|f-f_n|<2\varepsilon
 \end{align*}
+
+Poza zbiorem miary zero $\star$
+\medskip
+
+\emph{\color{def}Wyjaśnić, dlaczego warunki $f_n\xrightarrow[]{\mu}f$ i $f_n\xrightarrow[]{\mu}g$ implikują, że $f=g$ prawie wszędzie.}
+\medskip
+
+Wiemy, że poza pewnym zbiorem miary zero $A$ mamy $f_n(x)\to f(x)$ oraz poza $B$ miary zero $f_n(x)\to g(x)$. Co jeśli teraz weźmiemy $A\Delta B$? jest to nadal zbiór miary zero oraz
+$$\lambda((A\Delta B)\cup A\cup B)\leq\lambda(A\Delta B)+\lambda(A)+\lambda(B)=0$$
+ale $(A\Delta B)\cup A\cup B$ jest zbiorem gdzie $f_n(x)$ nie zbiega do $f(x)$ lub $f_n(x)$ nie zbiega do $g(x)$. Poza tym zbiorem mamy, że $f_n(x)\to f(x)$ oraz $f_n(x)\to g(x)$, więc $f(x)=g(x)$ poza tym brzydkim zbiorem.
+
+\subsection*{ZAD. 4.}
+\emph{Obliczyć i podać szczegółowe uzasadnienia rachunków:}
+\medskip
+
+Niech 
+$$f_n={nx^2+1\over nx^4+n^2}={{x^2\over n}+\frac1{n^2}\over{x^4\over n}+1},$$ 
+wtedy $f_n\to0$ prawie wszędzie, więc jak w zad. 2.
+
+\begin{align*}
+    \lim_{n\to\infty}\int_\R{nx^2+1\over nx^4+n^2}d\lambda(x)&=0
+\end{align*}
+
+\begin{align*}
+    \int_0^1\sum_{n=1}^\infty n\cdot\chi_{(\frac1{n+1}, \frac 1n)}d\lambda
+\end{align*}
+
+Niech 
+$$f_n=n{1\over n(n+1)}=\frac1{n+1}=\int_{[0,1]}n\cdot\chi_{(\frac1{n+1},\frac1n)}d\lambda.$$
+Teraz popatrzmy na
+$$g_N=\sum_{n=1}^N\frac1{n+1}=\sum_{n=1}^Nf_n=\sum_{n=1}^N\int_0^1n\cdot_{(\frac1{n+1},\frac1n)}d\lambda=\int_0^1\sum_{n=1}^Nn\cdot_{(\frac1{n+1},\frac1n)}d\lambda$$
+oryginalnie bedzie $\infty$?
+
+
+\subsection*{ZAD. 5.}
+\emph{Niech funkcje mierzalne $f)n:[0,1]\to\R$ spiełniają warunek $\int_0^1|f_n|d\lambda\leq1$. Niech $B$ będzie zbiorem tych $x\in[0,1]$, dla których szereg $\sum_n {f_n(x)\over n^2}$ nie jest zbieżny. Udowodnić, że zbiór $B$ jest miary zero; wyjaśnić, dlaczego spełniona jest zależność $\int_0^1\sum_{n=1}^\infty$. Udowodnić, że zbiór $B$ jest miary zero; wyjaśnić dlaczego spełniona jest zależność}
+$$\int_0^1\sum\limits_{n=1}^\infty{f_n(x)\over n^2}d\lambda=\sum\limits_{n=1}^\infty\int_0^1{f_n(x)\over n^2}d\lambda$$
 
 \end{document}
