@@ -1,0 +1,124 @@
+\documentclass{article}
+
+\usepackage{../../../uni-notes-eng}
+\usepackage{multicol}
+\definecolor{back2}{HTML}{ffffff}
+\definecolor{text2}{HTML}{000000}
+\usepackage{wrapfig}
+\usepackage{svg}
+
+\author{Weronika Jakimowicz}
+\title{MDM Lista 14}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{ZAD. 1.}
+\emph{Co można powiedzieć o macierzy sąsiedztwa grafu i jego dopełnienia? Podaj interpretację wektorów $AI$ i $A^2I$, gdzie $I$ jest wektorem jednostkowym oraz $A$ jest macierzą sąsiedztwa grafu $G$ (działaniem jest mnożenie macierzy i wektorów o współrzędnych całkowitych).}
+\medskip
+
+\podz{sep}
+\medskip
+
+Co można powiedzieć o macierzy sąsiedztwa grafu i jego dopełnienia? Na pewno obie są symetryczne i sumują się do "odwróconej identyczności", czyli macierzy która zera ma tylko na głównej przekątnej, a w pozostałych miejscach ma jedynki - jest to macierz kliki. W takim razie mając macierz grafu łatwo poznać macierz jego dopełnienia i vice versa.
+\smallskip
+
+$AI$ zlicza na na $i$-tej współrzędnej ilość wierzchołków z jakimi $i$-ty wierzchołek jest połączony - wszystkie $1$ reprezentujące krawędź wychodzącą z grafu zostaną zachowane i dodane do siebie.
+\smallskip
+
+Teraz zastanówmy się, co się dzieje kiedy potęgujemy macierz sąsiedztwa? $i$-ty wiersz mówi nam, z kim sąsiaduje $i$-ty wierzchołek, natomiast $j$-ta kolumna daje nam sąsiadów $j$-tego wierzchołka. Mnożąc $i$-ty wierz i $j$-tą kolumną sprawdzamy, czy dany sąsiad jest przez oba te wierzchołki współdzielony, jeżeli nie, to dostajemy jeden przy konfrontacji odpowiadających komórek, a jeżeli tak, to zostaje nam $1$. Czyli macierz $A^2$ zachowuje wspólnych sąsiadów każdych dwóch wierzchołków - ilość sposobów na dojście z $i$ do $j$ (i w drugą stronę) w dwóch krokach. Oczywiście na przekątnej dostaniemy ilość sposobów na jakie możemy wyjść z $i$, odwiedzić kogoś i wrócić na $i$, czyli stopień wierzchołka $i$. Po przemnożeniu przez wektor jednostkowy dostajemy więc na $i$-tej współrzędnej ilość sposobów na jakie możemy wyjść z $i$-tego wierzchołka, odwiedzić kogoś i pójść dalej, czy to wracając na $i$ czy też nie.
+
+\subsection*{ZAD. 2.}
+\emph{Hiperkostką wymiary $k$ nazywamy graf $G=(V, E)$, gdzie $V=\{0,1\}^k$, a krawędź między dwoma wierzchołkami istnieje $\iff$ gdy ich zapis binarny różni się na dokładnie jeden pozycji. Pokaż, że między dwoma różnymi wierzchołkami $k$-wymiarowej hiperkostki istnieje $k$ rozłącznych wierzchołkowo ścieżek.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Niech $v$ będzie dowolnych wierzchołkiem $k$ wymiarowej hiperkostki. Wtedy $v$ jest pewnym ciągiem $0$ i $1$ długości $k$, czyli różni się dokładnie na jednej współrzędnej z dokładnie $k$ innymi wierzchołkami. Co się teraz stanie jeżeli usuniemy $n<k$ wierzchołków? Jeżeli będziemy usuwać sąsiadów różnych grafów, to zawsze będą z czymś połączone przez co najmniej $2$ krawędzie, natomiast jeżeli skupimy się na usuwaniu sąsiadów na przykład wierzchołka $v$, to zawsze zostanie mu przynajmniej jedna krawędź łącząca go z resztą grafu. Natomiast usunięcie $k$ wierzchołków jest w stanie rozspójnić nasz graf, wystarczy usunąć wszystkich sąsiadów pojedynczego wierzchołka, wtedy zostaje on niepołączony z resztą grafu.
+
+\subsection*{ZAD. 3.}
+\emph{Graf $M_2$ to dwa wierzchołki połączone krawędzią. Graf $M_{k+1}$ konstruujemy z $M_k$ w ten sposób, że dokładamy do każdego $v\in V(M_k)$ wierzchołek $v'$ i łączymy go ze wszystkimi sąsiadami $v$ w $M_k$; następnie dodajemy jeszcze jeden wierzchołek $w$ i łączymy go ze wszystkimi wierzchołkami $v'$. Pokaż przez indukcję po $k$, że}
+\smallskip
+
+\point \emph{\color{acc}(a) graf $M_k$ nie ma trójkątów}
+\smallskip
+
+Dla $k=2$ jest to dość oczywiste: pojedyncza krawędź trójkąta nie zawiera nigdy. Teraz załóżmy, że $M_k$ nie ma trójkątów. Popatrzmy na $G=M_{k+1}$.
+
+Załóżmy, że w $M_{k+1}$ istnieje trójkąt, powiedzmy o wierzchołkach $x,y,z$. Rozdzielmy całość na przypadki:
+
+\indent 1. $z=w$ Wtedy $y,x$ muszą być wierzchołkami $v_1',v_2'$, ale przecież te wierzchołki nie były łączone między sobą, czyli tak zdarzyć się nie może. 
+
+\indent 2. $z=v'$ dla pewnego $v\in M_k$. Skoro wiemy już, że ani jeden z pozostałych wierzchołków nie jest $w$ oraz że wszystkie $v'$ nie są między soba połączone, to musimy mieć $x,y\in M_k$ takie, że $xy\in M_k$. Ale poniewż $xv',yv'\in M_{k+1}$, to $xv,yv\in M_k$. Czyli mamy $xv,yv,xy\in M_k$ co daje trójkąt w $M_k$ i sprzeczność.
+\medskip
+
+\point \emph{\color{acc}(b) graf $M_k$ jest $k$-kolorowany}
+\smallskip
+
+Ilość kolorów potrzebnych do pomalowania grafu odpowiada ilości klas na które dzielimy wierzchołki.
+\smallskip
+
+Dla $k=2$ jest to oczywiste. Załóżmy teraz, że graf $M_k$ jest $k$-kolorowany. Pokażemy, że wystarczy $(k+1)$ kolorów żeby pomalować $M_{k+1}$.
+
+Z założenia indukcyjnego wierzchołki grafu $M_k$ możemy podzielić na $k$ klas $V_1,...,V_k$. Dla dowolnego wierzchołka $v\in V_i$ wierzchołek $v'$ nie jest połączony z żadnym wierzchołkiem z $V_i$: na tej zasadzie tworzyliśmy przecież graf $M_{k+1}$, że $v'$ jest połączone z wszystkimi $u$ takimi, że $vu\in M_k$, a wierzchołki z jednej klasy nie są ze sobą połączone. Czyli $v,u\in V_i$, to $v'u$ nie istnieje, więc możemy spokojnie $v'$ włożyć w $V_i$. Pozostaje nam wierzchołek $w$, który nie może już zostać włożony do żadnej z klas $V_i$, bo jest już połączony z co najmniej jednym z wierzchołków już w $V_i$ będących. Czyli musimy go włożyć do osobnej klasy, stąd też $(k+1)$ klas, czyli kolorów.
+\medskip
+
+\point \emph{\color{acc}(c) graf $M_k$ nie jest $(k-1)$-kolorowany}
+\smallskip
+
+W dzieleniu jak wyżej wiemy, że jeśli nie włożymy $w$ do żadnej z klas $V_i$, to będziemy musieli go włożyć gdzie indziej. Co jeżeli włożymy $w$ do $V_1$ i nadal będziemy próbować użyć tylko $k$ kolorów? Wtedy dla pewnego $v\in V_1$ będziemy musieli $v'$ włożyć do $V_j$ dla $1\neq j$. Ale skoro tak się da zrobić, to $(\forall\;u\in V_j)\;vu\not\in M_k$. Czyli mogliśmy włożyć $v$ do klasy $V_j$. To samo jeśli weźmiemy kolejny wierzchołek $x'$ dodany z $V_1$ - możemy go włożyć do $V_k$ dla pewnego $k\neq1$. Tak możemy robić aż rozmieścimy całe $V_1$ pomiędzy pozostałe klasy wierzchołków, co znaczyłoby, że $\chi(M_k)\neq k$, a raczej $\chi(M_k)=k-1$ i jest to sprzecznością.
+
+\subsection*{ZAD. 6.}
+\emph{Mamy daną grupę $n$ dziewcząt i $m$ chłopców. Pokaż, że warunkiem koniecznym i dostatecznym na to, by $k$ dziewcząt mogło znaleźć męża (wewnątrz grupy), jest to, by każde $r$ dziewcząt znało przynajmniej $k+r-n$ chłopców.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Mamy graf $G$ o dwóch klasach wierzchołków: $W$ i $M$, gdzie $|W|=n$ i $|M|=m$. Jeżeli na $G$ da się zrobić kojarzenie $k$ wierzchołków z $W$, to jeżeli do $M$ dodamy $(n-k)$ wierzchołków połączonych z każdym wierzchołkiem z $W$, możemy bez problemy znaleźć kojarzenie całego grafu. W takim razie wystarczy, aby nowo utworzony graf, w którym $|M'|=m+n-k$, miał kojarzenie. Niech więc teraz $A\subseteq W$ taki, że $|A|=r$. Chcemy, żeby spełniony był warunek Halla:
+$$|A|=r\leq |N_{M'}(A)|=n-k+|N_M(A)|$$
+$$r+k-n\leq |N_M(A)|$$
+czyli to, co potrzebujemy z zadania.
+
+Co jeżeli mogłoby być mniej sąsiadów $A$? Czyli $|N(A)|<k+r-n$, wtedy
+$$|A|=r\leq |N_{M'}(A)|=n-k+|N_M(A)|<n-k+(k+r-n)=r$$
+co doprowadza do sprzeczności.
+
+\subsection*{ZAD. 7.}
+\emph{W niektórych krajach mężczyzna może mieć do czterech żon. Pokaż, że warunkiem koniecznym i dostatecznym w takim kraju na to, aby $n$ dziewcząt mogło znaleźć mężów, jest to, by każde $k$ z nich znało w sumie przynajmniej $\frac k4$ chłopców.}
+\medskip
+
+\podz{sep}
+\medskip
+
+W takim kraju możemy każdego mężczyznę pomnożyć przez $4$ i działać jak w normalnym twierdzeniu Halla, tylko na $|W|=n$ oraz $|M|=4m$. Chcemy, żeby każdy podzbiór $A\subseteq W$ o $|A|=k$ zachodziło
+$$|A|=k\leq |N(A)|$$
+czyli jeżeli $|N(A)|=k$, to warunek będzie na pewno spełniony. Ale jeżeli $|N(A)|=k$, to tak naprawdę $|N(A')|=\frac k4$ jeżeli każdy mężczyzna wraca do bycia liczonym pojedynczo a nie poczwórnie. 
+
+\subsection*{ZAD. 10.}
+\emph{Pokaż, że dwudzielny graf $d$-regularny posiada pełne skojarzenie.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Niech $G$ będzie $d$-regularnym grafem o klasach wierzchołków $|V|=n$ i $|W|=m$. Niech $A\subseteq V$ o $|A|=k$, wtedy z $A$ wychodzi $k\cdot d$ krawędzi, które muszą się łączyć z co najmniej $k$ wierzchołkami w $W$. W przeciwnym przypadku $|N(A)|<k$, ale wtedy do $N(A)$ wchodzi $|N(A)|\cdot d<k\cdot d$ krawędzi. Czyli 
+$$|A|=k\leq |N(A)|$$
+i graf $G$ spełnia warunek Halla.
+
+\subsection*{ZAD. 13}
+\emph{Pokaż, że indeks chromatyczny $\chi'(K_n)$ jest równy $(n-1)$ gdy $n$ jest parzyste i $n$ gdy $n$ jest nieparzyste.}
+\medskip
+
+\podz{sep}
+\medskip
+
+Dla $K_{2n+1}$ dowolne pełne skojarzenie łączy $2n$ wierzchołków przez $n$ krawędzi i zawsze zostawia jeden wierzchołek osierocony. W grafie tym mamy ${2n(2n+1)\over 2}=n(2n+1)$ krawędzi, czyli $(2n+1)$ różnych skojarzeń, czyli musimy mieć co najmniej $(2n+1)$ kolorów, aby pomalować krawędzie (każde skojarzenie malujemy na jeden kolor).
+\smallskip
+
+Dla $K_{2n}$ mamy ${(2n-1)2n\over2}=n(2n-1)$ krawędzi. W skojarzeniu teraz jest dokładnie $n$ krawędzi, każde skojarzenie malujemy na jeden kolor, więc potrzebujemy $(2n-1)$ kolorów by pomalować wszystkie krawędzie tego grafu.
+
+\end{document}
