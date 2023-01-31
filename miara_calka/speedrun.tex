@@ -1,0 +1,72 @@
+\documentclass{article}[13pt]
+
+\usepackage{../uni-notes-eng}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\setlength{\columnsep}{1cm}
+
+\title{Miara i calka\medskip\\{\normalsize speedrun przed terminem 0}}
+\author{by a MEEEE}
+\date {21.03.2137}
+
+\newcommand{\bor}{Bor(\R)}
+
+\begin{document}
+\maketitle
+
+\begin{multicols*}{2}
+    {\color{def}Funkcja $\Sigma$-mierzalna} $f:X\to\R$ to funkcja, która dla każdego $f^{-1}[B]\in\Sigma$ spełnia $B\in\bor$, równoważnie jeżeli $\rodz{G}\subseteq\bor$ takie, że $\sigma(\rodz{G})=\bor$, to wystarczy dla każdego $G\in\rodz{G}$ $f^{-1}[G]\in\Sigma$.
+    \medskip
+
+    Każdy z poniższych pociąga mierzalność:
+    \smallskip
+
+    $\{x\;:\;f(x)<t\}\in\Sigma$
+
+    $\{x\;:\;f(x)\leq t\}\in\Sigma$
+
+    $\{x\;:\;f(x)>t\}\in\Sigma$
+
+    $\{x\;:\;f(x)\geq t\}\in \Sigma$
+    \medskip
+
+    Jeżeli funkcja $f:X\to\R$ jest $\Sigma$-mierzalna, a $g:\R\to\R$ jest ciągła, to $g\circ f:X\to\R$ jest $\Sigma$-mierzalna.
+    \medskip
+
+    {\color{acc}Granica punktowa} zbieżnego ciągu funkcji mierzalnych jest mierzalna.
+    \medskip
+
+    Każdą $\Sigma$-mierzalna funkcję $f:X\to\R$ można zapisać w postaci $f^+-f^-$, różnicy funkcji mierzalnych i nieujemnych.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    {\color{def}Funkcja prosta} to funkcja o skończonym zbiorze wartości, czyli kombinacja liniowa skończenie wielu {\color{acc}funkcji charakterystycznych}
+    \medskip
+
+    Ciąg funkcji mierzalnych jest {\color{def}zbieżny prawie wszędzie}, jeżeli $\lim_nf_n(x)=f(x)$ poza zbiorem miary zero.
+    \medskip
+
+    Dla każdej $\lambda$-mierzalnej funkcji $f$ istnieje borelowska funkcja $g$ taka, że $f=g$ $\lambda$-prawie wszędzie.
+    \medskip
+
+    Jeżeli $f_n\to f$ prawie wszędzie, to dla każdego $\varepsilon>0$ istnieje $A\in\Sigma$ o $\mu(A)<\varepsilon$ i $f_n$ jest jednostajnie zbieżny do $j$ na zbiorze $A^c$.
+    \medskip
+
+    Ciąg funkcji mierzalnych jest {\color{def}niemal jednostajnie zbieżny}, jeżeli dla każdego $\varepsilon>0$ ciąg $f_n$ zbiega jednostajnie na dopełnieniu pewnego zbioru miary $<\varepsilon$.
+    \medskip
+
+    Mówimy, że ciąg jest {\color{def}zbieżny według miary}, jeżeli dla każdego $\varepsilon$ $\lim_n\mu(\{x\;:\;|f_n(x)-f(x)|\geq\varepsilon\})=0$.
+    \medskip
+
+    {\color{acc}\point} Zbieżny niemal jednostajnie $\implies$ zbieżny według miary.
+
+    {\color{acc}\point} Zbieżny prawie wszędzie w mierze skończonej $\implies$ zbieżny według miary.
+    \medskip
+
+    {\color{def}Twierdzenie Riesza}: jeżeli 
+\end{multicols*}
+
+\end{document}

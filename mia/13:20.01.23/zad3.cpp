@@ -1,9 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<cmath>
-#include<string>
-#include<map>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -12,74 +7,52 @@ using namespace std;
 int t;
 
 ll n,m;
+vector<int> l;
 
-vector<ll> a;
-vector<ll> l; // licze ile poteg takiej mam
-
-ll M = 60;
+int M = 64;
 
 int main () {
     cin >> t;
 
     for (int i = 0; i < t; i++) {
-        a.clear();
         l.clear();
-        l.insert(l.end(), M, 0);
+        l.insert(l.end(), M+5, 0);
 
         cin >> n >> m;
+
+        ll sum = 0;
 
         for (int j = 0; j < m; j++) {
             ll pom;
             cin >> pom;
-            ll p = log2(pom);
+            int p = log2(pom);
             l[p]++;
-            a.push_back(pom);
+            sum += pom;
         }
 
-        sort(l.begin(), l.end());
-
-        ll div = 0;
-
-        ll sum = 0;
-        for (int j = 0; j < m; j++) sum += a[j];
+        int div = 0;
 
         if (sum < n) {
             cout << -1 << endl;
             continue;
         }
 
-        if ((sum & n) == n) {
-            cout << 0 << endl;
-            continue;
-        }
-
-        // for (int j = 0; j < m; j++) {
-        //     if ((a[j] & n) != 0) {
-        //         n -= a[j];
-        //         a[j] = 0;
-        //     }
-        //     else {
-        //         if (a[j] > n) {
-        //             while ((a[j] & n) == 0) {
-        //                 a[j] /= 2;
-        //                 div++;
-        //             }
-        //             n -= a[j];
-        //             a[j] = 0;
-        //         }
-        //         else {
-        //             n -= a[j];
-        //             a[j] = 0;
-        //             //j = 0;
-        //         }
-        //     }
-        // }
-
         for (int j = 0; j < M; j++) {
-            // jezeli bit jest zapalony
-            if ((n & (1LL << j)) != 0) {
-
+            if ((n & (1LL<<j)) != 0) {
+                if (l[j] > 0) {
+                    l[j]--;
+                }
+                else {
+                    while (j < M && l[j] == 0) {
+                        j++;
+                        div++;
+                    }
+                    l[j]--;
+                    j--;
+                    continue;
+                }
             }
+            l[j+1] += l[j] / 2;
         }
         cout << div << endl;
     }
