@@ -11,11 +11,15 @@
 \date {21.03.2137}
 
 \newcommand{\bor}{Bor(\R)}
+\newcommand{\obor}{Bor(\R\times\R)}
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
-\begin{multicols*}{2}
+\subsection*{ROZDZIAŁ 2}
+
+\begin{multicols}{2}
     {\color{def}Funkcja $\Sigma$-mierzalna} $f:X\to\R$ to funkcja, która dla każdego $f^{-1}[B]\in\Sigma$ spełnia $B\in\bor$, równoważnie jeżeli $\rodz{G}\subseteq\bor$ takie, że $\sigma(\rodz{G})=\bor$, to wystarczy dla każdego $G\in\rodz{G}$ $f^{-1}[G]\in\Sigma$.
     \medskip
 
@@ -66,7 +70,106 @@
     {\color{acc}\point} Zbieżny prawie wszędzie w mierze skończonej $\implies$ zbieżny według miary.
     \medskip
 
-    {\color{def}Twierdzenie Riesza}: jeżeli 
-\end{multicols*}
+    {\color{def}Twierdzenie Riesza}: jeżeli ciąg funkcji spełnia {\color{acc}warunek Cauchy'ego według miary}, czyli dla dowolnego $\varepsilon>0$
+    $$\lim_{n,m}\mu(\{x\;:\;|f_n(x)-f_m(x)|\geq\varepsilon\})=0$$
+    to $f_n$ jest zbieżny według miary do pewnego $f$ oraz istnieje podciąg liczb naturalnych $n(k)$ taki, że $f_{n(k)}$ jest zbieżny prawie wszędzie oraz według miary.
+\end{multicols}
+\bigskip
+
+\podz{sep2}
+\bigskip
+
+\subsection*{ROZDZIAŁ 3}
+
+\begin{multicols}{2}
+    Całkę po funkcji prostej $f=\sum a_i\chi_{A_i}$ definiujemy jako
+    $$\int_Xfd\mu=\sum a_i\mu(A_i)$$
+
+    Dla nieujemnej mierzalnej funkcji $f$ definiujemy
+    $$\color{acc}\int_Xfd\mu=\sup\{\int_Xsd\mu\;:\;0\leq s\leq f\},$$
+    czyli jeżeli $s_1\leq s_2\leq ...$ jest ciągiem funkcji prostych takich, że $\lim_ns_n=f$ prawie wszędzie, to
+    $$\int_xfd\mu=\lim_x\int_Xs_nd\mu.$$
+
+    Funkcja mierzalna jest {\color{def}całkowalna}, jeżeli $\color{acc}\int_X|f|d\mu<\infty$, wtedy definiujemy całkę wzorem $\int_Xfd\mu=\int_Xf^+d\mu-\int_Xf^-d\mu$ dla $f=f^x-f^-$ nieujemnych.
+    \medskip
+
+    Dla {\color{def}$f,g$ całkowalnych i $h$ mierzalnej}:
+    \smallskip
+
+    \point $\int_X(af+gb)d\mu=a\int_Xfd\mu+b\int_Xgd\mu$
+
+    \point $h=0$ prawie wszędzie, to $\int_Xhd\mu=0$
+
+    \point $f\leq g$ prawie wszędzie, to $\int_Xfd\mu\leq\int_Xgd\mu$
+
+    \point $|\int_X(f+g)d\mu|\leq\int_X|f|d\mu+\int_X|g|d\mu$
+    
+    \point $a\leq f\leq b$ prawie wszędzie, to $a\mu(X)\leq\int_Xfd\mu\leq b\mu(X)$
+
+    \point dla $A,B\in\Sigma$ jeżeli $A\cap B=\emptyset$, to $\int_{A\cup B}fd\mu=\int_Afd\mu+\int_Bfd\mu$
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    {\color{def}Twierdzenie o zbieżności monotonicznej:} niech $f_n$ będzie ciągiem nieujemnych funkcji mierzalnych takich, że $f_1\leq f_2\leq...$ zbieżnych prawie wszędzie do $f=\lim_nf_n$ 
+    $$\int_Xfd\mu=\lim_n\int_Xf_nd\mu$$
+
+    {\color{def}Lemat Fatou}: dla dowolnego ciągu funkcji nieujemnych $f_n$ zachodzi
+    $$\int_x\lim\inf f_nd\mu=\lim\inf\int_X f_nd\mu$$
+
+    {\color{def}Twierdzenie Lesbegue'a o zbieżności ograniczonej}: niech $f_n,g$ będą mierzalne, że dla każdego $n$ $|f_n|\leq g$ zachodzi prawie wszędzie przy czym $\int_Xgd\mu<\infty$. Jeżeli {\color{def}$f=\lim_nf_n$ prawie wszędzie}, to
+    $$\lim_n\int_X|f_n-f|d\mu=0$$
+    $$\lim_n\int_Xfd\mu=\lim\int_Xf_nd\mu$$
+
+    Jeżeli teraz $\mu(X)<\infty$ oraz $f_n$ są wspólnie ograniczone i $\int_X\lim_nf_nd\mu=\lim_n\int_Xf_nd\mu$.
+    \medskip
+
+    Jeżeli $f$ jest mierzalna i nieujemna, to funkcja $\nu:\Sigma\to[0,\infty]$
+    $$\nu(A)=\int_Afd\mu$$
+    jest {\color{def}miarą na $\Sigma$}.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Jeżeli $f:[a,b]\to\R$ jest całkowalna w sensie Riemanna, to jest $\lambda$-mierzalna i obie całki są sobie równe: $\int_a^bf(x)dx=\int_{[a,b]}fd\lambda$.
+
+\end{multicols}
+\bigskip
+
+\podz{sep2}
+\bigskip
+
+\subsection*{ROZDZIAŁ 4}
+
+\begin{multicols}{2}
+
+    Niech $(X,\Sigma)$ i $(Y,\Theta)$ będą przestrzeniami z $\Sigma,\Theta$ będącymi $\sigma$-ciałami. W $X\times Y$ możemy zdefiniować następujące $\sigma$-ciało:
+    $$\Sigma\otimes\Theta=\sigma(\{A\times B\;:\;A\in\Sigma, B\in\Theta\}),$$
+    wtedy $\Sigma\otimes\Theta$ jest {\color{def}produktem $\sigma$-ciał} $\Sigma$ i $\Theta$.
+    \medskip
+
+    Zbiór $F\subseteq X\times Y$ należy do ciała prostokątów na $\Sigma,\Theta$ wtw $F=\bigcup A_i\times B_i$ dla $A_i\in\Sigma$ i $B_i\in\Theta$.
+
+    Jeżeli $E\in\Sigma\otimes\Theta$, to dla każdego $x\in X$ i $y\in Y$ definiujemy {\color{acc}cięcia pionowe i poziome} $E_x=\{z\in Y\;:\;(x,z)\in E\}$ i $E^y=\{z\in Z\;:\;(z,y)\in E\}$.
+    \medskip
+
+    Jeżeli $E\in\Sigma\otimes\Theta$, a funkcja $f:X\times Y\to\R$ jest $\Sigma\otimes\Theta$-mierzalna, to funkcja $f_x$ jest $\theta$-mierzalna, a $f^y$ jest $\Sigma$-mierzalna.
+    \medskip
+
+    $$\bor\otimes\bor=\obor$$
+
+    {\color{def}Miarę} na produkcie przestrzeni $(X,\Sigma,\mu)$ i $(Y,\Theta,\nu)$ definiujemy:
+    $$\color{acc}\mu\otimes\nu(A\times B)=\mu(A)\cdot\mu(B)$$
+
+    \podz{sep}
+    \medskip
+
+    Funkcja definiowana na $\sigma$-ciele prostokątów podzbiorów $X\times Y$ postaci $A\times B=F$ określona wzorem
+    $$\color{acc}\kappa(F)=\int_X\nu(F_x)d\mu(x)$$
+    jest przeliczalnie addytywna i $\kappa(A\times B)=\mu(A)\cdot\nu(B)$ dla wszystkich $A\in\Sigma$ i $B\in\Theta$.
+    
+\end{multicols}
 
 \end{document}
