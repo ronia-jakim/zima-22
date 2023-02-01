@@ -166,10 +166,59 @@
     \podz{sep}
     \medskip
 
-    Funkcja definiowana na $\sigma$-ciele prostokątów podzbiorów $X\times Y$ postaci $A\times B=F$ określona wzorem
-    $$\color{acc}\kappa(F)=\int_X\nu(F_x)d\mu(x)$$
-    jest przeliczalnie addytywna i $\kappa(A\times B)=\mu(A)\cdot\nu(B)$ dla wszystkich $A\in\Sigma$ i $B\in\Theta$.
+    Na $\sigma$-ciele $\Sigma\otimes\Theta$ istnieje jedyna miara spełniająca dla każdego $A\in\Sigma$ i $B\in\Theta$
+    $$\mu\otimes\nu(A\times B)=\mu(A)\cdot\nu(B)$$
+    a dla dowolnego $E\in\Sigma\otimes\Theta$ funkcja $x\mapsto\nu(E_x)$ i $y\mapsto\mu(E^y)$ są mierzalne i zachodzą wzory:
+    $$\mu\otimes\nu(E)=\int_X\nu(E_x)d\mu(x)=\int_Y\mu(E^y)d\nu(y)$$
+
+    \podz{sep}
+    \medskip
+
+    {\color{def}Twierdzenie Fubiniego}: jeżeli funkcja $f:X\times Y\to\R$ jest $\Sigma\otimes\Theta$-mierzalna oraz $f$ jest nieujemna lub $f$ jest $\mu\otimes\nu$-całkowalna, to wtedy
+    $$I:x\mapsto\int_Yf(x,y)d\nu(y)$$
+    $$J:y\mapsto\int_Yf(x,y)d\mu(x)$$
+    są mierzalne względem $\Sigma$ i odpowiednio $\Theta$, oraz
+    \begin{align*}
+        \int_{X\times Y}fd\mu\otimes\nu&=\int_X\left(\int_Yf(x,y)d\nu(y)\right)d\mu(x)=\\
+        &=\int_Y\left(\int_Xf(x,y)d\mu(x)\right)d\nu(y)
+    \end{align*}
+    Czyli możemy {\color{acc}bezkarnie zamieniać granice całkowania}.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Jeżeli rozważamy przestrzenie metryczne $(X_i,\Sigma_i,\mu_i)$ dla $i=1,...,n$, to na $\sigma$-ciele $\color{acc}\bigotimes_{i\leq n}\Sigma_i$ podzbiorów $\prod_{i\leq n}X_i$ generowanym przez wszystkie kostki mierzalne $A_1\times...\times A_n$, to {\color{def}istnieje jedyna miara} $\mu=\bigotimes\mu_i$ spełniająca dla wszystkich $A_i\in\Sigma_i$
+    $$\mu(A_1\times...\times A_n)=\mu_1(A_1)\cdot...\cdot\mu_n(A_n)$$
+
+    \podz{sep}
+    \medskip
+
+    $K=\{0,1\}^\N$ - przestrzeń ciągów $0,1$, wtedy możemy określić metrykę $d(x,y)=\frac1n$ gdzie $n$ to pierwszy indeks gdzie te dwa ciągi się różnią.
+    \medskip
+
+    Funkcja $f:K\to[0,1]$ zadana $f(x)=\sum\limits_{n=1}^\infty{2x(n)\over3^n}$ jest homeomorfizmem między $K$ a zbiorem Cantora. Dla funkcji $\psi:\N\supseteq A\to\{0,1\}$ oznaczamy zbiór 
+    $$[\psi]=\{x\in K\;:\;x(i)=\psi(i)\;i\in A\}.$$
+    Cylindry ten postaci są otwarto-domknięte w $K$ i stanowią bazę topologii w $K$. Oznaczmy przez $\rodz C$ ciało podzbiorów $K$ generowanych przez wszystkie cylindry. Zbiór $C$ jest w $\rodz C$ wtw istnieje $n$ i $C'\subseteq\{0,1\}^n$ takie, że $C=C'\times\{0,1\}\times...$.
+    \medskip
+
+    Dla $C\in\rodz C$ definiujemy {\color{def}miarę na $K$}:
+    $$\nu(C)={|C'|\over2^n}$$
+    która spełnia własność: 
+    $$\color{acc}(\forall\;B\in Bor(K))(\forall\;\varepsilon>0)(\exists\;C\in\rodz C)\;\nu(B\Delta C)<\varepsilon.$$
     
+\end{multicols}
+\bigskip
+
+\podz{sep2}
+\bigskip
+
+\subsection*{ROZDZIAŁ 5}
+
+\begin{multicols}{2}
+    
+    
+
 \end{multicols}
 
 \end{document}
