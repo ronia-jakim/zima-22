@@ -7,8 +7,8 @@ MOD1MY = [7.5, 6, 8.5, 9]
 MOD2 = [8, 10.5, 10, 11.5, 11]
 MOD2MY = [7, 5, 6.5, 4, 2]
 
-MOD3 = [15.5, 20, 18]
-MOD3MY = [8.5, 8.5, 8]
+MOD3 = [15.5, 20, 18, 10]
+MOD3MY = [8.5, 8.5, 8, 2]
 
 suma_max = sum(MOD1) + sum(MOD2) + sum(MOD3)
 suma_moje = sum(MOD1MY) + sum(MOD2MY) + sum(MOD3MY)

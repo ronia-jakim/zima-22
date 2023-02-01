@@ -17,6 +17,52 @@
 \maketitle
 \thispagestyle{empty}
 
+\subsection*{ROZDZIAŁ 1}
+
+\begin{multicols}{2}
+    
+    $\color{def}\bor$ to najmniejsze $\sigma$-ciało zawierające wszystkie zbiory otwarte z $\R$
+    \medskip
+
+    Dla $\rodz R\subseteq\Po{X}$ funkcję $\mu:\rodz R\to[0,\infty]$ nazywamy {\color{def}addytywną funkcją zbioru} (\emph{miarą skończenie addytywną}), jeżeli
+    \smallskip
+    
+    \point $\mu(\emptyset)=0$
+
+    \point $A\cap B=\emptyset\implies \mu(A\cup B)=\mu(A)+\mu(B)$.
+    \medskip
+
+    {\color{def}Przeliczalnie addytywna funkcja zbioru} to $\mu$ takie, że dla parami rozłącznych $A_n$ zachodzi $\mu(\bigcup A_i)=\sum\mu(A_i)$. Jeżeli nie są rozłączne, to $\mu(\bigcup A_i)\leq\sum\mu(A_i)$.
+    \medskip
+
+    Następujące warunki są równoważne:
+    \smallskip
+
+    \point $\mu$ przeliczalnie addytywna
+
+    \point $\mu$ jest ciągła z dołu, czyli jeśli $\color{acc}A_n\uparrow A$, to zachodzi $\color{acc}\lim_n\mu(A_n)=\mu(A)$
+
+    \point $\mu$ jest ciągła z góry, jeśli $\color{acc}A_n\downarrow A$ to $\color{acc}\lim_n\mu(A_i)=\mu(A)$
+
+    \point $\mu$ jest ciągła z góry na zbiorze $\emptyset$, czyli dla $\color{acc}A_n\downarrow\emptyset$ mamy $\color{acc}\lim_n\mu(A_n)=0$
+    \medskip
+
+    $[a_n,b_n)$ jest ciągiem parami rozłącznych przedziałów zawartych w $[a,b)$, to $\sum(b_n-a_n)\leq b-a$. Natomiast, jeżeli $[a,b)\subseteq\bigcup[a_n,b_n)$, to $b-a\leq\sum(b_n-a_n)$.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    $\mu$ jest {\color{def}$\sigma$-skończona }na pierścieniu $\rodz{R}$, jeżeli istnieją $X_n$ takie, że $X=\bigcup X_n$ i $\mu(X_n)<\infty$.
+    \medskip
+
+    {\color{def}Twierdzenie o konstrukcji miary}: funckja $\sigma$-skończona oraz przeliczalnie addytywna rozszerza się do jednoznacznie do miary na $\sigma(\rodz{R})$.
+    \medskip
+
+    Dla każdego $A\in\sigma(\rodz{R})$ o $\mu(A)<\infty$ i $\varepsilon>0$ istnieje $R\in\rodz{R}$ takie, że $\mu(A\Delta R)<\varepsilon$.
+
+\end{multicols}
+
 \subsection*{ROZDZIAŁ 2}
 
 \begin{multicols}{2}
@@ -217,7 +263,114 @@
 
 \begin{multicols}{2}
     
+    {\color{def}Miara znakowana} $\alpha:\Sigma\to[-\infty,\infty]$ to funkcja która przyjmuje co najwyżej jedną z wartości nieskończonych oraz
+    $$\alpha(\emptyset)=0$$
+    $$\alpha(\bigcup_nA_n)=\sum_n\alpha(A_n)$$
+    dla każdego ciągu rozłącznych $A_i$.
+    \medskip
+
+    {\color{def}Rozkłada Hahna}: jeśli $\alpha$ jest miarą znakowaną na $\sigma$-ciele $\Sigma$ podzbiorów $X$, to istnieją rozłączne zbioru $X^+$ i $X^-$ takie, że $\color{acc}X=X^+\cup X^-$, $X=X^+\cup X^-$ oraz dla dowolnego $A\in\Sigma$, to
     
+    \point jeżeli $A\subseteq X^+$, to $\alpha(A)\geq0$,
+
+    \point a jeżeli $A\subseteq X^-$, to $\alpha(A)\leq0$.
+    \medskip
+
+    {\color{def}Rozkład Jordana}: jeżeli $\alpha$ jest miarą znakowaną na $\Sigma$, to istnieją miary $\alpha^+,\alpha^-$ takie, że $\alpha=\alpha^+-\alpha^-$.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Miara $\nu$ jest {\color{def}absolutnie ciągła względem miary $\mu$}, jeżeli $(\forall\;A\in\Sigma)\;\mu(A)=0\implies\nu(A)=0$. Oznaczamy $\color{acc}\nu\ll\mu$.
+    \medskip
+
+    Miara $\nu$ jest {\color{def}singularna względem miary} $\mu$, jeżeli istnieją $A,B\in\Sigma$ takie, że $X=A\cup B$, $A\cap B=\emptyset$, $\mu(A)=0$ i $\nu(B)=0$. Relację tę oznaczamy $\color{acc}\mu\perp\nu$.
+    \medskip
+
+    {\color{def}Absolutne wahanie} miary znakowanej $\alpha$ to $|\alpha|=\alpha^++\alpha^-$. Jeżeli $\alpha,\beta$ są określone na tym samym $\Sigma$, przyjmujemy $\alpha\ll\beta$ gdy $|\alpha|\ll|\beta|$, tak samo $\alpha\perp\beta$ jeżeli $|\alpha|\perp|\beta|$.
+    \medskip
+
+    $\nu$ jest miarą skończoną na $\Sigma$, to dla dowolnej $\mu$ na $\Sigma$
+    \begin{align*}
+        \nu\ll\mu\iff(\forall\;\varepsilon>0)(\exists\;\delta)(\forall\;A\in\Sigma)\;\mu(A)<\delta\implies\nu(A)<\varepsilon
+    \end{align*}
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    $\mu,\nu$ - skończone miary na $\Sigma$ takie, że $\nu\neq0$ i $\nu\ll\mu$. Wtedy istnieje $P\in\Sigma$ takie, że $\mu(P)>0$ i $P$ jest pozytywny dla miary znakowanej $\nu-\varepsilon\mu$, to znaczy $\nu(B)\geq\varepsilon\mu(B)$ dla każdego mierzalnego $B\subseteq P$.
+    \medskip
+
+    {\color{def}Twierdzenie Radona-Nikodyma}: $(X,\Sigma,\mu)$ - $\sigma$-skończona przestrzeń miarowa i $\nu$ jest miarą znakowaną na $\Sigma$, że $|\nu|$ jest $\sigma$-skończone. Jeśli $\nu\ll\mu$, to istnieje $f:X\to\R$ takie, że dla wszystkich $A\in\Sigma$
+    $$\color{acc}\nu(A)=\int_Afd\mu$$
+
+    Funkcja $f$ spełniająca tezę twierdzenia Radona-Nikodyma bywa oznaczana $f={d\nu\over d\mu}$ i mówi się na nią {\color{dyg}pochodna Radona-Nikodyma} miary $\nu$ względem miary $\mu$.
+    \medskip
+
+    Dla miar $\mu$ i $\nu$ jak w twierdzeniu wyżej
+    $$\color{acc}\int_Xgd\nu=\int_Xg\cdot{d\nu\over d\mu}d\mu$$
+    dla każdej $\nu$-całkowalnej funkcji $g$.
+    \medskip
+
+    Dla $A\in\Sigma$ w $\sigma$-skończonej przestrzeni miarowej, dla $\sigma$-ciała $\Sigma_0\subseteq\Sigma$, istnieje $\Sigma_0$-mierzalna funkcja $f$ taka, że dla każdego $B\in\Sigma_0$
+    $$\color{acc}\mu(A\cap B)=\int_Bfd\mu$$
+
+    Dla $\mu,\nu$ $\sigma$-skończonych miar na tym samym ciele, wtedy istnieje $\color{acc}\nu=\nu_a+\nu_s$ taki, że $\nu_a\ll\mu$ i $\nu_s\perp\mu$.
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Jeżeli $\mu,\nu$ są miarami na $\bor$ i dla każdego $a<b$ mamy $\mu[a,b)=\nu[a,b)<\infty$, to $\mu=\nu$.
+    \medskip
+
+    {\color{def}Miara Lebesgue'a-Stieltjesa} $\lambda_F$: dla każdej $F:\R\to\R$ lewostronnie ciągłej, niemalejącej istnieje jedyna miara $\lambda_F$ określona na $\bor$ taka, że:
+    $$\lambda_F[a,b)=F(b)-F(a)$$
+
+    Jeżeli $F$ niemalejąca ma ciągłą pochodną, to dla każdej $\lambda_F$-całkowalnej $g$:
+    $$\int_\R gd\lambda_F=\int_\R g\cdot F'd\lambda$$
+
+\end{multicols}
+\bigskip
+
+\podz{sep2}
+\bigskip
+
+\subsection*{ROZDZIAŁ 6}
+
+\begin{multicols}{2}
+    
+    Dla dowolnych liczb dodatnich $a,b,p,q$ takich, że $\frac1p+\frac1q=1$ zachodzi
+    $$ab\leq{a^p\over p}+{b^q\over q}$$
+
+    {\color{def}$p$-norma całkowa funkcji} to $\|f\|_p=\left(\int_X|f|^pd\mu\right)^{\frac1p}$.
+    \medskip
+
+    {\color{def}Nierówność Cauchy'ego-H\"oldera}: dla dowolnych $f,g$ i $p,q>0$ jak wyżej zachodzi
+    $$\color{acc}\int_X|fg|d\mu\leq\|f\|_p\|g\|_q$$
+
+    {\color{def}Nierówność Minkowskiego}: $\|f+g\|_p\leq\|f\|_p+\|g\|_p$
+    \medskip
+
+    \podz{sep}
+    \medskip
+
+    Warunki, aby $\|\cdot\|$ było {\color{def}normą}:
+    \smallskip
+
+    \point $\|x\|=0\iff x=0$
+
+    \point $\|cx\|=|c|\|x\|$
+
+    \point $\|x+y\|\leq\|x\|+\|y\|$
+    \smallskip
+
+    Możemy określić na podstawie normy metrykę $p(x,y)=\|x-y\|$. Jeżeli przestrzeń unormowana z taką metryką jest zupełna, to jest nazywana {\color{def}przestrzenią Banacha}.
+    \medskip
+
+    Symbol $\color{acc}L_p(\mu)$ oznacza przestrzeń wszystkich funkcji mierzalnych $f:X\to\R$ dla których $\|f\|_p<\infty$. Elementy z $L_p(\mu)$ są utożsamiane jeżeli są równe prawie wszędzie. Jest to {\color{dyg}przestrzeń Banacha}.
 
 \end{multicols}
 
